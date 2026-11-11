@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>위인 그림책</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+<style>
+
+/* 레이아웃: 첫 화면은 책장, 책을 고르면 그림 한 장 + 문장 + 큰 넘김 버튼 */
+:root{
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#E9F0EB; --surface:#FFFFFF; --ink:#1F2A44; --muted:#596476;
+  --accent:#C8433A; --gold:#E2A93B; --line:#C7D4CC; --chip:#F4E7C6; --chip-ink:#6A4B12;
+  --font-d:'Jua','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --font-b:'Gowun Dodum','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141B26; --surface:#1E2837; --ink:#EEF0E8; --muted:#A9B2C0;
+  --accent:#EE6E63; --gold:#EAB858; --line:#2F3B4E; --chip:#3B3220; --chip-ink:#F2D594; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141B26; --surface:#1E2837; --ink:#EEF0E8; --muted:#A9B2C0;
+  --accent:#EE6E63; --gold:#EAB858; --line:#2F3B4E; --chip:#3B3220; --chip-ink:#F2D594; color-scheme:dark}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;font-size:14px;background:var(--bg);color:var(--ink);font-family:var(--font-b);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));}
+.wrap{max-width:600px;margin:0 auto;padding-block:12px 28px}
+.book,.shelf{display:flex;flex-direction:column;gap:14px}
+.shelf h1{font-family:var(--font-d);font-weight:400;font-size:28px;margin:4px 0 0;text-wrap:balance}
+.shelf .lead{margin:0;font-size:17px;line-height:1.6;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.bookcard{display:flex;flex-direction:column;gap:6px;padding:0;background:none;border:0;text-align:left;cursor:pointer;color:var(--ink);font:inherit;min-width:0}
+.bookcard .cv{border:3px solid var(--ink);border-radius:14px;overflow:hidden;aspect-ratio:400/280;background:#fff;max-width:100%}
+.bookcard .cv svg{display:block;width:100%;height:100%}
+.bookcard .no{font-family:var(--font-d);font-size:14px;color:var(--accent)}
+.bookcard .tt{font-family:var(--font-d);font-size:18px;line-height:1.3;word-break:keep-all}
+.bookcard.soon{cursor:default}
+.bookcard.soon .cv{border:3px dashed var(--line);background:transparent;display:grid;place-items:center;color:var(--muted);font-family:var(--font-d);font-size:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.top h1{font-family:var(--font-d);font-weight:400;font-size:20px;margin:0;flex:1 1 auto;min-width:0}
+.backbtn{font-family:var(--font-d);font-size:16px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:12px;padding:6px 12px;cursor:pointer}
+.count{font-family:var(--font-d);font-size:16px;color:var(--muted);font-variant-numeric:tabular-nums}
+.auto{display:flex;align-items:center;gap:6px;font-size:15px;color:var(--muted)}
+.auto input{width:20px;height:20px;accent-color:var(--accent)}
+.stage{margin:0;border:3px solid var(--ink);border-radius:20px;overflow:hidden;background:#fff;aspect-ratio:400/280;max-width:100%}
+.stage svg{display:block;width:100%;height:100%}
+.stage.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:.35}to{opacity:1}}
+.hit{animation:hit .6s ease;transform-box:fill-box;transform-origin:50% 0%}
+@keyframes hit{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}45%{transform:rotate(10deg)}70%{transform:rotate(-5deg)}}
+.meta{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--font-d);font-size:14px;background:var(--chip);color:var(--chip-ink);padding:4px 10px;border-radius:999px;letter-spacing:.02em}
+.story{font-size:clamp(19px,5.2vw,23px);line-height:1.8;margin:0;text-wrap:pretty;word-break:keep-all}
+.story.cover{font-family:var(--font-d);text-align:center}
+.story .big{font-size:1.5em;color:var(--accent)}
+.tiles{display:flex;gap:10px;flex-wrap:wrap}
+.tile{font-family:var(--font-d);font-size:34px;min-width:60px;height:60px;border-radius:14px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer;padding:0 12px}
+.tile.wide{font-size:20px}
+.tile[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tip{font-size:18px;line-height:1.6;margin:0;min-height:1.6em;color:var(--muted)}
+.tip b{color:var(--ink);font-weight:400;font-family:var(--font-d)}
+.road{border-top:2px dashed var(--line);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.road h2,.talk h2{font-family:var(--font-d);font-weight:400;font-size:19px;margin:0}
+.path{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;position:relative}
+.path::before{content:"";position:absolute;left:10%;right:10%;top:11px;height:4px;background:var(--line);border-radius:2px}
+.stop{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:14px;line-height:1.35;color:var(--muted);position:relative;word-break:keep-all}
+.stop i{width:22px;height:22px;border-radius:50%;background:var(--surface);border:3px solid var(--line)}
+.stop.here i{background:var(--gold);border-color:var(--ink)}
+.stop.here{color:var(--ink)}
+.stop.now i{background:var(--accent);border-color:var(--accent)}
+.stop .whos{display:flex;flex-direction:column;gap:4px;align-items:center}
+.stop .who.cur{background:var(--accent);color:#fff}
+.stop .who{font-family:var(--font-d);font-size:14px;border:0;background:var(--chip);color:var(--chip-ink);border-radius:999px;padding:3px 8px;cursor:pointer}
+.talk{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.card ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:18px;line-height:1.55}
+.card p{margin:0;font-size:17px;line-height:1.6}
+.card .age{font-family:var(--font-d);font-size:16px;color:var(--accent)}
+.card.next{border-style:dashed}
+.card .go{align-self:flex-start;font-family:var(--font-d);font-size:17px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);border-radius:12px;padding:8px 14px;cursor:pointer}
+.note{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+.controls{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:10px}
+.btn{font-family:var(--font-d);font-size:20px;min-height:58px;border-radius:16px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer;padding:0 8px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.speaking{background:var(--gold);border-color:var(--gold);color:#1F2A44}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:10px;height:10px;border-radius:5px;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{width:24px;background:var(--ink)}
+@media (prefers-reduced-motion: reduce){.stage.fade,.hit{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <section class="shelf" id="shelf">
+    <h1>우리 집 위인 그림책</h1>
+    <p class="lead">읽고 싶은 책을 골라 보세요. 책장 아래 시간의 길에서 위인이 살던 때를 찾아볼 수 있어요.</p>
+    <div class="grid" id="grid"></div>
+    <div id="shelfRoad"></div>
+  </section>
+  <section class="book" id="reader" hidden>
+    <div class="top">
+      <button class="backbtn" id="back" type="button">← 책장</button>
+      <h1 id="btitle"></h1>
+      <span class="count" id="count"></span>
+    </div>
+    <label class="auto"><input type="checkbox" id="autoRead"> 넘기면 읽어주기</label>
+    <figure class="stage" id="stage"></figure>
+    <div class="meta" id="meta"></div>
+    <div id="body"></div>
+    <div class="controls">
+      <button class="btn" id="prev" type="button">← 앞으로</button>
+      <button class="btn" id="read" type="button">🔊 읽어주기</button>
+      <button class="btn primary" id="next" type="button">넘기기 →</button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </section>
+</div>
+
+<script src="js/art.js"></script>
+<script src="js/books/01-dangun.js"></script>
+<script src="js/books/02-jumong.js"></script>
+<script src="js/books/03-gwanggaeto.js"></script>
+<script src="js/books/04-kimyusin.js"></script>
+<script src="js/books/05-sejong.js"></script>
+<script src="js/books/06-yeongsil.js"></script>
+<script src="js/books/07-heojun.js"></script>
+<script src="js/books/08-yisunsin.js"></script>
+<script src="js/books/09-kimhongdo.js"></script>
+<script src="js/books/10-yugwansun.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
