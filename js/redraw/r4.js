@@ -139,7 +139,7 @@ redraw('jeonhyeongpil',2,()=>SVn(`<path d="M-6 150 Q200 140 406 150 L406 290 L-6
 function hpKid(x,y,s,o={}){return hero(x,y,s,{robe:'#E7D7B4',hair:'braid',belt:'#5E7FA8',ribbon:'#5E7FA8',...o})}
 
 /* 전형필 6: 보화각 안, 진열장 앞의 아이들 */
-redraw('jeonhyeongpil',6,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill="#F2EEE4"/><path d="M-6 220 H406 V290 H-6Z" fill="#C9B48A"/>
+redraw('jeonhyeongpil',5,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill="#F2EEE4"/><path d="M-6 220 H406 V290 H-6Z" fill="#C9B48A"/>
   ${[80,200,320].map((x,k)=>`<rect x="${x-50}" y="80" width="100" height="140" fill="#E6F2F6" ${sw()}/><rect x="${x-50}" y="200" width="100" height="20" fill="#8A6A44" ${sw()}/>`).join('')}
   ${vase(80,196,.9)}${g(200,196,.9,`<rect x="-30" y="-90" width="60" height="80" fill="#FFFDF6" ${sw()}/><path d="M-20 -70 q20 -20 40 0 M-20 -40 q10 -10 20 0" fill="none" stroke="#5E7A4A" stroke-width="2"/>`)}${g(320,196,.9,`<rect x="-26" y="-70" width="52" height="64" fill="#E9D9A6" ${sw()}/><path d="M-16 -56 H16 M-16 -44 H16 M-16 -32 H10" stroke="#5A3B2C" stroke-width="2"/>`)}
   ${[...Array(3)].map((_,k)=>backView(110+k*90,330,1.1,{robe:['#E7C76A','#9FC2D8','#E98FA0'][k],hat:k===1?'bun':'',pose:k===1?'up':'down'})).join('')}

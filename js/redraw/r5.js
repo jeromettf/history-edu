@@ -131,9 +131,9 @@ redraw('jangbogo',2,()=>SVn(`<path d="M-6 150 Q200 140 406 150 L406 200 L-6 200Z
 
 /* 장보고 4: 해적선이 신라 배를 덮치는 바다 */
 redraw('jangbogo',4,()=>SVn(`<path d="M-6 140 Q200 130 406 140 L406 290 L-6 290Z" fill="#3F7EA8"/>${[...Array(10)].map((_,k)=>`<path d="M${(k*97)%420-20} ${170+(k%4)*24} q10 -8 20 0 q10 8 20 0" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>`).join('')}
-  ${ship(110,210,.8,'#8A5A3C')}${hero(96,176,.32,{robe:'#EFE6D2',mood:'sad',arms:'cheer'})}${hero(130,178,.3,{body:'dress',hair:'bun',mood:'sad'})}
+  ${ship(110,210,.8,'#8A5A3C')}${hero(76,205,.28,{robe:'#EFE6D2',mood:'sad',arms:'cheer'})}${hero(144,205,.26,{body:'dress',hair:'bun',mood:'sad'})}
   ${ship(290,200,.9,'#3A322B')}<path d="M260 120 h40 v26 h-40Z" fill="#2B2B2B" ${sw(1.4)}/><circle cx="280" cy="133" r="6" fill="#FFFFFF"/>
-  ${pirate(250,172,.36,{arms:'pointL',mood:'o',face:'left'})}${pirate(320,170,.34,{arms:'cheer',mood:'o',face:'left'})}
+  ${pirate(250,195,.32,{arms:'pointL',mood:'o',face:'left'})}${pirate(334,195,.3,{arms:'cheer',mood:'o',face:'left'})}
   ${bogo(370,290,.9,{mood:'sad',face:'left',arms:'handsDown'})}
   ${T(200,60,'해적이다!',24,K.red)}`,'url(#r5i)',sky('r5i','#B9C2CC','#E6E2D4')));
 
@@ -141,7 +141,7 @@ redraw('jangbogo',4,()=>SVn(`<path d="M-6 140 Q200 130 406 140 L406 290 L-6 290Z
 redraw('jangbogo',6,()=>SVn(`<path d="M-6 140 Q200 130 406 140 L406 290 L-6 290Z" fill="#4F92BA"/>${[...Array(10)].map((_,k)=>`<path d="M${(k*97)%420-20} ${170+(k%4)*24} q10 -8 20 0 q10 8 20 0" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>`).join('')}
   ${ship(340,170,.45,'#3A322B')}${[0,1,2].map(k=>`<path d="M${290-k*14} ${160+k*8} h-20" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>`).join('')}${pirate(340,150,.22,{mood:'o',face:'right'})}
   ${ship(130,230,1.1,'#8A5A3C')}<path d="M80 108 V60" stroke="${K.wood}" stroke-width="4"/><path d="M80 60 h40 v24 h-40Z" fill="#2C6E92"/>
-  ${bogo(170,190,.5,{arms:'pointR',mood:'joy',face:'right'})}${hero(110,192,.42,{body:'armor',robe:'#2C6E92',hat:'helmet',arms:'cheer',mood:'joy'})}
+  ${bogo(176,223,.4,{arms:'pointR',mood:'joy',face:'right'})}${hero(88,223,.36,{body:'armor',robe:'#2C6E92',hat:'helmet',arms:'cheer',mood:'joy'})}
   ${T(300,70,'도망가자!',22,'#3A322B')}`,'url(#r5j)',sky('r5j','#CFE7F2','#F6EAD0')));
 
 /* 대조영 8: 따뜻한 방바닥에 배를 깔고 엎드린 아이 */
