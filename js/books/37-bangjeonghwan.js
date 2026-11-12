@@ -29,9 +29,9 @@ const P=[
   <g id="tKids">${oldKid(70,276,.6,{mood:'joy',pose:'up'})}${oldKid(130,280,.56,{mood:'joy'})}${hero(270,280,.56,{robe:'#E98FA0',hair:'braid',mood:'joy'})}${oldKid(330,276,.6,{mood:'joy',pose:'up'})}</g>`,'#3A3150',glow('pjg4','#FFE9A6',.6)),
   taps:[{label:'방정환',el:'tStory',say:'옛날 옛날, 깊은 산속에 호랑이가 살았는데…!'},{label:'어린이들',el:'tKids',say:'까르르! 또 해 주세요!'}],tapHint:'이야기를 들어 볼까요?',
   text:`방정환은 어린이들을 모아 동화를 들려주었어요. 목소리를 바꿔 가며 실감 나게 이야기해서, 어린이들은 웃다가 울다가 시간 가는 줄 몰랐대요.`},
- {chips:['1923년'], svg:SV(`${room()}
+ {chips:['1923년'], svg:SVn(`${room()}
   ${pjMan(130,268,.9,{pose:'hold',mood:'joy',item:magazine})}
-  ${[0,1,2].map(k=>`<g transform="translate(${250+k*40} ${200-k*10}) rotate(${k*6-6})">${magazine}</g>`).join('')}`,'#EADCC0'),
+  ${[0,1,2].map(k=>`<g transform="translate(${240+k*44} ${200-k*10}) rotate(${k*6-6})">${magazine}</g>`).join('')}`,'#EADCC0'),
   text:`방정환은 어린이를 위한 잡지 『어린이』도 만들었어요. 재미있는 동화와 노래가 가득 담겨서, 어린이들이 손꼽아 기다렸지요.`},
  {chips:['1923년 5월 1일'], svg:SV(`${cloud(80,40,.7)}
   ${balloon(60,80,'#E98FA0')}${balloon(110,60,'#7FB3C8')}${balloon(300,70,'#F2C14E')}${balloon(350,90,'#7CB66E')}

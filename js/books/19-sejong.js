@@ -26,13 +26,13 @@ const SEJONG_PAGES=[
   text:`그런데 궁궐에는 책 읽기를 세상에서 제일 좋아하는 왕자님이 살았어요. 이름은 이도였어요. 이도는 밤이 깊어도 촛불을 켜고 책을 읽었지요.`},
 
  /* 3. 비스듬한 병풍 뒤에서 몰래 책을 안은 이도, 뒤로 책을 나르는 사람들 */
- {chips:['전해 오는 이야기'], svg:SV(`${room()}
+ {chips:['전해 오는 이야기'], svg:SVn(`${room()}
   <rect x="40" y="96" width="60" height="120" fill="#5A3B2C" ${sw()}/><rect x="46" y="102" width="48" height="114" fill="#F7F0DC"/>
   ${backView(70,212,.44,{robe:'#D6CDB4',pose:'up'})}${g(70,166,.44,`<rect x="-26" y="-40" width="52" height="30" fill="#C9473B" ${sw()}/><rect x="-22" y="-56" width="44" height="16" fill="#3F6FA8" ${sw()}/>`)}
   ${backView(130,214,.4,{robe:'#E6DCC8',hat:'bun',pose:'up'})}${g(130,172,.4,`<rect x="-24" y="-40" width="48" height="28" fill="#5E9C8A" ${sw()}/>`)}
-  ${prince(250,272,.96,{pose:'hold',mood:'joy',item:redBook,face:'left'})}
-  ${screenFold(150,286,1.25)}
-  ${T(270,96,'딱 한 권!',20,K.red)}${star(300,120,8)}`,'#EADCC0'),
+  ${screenFold(246,262,.82)}
+  ${prince(200,274,.92,{pose:'hold',mood:'joy',item:redBook,face:'right'})}
+  ${T(200,64,'딱 한 권!',22,K.red)}${star(250,58,8)}`,'#EADCC0'),
   text:`하루는 책을 너무 많이 읽다가 몸이 아팠어요. 걱정한 아버지는 책을 모두 치워 버렸어요. 그런데 병풍 뒤에 딱 한 권이 남아 있었어요! 이도는 그 책을 백 번도 넘게 읽었대요.`},
 
  /* 4. 올려다보는 구도: 일월오봉도 앞 옥좌의 세종, 앞쪽에 엎드린 신하들의 등 */

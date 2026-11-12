@@ -21,7 +21,7 @@ const P=[
   text:`나라를 되찾은 우리나라에는 좋은 채소 씨앗이 없었어요. 사람들이 우장춘을 불렀어요. 우장춘은 쉰 살이 넘어 아버지의 나라로 건너왔어요.`},
  {svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
   ${[...Array(6)].map((_,k)=>cabbage(40+k*64,262-(k%2)*8,.9)).join('')}
-  <g id="tSeed">${wj(200,282,.82,{mood:'o',stance:'kneel',arms:'reach',prop:seedPack})}</g>`,'url(#wj2)',sky('wj2','#CFE7F2','#F6EAD0')),
+  <g id="tSeed">${wj(200,266,.82,{mood:'o',stance:'kneel',arms:'reach',prop:seedPack})}</g>`,'url(#wj2)',sky('wj2','#CFE7F2','#F6EAD0')),
   taps:[{label:'씨앗 섞기',el:'tSeed',say:'튼튼한 배추와 맛있는 배추의 꽃가루를 섞어 더 좋은 씨앗을 만들어요.'},{label:'쑥쑥',el:'tSeed',say:'우리 땅에서 잘 자라는 배추와 무 씨앗이 생겼어요!'}],tapHint:'우장춘을 눌러 볼까요?',
   text:`부산에 연구소를 차린 우장춘은 밭에 쪼그려 앉아 연구했어요. 우리 땅과 날씨에 맞는 배추와 무 씨앗을 만들어 농부들에게 나누어 주었어요.`},
  {chips:LEG, svg:SV(`${room()}

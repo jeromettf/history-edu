@@ -163,8 +163,8 @@ redraw('yeongsil',2,()=>SVn(`${yard(200)}
 
 /* 장영실 5: 밤 성문, 꾸벅꾸벅 조는 시간 아저씨 */
 redraw('yeongsil',5,()=>SVn(`${stars(30,120)}${moon(330,60,22)}
-  ${gate(200,200,1.6)}<path d="M-6 200 H406 V290 H-6Z" fill="#4A4A5E"/>
-  ${guard(150,280,1.3,{mood:'sleep'})}
+  ${gate(200,206,1.15)}<path d="M-6 200 H406 V290 H-6Z" fill="#4A4A5E"/>
+  ${guard(140,284,1.05,{mood:'sleep'})}
   ${[0,1,2].map(k=>`<text x="${200+k*18}" y="${170-k*18}" font-size="${16+k*4}" fill="#F6F0D6" font-weight="700">Z</text>`).join('')}
   ${T(260,250,'지금 몇 시지?',18,'#F6F0D6')}`,'url(#rh13)',sky('rh13','#1F2748','#3E4A6A')));
 })();

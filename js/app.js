@@ -116,6 +116,7 @@ function render(n,fromUser){
   if(p.taps) h+=tilesHTML(p.taps.map(t=>t.label),p.tapHint||'그림이나 단추를 눌러 보세요.',true);
   if(p.kind==='end') h+=`<p class="got">★ 별 스티커를 받았어요!</p>`+roadHTML(book);
   body.innerHTML=h;
+  $('reader').classList.toggle('nostage',stage.hidden); $('side').querySelector('.sidebody').scrollTop=0;
   const dB=$('didB'); if(dB) dB.addEventListener('click',()=>{markTried(book.id);const on=!!tried[book.id];dB.classList.toggle('on',on);dB.setAttribute('aria-pressed',on);dB.textContent=on?'✓ 해 봤어요':'해 봤어요'});
   body.querySelectorAll('[data-t]').forEach(b=>b.addEventListener('click',()=>pick(p,+b.dataset.t)));
   if(p.taps){const groups={};p.taps.forEach((t,k)=>{if(t.el)(groups[t.el]=groups[t.el]||[]).push(k)});

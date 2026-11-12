@@ -33,7 +33,7 @@ const P=[
   text:`비류가 간 미추홀은 바닷가라서 땅이 축축하고 물이 짰어요. 곡식을 심어도 잘 자라지 않았어요.`},
  {svg:SV(`${hills('#A9CDB4','#BCD38F',184,214)}${river(214)}
   <g id="tField">${[...Array(9)].map((_,k)=>[0,1,2].map(r=>{const x=20+k*44+(r%2)*20,y=236+r*18;return `<path d="M${x} ${y} q-2 -14 -8 -20 M${x} ${y} q2 -16 8 -22 M${x} ${y} v-22" fill="none" stroke="#7CA65A" stroke-width="3" stroke-linecap="round"/><circle cx="${x}" cy="${y-24}" r="3" fill="#E9C25A"/>`}).join('')).join('')}</g>
-  <g id="tOnjo">${onjo(180,282,.86,{arms:'sowR',prop:H=>`<path d="M${H.L[0]-14} ${H.L[1]-6} q14 12 28 0 v-8 h-28Z" fill="#C9A15A" ${sw(1.4)}/>`+[0,1,2,3,4].map(k=>`<circle cx="${H.R[0]+8+k*9}" cy="${H.R[1]+4+k*k*2}" r="2.4" fill="#8A6A44"/>`).join(''),mood:'joy',face:'right',stance:'walk'})}</g>`,'url(#oj5)',sky('oj5','#CFE7F2','#F6EAD0')),
+  <g id="tOnjo">${onjo(180,270,.86,{arms:'sowR',prop:H=>`<path d="M${H.L[0]-14} ${H.L[1]-6} q14 12 28 0 v-8 h-28Z" fill="#C9A15A" ${sw(1.4)}/>`+[0,1,2,3,4].map(k=>`<circle cx="${H.R[0]+8+k*9}" cy="${H.R[1]+4+k*k*2}" r="2.4" fill="#8A6A44"/>`).join(''),mood:'joy',face:'right',stance:'walk'})}</g>`,'url(#oj5)',sky('oj5','#CFE7F2','#F6EAD0')),
   taps:[{label:'큰 강',el:'tOnjo',say:'맑은 강물이 흘러서 마실 물도, 농사지을 물도 넉넉해요.'},{label:'기름진 들',el:'tField',say:'씨를 뿌리자 쑥쑥 자라났어요.'}],tapHint:'온조가 고른 땅을 눌러 보세요.',
   text:`온조가 간 곳은 한강 가의 위례였어요. 맑은 강이 흐르고 들판이 넓었지요. 씨를 뿌리자 곡식이 쑥쑥 자랐어요.`},
  {chips:['기원전 18년'], svg:SV(`${hills('#A9CDB4','#BCD38F',196,222)}

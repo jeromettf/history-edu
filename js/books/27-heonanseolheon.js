@@ -36,7 +36,7 @@ const P=[
   text:`난설헌의 삶은 쉽지 않았어요. 슬픈 일이 많았고, 스물일곱 살에 세상을 떠났어요. 떠나기 전 "내 시를 모두 태워 주렴" 하고 부탁했대요.`},
  {svg:SV(`${room()}
   ${hero(130,268,.9,{robe:'#5E7FA8',hat:'gat',belt:K.gold,mood:'smile',pose:'hold',item:`<rect x="-28" y="-52" width="56" height="40" fill="#7A6AA8" ${sw()}/><rect x="-18" y="-46" width="36" height="16" fill="#FFFDF6"/>`})}
-  ${poemPaper('tP1','蓮')}`,'#EADCC0'),
+  <g transform="translate(290 214) scale(1.5)">${poemPaper('tP1','蓮')}</g>`,'#EADCC0'),
   taps:[{label:'남은 시',el:'tP1',say:'동생 허균이 외우고 모아 둔 시들이 책이 되었어요.'}],
   text:`하지만 남동생 허균은 누나의 시를 아꼈어요. 기억하고 모아 둔 시를 엮어 책으로 만들었어요. 그 책이 『난설헌집』이에요.`},
  {svg:SV(`${sea(180)}

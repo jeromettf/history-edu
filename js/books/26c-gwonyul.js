@@ -19,7 +19,7 @@ const P=[
   <path d="M-6 270 Q120 250 260 280" fill="none" stroke="#6FA8C8" stroke-width="16"/>
   ${T(200,60,'행주산성',22,K.red)}`,'url(#gy1)',sky('gy1','#C9D2D8','#EEF2F4')),
   text:`권율은 한강 옆 작은 산 위의 행주산성에 자리를 잡았어요. 산성 둘레에 나무 울타리를 두 겹으로 둘러 단단히 준비했어요.`},
- {chips:['1593년'], svg:SV(`${fence(200)}<path d="M-6 200 Q200 230 406 200 L406 290 L-6 290Z" fill="#C9C08E"/>
+ {chips:['1593년'], svg:SV(`<path d="M-6 166 Q90 140 200 150 Q300 158 406 172 L406 210 L-6 210Z" fill="#B9B48A"/>${fence(200)}<path d="M-6 200 Q200 230 406 200 L406 290 L-6 290Z" fill="#C9C08E"/>
   ${[...Array(14)].map((_,k)=>japan(20+(k%7)*60,262+Math.floor(k/7)*22,.34,{mood:'o',stance:'walk',arms:'walk',face:'left'})).join('')}
   ${gy(100,150,.5,{arms:'pointR',mood:'o',face:'right'})}${sol(170,152,.44,{arms:'aimL',prop:H=>PROP.bow(H),mood:'o',face:'right'})}`,'url(#gy2)',sky('gy2','#C9D2D8','#EEF2F4')),
   text:`추운 겨울, 일본군 3만 명이 산성으로 몰려왔어요. 성안의 군사는 그보다 훨씬 적었어요. 아침부터 저녁까지 일곱 번이나 공격이 이어졌어요.`},

@@ -118,7 +118,7 @@ function person(x,y,s,o){
     const dir=o.face==='left'?-1:1;
     out=`<g transform="rotate(${dir*a} 0 0)">${out}</g>`+(r?[0,1,2].map(k=>`<path d="M${-dir*(52+k*6)} ${-80+k*22} h${-dir*22}" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity=".85"/>`).join(''):'');}
   if(st==='lie'){out=`<g transform="translate(0 30) rotate(${o.face==='right'?90:-90} 0 -60)">${out.replace(/^<ellipse[^>]*\/>/,'')}</g>`;out=`<ellipse cx="0" cy="1" rx="74" ry="8" fill="#2B1E16" opacity=".2"/>`+out}
-  return g(x,y,s,out);
+  return `<g data-fig="1">${g(x,y,s,out)}</g>`;
 }
 let STUID=0;
 const king=(x,y,s,o={})=>person(x,y,s,{robe:'#C9473B',...o,
@@ -506,18 +506,22 @@ function camera(inner){
   if(figs.some(f=>f.y>290||f.s>1.3))return '';
   let shot=SHOTS[(SCN.shotI++)%SHOTS.length];
   if(shot==='close'&&(caps.length||figs.length>1))shot='two';
-  const clampV=(left,top,z)=>{const vw=400/z,vh=280/z;left=Math.max(-6,Math.min(406-vw,left));top=Math.max(-6,Math.min(286-vh,top));return `scale(${z.toFixed(3)}) translate(${(-left).toFixed(1)} ${(-top).toFixed(1)})`};
+  const view=(cx,cy,z)=>{const vw=400/z,vh=280/z;return [Math.max(-6,Math.min(406-vw,cx-vw/2)),Math.max(-6,Math.min(286-vh,cy-vh/2)),vw,vh]};
+  /* 화면 가장자리에 걸려 몸이 반쯤 잘리는 인물이 생기면 덜 당긴다 */
+  const cuts=([l,t,vw,vh])=>figs.some(f=>{const x0=f.x-46*f.s,x1=f.x+46*f.s,y0=f.y-150*f.s,y1=f.y+10*f.s;
+    const v=Math.max(0,Math.min(x1,l+vw)-Math.max(x0,l))*Math.max(0,Math.min(y1,t+vh)-Math.max(y0,t))/((x1-x0)*(y1-y0));return v>.04&&v<.88});
+  const tryZ=(cx,cy,z,zmin)=>{for(;z>=zmin;z-=.05){const v=view(cx,cy,z);if(!cuts(v))return `scale(${z.toFixed(3)}) translate(${(-v[0]).toFixed(1)} ${(-v[1]).toFixed(1)})`}return ''};
   if(shot==='close'){
     const m=figs.slice().sort((a,b)=>(b.s-a.s)||(Math.abs(a.x-200)-Math.abs(b.x-200)))[0];
-    const hx=m.x,hy=m.y-94*m.s,z=Math.max(1.3,Math.min(1.6,60/(31*m.s)));
-    return clampV(hx-200/z,hy-.36*280/z,z)}
+    const z=Math.max(1.15,Math.min(1.35,52/(31*m.s)));
+    return tryZ(m.x,m.y-70*m.s,z,1.1)}
   if(shot==='two'){
     let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
     for(const f of figs){x0=Math.min(x0,f.x-52*f.s);x1=Math.max(x1,f.x+52*f.s);y0=Math.min(y0,f.y-150*f.s);y1=Math.max(y1,f.y+14*f.s)}
     for(const c of caps){x0=Math.min(x0,c.x-c.sz*c.len*.55);x1=Math.max(x1,c.x+c.sz*c.len*.55);y0=Math.min(y0,c.y-c.sz*1.2)}
     const W=Math.max(x1-x0,(y1-y0)*400/280)*1.12,z=Math.min(1.3,400/W);
     if(z<1.1)return '';
-    return clampV((x0+x1)/2-200/z,(y0+y1)/2-140/z,z)}
+    return tryZ((x0+x1)/2,(y0+y1)/2,z,1.1)}
   return '';
 }
 
