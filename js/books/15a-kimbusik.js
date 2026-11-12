@@ -31,7 +31,7 @@ const P=[
   <g transform="translate(200 230) scale(1.6)">${openBook}</g>
   ${[[70,'을지문덕'],[330,'김유신']].map(([x,t],k)=>`<rect x="${x-46}" y="80" width="92" height="40" rx="8" fill="#FFFDF6" ${sw()}/>${T(x,106,t,15,K.ink)}`).join('')}
   ${kid(80,282,.7,{mood:'o',arms:'pointR',face:'right'})}${oldKid(320,282,.7,{mood:'joy',arms:'pointL',face:'left'})}`,'#EFE3C8'),
-  text:`우리가 읽은 을지문덕, 김유신, 온조 이야기도 『삼국사기』에 적혀 있어요. 이 책이 없었다면 많은 이야기가 사라졌을 거예요.`},
+  text:`을지문덕, 김유신, 온조 이야기도 『삼국사기』에 적혀 있어요. 이 책이 없었다면 많은 이야기가 사라졌을 거예요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#F2EEE4"/><path d="M-6 230 H406 V290 H-6Z" fill="#C9B48A"/>
   <rect x="120" y="80" width="160" height="130" fill="#E6F2F6" ${sw()}/>${stack(200,200,6)}
   ${kid(80,282,.8,{mood:'o',arms:'pointR',face:'right'})}${hero(320,282,.8,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}
@@ -46,7 +46,7 @@ const P=[
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimbusik',era:'goryeo',title:'김부식과 삼국사기',who:'김부식',teaser:'흩어져 사라지던 세 나라 이야기를 쉰 권의 책으로 모은 학자가 있어요.',pages:P,
- talk:{three:['책이 모두 몇 권이었지?','책을 차곡차곡 쌓아 볼까?','우리가 읽은 책 속 사람 이름 하나 말해 볼까?'],
+ talk:{three:['책이 모두 몇 권이었지?','책을 차곡차곡 쌓아 볼까?','옛날 사람 이름 하나 말해 볼까?'],
   five:['이야기를 책으로 남기지 않으면 어떻게 될까?','여럿이 함께 쓰면 무엇이 좋을까?','우리 가족 역사책에는 어떤 이야기를 넣을까?'],
   note:'김부식(1075~1151)은 고려의 문신으로, 인종의 명을 받아 편찬 책임을 맡아 1145년 『삼국사기』 50권을 완성했습니다. 편찬에는 김부식 외에 10여 명의 관리가 참여했습니다. 『삼국사기』는 현존하는 우리나라 가장 오래된 역사서이며, 신라 중심의 서술이라는 평가도 함께 받습니다. 『삼국유사』는 1281년 무렵 일연이 지었습니다.'}});
 })();

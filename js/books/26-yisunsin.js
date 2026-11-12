@@ -16,7 +16,7 @@ const P=[
   ${ssKid(150,268,.92,{pose:'hold',mood:'joy',item:woodSword})}
   ${kid(250,270,.64,{mood:'joy',pose:'up'})}${hero(310,270,.64,{robe:'#E7C76A',hair:'braid',mood:'joy',pose:'up'})}${hero(360,270,.6,{robe:'#E98FA0',hair:'braid',mood:'joy'})}
   ${T(150,110,'나를 따르라!',18,K.red)}`,'url(#y1)',sky('y1','#CFE7F2','#F6EAD0')),
-  text:`석봉이와 같은 시절, 순신이라는 아이가 살았어요. 순신은 동네 아이들과 전쟁놀이를 할 때면 늘 대장을 맡았대요. 나무로 활과 칼을 만들어 놀았어요.`},
+  text:`한석봉과 같은 시절, 순신이라는 아이가 살았어요. 순신은 동네 아이들과 전쟁놀이를 할 때면 늘 대장을 맡았대요. 나무로 활과 칼을 만들어 놀았어요.`},
  {chips:LEG, svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   <path d="M320 216 Q312 150 330 100" stroke="#8A6A44" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M330 104 Q300 130 290 170 M330 110 Q350 140 362 176 M326 120 Q316 150 316 188" fill="none" stroke="#7CB66E" stroke-width="4" stroke-linecap="round"/>
   ${horse(170,266,.9,{color:'#8A5A3C',rider:rider(ssMan(0,0,1,{pose:'up',mood:'smile'}))})}

@@ -13,7 +13,7 @@ const P=[
  {svg:SV(`${cloud(300,40,.7)}${hills('#A9CDB4','#D9CCAE',196,214)}
   ${pjKid(120,266,.9,{pose:'up',mood:'joy'})}${oldKid(220,268,.64,{mood:'joy'})}${hero(290,268,.64,{robe:'#E98FA0',hair:'braid',mood:'joy'})}
   ${T(120,100,'옛날 옛날에…',18,K.red)}`,'url(#pj1)',sky('pj1','#CFE7F2','#F6EAD0')),
-  text:`관순이가 만세를 부르던 무렵, 정환이라는 청년이 있었어요. 정환이는 어릴 때부터 친구들에게 재미있는 이야기를 들려주는 걸 좋아했어요.`},
+  text:`유관순이 만세를 부르던 무렵, 정환이라는 청년이 있었어요. 정환이는 어릴 때부터 친구들에게 재미있는 이야기를 들려주는 걸 좋아했어요.`},
  {svg:SV(`<path d="M-6 200 L406 200 L406 286 L-6 286Z" fill="#C9C2B4"/>
   ${hero(120,268,.86,{robe:'#5A5560',hat:'gat',mood:'sad'})}${oldKid(220,270,.66,{mood:'sad',tear:true})}${oldKid(300,272,.6,{mood:'sad'})}
   ${T(120,100,'애들은 몰라도 돼!',16,K.ink)}`,'url(#pj2)',sky('pj2','#B9C2CC','#DCDCD4')),

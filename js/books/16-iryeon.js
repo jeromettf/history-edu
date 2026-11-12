@@ -46,8 +46,8 @@ const P=[
   <g id="tEgg">${egg(200,190,.8)}</g>
   <g id="tPeony">${peony(290,120,1.6)}</g>
   <rect x="-6" y="226" width="412" height="60" fill="#DDB16A"/>`,'#EFE3C8'),
-  taps:[{label:'곰',el:'tBear',say:'단군 이야기예요! 꾹 참은 곰이 사람이 되었어요.'},{label:'알',el:'tEgg',say:'주몽 이야기예요! 알에서 아이가 나왔어요.'},{label:'모란꽃',el:'tPeony',say:'선덕여왕 이야기예요! 향기 없는 꽃이었어요.'}],tapHint:'우리가 읽은 이야기를 찾아볼까요?',
-  text:`책 속에는 우리가 읽은 이야기도 있어요. 곰이 사람이 된 단군 이야기, 알에서 태어난 주몽, 향기 없는 모란꽃을 알아챈 선덕여왕까지요!`},
+  taps:[{label:'곰',el:'tBear',say:'단군 이야기예요! 꾹 참은 곰이 사람이 되었어요.'},{label:'알',el:'tEgg',say:'주몽 이야기예요! 알에서 아이가 나왔어요.'},{label:'모란꽃',el:'tPeony',say:'선덕여왕 이야기예요! 향기 없는 꽃이었어요.'}],tapHint:'아는 이야기가 있는지 찾아볼까요?',
+  text:`책 속에는 지금도 사랑받는 이야기가 가득해요. 곰이 사람이 된 단군 이야기, 알에서 태어난 주몽, 향기 없는 모란꽃을 알아챈 선덕여왕까지요!`},
  {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
   <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/><ellipse cx="190" cy="260" rx="124" ry="18" fill="#F2B3A6" ${sw()}/>
   ${kid(160,266,1.0,{pose:'hold',mood:'joy',item:bigBook('그림책','#5E9C8A')})}${hero(260,266,.86,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile'})}`,'url(#ir8)',sky('ir8','#E8F2F8','#DCEAF2')),
@@ -56,7 +56,7 @@ const P=[
   text:`옛이야기를 좋아한 스님이 남긴 선물,<br>잊히지 않은 우리 이야기.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'iryeon',era:'goryeo',title:'일연과 옛이야기 책',who:'일연',teaser:'우리가 읽은 단군과 주몽 이야기를 책에 모아 둔 스님이 있었대요!',pages:P,
+BOOKS.push({id:'iryeon',era:'goryeo',title:'일연과 옛이야기 책',who:'일연',teaser:'곰이 사람이 된 단군 이야기와 알에서 태어난 주몽 이야기를 책에 모아 둔 스님이 있었대요!',pages:P,
  talk:{three:['책 속에서 곰을 찾아볼까?','할머니처럼 "옛날 옛날에…" 해 볼까?','이 책에 나온 알은 누구 이야기였지?'],
   five:['일연은 왜 옛이야기를 모았을까?','이야기가 사라지면 어떻게 될까?','우리 가족 이야기 중에 꼭 남기고 싶은 건 뭐야?'],
   note:'일연(1206~1289)은 고려의 스님으로, 아홉 살에 절에 들어갔습니다. 몽골의 오랜 침략으로 1238년 황룡사 구층탑이 불탔습니다. 일연이 1281년 무렵 펴낸 『삼국유사』에는 단군 신화가 처음으로 기록되어 있고, 주몽, 선덕여왕, 원효, 김유신의 이야기와 향가 14수도 실려 있습니다. 2022년 국보로 지정되었습니다.'}});

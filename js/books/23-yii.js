@@ -12,7 +12,7 @@ const P=[
   text:`<span class="big">율곡 이이와 아이를 위한 책</span><br>위인 그림책 {no}권`},
  {svg:SV(`${yard(206)}${blackBamboo(300,206)}
   ${saim(130,268,.9,{mood:'joy',pose:'hold',item:brush})}${yiKid(230,270,.7,{mood:'joy',pose:'up'})}`,'#D9CCAE'),
-  text:`신사임당 기억나요? 풀벌레를 진짜처럼 그린 그 화가예요. 강릉 오죽헌에서 신사임당의 아들 이이가 태어났어요. 집 둘레에는 줄기가 까만 대나무가 자랐어요.`},
+  text:`풀벌레를 진짜처럼 그린 화가 신사임당이 있었어요. 강릉 오죽헌에서 신사임당의 아들 이이가 태어났어요. 집 둘레에는 줄기가 까만 대나무가 자랐어요.`},
  {svg:SV(`${room()}
   ${saim(120,268,.86,{mood:'smile',pose:'hold',item:book('책','#C9A15A')})}${yiKid(250,270,.7,{mood:'o'})}
   ${T(250,96,'이건 무슨 뜻이에요?',16,K.red)}`,'#EADCC0'),

@@ -72,7 +72,7 @@ function runAuto(){clearTimeout(autoT); if(!auto||!book)return; const p=book.pag
   let turn2=null;
   const tapNext=()=>{if(!ok())return; if(!taps.length){(turn2||turn)();return} const k=taps.shift(); autoT=setTimeout(()=>{if(ok())pick(p,k,tapNext)},700)};
   const th=THINK[book.id];
-  const say=(p.text||'')+(p.kind==='cover'&&th?` 읽으면서 알아봐요. ${th.q}`:'');
+  const say=(p.text||'')+(p.kind==='cover'&&th?` 읽으면서 알아봐요. ${th.pre||th.q}`:'');
   if(th&&here===th.p){turn2=()=>{if(!ok())return; speak(`잠깐! 생각해 봐요. ${th.q}`,()=>{if(!ok())return; pauseAuto()})}}
   autoT=setTimeout(()=>{if(ok())speak(say,tapNext)},500);
 }
@@ -120,7 +120,7 @@ function talkHTML(){
   const t=book.talk, nx=BOOKS[book.no%BOOKS.length];
   /* 생각 멈춤에서 이미 물은 것과 가장 덜 겹치는 질문을 오늘의 질문으로 고른다 */
   const big=x=>new Set([...x.replace(/[^가-힣]/g,'')].map((c,k,a)=>c+(a[k+1]||''))), th=THINK[book.id];
-  const sim=q=>{if(!th)return 0;const A=big(q),B=big(th.q);let n=0;A.forEach(x=>{if(B.has(x))n++});return n/Math.min(A.size,B.size)};
+  const sim=q=>{if(!th)return 0;const A=big(q),B=big(th.q+(th.pre||""));let n=0;A.forEach(x=>{if(B.has(x))n++});return n/Math.min(A.size,B.size)};
   const pickI=t.five.map((q,k)=>[sim(q),k]).sort((a,b)=>a[0]-b[0]||a[1]-b[1])[0][1];
   const q1=t.five[pickI], rest=t.five.filter((_,k)=>k!==pickI);
   /* 질문은 하나만 보이고, 나머지는 더 이야기하고 싶을 때 펼친다 */
@@ -175,7 +175,7 @@ function render(n,fromUser){
   meta.innerHTML=(p.chips||[]).map(c=>`<span class="chip">${c}</span>`).join(''); meta.hidden=!(p.chips&&p.chips.length);
   const th=THINK[book.id], isStory=storyPage(p);
   let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():(tell&&isStory)?tellHTML(p):`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
-  if(p.kind==='cover'&&th) h+=`<div class="think pre"><b>🤔 읽으면서 알아봐요</b><p>${th.q}</p></div>`;
+  if(p.kind==='cover'&&th) h+=`<div class="think pre"><b>🤔 읽으면서 알아봐요</b><p>${th.pre||th.q}</p></div>`;
   if(p.kind==='cover'&&done[book.id]&&!tell) h+=`<button class="tellnudge" type="button" id="tellGo">🗣 다 읽은 책이에요. 이번엔 네가 들려줄래?</button>`;
   if(th&&i===th.p) h+=`<div class="think"><b>🤔 잠깐! 생각해 봐요</b><p>${th.q}</p><small>생각해 보고 넘겨도 되고, 그냥 넘겨도 돼요.</small></div>`;
   if(p.kind==='letters') h+=tilesHTML(LETTERS.map(t=>t[0]),'글자를 눌러 보세요.');
