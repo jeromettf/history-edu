@@ -1,5 +1,6 @@
 /* 1권 단군: 곰의 기다림과 우리나라의 시작 (건국 신화) */
 (()=>{
+setScene('gojoseon','spring');
 const LEG=['전해 오는 이야기'];
 const hwanung=(x,y,s,o={})=>hero(x,y,s,{robe:'#FFFDF6',hair:'topknot',hat:'crown',belt:K.gold,...o});
 const dangun=(x,y,s,o={})=>hero(x,y,s,{robe:'#F4EFE0',hair:'topknot',hat:'crown',belt:'#5E9C8A',collar:'#5E9C8A',beard:HAIR,...o});
@@ -18,7 +19,7 @@ const P=[
   <path d="M120 268 Q200 254 280 268" fill="none" stroke="#C7DCC4" stroke-width="10" stroke-linecap="round" opacity=".7"/>
   ${hwanung(200,236,1.0,{mood:'smile'})}
   ${star(60,60,10)}${star(340,70,9)}${star(110,30,6,'#F28C7C')}`,'url(#d1)',sky('d1','#F9E6B6','#CFE6F3')+glow('dg1','#FFF8DE',.9)),
-  text:`아주아주 먼 옛날, 하늘나라에 환웅이라는 왕자님이 살았어요. 환웅은 구름 아래 사람들이 사는 세상을 자주 내려다보았지요. "사람들을 행복하게 해 주고 싶어."`},
+  text:`아주아주 먼 옛날, 하늘나라에 환웅이라는 왕자님이 살았어요. 환웅은 구름 아래 사람들이 사는 세상을 자주 내려다보았어요. "사람들을 행복하게 해 주고 싶어."`},
  {chips:LEG, svg:SV(`
   ${hills('#A9CDB4','#BCD38F',196,222)}
   ${cloud(200,150,1.6)}
@@ -26,7 +27,7 @@ const P=[
   ${rainCloud(74,64)}${wind(290,52)}${cloud(330,110,.8)}
   ${hero(70,268,.6,{robe:'#E9DFC8',mood:'o'})}${hero(330,268,.6,{body:'dress',hair:'bun',mood:'o'})}
   ${tufts(258,[30,120,280,380])}`,'url(#d2)',sky('d2','#CFE7F2','#F4EBD2')),
-  text:`환웅은 바람과 비와 구름을 다스리는 신하들과 함께 땅으로 내려왔어요. 그리고 곡식을 기르는 법, 아픈 사람을 돌보는 법을 사람들에게 가르쳐 주었지요.`},
+  text:`환웅은 바람과 비와 구름을 다스리는 신하들과 함께 땅으로 내려왔어요. 그리고 사람들에게 곡식을 기르는 법과 아픈 사람을 돌보는 법을 가르쳐 주었어요.`},
  {chips:LEG, svg:SV(`
   ${forest(214)}
   <path d="M-6 210 Q200 200 406 210 L406 286 L-6 286Z" fill="#9FC48A" ${sw()}/>
@@ -68,7 +69,7 @@ const P=[
   ${g(0,0,1,`<g opacity=".25">${bear(116,262,.7,{mood:'joy'})}</g>`)}
   ${ungnyeo(200,266,1.0,{pose:'up',mood:'joy'})}
   ${star(120,120,12)}${star(286,108,10,'#F28C7C')}${star(150,70,7)}${star(260,170,8,K.jade)}${star(310,60,6)}`,'url(#d7)',sky('d7','#FCE9C2','#E8F1E2')+glow('dg7','#FFF6D8',.95)),
-  text:`스무하루가 지나자, 곰은 아름다운 여인이 되었어요! 사람들은 그 여인을 웅녀라고 불렀어요. 꾹 참고 기다린 덕분이었지요.`},
+  text:`스무하루가 지나자, 곰은 아름다운 여인이 되었어요! 사람들은 그 여인을 웅녀라고 불렀어요.`},
  {chips:LEG, svg:SV(`
   ${hills('#A9CDB4','#BCD38F',196,220)}
   <rect x="150" y="150" width="100" height="56" fill="#F3E6CB" ${sw()}/><path d="M138 156 Q200 108 262 156Z" fill="#C9A15A" ${sw()}/>
@@ -83,7 +84,7 @@ const P=[
   <rect x="166" y="22" width="68" height="42" rx="3" fill="#C9473B" ${sw()}/>${T(200,52,'고조선',20,'#FBF4E2')}<path d="M234 22 V110" ${sw(3)}/>
   ${dangun(200,206,.86,{pose:'up',mood:'joy'})}
   ${hero(80,272,.62,{mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#E9DFC8',mood:'joy',pose:'up'})}${hero(332,272,.62,{body:'dress',hair:'braid',mood:'joy'})}`,'url(#d9)',sky('d9','#CFE7F2','#F6EAD0')),
-  text:`어른이 된 단군왕검은 우리 땅에 처음으로 나라를 세웠어요. 그 나라의 이름은 고조선이에요. 우리나라 역사의 맨 처음이지요.`},
+  text:`어른이 된 단군왕검은 우리 땅에 처음으로 나라를 세웠어요. 그 나라의 이름은 고조선이에요. 우리나라 역사의 맨 처음이에요.`},
  {svg:SV(`
   <rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
   <rect x="290" y="32" width="80" height="88" rx="4" fill="#FFFFFF" ${sw()}/><rect x="290" y="32" width="80" height="22" rx="4" fill="${K.red}" ${sw()}/>
@@ -91,7 +92,7 @@ const P=[
   <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/><ellipse cx="190" cy="260" rx="124" ry="18" fill="#F2B3A6" ${sw()}/>
   ${kid(190,266,1.02,{pose:'up',mood:'joy'})}
   ${star(126,160,8)}${star(258,150,7,'#F28C7C')}`,'url(#d10)',sky('d10','#E8F2F8','#DCEAF2')),
-  text:`그래서 해마다 10월 3일을 개천절로 정해 기념해요. '하늘이 열린 날'이라는 뜻으로, 우리나라가 처음 시작된 것을 축하하는 날이지요.`},
+  text:`지금도 해마다 10월 3일 개천절에 우리나라의 시작을 기념해요. 개천절은 '하늘이 열린 날'이라는 뜻이에요.`},
  {kind:'end', svg:endBase('d',`<path d="M60 220 Q130 110 200 70 Q270 110 340 220Z" fill="#A9CDB4" ${sw()}/>${T(200,176,'고조선',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,bear(64,276,.5,{mood:'joy'}),dangun(338,276,.55,{pose:'up',mood:'joy'})),
   text:`꾹 참고 기다린 곰과 단군왕검이 남긴 선물,<br>우리나라의 시작.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

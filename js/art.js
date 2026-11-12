@@ -18,7 +18,8 @@ ${defs}</defs>
 <g filter="url(#wob)"><rect x="-6" y="-6" width="412" height="292" fill="${bg}"/>${inner}</g>
 <rect width="400" height="280" filter="url(#wash)" pointer-events="none" style="mix-blend-mode:multiply"/>
 <rect width="400" height="280" filter="url(#grain)" pointer-events="none" style="mix-blend-mode:multiply"/>
-<rect width="400" height="280" fill="url(#vig)" pointer-events="none"/></svg>`;}
+<rect width="400" height="280" fill="url(#vig)" pointer-events="none"/>
+<rect x="2.5" y="2.5" width="395" height="275" rx="9" fill="none" stroke="#FFF8EC" stroke-width="5" opacity=".5" pointer-events="none"/></svg>`;}
 
 /* 얼굴: 큰 머리, 반짝이는 눈, 눈썹으로 감정 */
 function head(m,sk,tear){
@@ -92,7 +93,7 @@ const hut=(x,y)=>`<rect x="${x}" y="${y}" width="64" height="40" fill="#F3E6CB" 
 <path d="M${x-12} ${y+6} Q${x-8} ${y-30} ${x+32} ${y-34} Q${x+72} ${y-30} ${x+76} ${y+6} Q${x+32} ${y+12} ${x-12} ${y+6}Z" fill="#D2A85A" ${sw()}/><path d="M${x} ${y-6} Q${x+32} ${y-22} ${x+64} ${y-6} M${x+6} ${y-18} Q${x+32} ${y-30} ${x+58} ${y-18}" fill="none" stroke="#A57F3A" stroke-width="1.6"/>`;
 const hj=(x,y,c,r=0)=>`<g transform="rotate(${r} ${x} ${y})"><rect x="${x-17}" y="${y-17}" width="34" height="34" rx="5" fill="#FFFDF6" ${sw()}/><text x="${x}" y="${y+9}" text-anchor="middle" font-size="23" font-family="serif" fill="#3A3330">${c}</text></g>`;
 const pine=(x,y,s=1)=>g(x,y,s,`<path d="M0 0 Q-8 -40 4 -82" fill="none" stroke="#8E3A2B" stroke-width="8" stroke-linecap="round"/><path d="M0 -40 Q12 -48 22 -52" fill="none" stroke="#8E3A2B" stroke-width="5" stroke-linecap="round"/><ellipse cx="4" cy="-88" rx="24" ry="10" fill="#2F6B4E" ${sw()}/><ellipse cx="-14" cy="-66" rx="18" ry="8" fill="#2F6B4E" ${sw()}/><ellipse cx="26" cy="-56" rx="16" ry="7" fill="#2F6B4E" ${sw()}/>`);
-const T=(x,y,t,sz,f=K.ink,extra='')=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Jua,sans-serif" font-size="${sz}" fill="${f}" ${extra}>${t}</text>`;
+const T=(x,y,t,sz,f=K.ink,extra='')=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Jua,sans-serif" font-size="${sz}" fill="${f}" ${extra||(/^#F[0-9A-F]{5}$|^#FFF/i.test(f)?'':`stroke="#FFF8EC" stroke-width="${Math.max(3,sz*.22)}" stroke-linejoin="round" paint-order="stroke"`)}>${t}</text>`;
 const heart=(x,y,crack)=>`<path d="M${x} ${y+16} Q${x-22} ${y} ${x-16} ${y-8} Q${x-8} ${y-16} ${x} ${y-4} Q${x+8} ${y-16} ${x+16} ${y-8} Q${x+22} ${y} ${x} ${y+16}Z" fill="#E0605A" ${sw()}/>${crack?`<path d="M${x} ${y-4} l-4 7 l6 4 l-3 7" fill="none" stroke="#FFF8EC" stroke-width="2.4" stroke-linecap="round"/>`:''}`;
 
 
@@ -137,7 +138,6 @@ ${[220,268,316].map(x=>`<rect x="${x}" y="94" width="38" height="56" rx="3" fill
 <rect x="196" y="228" width="180" height="10" fill="#7E5B38" ${sw()}/>
 <text id="boom" x="300" y="34" text-anchor="middle" font-family="Jua,sans-serif" font-size="30" fill="${K.red}" stroke="#FFF8EC" stroke-width="5" paint-order="stroke"></text>`;
 const clockFace=(x,y,r,h=10,m=2)=>{const ang=v=>(v*30-90)*Math.PI/180;return `<circle cx="${x}" cy="${y}" r="${r}" fill="#FFFDF6" ${sw(3)}/><circle cx="${x}" cy="${y}" r="${r-6}" fill="none" stroke="#E2D6BC" stroke-width="2"/>${[12,3,6,9].map(n=>`<text x="${x+(r-16)*Math.cos(ang(n))}" y="${y+(r-16)*Math.sin(ang(n))+r*.09}" text-anchor="middle" font-family="Jua,sans-serif" font-size="${r*.26}" fill="${K.ink}">${n}</text>`).join('')}<path d="M${x} ${y} L${x+r*.45*Math.cos(ang(h))} ${y+r*.45*Math.sin(ang(h))}" ${sw(r*.07)}/><path d="M${x} ${y} L${x+r*.68*Math.cos(ang(m))} ${y+r*.68*Math.sin(ang(m))}" ${sw(r*.045)}/><circle cx="${x}" cy="${y}" r="${r*.06}" fill="${K.red}"/>`};
-const sea=(y)=>`<rect x="-6" y="${y}" width="412" height="${290-y}" fill="#6FA8C8"/>${[30,90,150,210,270,330,390].map((x,k)=>`<path d="M${x-18} ${y+16+(k%2)*14} Q${x-9} ${y+6+(k%2)*14} ${x} ${y+16+(k%2)*14} Q${x+9} ${y+6+(k%2)*14} ${x+18} ${y+16+(k%2)*14}" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>`).join('')}`;
 const gull=(x,y)=>`<path d="M${x-8} ${y} Q${x-4} ${y-5} ${x} ${y} Q${x+4} ${y-5} ${x+8} ${y}" fill="none" ${sw(2)}/>`;
 
 
@@ -227,12 +227,8 @@ const herb=(x,y,c='#5E9C5A')=>`<path d="M${x} ${y} Q${x-2} ${y-16} ${x-8} ${y-24
 const garlic=(x,y)=>`<path d="M${x} ${y} Q${x-12} ${y-4} ${x-10} ${y-14} Q${x-4} ${y-22} ${x} ${y-28} Q${x+4} ${y-22} ${x+10} ${y-14} Q${x+12} ${y-4} ${x} ${y}Z" fill="#F7F1E3" ${sw(1.6)}/><path d="M${x} ${y-2} V${y-24}" stroke="#D8CDB4" stroke-width="1.2"/>`;
 const stele=(x,y,s)=>g(x,y,s,`<rect x="-26" y="-150" width="52" height="150" rx="6" fill="#9E9686" ${sw()}/>${[-136,-120,-104,-88,-72,-56,-40,-24].map(yy=>`<path d="M-16 ${yy} H-4 M4 ${yy} H16" stroke="#7A7366" stroke-width="2.4" stroke-linecap="round"/>`).join('')}<rect x="-34" y="-6" width="68" height="10" rx="2" fill="#8A8272" ${sw()}/>`);
 const ball=(x,y,r=10)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#F4EFE0" ${sw()}/><path d="M${x-r} ${y} Q${x} ${y-r*.6} ${x+r} ${y} M${x} ${y-r} Q${x+r*.5} ${y} ${x} ${y+r}" fill="none" stroke="#C9473B" stroke-width="1.6"/>`;
-const hills=(c1='#A9CDB4',c2='#BCD38F',y1=190,y2=212)=>`<path d="M-6 ${y1} Q120 ${y1-30} 220 ${y1-6} Q320 ${y1-26} 406 ${y1} L406 ${y1+44} L-6 ${y1+44}Z" fill="${c1}" ${sw()}/><path d="M-6 ${y2} Q200 ${y2-10} 406 ${y2} L406 286 L-6 286Z" fill="${c2}" ${sw()}/>`;
 const scroll=(t,c=K.paper,tc=K.red,sz=32)=>`<rect x="96" y="22" width="208" height="58" rx="4" fill="${c}" ${sw()}/><rect x="84" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/><rect x="300" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/>${T(200,62,t,sz,tc)}`;
-const coverBase=(id,banner,extra,who)=>SV(`${cloud(66,62)}${cloud(334,46,.8)}<circle cx="200" cy="180" r="140" fill="url(#cg${id})"/>
-<path d="M-6 214 Q100 170 200 196 Q300 160 406 206 L406 286 L-6 286Z" fill="#9CC7A8" ${sw()}/><path d="M-6 244 Q120 214 240 238 Q330 218 406 236 L406 286 L-6 286Z" fill="#BCD99C" ${sw()}/>
-${scroll(banner,K.paper,K.red,banner.length>6?26:32)}${extra}${star(52,118,9)}${star(350,120,8,'#F28C7C')}${who}`,`url(#cs${id})`,sky('cs'+id,'#BFE0F0','#FCE7C2')+glow('cg'+id,'#FFF6D8',.9));
-const endBase=(id,center,left,right)=>SV(`<circle cx="200" cy="136" r="150" fill="url(#eg${id})"/>${center}${star(66,56,14)}${star(334,52,12,'#F28C7C')}${star(110,236,9,K.jade)}${star(290,236,10)}${left}${right}`,`url(#es${id})`,sky('es'+id,'#FBEFD2','#F6DFAE')+glow('eg'+id,'#FFF8DE',.95));
+const endBase=(id,center,left,right)=>SV(`<circle cx="200" cy="136" r="150" fill="url(#eg${id})"/>${center}${star(66,56,14)}${star(334,52,12,'#F28C7C')}${star(110,236,9,K.jade)}${star(290,236,10)}${left}${right}`,`url(#es${id})`,sky('es'+id,...({spring:['#FCEFEA','#F6DCC8'],summer:['#EAF4F6','#F6E8C8'],autumn:['#FBEBD0','#F2CF9A'],winter:['#EEF3F7','#DCE6EE']}[SCN.season]||['#FBEFD2','#F6DFAE']))+glow('eg'+id,'#FFF8DE',.95));
 
 /* ---------- 21~30권에서 함께 쓰는 그림 ---------- */
 function ox(x,y,s,c='#B9763E',o={}){return g(x,y,s,`<g transform="scale(${o.flip||1} 1)"><ellipse cx="0" cy="1" rx="52" ry="7" fill="#2B1E16" opacity=".18"/>
@@ -255,3 +251,126 @@ const peony=(x,y,s=1,c='#E36B8A')=>g(x,y,s,`<path d="M0 0 V30" stroke="#5E8C4A" 
 const firework=(x,y,r,c)=>`<g>${[0,30,60,90,120,150,180,210,240,270,300,330].map(a=>`<path d="M${x+r*.3*Math.cos(a*Math.PI/180)} ${y+r*.3*Math.sin(a*Math.PI/180)} L${x+r*Math.cos(a*Math.PI/180)} ${y+r*Math.sin(a*Math.PI/180)}" stroke="${c}" stroke-width="3" stroke-linecap="round"/><circle cx="${x+r*1.1*Math.cos(a*Math.PI/180)}" cy="${y+r*1.1*Math.sin(a*Math.PI/180)}" r="2.6" fill="${c}"/>`).join('')}</g>`;
 const snowPeaks=(y,c='#9FB3C8')=>`<path d="M-6 ${y} L60 ${y-120} L110 ${y-60} L180 ${y-150} L250 ${y-70} L310 ${y-130} L406 ${y-20} L406 ${y+30} L-6 ${y+30}Z" fill="${c}" ${sw()}/><path d="M42 ${y-90} L60 ${y-120} L78 ${y-92} L68 ${y-98} L60 ${y-88} L52 ${y-98}Z M160 ${y-114} L180 ${y-150} L200 ${y-116} L190 ${y-122} L180 ${y-110} L170 ${y-122}Z M292 ${y-100} L310 ${y-130} L328 ${y-102} L318 ${y-108} L310 ${y-98} L302 ${y-108}Z" fill="#FFFFFF" ${sw(1.4)}/>`;
 const queen=(x,y,s,o={})=>hero(x,y,s,{body:'dress',top:'#F6D24A',skirt:'#C9473B',hair:'bun',hat:'crown',...o});
+
+/* ---------- 배경 체계: 시대·계절에 따라 달라지는 풍경 ---------- */
+/* 책마다 맨 앞에서 setScene(시대, 계절)을 부르면, 그 책의 들판·궁궐·방·마당·바다·표지가 거기에 맞춰 그려진다. */
+const SCN={era:'joseon',season:'spring',n:0,book:0};
+function setScene(era,season){SCN.era=era;SCN.season=season;SCN.book++;SCN.n=0}
+const srnd=k=>{const v=Math.sin((SCN.book*97+SCN.n*13+k)*12.9898)*43758.5453;return v-Math.floor(v)};
+const pickOf=(arr,k)=>arr[Math.floor(srnd(k)*arr.length)];
+const SEASON={
+  spring:{leaf:['#F4B6C8','#F7C9D6','#EFA3BB'],field:'#C9DE9A',hill:'#A9D0B0',flower:['#F28CA8','#F6D24A','#FFFFFF'],ground:'#C9DE9A'},
+  summer:{leaf:['#5E9C6A','#6FAE72','#4E8A5E'],field:'#AFD08A',hill:'#94C2A0',flower:['#F6D24A','#E0574A','#7FB3C8'],ground:'#AFD08A'},
+  autumn:{leaf:['#E9973A','#D9603A','#F2B84B'],field:'#D8CF8A',hill:'#C9C08E',flower:['#E9973A','#C9473B','#F2B84B'],ground:'#D8CF8A'},
+  winter:{leaf:null,field:'#EEF2F4',hill:'#DCE5EA',flower:null,ground:'#EEF2F4'}};
+const isGreen=c=>/^#(A9CDB4|9CC7A8|94BFA6|A9D0B0|B8D3CB|BCD38F|C7D88F|BCD99C|9FC48A|A5CC9F)$/i.test(c);
+
+/* 나무 */
+function tree(x,y,s=1,kind){const S=SEASON[SCN.season];kind=kind||pickOf(['round','round','pine','willow'],x);
+  if(kind==='pine') return g(x,y,s,`<path d="M0 0 Q-6 -30 2 -64" fill="none" stroke="#8E3A2B" stroke-width="6" stroke-linecap="round"/><ellipse cx="2" cy="-66" rx="20" ry="8" fill="#2F6B4E" ${sw(1.6)}/><ellipse cx="-12" cy="-48" rx="15" ry="7" fill="#2F6B4E" ${sw(1.6)}/><ellipse cx="16" cy="-40" rx="13" ry="6" fill="#2F6B4E" ${sw(1.6)}/>${SCN.season==='winter'?`<path d="M-16 -70 Q2 -78 20 -70 M-24 -51 Q-12 -56 -1 -51" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>`:''}`);
+  if(kind==='willow'&&S.leaf) return g(x,y,s,`<path d="M0 0 Q-4 -30 0 -56" fill="none" stroke="#7A5A3C" stroke-width="6" stroke-linecap="round"/><path d="M0 -56 Q-26 -50 -28 -14 M0 -56 Q-10 -40 -12 -8 M0 -56 Q12 -40 14 -10 M0 -56 Q26 -50 28 -16" fill="none" stroke="${SCN.season==='autumn'?'#C9B04A':'#8CBF6A'}" stroke-width="4" stroke-linecap="round"/>`);
+  if(!S.leaf) return g(x,y,s,`<path d="M0 0 V-46 M0 -30 L-16 -50 M0 -38 L14 -56 M-8 -42 L-14 -60 M6 -48 L4 -64" fill="none" stroke="#7A5A3C" stroke-width="3.4" stroke-linecap="round"/><ellipse cx="0" cy="-2" rx="18" ry="4" fill="#FFFFFF" opacity=".9"/>`);
+  const c=pickOf(S.leaf,x+3);
+  return g(x,y,s,`<path d="M0 0 V-34" stroke="#7A5A3C" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="-48" r="22" fill="${c}" ${sw(1.6)}/><circle cx="-14" cy="-38" r="14" fill="${c}" ${sw(1.6)}/><circle cx="15" cy="-36" r="13" fill="${c}" ${sw(1.6)}/>${SCN.season==='autumn'?`<circle cx="-6" cy="-54" r="3" fill="#C9473B"/><circle cx="8" cy="-44" r="3" fill="#C9473B"/>`:''}${SCN.season==='spring'?`<circle cx="-8" cy="-52" r="2.4" fill="#FFFFFF"/><circle cx="10" cy="-40" r="2.4" fill="#FFFFFF"/>`:''}`)}
+
+/* 시대마다 먼 풍경에 보이는 것 */
+function landmark(x,y,s=1){const e=SCN.era;let o='';
+  if(e==='gojoseon') o=`<rect x="-26" y="-30" width="52" height="10" rx="4" fill="#9E9686" ${sw(1.4)}/><rect x="-20" y="-20" width="9" height="20" fill="#8A8272" ${sw(1.2)}/><rect x="11" y="-20" width="9" height="20" fill="#8A8272" ${sw(1.2)}/>`;
+  else if(e==='samguk') o=`<path d="M-44 0 Q-30 -26 -14 0Z" fill="#8FB88A" ${sw(1.2)}/><path d="M-16 0 Q4 -34 24 0Z" fill="#8FB88A" ${sw(1.2)}/>${[0,1,2].map(k=>`<rect x="${34+k*2}" y="${-10-k*10}" width="${16-k*4}" height="8" fill="#B9B3A6" ${sw(1)}/><path d="M${30+k*2} ${-10-k*10} h${24-k*4}" ${sw(2)}/>`).join('')}`;
+  else if(e==='goryeo') o=`<rect x="-30" y="-16" width="40" height="16" fill="#E8DCC4" ${sw(1.2)}/><path d="M-38 -14 Q-10 -30 18 -14Z" fill="#4A4A55" ${sw(1.2)}/>${[0,1,2,3,4].map(k=>`<path d="M${22+k*1.5} ${-6-k*9} h${20-k*3}" ${sw(2.4)}/><rect x="${25+k*1.5}" y="${-12-k*9}" width="${14-k*3}" height="6" fill="#C9B48A"/>`).join('')}`;
+  else if(e==='joseon') o=[[-40,0],[-8,-4],[24,2]].map(([dx,dy],k)=>k===1?`<rect x="${dx-14}" y="${dy-12}" width="28" height="12" fill="#E8DCC4" ${sw(1)}/><path d="M${dx-20} ${dy-10} Q${dx} ${dy-24} ${dx+20} ${dy-10}Z" fill="#4A4A55" ${sw(1)}/>`:`<rect x="${dx-12}" y="${dy-10}" width="24" height="10" fill="#F3E6CB" ${sw(1)}/><path d="M${dx-16} ${dy-8} Q${dx} ${dy-22} ${dx+16} ${dy-8}Z" fill="#D2A85A" ${sw(1)}/>`).join('');
+  else if(e==='modern') o=`<rect x="-30" y="-34" width="34" height="34" fill="#B5674A" ${sw(1.2)}/>${[0,1].map(r=>[0,1].map(c=>`<rect x="${-25+c*15}" y="${-29+r*15}" width="9" height="10" fill="#E8F0F4" ${sw(.8)}/>`).join('')).join('')}<path d="M-34 -34 L-13 -46 L8 -34Z" fill="#6A5A5A" ${sw(1)}/><path d="M24 0 V-46 M14 -40 H34 M44 0 V-40 M36 -36 H52" stroke="#6E5A4A" stroke-width="2"/><path d="M24 -40 Q34 -34 44 -36" fill="none" stroke="#5A5560" stroke-width="1"/>`;
+  else o=`${[[-34,0],[-6,0]].map(([dx])=>`<rect x="${dx-12}" y="-14" width="24" height="14" fill="#E8E4D6" ${sw(1)}/><path d="M${dx-15} -12 L${dx} -22 L${dx+15} -12Z" fill="#7FA3B8" ${sw(1)}/>`).join('')}<path d="M24 0 V-44 M16 -38 H32" stroke="#6E5A4A" stroke-width="2"/>`;
+  return g(x,y,s,o)}
+
+/* 들판: 먼 산, 시대 풍경, 계절 나무, 앞쪽 풀꽃 */
+function hills(c1='#A9CDB4',c2='#BCD38F',y1=190,y2=212){SCN.n++;const S=SEASON[SCN.season];
+  if(isGreen(c1)) c1=S.hill; if(isGreen(c2)) c2=S.field;
+  const v=Math.floor(srnd(1)*4), flip=v%2?-1:1;
+  const far=SCN.season==='winter'?'#C9D6DE':'#B7CBD3';
+  let o=`<path d="M-6 ${y1+4} L40 ${y1-34} L80 ${y1-14} L130 ${y1-52} L180 ${y1-18} L240 ${y1-44} L300 ${y1-10} L350 ${y1-38} L406 ${y1-6} L406 ${y1+10} L-6 ${y1+10}Z" fill="${far}" opacity=".75" transform="${flip<0?'translate(400 0) scale(-1 1)':''}"/>`;
+  if(SCN.season==='winter') o+=`<path d="M122 ${y1-46} L130 ${y1-52} L138 ${y1-44} M232 ${y1-38} L240 ${y1-44} L248 ${y1-36}" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-linecap="round" transform="${flip<0?'translate(400 0) scale(-1 1)':''}"/>`;
+  o+=`<path d="M-6 ${y1} Q120 ${y1-30} 220 ${y1-6} Q320 ${y1-26} 406 ${y1} L406 ${y1+44} L-6 ${y1+44}Z" fill="${c1}" ${sw()}/>`;
+  if(v!==3) o+=landmark(v===0?96:v===1?304:200, y1-6+(v===2?-4:0), .8);
+  const tx=v<2?[22,58,352]:[30,334,378];
+  o+=tx.map((x,k)=>tree(x,y1+8+(k%2)*4,.62+srnd(10+k)*.18)).join('');
+  if(SCN.season!=='winter'&&v%2===0) o+=`<path d="M${150+v*10} 60 q5 -5 10 0 q5 -5 10 0 M${178+v*10} 48 q4 -4 8 0 q4 -4 8 0" fill="none" ${sw(1.6)}/>`;
+  o+=`<path d="M-6 ${y2} Q200 ${y2-10} 406 ${y2} L406 286 L-6 286Z" fill="${c2}" ${sw()}/>`;
+  if(SCN.season==='winter') o+=`<path d="M-6 ${y1+2} Q60 ${y1-10} 120 ${y1-6} Q90 ${y1+4} -6 ${y1+8}Z M260 ${y1-12} Q320 ${y1-16} 406 ${y1-2} L406 ${y1+6} Q330 ${y1-4} 260 ${y1-8}Z" fill="#FFFFFF" opacity=".9"/>`;
+  const fy=y2+16, fl=S.flower;
+  o+=[14,48,88,312,352,388].map((x,k)=>{const yy=fy+((k*7)%3)*12+20;
+    if(fl&&k%2===0) return `<g>${[0,1,2,3,4].map(a=>`<circle cx="${x+5*Math.cos(a*1.26)}" cy="${yy-8+5*Math.sin(a*1.26)}" r="3" fill="${fl[k%fl.length]}"/>`).join('')}<circle cx="${x}" cy="${yy-8}" r="2" fill="${K.gold}"/><path d="M${x} ${yy-4} V${yy+4}" stroke="#5E8C4A" stroke-width="1.6"/></g>`;
+    if(SCN.season==='autumn') return `<ellipse cx="${x}" cy="${yy}" rx="5" ry="2.6" fill="${pickOf(SEASON.autumn.leaf,k)}" transform="rotate(${k*30} ${x} ${yy})"/>`;
+    if(SCN.season==='winter') return `<ellipse cx="${x}" cy="${yy}" rx="14" ry="4" fill="#FFFFFF" opacity=".8"/>`;
+    return `<ellipse cx="${x}" cy="${yy+2}" rx="7" ry="4" fill="#B9B3A6" ${sw(1.2)}/>`}).join('');
+  return o}
+
+/* 바다: 수평선의 섬, 반짝임, 물결 */
+function sea(y){SCN.n++;const v=Math.floor(srnd(2)*3);
+  let o=`<rect x="-6" y="${y}" width="412" height="${290-y}" fill="#6FA8C8"/><rect x="-6" y="${y+40}" width="412" height="${250-y}" fill="#5B97BA" opacity=".6"/>`;
+  if(v!==2) o+=`<path d="M${v?300:20} ${y+1} Q${v?330:50} ${y-16} ${v?360:80} ${y+1}Z M${v?345:65} ${y+1} Q${v?362:82} ${y-9} ${v?380:100} ${y+1}Z" fill="#7FA88E" ${sw(1.2)}/>`;
+  o+=`<path d="M-6 ${y} H406" stroke="#FFFFFF" stroke-width="2" opacity=".6"/>`;
+  o+=[30,90,150,210,270,330,390].map((x,k)=>`<path d="M${x-18} ${y+16+(k%2)*14} Q${x-9} ${y+6+(k%2)*14} ${x} ${y+16+(k%2)*14} Q${x+9} ${y+6+(k%2)*14} ${x+18} ${y+16+(k%2)*14}" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>`).join('');
+  o+=[60,140,250,330].map((x,k)=>`<path d="M${x} ${y+50+k%2*22} h${10+k*2}" stroke="#E8F4FA" stroke-width="2" stroke-linecap="round" opacity=".8"/>`).join('');
+  return o}
+
+/* 궁궐: 단청 들보, 기둥과 주춧돌, 뒤 배경(일월오봉도·창살문·모란 병풍), 마루 */
+function palace(){SCN.n++;const v=Math.floor(srnd(3)*3);
+  const wall=SCN.era==='samguk'?'#E6CFAA':SCN.era==='goryeo'?'#EAD8B4':'#E8D3B0';
+  let o=`<rect x="-6" y="-6" width="412" height="232" fill="${wall}"/>`;
+  if(v===0) o+=`<rect x="108" y="40" width="184" height="150" fill="#27467A" ${sw()}/><circle cx="134" cy="66" r="11" fill="#D9442F"/><circle cx="266" cy="66" r="10" fill="#F6F1E1"/><path d="M112 186 L140 120 L160 152 L186 92 L200 70 L214 92 L240 152 L260 120 L288 186Z" fill="#3F8471" ${sw(1.4)}/><path d="M112 186 Q150 170 200 182 Q250 170 288 186 L288 190 L112 190Z" fill="#2C6E92"/><rect x="100" y="186" width="200" height="12" fill="#8A5A3C" ${sw(1.2)}/>`;
+  else if(v===1) o+=[60,130,200,270].map(x=>`<rect x="${x}" y="44" width="68" height="160" fill="#F7F0DC" ${sw(1.6)}/>${[1,2,3].map(c=>`<path d="M${x+c*17} 44 V204" stroke="#B5874F" stroke-width="1.6"/>`).join('')}${[1,2,3,4,5,6,7].map(r=>`<path d="M${x} ${44+r*20} H${x+68}" stroke="#B5874F" stroke-width="1.6"/>`).join('')}`).join('');
+  else o+=[0,1,2,3,4,5].map(k=>`<rect x="${74+k*42}" y="92" width="42" height="112" fill="${k%2?'#F4EAD0':'#FBF3DE'}" ${sw(1.6)}/>`).join('')+[95,179,263].map((x,k)=>`<path d="M${x} 196 Q${x-4} 160 ${x+4} 130" fill="none" stroke="#5E8C4A" stroke-width="2.4"/><circle cx="${x+4}" cy="126" r="9" fill="${['#E36B8A','#F2A9C0','#E36B8A'][k]}" ${sw(1.2)}/><circle cx="${x-6}" cy="150" r="6" fill="#F2A9C0" ${sw(1)}/>`).join('');
+  o+=`<rect x="-6" y="-6" width="412" height="30" fill="#3E7A6A"/>`+[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map(k=>`<circle cx="${k*30+8}" cy="9" r="7" fill="#C9473B" ${sw(1)}/><circle cx="${k*30+8}" cy="9" r="3" fill="#F6E2A6"/><path d="M${k*30+18} 4 l6 5 l-6 5" fill="none" stroke="#F6F0D6" stroke-width="1.6"/>`).join('')+`<rect x="-6" y="22" width="412" height="5" fill="#B5473A"/>`;
+  o+=[14,364].map(x=>`<rect x="${x}" y="-6" width="22" height="226" fill="#B5473A" ${sw()}/><path d="M${x+5} 30 V214" stroke="#D16A5A" stroke-width="2"/><rect x="${x-6}" y="212" width="34" height="12" rx="3" fill="#B9B3A6" ${sw(1.4)}/>`).join('');
+  o+=`<rect x="-6" y="222" width="412" height="64" fill="#A87E52"/>${[236,252,270].map(yy=>`<path d="M-6 ${yy} H406" stroke="#8E6640" stroke-width="1.6"/>`).join('')}${[60,140,220,300,380].map((x,k)=>`<path d="M${x+(k%2)*20} 222 V236 M${x-30} 236 V252 M${x+10} 252 V270" stroke="#8E6640" stroke-width="1.4"/>`).join('')}<path d="M-6 222 H406" stroke="${L}" stroke-width="2"/>`;
+  return o}
+
+/* 방: 창호문, 족자, 장판, 문갑. 100여 년 전부터는 유리창과 책상 */
+function room(){SCN.n++;const v4=Math.floor(srnd(4)*4), v=v4%2, modern=SCN.era==='modern'||SCN.era==='hyeondae';
+  let o='';
+  if(modern){
+    o+=`<rect x="-6" y="-6" width="412" height="226" fill="#ECE5D4"/>${[0,1,2,3,4,5,6,7,8,9,10].map(k=>`<path d="M${k*40} -6 V216" stroke="#E2D8C2" stroke-width="10"/>`).join('')}`;
+    if(v4>=2){const bx=v?270:30;
+      o+=`<rect x="${bx}" y="40" width="100" height="176" fill="#9A6B45" ${sw()}/>${[0,1,2,3].map(r=>`<rect x="${bx+6}" y="${48+r*42}" width="88" height="36" fill="#7A5236"/>${[0,1,2,3,4,5].map(c=>`<rect x="${bx+10+c*14}" y="${52+r*42+(c%3)*3}" width="11" height="${32-(c%3)*3}" fill="${['#C9473B','#3F6FA8','#E9B24A','#5E9C8A','#7A6AA8','#F2F0E6'][(c+r)%6]}" ${sw(.8)}/>`).join('')}`).join('')}`;
+      const cx2=v?120:300; o+=`<circle cx="${cx2}" cy="70" r="22" fill="#FFFDF6" stroke="#8A6A44" stroke-width="5"/><path d="M${cx2} 70 V56 M${cx2} 70 L${cx2+10} 74" ${sw(2.4)}/><path d="M${cx2} 92 V118" stroke="#8A6A44" stroke-width="2"/><circle cx="${cx2}" cy="120" r="6" fill="${K.gold}" ${sw(1.2)}/>`;
+      o+=`<rect x="-6" y="216" width="412" height="70" fill="#B98A5A"/>${[0,1,2,3,4,5,6,7,8,9].map(k=>`<path d="M${k*44} 216 L${k*44-20} 286" stroke="#9A6E44" stroke-width="1.6"/>`).join('')}<path d="M-6 216 H406" stroke="${L}" stroke-width="2"/>`;
+      return o}
+    const wx=v?250:40;
+    o+=`<rect x="${wx}" y="44" width="110" height="96" fill="#CFE6F2" stroke="#8A6A44" stroke-width="6"/><path d="M${wx+55} 44 V140 M${wx} 92 H${wx+110}" stroke="#8A6A44" stroke-width="3"/><path d="M${wx-10} 38 Q${wx+6} 90 ${wx-6} 150 L${wx-16} 150 L${wx-16} 38Z M${wx+120} 38 Q${wx+104} 90 ${wx+116} 150 L${wx+126} 150 L${wx+126} 38Z" fill="#E9A3A0" ${sw(1.4)}/>`;
+    o+=`<rect x="-6" y="216" width="412" height="70" fill="#B98A5A"/>${[0,1,2,3,4,5,6,7,8,9].map(k=>`<path d="M${k*44} 216 L${k*44-20} 286" stroke="#9A6E44" stroke-width="1.6"/>`).join('')}<path d="M-6 216 H406" stroke="${L}" stroke-width="2"/>`;
+    const dx=v?24:316;
+    o+=`<rect x="${dx}" y="176" width="64" height="8" fill="#8A5A3C" ${sw(1.2)}/><path d="M${dx+6} 184 V214 M${dx+58} 184 V214" ${sw(3)}/>${[0,1,2].map(k=>`<rect x="${dx+8+k*4}" y="${168-k*8}" width="40" height="8" fill="${['#3F6FA8','#C9473B','#5E9C8A'][k]}" ${sw(1)}/>`).join('')}`;
+    return o}
+  o+=`<rect x="-6" y="-6" width="412" height="226" fill="#EADCC0"/><rect x="-6" y="196" width="412" height="20" fill="#E0CCA8"/><path d="M-6 196 H406" stroke="#B5874F" stroke-width="2"/>`;
+  if(v4===2){o+=`${[0,1,2,3,4,5,6,7].map(k=>`<rect x="${40+k*40}" y="70" width="40" height="126" fill="${k%2?'#F4EAD0':'#FBF3DE'}" ${sw(1.6)}/><path d="M${50+k*40} 180 Q${58+k*40} ${150-(k%3)*12} ${60+k*40} ${120-(k%3)*10}" fill="none" stroke="#5E8C4A" stroke-width="2"/><circle cx="${60+k*40}" cy="${116-(k%3)*10}" r="5" fill="${['#E36B8A','#F2B84B','#7FB3C8'][k%3]}"/>`).join('')}<rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>${[0,1,2,3,4,5,6,7,8,9,10].map(k=>`<path d="M${k*40} 216 V286" stroke="#CFA05A" stroke-width="1.6"/>`).join('')}<path d="M-6 216 H406" stroke="${L}" stroke-width="2"/>`;return o}
+  if(v4===3){o+=`<circle cx="${v?110:290}" cy="90" r="44" fill="#F7F0DC" stroke="#8A6A44" stroke-width="5"/>${[-1,0,1].map(d=>`<path d="M${(v?110:290)+d*20} 48 V132 M${(v?110:290)-44} ${90+d*20} H${(v?110:290)+44}" stroke="#B5874F" stroke-width="1.6"/>`).join('')}`;
+    const bx=v?250:40; o+=`<rect x="${bx}" y="60" width="110" height="136" fill="#9A6B45" ${sw()}/>${[0,1,2].map(r=>`<rect x="${bx+6}" y="${66+r*44}" width="98" height="38" fill="#B98A5A" ${sw(1)}/><rect x="${bx+14}" y="${74+r*44}" width="${30+r*10}" height="10" fill="${['#3F6FA8','#5E9C8A','#C9A15A'][r]}" ${sw(.8)}/><ellipse cx="${bx+80}" cy="${92+r*44}" rx="10" ry="12" fill="#EDE3CC" ${sw(1)}/>`).join('')}<rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>${[0,1,2,3,4,5,6,7,8,9,10].map(k=>`<path d="M${k*40} 216 V286" stroke="#CFA05A" stroke-width="1.6"/>`).join('')}<path d="M-6 216 H406" stroke="${L}" stroke-width="2"/>`;return o}
+  const dx=v?272:30;
+  o+=`<rect x="${dx}" y="36" width="98" height="160" fill="#F7F0DC" stroke="#8A6A44" stroke-width="5"/>`+[1,2,3].map(c=>`<path d="M${dx+c*24.5} 36 V196" stroke="#B5874F" stroke-width="1.6"/>`).join('')+[1,2,3,4,5,6,7].map(r=>`<path d="M${dx} ${36+r*20} H${dx+98}" stroke="#B5874F" stroke-width="1.6"/>`).join('')+`<circle cx="${v?dx+8:dx+90}" cy="120" r="4" fill="#8A6A44"/>`;
+  const sx=v?60:300;
+  o+=`<path d="M${sx-2} 30 H${sx+42}" stroke="#8A5A3C" stroke-width="5" stroke-linecap="round"/><rect x="${sx}" y="32" width="38" height="96" fill="#FBF4E2" ${sw(1.4)}/><path d="M${sx+8} 110 L${sx+16} 70 L${sx+22} 92 L${sx+30} 60" fill="none" stroke="#5E8C5A" stroke-width="2"/><circle cx="${sx+28}" cy="48" r="4" fill="#C9473B"/><path d="M${sx-2} 130 H${sx+42}" stroke="#8A5A3C" stroke-width="5" stroke-linecap="round"/>`;
+  o+=`<rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>`+[0,1,2,3,4,5,6,7,8,9,10].map(k=>`<path d="M${k*40} 216 V286" stroke="#CFA05A" stroke-width="1.6"/>`).join('')+[240,262].map(yy=>`<path d="M-6 ${yy} H406" stroke="#CFA05A" stroke-width="1.6"/>`).join('')+`<path d="M-6 216 H406" stroke="${L}" stroke-width="2"/><ellipse cx="200" cy="250" rx="160" ry="10" fill="#E9C47C" opacity=".5"/>`;
+  const cx=v?20:330;
+  o+=`<rect x="${cx}" y="168" width="56" height="48" fill="#9A6B45" ${sw()}/><path d="M${cx+28} 168 V216 M${cx} 192 H${cx+56}" stroke="#6B4A33" stroke-width="1.6"/><circle cx="${cx+20}" cy="182" r="2" fill="${K.gold}"/><circle cx="${cx+36}" cy="182" r="2" fill="${K.gold}"/><circle cx="${cx+20}" cy="204" r="2" fill="${K.gold}"/><circle cx="${cx+36}" cy="204" r="2" fill="${K.gold}"/>`;
+  return o}
+
+/* 마당: 돌담, 장독대, 감나무 */
+function yard(y){SCN.n++;const v=Math.floor(srnd(5)*2);
+  let o=`<path d="M-6 ${y-34} H406 V${y} H-6Z" fill="#B9B3A6" ${sw(1.4)}/>`+[0,1].map(r=>[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(c=>`<ellipse cx="${c*30+(r%2)*15-6}" cy="${y-26+r*15}" rx="13" ry="6" fill="${(c+r)%3?'#C9C2B4':'#A9A397'}" ${sw(1)}/>`).join('')).join('')+`<path d="M-6 ${y-36} Q100 ${y-44} 200 ${y-38} Q300 ${y-44} 406 ${y-36}" stroke="#6E6A60" stroke-width="5" fill="none"/>`;
+  if(SCN.season==='autumn'||SCN.season==='winter') o+=g(v?360:40,y-30,.9,`<path d="M0 0 Q-4 -40 4 -70 M2 -50 Q-20 -60 -30 -70 M2 -60 Q20 -70 30 -84" fill="none" stroke="#6B4A33" stroke-width="5" stroke-linecap="round"/>${[[-26,-70],[28,-82],[-12,-66],[14,-74],[0,-86]].map(([a,b])=>`<circle cx="${a}" cy="${b}" r="5" fill="#F07A2A" ${sw(1)}/>`).join('')}`);
+  else o+=tree(v?360:40,y-30,.8);
+  o+=`<rect x="-6" y="${y}" width="412" height="${290-y}" fill="#D9CCAE"/>`+[40,120,210,290,370].map((x,k)=>`<ellipse cx="${x}" cy="${y+30+(k%2)*20}" rx="4" ry="2.4" fill="#BFB295"/>`).join('');
+  const jx=v?24:330;
+  o+=[[0,0,1],[24,4,.8],[46,0,.9]].map(([dx,dy,s])=>g(jx+dx,y+18+dy,s,`<path d="M-12 0 Q-18 -18 -8 -26 L8 -26 Q18 -18 12 0Z" fill="#6B4A33" ${sw(1.4)}/><ellipse cx="0" cy="-27" rx="9" ry="3" fill="#4A3424" ${sw(1)}/>`)).join('');
+  return o}
+
+/* 표지: 시대 풍경과 계절이 보이게 */
+const ERA_BANNER={gojoseon:'#C9473B',samguk:'#3F8471',goryeo:'#B8862F',joseon:'#3F6FA8',modern:'#7A5A8A',hyeondae:'#C0612F'};
+const SEASON_SKY={spring:['#CFE6F2','#FCE3E6'],summer:['#9FD0EC','#E6F4F8'],autumn:['#F2D6A8','#FBEBD0'],winter:['#C9D8E6','#F2F5F8']};
+const coverBase=(id,banner,extra,who)=>{const sk=SEASON_SKY[SCN.season];const body=`${cloud(66,62)}${cloud(334,46,.8)}<circle cx="200" cy="180" r="140" fill="url(#cg${id})"/>
+${hills('#A9CDB4','#BCD38F',214,244)}
+${landmark(SCN.era==='modern'?108:290,214,1.3)}
+<rect x="96" y="22" width="208" height="58" rx="4" fill="${K.paper}" ${sw()}/><rect x="96" y="22" width="208" height="8" fill="${ERA_BANNER[SCN.era]}" opacity=".85"/><rect x="96" y="72" width="208" height="8" fill="${ERA_BANNER[SCN.era]}" opacity=".85"/><rect x="84" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/><rect x="300" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/>${T(200,62,banner,banner.length>6?26:32,K.red)}
+${extra}${star(52,118,9)}${star(350,120,8,'#F28C7C')}${who}`;
+  return SV(body,`url(#cs${id})`,sky('cs'+id,sk[0],sk[1])+glow('cg'+id,'#FFF6D8',.9))};

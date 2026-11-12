@@ -1,5 +1,6 @@
 /* 2권 주몽: 활 잘 쏘는 아이와 고구려 (건국 신화) */
 (()=>{
+setScene('samguk','summer');
 const LEG=['전해 오는 이야기'];
 const yuhwa=(x,y,s,o={})=>hero(x,y,s,{body:'dress',top:'#F6E2A6',skirt:'#7FB3C8',hair:'long',...o});
 const jmKid=(x,y,s,o={})=>hero(x,y,s,{robe:'#E7C76A',pattern:'dots',dotColor:'#7A3B2C',hair:'braid',belt:'#7A3B2C',...o});
@@ -34,7 +35,7 @@ const P=[
   <path d="M130 250 Q120 214 146 200 L160 212 L172 198 L186 214 Z" fill="#FFFBEE" ${sw()}/><path d="M270 250 Q280 214 254 200 L240 212 L228 198 L214 214Z" fill="#FFFBEE" ${sw()}/>
   ${jmKid(200,262,.95,{pose:'up',mood:'joy'})}
   ${star(110,110,10)}${star(296,100,9,'#F28C7C')}${star(150,60,6)}${star(260,58,7)}`,'url(#j3)',sky('j3','#FCE9C2','#E8F1E2')+glow('jg3','#FFF6D8',.95)),
-  text:`얼마 뒤, 알을 깨고 씩씩한 사내아이가 나왔어요. 눈이 반짝반짝 빛나는 아이였지요.`},
+  text:`얼마 뒤, 알을 깨고 씩씩한 사내아이가 나왔어요. 눈이 반짝반짝 빛나는 아이였어요.`},
  {chips:LEG, svg:SV(`
   ${hills('#A9CDB4','#BCD38F',190,214)}
   <path d="M330 214 V120" stroke="#8A5A3C" stroke-width="10" stroke-linecap="round"/><ellipse cx="330" cy="100" rx="46" ry="34" fill="#5E9C6A" ${sw()}/>
@@ -57,7 +58,7 @@ const P=[
   <path d="M330 220 Q350 200 380 210 Q396 226 376 238 Q350 240 330 230Z" fill="#D9CDB4" opacity=".8"/>
   ${horse(150,272,.9,{color:'#F4EFE0',rider:rider(jumong(0,0,1,{pose:'up',mood:'o'}))})}
   ${T(330,206,'두두두…',18,K.ink)}`,'url(#j6)',sky('j6','#CFE7F2','#F6EAD0')),
-  text:`한참을 달리다 커다란 강에 막혔어요. 뒤에서는 군사들이 쫓아오고 있었지요. 주몽이 외쳤어요. "나는 하늘과 물의 신의 자손이다! 길을 열어 다오!"`},
+  text:`한참을 달리다 커다란 강에 막혔어요. 뒤에서는 군사들이 쫓아오고 있었어요. 주몽이 외쳤어요. "나는 하늘과 물의 신의 자손이다! 길을 열어 다오!"`},
  {chips:LEG, svg:SV(`
   ${river(150,250)}
   <path d="M-6 150 Q200 140 406 150 L406 100 L-6 100Z" fill="#A9CDB4" ${sw()}/>
@@ -79,7 +80,7 @@ const P=[
   ${target(320,160,30)}${arrowIn(320,160)}<path d="M320 190 V214" ${sw(4)}/>
   ${kid(140,266,1.0,{pose:'hold',mood:'joy',item:bowItem})}
   ${star(240,110,8)}`,'url(#j9)',sky('j9','#E8F2F8','#F2EED8')),
-  text:`고구려 사람들은 무덤 벽에 말을 타고 활을 쏘는 모습을 그려 남겼어요. 지금도 우리나라에는 활을 아주 잘 쏘는 사람들이 많지요. 우리도 슝, 쏘아 볼까요?`},
+  text:`고구려 사람들은 무덤 벽에 말을 타고 활을 쏘는 모습을 그려 남겼어요. 지금도 우리나라 양궁 선수들은 세계에서 손꼽히게 활을 잘 쏴요. 올림픽에서 금메달도 여러 번 땄어요.`},
  {kind:'end', svg:endBase('j',`${target(200,124,70)}${arrowIn(200,124)}`,egg(64,276,.5),jumong(338,276,.55,{pose:'up',mood:'joy'})),
   text:`활쏘기를 좋아한 아이가 세운 나라, 고구려.<br>그 씩씩한 이야기가<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
