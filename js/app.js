@@ -13,6 +13,8 @@ const ERAS=[
   ['now','지금','우리','지금 우리']];
 
 applyRedraws();
+/* 이야기 나누기 뒤에 해 보기 쪽을 붙인다 */
+BOOKS.forEach(b=>{if(typeof ACT!=='undefined'&&ACT[b.id]&&!b.pages.some(p=>p.kind==='try'))b.pages.push({kind:'try'})});
 /* 책 번호는 불러온 순서(시대 순)대로 매긴다 */
 BOOKS.forEach((b,k)=>{b.no=k+1});
 
@@ -24,6 +26,9 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},se
 if(store.get('wiin-auto')==='1') autoR.checked=true;
 autoR.addEventListener('change',()=>store.set('wiin-auto',autoR.checked?'1':'0'));
 let done={};try{done=JSON.parse(store.get('wiin-done')||'{}')||{}}catch(e){done={}}
+let tried={};try{tried=JSON.parse(store.get('wiin-try')||'{}')||{}}catch(e){tried={}}
+function markTried(id){tried[id]=tried[id]?0:Date.now();if(!tried[id])delete tried[id];store.set('wiin-try',JSON.stringify(tried))}
+function compTally(){const c={};Object.keys(tried).forEach(id=>{const a=ACT[id];if(a)a.c.forEach(k=>c[k]=(c[k]||0)+1)});return c}
 function markDone(id){if(!done[id]){done[id]=1;store.set('wiin-done',JSON.stringify(done))}}
 
 const canSpeak='speechSynthesis' in window;
@@ -58,6 +63,8 @@ function shelf(){
   const n=Object.keys(done).filter(id=>BOOKS.some(b=>b.id===id)).length;
   $('progress').textContent=n?`별 스티커 ${n}개를 모았어요. ${BOOKS.length}권을 다 읽으면 책장이 반짝반짝!`:`책을 끝까지 읽으면 별 스티커를 받아요.`;
   $('shelf').classList.toggle('allDone',n===BOOKS.length);
+  const tc=compTally(), tn=Object.keys(tried).filter(id=>ACT[id]).length;
+  $('comptally').innerHTML=tn?`<p>해 본 활동 ${tn}개. 이만큼 자랐어요.</p><div class="bars">${Object.keys(COMP).map(k=>`<span class="bar" title="${COMP_NOTE[k]}"><b style="--c:${COMP[k][1]};--n:${tc[k]||0}"></b><i>${COMP[k][0]} ${tc[k]||0}</i></span>`).join('')}</div>`:`<p>책 끝의 "해 보기"를 하고 "해 봤어요"를 누르면 여기에 쌓여요.</p>`;
   const eras=ERAS.filter(([id])=>id!=='now'&&BOOKS.some(b=>b.era===id));
   $('grid').innerHTML=`<nav class="eranav" aria-label="시대 바로 가기">${eras.map(([id,,name])=>`<button type="button" data-era="${id}">${name}</button>`).join('')}</nav>`+eras.map(([id,when,name])=>{
     const list=BOOKS.filter(b=>b.era===id);
@@ -71,8 +78,21 @@ function talkHTML(){
 <h2 class="talkh">이야기 나누기</h2>
 <div class="card"><span class="age">3살과 함께</span><ul>${t.three.map(q=>`<li>${q}</li>`).join('')}</ul></div>
 <div class="card"><span class="age">5살과 함께</span><ul>${t.five.map(q=>`<li>${q}</li>`).join('')}</ul></div>
-<div class="card next"><h2>${nx.no===1?'처음 이야기로':'다음 이야기'}: ${nx.who}</h2><p>${nx.teaser}</p><button class="go" type="button" data-go="${nx.id}">${nx.no}권 「${nx.title}」 읽기 →</button></div>
+${ACT[book.id]?'':nextCard(nx)}
 <p class="note">부모님께: ${t.note}</p></div>`}
+const nextCard=nx=>`<div class="card next"><h2>${nx.no===1?'처음 이야기로':'다음 이야기'}: ${nx.who}</h2><p>${nx.teaser}</p><button class="go" type="button" data-go="${nx.id}">${nx.no}권 「${nx.title}」 읽기 →</button></div>`;
+const chipC=k=>`<span class="comp" style="--c:${COMP[k][1]}" title="${COMP_NOTE[k]}">${COMP[k][0]}</span>`;
+function tryHTML(){
+  const a=ACT[book.id], nx=BOOKS[book.no%BOOKS.length], on=!!tried[book.id];
+  return `<div class="talk try">
+<h2 class="talkh">해 보기: ${a.t}</h2>
+<p class="comps">${a.c.map(chipC).join('')}<small>${a.c.map(k=>COMP_NOTE[k]).join(', ')}</small></p>
+<div class="card"><span class="age">준비물</span><p>${a.need}</p></div>
+<div class="card"><span class="age">3살과 함께</span><p>${a.three}</p></div>
+<div class="card"><span class="age">5살과 함께</span><p>${a.five}</p></div>
+${a.go?`<div class="card go-card"><span class="age">가 보면 좋은 곳: ${a.go.place}</span><ul class="find">${a.go.find.map(f=>`<li><label><input type="checkbox"> ${f}</label></li>`).join('')}</ul><p class="small">가기 전에 누리집에서 여는 날과 시간을 확인하세요.</p></div>`:''}
+<button class="did${on?' on':''}" type="button" id="didB" aria-pressed="${on}">${on?'✓ 해 봤어요':'해 봤어요'}</button>
+${nextCard(nx)}</div>`}
 function showBook(id,n=0){
   book=BOOKS.find(b=>b.id===id); if(!book){shelf();return}
   $('shelf').hidden=true; $('reader').hidden=false;
@@ -85,24 +105,25 @@ function tilesHTML(items,hint,wide){return `<div class="tiles">${items.map((t,k)
 function render(n,fromUser){
   const P=book.pages; i=Math.max(0,Math.min(P.length-1,n)); const p=P[i];
   stopSpeak();
-  if(p.kind==='talk'){stage.hidden=true}
+  if(p.kind==='talk'||p.kind==='try'){stage.hidden=true}
   else{stage.hidden=false;stage.innerHTML=p.svg;stage.setAttribute('aria-label',plain(p.text||''));stage.classList.remove('fade');void stage.offsetWidth;stage.classList.add('fade')}
   if(p.kind==='talk'||p.kind==='end') markDone(book.id);
   meta.innerHTML=(p.chips||[]).map(c=>`<span class="chip">${c}</span>`).join(''); meta.hidden=!(p.chips&&p.chips.length);
-  let h=p.kind==='talk'?talkHTML():`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
+  let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
   if(p.kind==='letters') h+=tilesHTML(LETTERS.map(t=>t[0]),'글자를 눌러 보세요.');
   if(p.kind==='sundial') h+=tilesHTML(SUN.map(t=>`${t[0]} ${t[2]}`),'아침, 한낮, 저녁을 눌러 보세요.',true);
   if(p.kind==='clock') h+=tilesHTML(DRUM.map(t=>t[0]),'종, 북, 징을 눌러 보세요.',true);
   if(p.taps) h+=tilesHTML(p.taps.map(t=>t.label),p.tapHint||'그림이나 단추를 눌러 보세요.',true);
   if(p.kind==='end') h+=`<p class="got">★ 별 스티커를 받았어요!</p>`+roadHTML(book);
   body.innerHTML=h;
+  const dB=$('didB'); if(dB) dB.addEventListener('click',()=>{markTried(book.id);const on=!!tried[book.id];dB.classList.toggle('on',on);dB.setAttribute('aria-pressed',on);dB.textContent=on?'✓ 해 봤어요':'해 봤어요'});
   body.querySelectorAll('[data-t]').forEach(b=>b.addEventListener('click',()=>pick(p,+b.dataset.t)));
   if(p.taps){const groups={};p.taps.forEach((t,k)=>{if(t.el)(groups[t.el]=groups[t.el]||[]).push(k)});
     Object.entries(groups).forEach(([id,ks])=>{const el=stage.querySelector('#'+id); if(!el) return; let n=0; el.classList.add('tappable');
       el.addEventListener('click',()=>{pick(p,ks[n%ks.length]);n++})});}
   prevB.disabled=i===0;
   nextB.textContent=i===P.length-1?'책장으로 ↺':(i===0?'펼치기 →':'넘기기 →');
-  readB.disabled=!canSpeak||p.kind==='talk';
+  readB.disabled=!canSpeak||p.kind==='talk'||p.kind==='try';
   count.textContent=`${i+1} / ${P.length}`;
   [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
   if(fromUser&&autoR.checked&&p.text) speak(p.text);
