@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>위인 그림책</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&family=Gowun+Batang:wght@400;700&display=swap">
 <style>
 
 /* 레이아웃: 첫 화면은 책장, 책을 고르면 그림 한 장 + 문장 + 큰 넘김 버튼 */
 :root{
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#E9F0EB; --surface:#FFFFFF; --ink:#1F2A44; --muted:#596476;
-  --accent:#C8433A; --gold:#E2A93B; --line:#C7D4CC; --chip:#F4E7C6; --chip-ink:#6A4B12;
+  --bg:#EEEADF; --surface:#FBF9F3; --hanji2:#F7F4EC; --cheong:#2E6B63; --jjok:#2D4870; --ju:#C2452D; --hwang:#D9A63A; --back:#E6E0CB; --board1:#5E9188; --board2:#24564F; --ink:#1F2A44; --muted:#596476;
+  --accent:#C2452D; --gold:#E2A93B; --line:#D8D0BE; --chip:#F4E7C6; --chip-ink:#6A4B12;
   --font-d:'Jua','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   --font-b:'Gowun Dodum','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141B26; --surface:#1E2837; --ink:#EEF0E8; --muted:#A9B2C0;
+  --bg:#1C1B17; --surface:#26241F; --hanji2:#2C2A24; --cheong:#24564F; --jjok:#3A5A8A; --ju:#E0644B; --hwang:#E5B656; --back:#35332A; --board1:#3F7A71; --board2:#173D38; --ink:#EEF0E8; --muted:#A9B2C0;
   --accent:#EE6E63; --gold:#EAB858; --line:#2F3B4E; --chip:#3B3220; --chip-ink:#F2D594; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#141B26; --surface:#1E2837; --ink:#EEF0E8; --muted:#A9B2C0;
+  --bg:#1C1B17; --surface:#26241F; --hanji2:#2C2A24; --cheong:#24564F; --jjok:#3A5A8A; --ju:#E0644B; --hwang:#E5B656; --back:#35332A; --board1:#3F7A71; --board2:#173D38; --ink:#EEF0E8; --muted:#A9B2C0;
   --accent:#EE6E63; --gold:#EAB858; --line:#2F3B4E; --chip:#3B3220; --chip-ink:#F2D594; color-scheme:dark}
 [hidden]{display:none!important}
 img{max-width:100%}
@@ -168,6 +168,103 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 .dexc .dx-s{font-size:12px;color:var(--muted);word-break:keep-all;line-height:1.3}
 .dexc.unmet{border-style:dashed;opacity:.75}
 .dexc.unmet .dx-e{filter:grayscale(1);color:var(--muted)}
+/* ===== 책장: 책가도(조선 책장 그림)를 본뜬 칸, 한지 바탕, 단청 청록 틀 ===== */
+.shelf{--fs:'Gowun Batang','Nanum Myeongjo',serif}
+.shtop{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding-top:6px}
+.shelf h1{font-family:var(--fs);font-weight:700;font-size:clamp(26px,7vw,34px);letter-spacing:-.02em;margin:0}
+.starcount{font-family:var(--font-d);font-size:18px;color:var(--ju);white-space:nowrap;padding-bottom:4px}
+.shh{font-family:var(--fs);font-weight:700;font-size:20px;margin:0 0 10px;letter-spacing:-.01em}
+/* 책 한 권: 거의 정사각형 그림책, 왼쪽에 책등 그림자 */
+.bookc{position:relative;display:block;width:100%;aspect-ratio:13/12;border-radius:2px 7px 7px 2px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 0 rgba(0,0,0,.18),0 10px 16px -10px rgba(20,14,8,.75)}
+.bookc::before{content:"";position:absolute;inset:0 auto 0 0;width:9%;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,.06) 70%,rgba(255,255,255,.25));z-index:1;pointer-events:none}
+.bookc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--tc);z-index:1}
+.shc,.shc svg{display:block;width:100%;height:100%}
+.shc rect[x="96"][y="22"],.shc rect[x="96"][y="72"],.shc rect[x="84"][y="16"],.shc rect[x="300"][y="16"],.shc text[x="200"][y="62"],
+.shc g[filter^="url(#fgb"],.shc path[stroke="#E6DCCB"],.shc rect[fill^="url(#vig"],.shc rect[fill^="url(#lgt"],.shc rect[fill^="url(#sunR"],.shc rect[x="2.5"]{display:none}
+.bookc .sticker{position:absolute;right:6px;top:4px;z-index:2;font-size:22px;color:var(--hwang)}
+/* 오늘 읽을 책: 한 권은 크게, 두 권은 작게 */
+.today{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 16px;align-items:start}
+.feat{grid-column:1;padding:0;border:0;background:none;cursor:pointer}
+.featxt{grid-column:2;display:flex;flex-direction:column;gap:8px;align-self:center;min-width:0}
+.featxt .tag{align-self:flex-start;font-family:var(--font-d);font-size:13px;color:#fff;background:var(--ju);border-radius:999px;padding:3px 10px}
+.featxt h3{font-family:var(--fs);font-weight:700;font-size:clamp(19px,5vw,24px);line-height:1.3;margin:0;word-break:keep-all;letter-spacing:-.01em}
+.featxt p{margin:0;font-size:15px;line-height:1.55;color:var(--muted);word-break:keep-all}
+.go2{align-self:flex-start;font-family:var(--font-d);font-size:17px;border:0;background:var(--cheong);color:#fff;border-radius:12px;padding:10px 18px;cursor:pointer}
+.minis{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mini{display:grid;grid-template-columns:44% minmax(0,1fr);gap:10px;align-items:center;padding:0;border:0;background:none;color:var(--ink);cursor:pointer;font:inherit;text-align:left}
+.mini b{font-family:var(--fs);font-weight:700;font-size:16px;line-height:1.3;word-break:keep-all}
+.mini small{display:block;font-family:var(--font-d);font-size:12px;color:var(--tc);margin-bottom:2px}
+@media (min-width:760px){.today{grid-template-columns:minmax(0,340px) minmax(0,1fr) minmax(0,380px);gap:16px 32px}.featxt{grid-column:2}.minis{grid-column:3;grid-template-columns:1fr;align-self:center;gap:16px}.mini{grid-template-columns:130px minmax(0,1fr)}}
+/* 어떤 사람: 도장처럼 둥근 그림 단추 */
+.toks{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 6px;margin:0 -2px;scroll-snap-type:x proximity}
+.tok{flex:none;width:76px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0;border:0;background:none;color:var(--ink);cursor:pointer;font:inherit;scroll-snap-align:start}
+.tok .tart{width:70px;height:70px;border-radius:50%;background:var(--hanji2);display:grid;place-items:end center;overflow:hidden;box-shadow:inset 0 0 0 1.5px var(--c)}
+.tok .tart svg{width:76px;height:84px;margin-bottom:-6px}
+.tok .tl{font-family:var(--fs);font-weight:700;font-size:13px;line-height:1.25;text-align:center;word-break:keep-all}
+.tok.on .tart{background:var(--c);box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--c)}
+@media (min-width:760px){.toks{flex-wrap:wrap;overflow:visible}}
+.toprow{display:flex;flex-direction:column;gap:30px}
+/* 책가도 칸 */
+#grid{display:flex;flex-direction:column;gap:18px}
+.era{position:relative;display:flex;flex-direction:column;border:0;margin:0;padding:12px 10px 0;border-radius:4px;background:var(--cheong);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.12),0 10px 22px -14px rgba(20,30,28,.8);scroll-margin-top:12px}
+.erah{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:0 6px 10px;color:#F3EEDD}
+.erah h2{font-family:var(--fs);font-weight:700;font-size:19px;margin:0;letter-spacing:-.01em}
+.erah small{font-size:13px;color:#C9DAD3}
+.erah .all{margin-left:auto;font-family:var(--font-d);font-size:13px;border:0;background:#F3EEDD;color:var(--cheong);border-radius:999px;padding:4px 12px;cursor:pointer}
+.shelfrow{--cw:clamp(118px,33vw,168px);display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:16px 14px 0;
+  background:linear-gradient(var(--board1),var(--board2) 3px,var(--board2)) 0 calc(var(--cw)*12/13 + 16px)/100% 100% no-repeat local,var(--back);
+  box-shadow:inset 0 6px 10px -6px rgba(0,0,0,.35),inset 6px 0 10px -8px rgba(0,0,0,.3),inset -6px 0 10px -8px rgba(0,0,0,.3);scrollbar-width:thin}
+.bk{display:flex;flex-direction:column;width:var(--cw);flex:none;padding:0;border:0;background:none;cursor:pointer;font:inherit;scroll-snap-align:start}
+.bk .nm{display:flex;align-items:center;justify-content:center;gap:4px;min-width:0;padding:9px 2px 12px;color:#F3EEDD}
+.bk .nm b{font-family:var(--fs);font-weight:700;font-size:15px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bk .say{flex:none;width:22px;height:22px;display:grid;place-items:center;font-size:11px;opacity:.75}
+.bk:active .bookc,.feat:active .bookc,.mini:active .bookc{transform:translateY(2px)}
+/* 제목 아래 단청 띠 */
+.dancheong{height:12px;border-radius:2px;margin-top:-4px;background:
+  repeating-linear-gradient(90deg,var(--cheong) 0 26px,var(--hwang) 26px 30px,var(--ju) 30px 38px,#F3EEDD 38px 41px,var(--jjok) 41px 52px,#F3EEDD 52px 55px,var(--ju) 55px 63px,var(--hwang) 63px 67px);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.25),inset 0 -2px 0 rgba(0,0,0,.18)}
+/* 시대 이름표: 틀 위에 붙인 한지 이름표 */
+.era{padding:24px 10px 0;margin-top:12px}
+.erah{position:absolute;left:16px;top:-13px;display:inline-flex;align-items:baseline;gap:8px;background:var(--hanji2);color:var(--ink);border-radius:3px;padding:5px 12px 4px;margin:0;box-shadow:0 1px 0 rgba(0,0,0,.25),0 0 0 1px rgba(46,107,99,.25)}
+.era.pick .erah{position:static;margin:0 0 10px;display:flex}
+.era.pick{padding-top:10px}
+.erah h2{font-size:17px}
+.erah small{color:var(--muted);font-size:12px}
+.orn{flex:none;display:flex;align-items:flex-end;width:calc(var(--cw)*.62);height:calc(var(--cw)*12/13);padding-bottom:2px;opacity:.95}
+.orn svg{width:100%;height:auto;display:block}
+@media (min-width:760px){#grid{flex-direction:row;flex-wrap:wrap;gap:18px}#grid>.shh{flex-basis:100%}.era{flex:1 1 420px;min-width:0}.era.few{flex:0 1 auto}}
+/* 도감 */
+.dex{border:0;border-radius:0;background:none;padding:0}
+.dex summary{font-family:var(--fs,'Gowun Batang',serif);font-weight:700;font-size:20px}
+.dex summary b{color:var(--ju);font-family:var(--font-d);font-weight:400;font-size:17px}
+.dextypes button{border-width:1.5px;font-family:'Gowun Batang',serif;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+.dextypes .dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--ink))}
+.dextypes button.on .dot{background:#fff}
+.tile,.autobtn,.did,.card .go{border-width:1.5px}
+.dexgrid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:14px 12px}
+.dexc{border:0;background:none;padding:0;gap:3px;align-items:flex-start;text-align:left}
+.dexc .bookc{margin-bottom:6px}
+.dexc small{font-family:var(--font-d);font-size:11px;color:var(--muted)}
+.dexc b{font-family:var(--fs,'Gowun Batang',serif);font-weight:700;font-size:15px;line-height:1.25;word-break:keep-all}
+.dexc .dx-t{font-size:11px;padding:1px 7px;background:var(--c);color:#fff;border-radius:999px}
+.dexc .dx-s{font-size:12px;color:var(--muted);line-height:1.3;word-break:keep-all}
+.dexc.unmet{opacity:1;border:0}
+.dexc.unmet .bookc{filter:grayscale(1) contrast(.6) brightness(1.25);opacity:.45}
+.dexc.unmet b{font-weight:400;color:var(--muted);font-size:13px}
+/* 읽는 화면도 같은 글꼴과 색 */
+.top h1{font-family:'Gowun Batang',serif;font-weight:700;letter-spacing:-.01em}
+.btn.primary{background:var(--cheong);border-color:var(--cheong)}
+.btn{border-width:1.5px}
+.backbtn{border-width:1.5px}
+.stage{border-width:0;box-shadow:0 1px 0 rgba(0,0,0,.15),0 14px 26px -16px rgba(20,14,8,.7)}
+.chip{background:var(--hanji2);color:var(--cheong);box-shadow:inset 0 0 0 1px var(--line)}
+.story.cover{font-family:'Gowun Batang',serif;font-weight:700}
+.story .big{color:var(--cheong)}
+.parentbox{border-top:2px dashed var(--line);padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.parentbox summary{cursor:pointer;font-family:var(--font-d);font-size:17px;color:var(--muted)}
+@media (min-width:900px){.toks{flex-wrap:wrap;overflow:visible}}
 
 /* 가로 화면: 그림은 왼쪽에 화면 높이만큼, 글과 넘김 단추는 오른쪽 */
 @media (orientation:landscape) and (min-width:640px){
@@ -221,12 +318,16 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 
 <div class="wrap">
   <section class="shelf" id="shelf">
-    <h1>우리 집 위인 그림책</h1>
-    <p class="lead">아주아주 먼 옛날부터 할머니 할아버지 어릴 적까지, 시대 순서대로 꽂혀 있어요. 읽고 싶은 책을 골라 보세요.</p>
-    <p class="progress" id="progress"></p>
-    <div class="comptally" id="comptally"></div>
-    <div id="dexwrap"></div>
+    <div class="shtop"><h1>우리 집 위인 그림책</h1><span class="starcount" id="starcount"></span></div>
+    <div class="dancheong" aria-hidden="true"></div>
+    <div class="toprow"><div class="kidrow" id="kidrow"></div><div class="likes" id="likes"></div></div>
     <div id="grid"></div>
+    <div id="dexwrap"></div>
+    <details class="parentbox"><summary>부모님 칸</summary>
+      <p class="lead">아주아주 먼 옛날부터 할머니 할아버지 어릴 적까지, 시대 순서대로 꽂혀 있어요. 책 끝의 "해 보기"를 하고 "해 봤어요"를 누르면 아래에 역량별로 쌓여요.</p>
+      <p class="progress" id="progress"></p>
+      <div class="comptally" id="comptally"></div>
+    </details>
   </section>
   <section class="book" id="reader" hidden>
     <div class="top">

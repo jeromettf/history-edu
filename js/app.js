@@ -93,13 +93,59 @@ let dexType='';
 function dexHTML(){
   const met=BOOKS.filter(b=>done[b.id]).length;
   const list=BOOKS.filter(b=>!dexType||(WIIN_DEX[b.id]||[])[0]===dexType);
-  return `<details class="dex" ${dexOpen?'open':''}><summary>📇 위인 도감 <b>${met} / ${BOOKS.length}</b></summary>
-<div class="dextypes"><button type="button" data-dt="" class="${dexType?'':'on'}">전체</button>${Object.entries(WIIN_TYPES).map(([k,[n,e,c]])=>`<button type="button" data-dt="${k}" class="${dexType===k?'on':''}" style="--c:${c}">${e} ${n} ${BOOKS.filter(b=>(WIIN_DEX[b.id]||[])[0]===k&&done[b.id]).length}/${BOOKS.filter(b=>(WIIN_DEX[b.id]||[])[0]===k).length}</button>`).join('')}</div>
-<div class="dexgrid">${list.map(b=>{const d=WIIN_DEX[b.id]||['heart','','📖',''],T=WIIN_TYPES[d[0]],m=!!done[b.id];
-  return `<button type="button" class="dexc${m?'':' unmet'}" data-go="${b.id}" style="--c:${T[2]}"><small>No.${String(b.no).padStart(3,'0')}</small><span class="dx-e">${m?d[2]:'?'}</span><b>${m?b.who:'???'}</b><span class="dx-t">${T[1]} ${T[0]}</span><span class="dx-s">${m?d[1]:'책을 읽으면 알 수 있어요'}</span></button>`}).join('')}</div></details>`}
+  return `<details class="dex" ${dexOpen?'open':''}><summary>위인 도감 <b>${met} / ${BOOKS.length}</b></summary>
+<div class="dextypes"><button type="button" data-dt="" class="${dexType?'':'on'}">전체</button>${Object.entries(WIIN_TYPES).map(([k,[n,e,c]])=>`<button type="button" data-dt="${k}" class="${dexType===k?'on':''}" style="--c:${c}"><i class="dot"></i>${LIKE[k]} ${BOOKS.filter(b=>(WIIN_DEX[b.id]||[])[0]===k&&done[b.id]).length}/${BOOKS.filter(b=>(WIIN_DEX[b.id]||[])[0]===k).length}</button>`).join('')}</div>
+<div class="dexgrid">${list.map(b=>{const d=WIIN_DEX[b.id]||['heart','','',''],T=WIIN_TYPES[d[0]],m=!!done[b.id];
+  return `<button type="button" class="dexc${m?'':' unmet'}" data-go="${b.id}" style="--c:${T[2]};--tc:${T[2]}">${shelfCover(b,'-d')}<small>${String(b.no).padStart(2,'0')}</small><b>${m?b.who:'아직 못 만났어요'}</b><span class="dx-t">${LIKE[d[0]]||T[0]}</span>${m?`<span class="dx-s">${d[1]}</span>`:''}</button>`}).join('')}</div></details>`}
 let dexOpen=false;
 document.addEventListener('click',e=>{const t=e.target.closest('[data-dt]');if(!t)return;dexType=t.dataset.dt;dexOpen=true;$('dexwrap').innerHTML=dexHTML()});
 document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('dex'))dexOpen=e.target.open},true);
+const LIKE={found:'나라를 세운',guard:'나라를 지킨',sci:'무언가 만든',rec:'글을 남긴',art:'그리고 노래한',heart:'마음이 따뜻한',indep:'나라를 되찾은'};
+/* 책장 표지: 두루마리 글씨와 뿌연 막을 걷고, 인물과 물건이 크게 보이게 잘라 쓴다 (숨김은 CSS .shc) */
+const shelfCover=(b,suf)=>`<span class="bookc"><span class="shc">${uniq(thumb(b.pages[0].svg).replace('viewBox="0 0 400 280"','viewBox="68 44 264 244" preserveAspectRatio="xMidYMid slice"'),suf+b.id)}</span>${done[b.id]?'<span class="sticker" aria-label="다 읽음">★</span>':''}</span>`;
+const typeColor=b=>(WIIN_TYPES[(WIIN_DEX[b.id]||['heart'])[0]]||WIIN_TYPES.heart)[2];
+function bookCard(b){return `<button class="bk" type="button" data-go="${b.id}" style="--tc:${typeColor(b)}">${shelfCover(b,'-c')}<span class="nm"><b>${b.who}</b><span class="say" data-say="${b.id}" role="button" aria-label="${b.title} 들려주기">🔊</span></span></button>`}
+/* 갈래 단추 그림: 그림책 인물로 그린다 */
+const LIKE_ART={
+ found:()=>hero(60,150,.82,{robe:'#C9473B',hat:'crown',mood:'joy',arms:'armsOpen',still:true}),
+ guard:()=>hero(60,150,.82,{robe:'#3F6FA8',hat:'helmet',mood:'smile',arms:'cheer',still:true}),
+ sci:()=>hero(60,150,.82,{robe:'#E2A93B',hat:'band',bandColor:'#FFFDF6',mood:'o',arms:'pointR',still:true})+`<g transform="translate(96 46)"><circle r="13" fill="#FFF3B0" stroke="#5A3B2C" stroke-width="2.4"/><path d="M-5 13 h10 v6 h-10z" fill="#9AA3AE" stroke="#5A3B2C" stroke-width="2"/><path d="M-4 2 l4 -6 l4 6" fill="none" stroke="#C98A1B" stroke-width="2.2"/></g>`,
+ rec:()=>hero(60,150,.82,{robe:'#8A5A3C',hat:'gat',mood:'smile',arms:'writeR',prop:H=>PROP.brush(H),still:true}),
+ art:()=>hero(60,150,.82,{body:'dress',hair:'bun',top:'#E98FA0',skirt:'#7A5BA8',mood:'joy',arms:'writeR',prop:H=>PROP.brush(H),still:true}),
+ heart:()=>hero(60,150,.82,{robe:'#4C9A6A',hair:'braid',ribbon:'#C9473B',mood:'joy',arms:'armsOpen',still:true})+`<path d="M100 40 c-6 -10 -20 -2 -12 8 l12 12 l12 -12 c8 -10 -6 -18 -12 -8z" fill="#E0605A" stroke="#5A3B2C" stroke-width="2"/>`,
+ indep:()=>hero(60,150,.82,{robe:'#FFFFFF',hair:'topknot',mood:'joy',arms:'flagR',prop:H=>PROP.taeguk(H),still:true})};
+const likeArt=k=>{try{return `<svg viewBox="0 18 120 132" aria-hidden="true">${LIKE_ART[k]()}</svg>`}catch(e){return ''}};
+let likeSel='';
+function kidRow(){
+  let last=null;try{last=JSON.parse(store.get('wiin-last')||'null')}catch(e){}
+  let cnt={};try{cnt=JSON.parse(store.get('wiin-count')||'{}')||{}}catch(e){}
+  const out=[];const lb=last&&BOOKS.find(b=>b.id===last.id);
+  if(lb)out.push([lb,'이어 읽기',last.p,'resume']);
+  const fav=Object.entries(cnt).filter(([id])=>BOOKS.some(b=>b.id===id)&&(!lb||id!==lb.id)).sort((a,b)=>b[1]-a[1])[0];
+  if(fav&&fav[1]>=2)out.push([BOOKS.find(b=>b.id===fav[0]),'또 읽기',0,'']);
+  const unread=BOOKS.filter(b=>!done[b.id]&&!out.some(o=>o[0].id===b.id));
+  const d=new Date(),seed=d.getFullYear()*400+d.getMonth()*32+d.getDate();
+  for(let k=0;out.length<3&&unread.length;k++){const j=(seed*7+k*13)%unread.length;out.push([unread.splice(j,1)[0],'새 책',0,''])}
+  while(out.length<3){const b=BOOKS[(seed+out.length*17)%BOOKS.length];if(!out.some(o=>o[0].id===b.id))out.push([b,'또 읽기',0,''])}
+  const [f0,...rest]=out, fb=f0[0];
+  const ftext=f0[3]==='resume'?`${f0[2]+1}쪽부터 이어서 읽어요.`:fb.teaser;
+  return `<section><h2 class="shh">오늘 읽을 책</h2><div class="today">
+<button class="feat" type="button" data-go="${fb.id}" ${f0[2]?`data-page="${f0[2]}"`:''} style="--tc:${typeColor(fb)}" aria-label="${fb.title}">${shelfCover(fb,'-k')}</button>
+<div class="featxt"><span class="tag">${f0[1]}</span><h3>${fb.title}</h3><p>${ftext}</p><button class="go2" type="button" data-go="${fb.id}" ${f0[2]?`data-page="${f0[2]}"`:''}>${f0[3]==='resume'?'이어 읽기':'읽기'}</button></div>
+<div class="minis">${rest.map(([b,tag])=>`<button class="mini" type="button" data-go="${b.id}" style="--tc:${typeColor(b)}">${shelfCover(b,'-k')}<span><small>${tag}</small><b>${b.title}</b></span></button>`).join('')}</div></div></section>`}
+function likesHTML(){
+  const btns=Object.entries(WIIN_TYPES).map(([k,[n,e,c]])=>`<button class="tok${likeSel===k?' on':''}" type="button" data-like="${k}" style="--c:${c}"><span class="tart">${likeArt(k)}</span><span class="tl">${LIKE[k]}</span></button>`).join('');
+  return `<section><h2 class="shh">어떤 사람 이야기가 좋아?</h2><div class="toks">${btns}</div></section>`}
+/* 책가도처럼 칸 끝에 그 시대 건축물 하나 */
+function ornament(era){const e0=SCN.era;SCN.era=era;let o='';try{o=landmark(0,0,1)}catch(e){}SCN.era=e0;return `<span class="orn" aria-hidden="true"><svg viewBox="-60 -80 130 84">${o}</svg></span>`}
+function gridHTML(){
+  if(likeSel){const list=BOOKS.filter(b=>(WIIN_DEX[b.id]||[])[0]===likeSel);
+    return `<section class="era pick"><div class="erah"><h2>${LIKE[likeSel]} 사람</h2><small>${list.length}권</small><button class="all" type="button" data-like="">모두 보기</button></div><div class="shelfrow">${list.map(bookCard).join('')}</div></section>`}
+  const eras=ERAS.filter(([id])=>id!=='now'&&BOOKS.some(b=>b.era===id));
+  return `<h2 class="shh">시대별 책장</h2>`+eras.map(([id,when,name])=>{const list=BOOKS.filter(b=>b.era===id);
+    return `<section class="era${list.length<=2?' few':''}" id="era-${id}"><div class="erah"><h2>${name}</h2><small>${when}, ${list.length}권</small></div><div class="shelfrow">${list.slice(0,1).map(bookCard).join('')}${ornament(id)}${list.slice(1).map(bookCard).join('')}</div></section>`}).join('')}
+document.addEventListener('click',e=>{const l=e.target.closest('[data-like]');if(l){likeSel=likeSel===l.dataset.like?'':l.dataset.like;$('likes').innerHTML=likesHTML();$('grid').innerHTML=gridHTML();return}
+  const sy=e.target.closest('[data-say]');if(sy){e.stopPropagation();e.preventDefault();const b=BOOKS.find(x=>x.id===sy.dataset.say);if(b)speak(b.title);return}},true);
 function shelf(){
   stopSpeak();
   $('reader').hidden=true; $('shelf').hidden=false;
@@ -108,12 +154,10 @@ function shelf(){
   $('shelf').classList.toggle('allDone',n===BOOKS.length);
   const tc=compTally(), tn=Object.keys(tried).filter(id=>ACT[id]).length;
   $('comptally').innerHTML=tn?`<p>해 본 활동 ${tn}개. 이만큼 자랐어요.</p><div class="bars">${Object.keys(COMP).map(k=>`<span class="bar" title="${COMP_NOTE[k]}"><b style="--c:${COMP[k][1]};--n:${tc[k]||0}"></b><i>${COMP[k][0]} ${tc[k]||0}</i></span>`).join('')}</div>`:`<p>책 끝의 "해 보기"를 하고 "해 봤어요"를 누르면 여기에 쌓여요.</p>`;
-  $('dexwrap').innerHTML=dexHTML();
+  $('dexwrap').innerHTML=dexHTML(); $('kidrow').innerHTML=kidRow(); $('likes').innerHTML=likesHTML();
+  $('starcount').textContent=n?`⭐ ${n}`:'';
   const eras=ERAS.filter(([id])=>id!=='now'&&BOOKS.some(b=>b.era===id));
-  $('grid').innerHTML=`<nav class="eranav" aria-label="시대 바로 가기">${eras.map(([id,,name])=>`<button type="button" data-era="${id}">${name}</button>`).join('')}</nav>`+eras.map(([id,when,name])=>{
-    const list=BOOKS.filter(b=>b.era===id);
-    return `<section class="era" id="era-${id}"><h2><i></i>${name}<small>${when}</small></h2><div class="cards">${list.map(b=>
-      `<button class="bookcard" type="button" data-go="${b.id}"><span class="cv">${uniq(thumb(b.pages[0].svg),'-c'+b.id)}${done[b.id]?'<span class="sticker" aria-label="다 읽음">★</span>':''}</span><span class="no">${b.no}권</span><span class="tt">${b.title}</span></button>`).join('')}</div></section>`}).join('');
+  $('grid').innerHTML=gridHTML();
   window.scrollTo(0,0);
 }
 function talkHTML(){
@@ -149,7 +193,7 @@ function showBook(id,n=0){
   $('btitle').textContent=`${book.no}권 ${book.title}`;
   dots.innerHTML='';
   book.pages.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${k+1}쪽`);b.addEventListener('click',()=>render(k,true));dots.appendChild(b)});
-  seenP=new Set(); prevI=-1;
+  seenP=new Set(); prevI=-1; book._counted=0;
   tell=false; const tb=$('tellB'); tb.classList.remove('on'); tb.setAttribute('aria-pressed','false'); tb.textContent='🗣 네가 들려줘';
   render(n,false); window.scrollTo(0,0);
 }
@@ -172,6 +216,10 @@ function render(n,fromUser){
   if(p.kind==='talk'||p.kind==='try'){stage.hidden=true}
   else{stage.hidden=false;stage.innerHTML=p.svg;stage.setAttribute('aria-label',plain(p.text||''));stage.classList.remove('fade');void stage.offsetWidth;stage.classList.add('fade')}
   if(p.kind==='talk'||p.kind==='end') markDone(book.id);
+  /* 이어 읽기: 이야기 중간이면 기억하고, 끝까지 오면 지우고 읽은 횟수를 센다 */
+  if(storyPage(p)&&i>0) store.set('wiin-last',JSON.stringify({id:book.id,p:i}));
+  if(p.kind==='end'){try{const l=JSON.parse(store.get('wiin-last')||'null');if(l&&l.id===book.id)store.set('wiin-last','null')}catch(e){}
+    if(fromUser!=='counted'&&!book._counted){book._counted=1;let c={};try{c=JSON.parse(store.get('wiin-count')||'{}')||{}}catch(e){}c[book.id]=(c[book.id]||0)+1;store.set('wiin-count',JSON.stringify(c))}}
   meta.innerHTML=(p.chips||[]).map(c=>`<span class="chip">${c}</span>`).join(''); meta.hidden=!(p.chips&&p.chips.length);
   const th=THINK[book.id], isStory=storyPage(p);
   let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():(tell&&isStory)?tellHTML(p):`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
@@ -232,7 +280,8 @@ function pick(p,k,onDone){
     tip.innerHTML=`<b>${t[0]} ${t[1]}</b> ${t[2]}`; speak(`${t[1]} ${t[2]}`,onDone);
   }
 }
-document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(b){location.hash=b.dataset.go;return}
+let resumeTo=0;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(b){resumeTo=+(b.dataset.page||0);location.hash=b.dataset.go;return}
   const er=e.target.closest('[data-era]'); if(er){const s=document.getElementById('era-'+er.dataset.era); if(s) s.scrollIntoView({behavior:'smooth',block:'start'})}});
 $('back').addEventListener('click',()=>{setAuto(false);location.hash='shelf'});
 prevB.addEventListener('click',()=>render(i-1,true));
@@ -242,7 +291,7 @@ document.addEventListener('keydown',e=>{if(!book||$('reader').hidden)return;if(e
 let sx=null;
 stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
 stage.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)render(dx<0?i+1:i-1,true);sx=null});
-function route(){const h=location.hash.slice(1); if(auto)setAuto(false); if(BOOKS.some(b=>b.id===h)) showBook(h); else {book=null;shelf()}}
+function route(){const h=location.hash.slice(1); if(auto)setAuto(false); if(BOOKS.some(b=>b.id===h)){const r=resumeTo;resumeTo=0;showBook(h,r)} else {book=null;shelf()}}
 window.addEventListener('hashchange',route);
 if(canSpeak){try{speechSynthesis.getVoices()}catch(e){}}
 /* 연결 전에 읽은 책과 해 본 활동도 포켓몬 마을에 알려요 (한 번만) */
