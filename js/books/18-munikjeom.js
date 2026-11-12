@@ -41,7 +41,7 @@ const P=[
   text:`그 한 그루에서 씨앗을 받아 다시 심고, 또 심었어요. 세 해가 지나자 목화밭이 하얗게 넓어졌어요. 이웃들에게도 씨앗을 나눠 주었어요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#EADCC0"/><rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   <g id="tWheel">${wheel2(250,236,1.2)}</g>
-  ${hero(120,268,.9,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#B9A475',pose:'hold',mood:'joy'})}
+  ${hero(150,262,.9,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#B9A475',stance:'sit',arms:'reach',mood:'joy',face:'right',prop:H=>`<path d="M${H.R[0]} ${H.R[1]} L112 -6" stroke="#FFFDF6" stroke-width="1.4"/>`})}
   ${cotton(330,214,.7)}`,'#EADCC0'),
   taps:[{label:'물레',el:'tWheel',say:'빙글빙글 돌리면 솜이 실이 되어요.'}],tapHint:'물레를 돌려 볼까요?',
   text:`솜에서 실을 뽑으려고 물레라는 도구도 만들었어요. 물레를 빙글빙글 돌리면 솜이 가느다란 실이 되었어요. 그 실로 무명이라는 천을 짰어요.`},

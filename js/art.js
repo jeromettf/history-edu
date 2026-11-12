@@ -52,6 +52,38 @@ const mirror=s=>`${s}<g transform="scale(-1 1)">${s}</g>`;
 const sleeves=(pose,c,pr=pose)=>`<path d="${SL[pose].p}" fill="${c}" ${sw()}/><g transform="scale(-1 1)"><path d="${SL[pr].p}" fill="${c}" ${sw()}/></g>`;
 const hand1=(h,sk)=>`<ellipse cx="${h[0]}" cy="${h[1]}" rx="6.6" ry="7.2" fill="${sk}" ${sw()}/><ellipse cx="${h[0]+4.4}" cy="${h[1]-3}" rx="2.6" ry="3.4" fill="${sk}" ${sw(1.4)}/>`;
 const hands=(pose,sk,pr=pose)=>hand1(SL[pose].h,sk)+`<g transform="scale(-1 1)">${hand1(SL[pr].h,sk)}</g>`;
+/* 관절 팔: 어깨에서 위팔·아래팔 각도(0=아래, 90=옆으로 수평, 180=위)로 그린다. 손 위치를 돌려줘 소품을 손에 붙인다. */
+const ARMS={ // 손이 갈 자리(몸 기준 좌표). 팔꿈치는 자동으로 계산한다.
+  aimL:{L:[-68,-64],R:[14,-76]}, writeR:{L:[-32,-28],R:[26,-24]}, pointR:{L:[-36,-20],R:[66,-82]}, pointL:{L:[-66,-82],R:[36,-20]},
+  waveR:{L:[-36,-20],R:[40,-106]}, carryUp:{L:[-30,-112],R:[30,-112]}, pray:{L:[-4,-62],R:[4,-62]}, holdFront:{L:[-14,-44],R:[14,-44]},
+  flagR:{L:[-36,-20],R:[44,-72]}, sowR:{L:[-16,-44],R:[60,-46]}, pullUp:{L:[-26,-114],R:[22,-102]}, armsOpen:{L:[-64,-66],R:[64,-66]},
+  playStr:{L:[-26,-30],R:[22,-26]}, sewR:{L:[-14,-46],R:[16,-54]}, cheer:{L:[-44,-104],R:[44,-104]}, handsDown:{L:[-36,-20],R:[36,-20]},
+  walk:{L:[-40,-26],R:[22,-34]}, run:{L:[-50,-50],R:[34,-30]}, chin:{L:[-14,-78],R:[14,-78]}, lap:{L:[-20,-26],R:[20,-26]}, reach:{L:[-30,-30],R:[46,-62]}
+};
+function jointArms(A,c,sk){const L1=22,L2=21;let svg='';const h={};
+  for(const side of [-1,1]){const T=A[side<0?'L':'R'];const sx=side*24,sy=-58;let ex,ey,wx,wy;
+    if(T.length===2&&Math.abs(T[0])<=180&&A.angles!==true&&(Math.abs(T[1])>2||Math.abs(T[0])>2)&&!A.angles){
+      let dx=T[0]-sx,dy=T[1]-sy,d=Math.hypot(dx,dy);const m=L1+L2-.5;if(d>m){dx*=m/d;dy*=m/d;d=m}
+      const th=Math.atan2(dy,dx),a=Math.acos(Math.max(-1,Math.min(1,(L1*L1+d*d-L2*L2)/(2*L1*d))));
+      const e1=[sx+L1*Math.cos(th+a),sy+L1*Math.sin(th+a)],e2=[sx+L1*Math.cos(th-a),sy+L1*Math.sin(th-a)];
+      [ex,ey]=(side*e1[0]+e1[1]*.3>side*e2[0]+e2[1]*.3)?e1:e2; wx=sx+dx; wy=sy+dy;}
+    const path=`M${sx-side*4} ${sy-2} L${ex.toFixed(1)} ${ey.toFixed(1)} L${wx.toFixed(1)} ${wy.toFixed(1)}`;
+    svg+=`<path d="${path}" fill="none" stroke="${L}" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/><path d="${path}" fill="none" stroke="${c}" stroke-width="12.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+    const ang=Math.atan2(wy-ey,wx-ex)*180/Math.PI;
+    svg+=`<g transform="translate(${wx.toFixed(1)} ${wy.toFixed(1)}) rotate(${(ang-90).toFixed(1)})"><ellipse cx="0" cy="4" rx="6.4" ry="7" fill="${sk}" ${sw()}/></g>`;
+    const ux=(wx-ex)/L2,uy=(wy-ey)/L2; h[side<0?'L':'R']=[wx+ux*4,wy+uy*4];}
+  return {svg,h};}
+/* 손에 쥐는 소품 */
+const PROP={
+  bow:(H,tx=-120)=>{const [lx,ly]=H.L,[rx,ry]=H.R;return `<path d="M${lx+4} ${ly-44} Q${lx-22} ${ly} ${lx+4} ${ly+44}" fill="none" stroke="${K.wood}" stroke-width="5" stroke-linecap="round"/><path d="M${lx+4} ${ly-44} L${rx} ${ry} L${lx+4} ${ly+44}" fill="none" stroke="#F4EFE0" stroke-width="1.6"/><path d="M${rx+2} ${ry} L${lx-36} ${ly}" stroke="#5A3B2C" stroke-width="3"/><path d="M${lx-36} ${ly} l9 -5 l0 10Z" fill="#7D7F88" ${sw(1.2)}/><path d="M${rx+2} ${ry} l8 -5 M${rx+2} ${ry} l8 5" stroke="#C9473B" stroke-width="2.4"/>`},
+  brush:H=>{const [x,y]=H.R;return `<path d="M${x-2} ${y-14} L${x+4} ${y+14}" stroke="${K.wood}" stroke-width="3.4" stroke-linecap="round"/><path d="M${x+4} ${y+14} q2 6 -2 9 q-2 -4 2 -9Z" fill="#2B1E16"/>`},
+  flag:(H,c='#C9473B')=>{const [x,y]=H.R;return `<path d="M${x} ${y+30} V${y-60}" stroke="${K.wood}" stroke-width="4" stroke-linecap="round"/><path d="M${x} ${y-60} h44 v28 h-44Z" fill="${c}" ${sw(1.4)}/>`},
+  taeguk:H=>{const [x,y]=H.R;return `<path d="M${x} ${y+30} V${y-60}" stroke="${K.wood}" stroke-width="4" stroke-linecap="round"/><rect x="${x}" y="${y-60}" width="46" height="30" fill="#FFFFFF" ${sw(1.4)}/><circle cx="${x+23}" cy="${y-45}" r="8" fill="#C9473B"/><path d="M${x+15} ${y-45} a8 8 0 0 0 16 0Z" fill="#3F6FA8"/><path d="M${x+5} ${y-56} l6 4 M${x+35} ${y-34} l6 4 M${x+5} ${y-34} l6 -4 M${x+35} ${y-56} l6 -4" stroke="#2B1E16" stroke-width="2.6"/>`},
+  stoneUp:H=>{const [lx,ly]=H.L,[rx,ry]=H.R;return `<rect x="${lx-6}" y="${Math.min(ly,ry)-38}" width="${rx-lx+12}" height="34" rx="10" fill="#9E9686" ${sw()}/>`},
+  rope:H=>{const [lx,ly]=H.L,[rx,ry]=H.R;return `<path d="M${(lx+rx)/2} -400 L${lx} ${ly} M${(lx+rx)/2} -400 L${rx} ${ry}" stroke="#B5874F" stroke-width="3"/>`},
+  book:H=>{const [lx,ly]=H.L,[rx,ry]=H.R,y=(ly+ry)/2;return `<g transform="translate(${(lx+rx)/2} ${y+6})">${openBook.replace('M-34 -42','M-34 -42')}</g>`},
+  needle:H=>{const [lx,ly]=H.L,[rx,ry]=H.R;return `<rect x="${lx-10}" y="${ly-16}" width="44" height="30" fill="#FFFFFF" ${sw(1.4)}/><circle cx="${lx+12}" cy="${ly-1}" r="7" fill="#3F6FA8"/><path d="M${lx+5} ${ly-1} a7 7 0 0 1 14 0Z" fill="#C9473B"/><path d="M${lx-6} ${ly-11} l6 4 M${lx+26} ${ly+9} l6 4 M${lx-6} ${ly+9} l6 -4 M${lx+26} ${ly-11} l6 -4" stroke="#2B1E16" stroke-width="2"/><path d="M${rx} ${ry} l8 -16" stroke="#7D7F88" stroke-width="1.6"/><path d="M${rx+8} ${ry-16} q10 -10 -2 -24" fill="none" stroke="#C9473B" stroke-width="1"/>`}
+};
 const ROBE='M-28 -62 Q-36 -30 -44 -4 Q0 6 44 -4 Q36 -30 28 -62 Q0 -72 -28 -62Z';
 
 function person(x,y,s,o){
@@ -60,16 +92,35 @@ function person(x,y,s,o){
   const seed=Math.abs(Math.round(x*7+y*3));
   const dx=o.face==='front'?0:o.face==='left'?-4:o.face==='right'?4:Math.max(-4,Math.min(4,(200-x)/30));
   let pr=o.armR||pose;
-  if(!o.armR&&pose==='down'&&!o.item){ if(mood==='joy') pr=seed%2?'up':'hold'; else if(mood==='smile'&&seed%3===0) pr='hold'; }
+  if(!o.armR&&pose==='down'&&!o.item){ if((mood==='joy'||mood==='smile')&&seed%3===0) pr='hold'; }
   const tilt=o.still?0:((seed%5)-2)*2.2, lean=o.still?0:((seed%3)-1)*1.4;
   let out=`<ellipse cx="0" cy="1" rx="44" ry="7" fill="#2B1E16" opacity=".2"/>`;
   out+=`<path d="M-24 -1 Q-25 -10 -13 -9 L-3 -8 Q0 -5 -2 -1Z M24 -1 Q25 -10 13 -9 L3 -8 Q0 -5 2 -1Z" fill="${o.shoe||'#3B2F2A'}" ${sw()}/><path d="M-24 -1 q-4 -4 -2 -7 M24 -1 q4 -4 2 -7" fill="none" ${sw(1.6)}/>`;
   let body=o.body||`<path d="${ROBE}" fill="${o.robe}" ${sw()}/>`;
   body+=`<path d="M6 -66 Q28 -64 29 -60 Q37 -30 44 -4 Q26 3 10 3 Q20 -30 6 -66Z" fill="#2B1E16" opacity=".13"/><path d="M-24 -58 Q-32 -30 -38 -8" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".22" stroke-linecap="round"/><path d="M-8 -48 Q-12 -28 -16 -6 M10 -44 Q13 -26 18 -6" fill="none" stroke="#2B1E16" stroke-width="1.4" opacity=".2"/><path d="M-42 -8 Q0 2 42 -8" fill="none" stroke="#2B1E16" stroke-width="1.6" opacity=".22"/>`;
-  out+=`<g transform="rotate(${lean} 0 0)">`+body+(o.deco||'')+sleeves(pose,o.sleeve||o.robe,pr)+(o.item||'')+hands(pose,sk,pr);
+  let AR=o.arms?(typeof o.arms==='string'?ARMS[o.arms]:o.arms):null;
+  if(!AR&&pose==='up'&&!o.item&&!o.armR){AR=ARMS[['cheer','waveR','armsOpen','cheer','pointR'][seed%5]]}
+  if(AR&&(o.stance==='sit'||o.stance==='kneel')){const d=o.stance==='sit'?22:14;AR={...AR,L:[AR.L[0],AR.L[1]-d],R:[AR.R[0],AR.R[1]-d]}}
+  let armsSvg,handsSvg='',HP=null;
+  if(AR){const r=jointArms(AR,o.sleeve||o.robe,sk);armsSvg=r.svg;HP=r.h}else{armsSvg=sleeves(pose,o.sleeve||o.robe,pr);handsSvg=hands(pose,sk,pr)}
+  const prop=AR&&o.prop?(typeof o.prop==='function'?o.prop(HP):o.prop):'';
+  out+=`<g transform="rotate(${lean} 0 0)">`+body+(o.deco||'')+(AR&&AR.back?prop:'')+armsSvg+(o.item||'')+handsSvg+(AR&&!AR.back?prop:'');
   out+=`<g transform="rotate(${tilt} 0 -70)">`+(o.back||'')+head(mood,sk,o.tear,dx)+(o.front||'')+`<path d="M-20 -118 Q-8 -127 6 -125" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".3" stroke-linecap="round"/></g></g>`;
+  const st=o.stance;
+  if(st==='sit'||st==='kneel'){const id='cp'+(++STUID),dy=st==='sit'?26:18,w=st==='sit'?50:38,c=o.lap||o.robe;
+    const fig=out.replace(/^<ellipse[^>]*\/>/,'').replace(/<path d="M-24 -1 Q-25[^]*?fill="none" [^>]*\/>/,'');
+    out=`<ellipse cx="0" cy="1" rx="${w+6}" ry="8" fill="#2B1E16" opacity=".2"/>`
+      +`<path d="M${-w} -2 Q${-w-4} ${-24} ${-w+16} ${-28} L${w-16} -28 Q${w+4} -24 ${w} -2 Q0 6 ${-w} -2Z" fill="${c}" ${sw()}/>`
+      +(st==='sit'?`<path d="M${-w+8} -8 q10 -6 20 -2 M${w-8} -8 q-10 -6 -20 -2" fill="none" stroke="#2B1E16" stroke-width="1.4" opacity=".3"/>`:'')
+      +`<clipPath id="${id}"><rect x="-200" y="-400" width="400" height="${400-16}"/></clipPath><g clip-path="url(#${id})"><g transform="translate(0 ${dy})">${fig}</g></g>`;}
+  if(st==='walk'||st==='run'){const r=st==='run',a=r?10:4;
+    out=out.replace(/<path d="M-24 -1 Q-25[^]*?fill="none" [^>]*\/>/,`<path d="M-30 -1 Q-31 -10 -19 -9 L-9 -8 Q-6 -5 -8 -1Z" fill="${o.shoe||'#3B2F2A'}" ${sw()}/><g transform="rotate(${r?40:18} 14 -8)"><path d="M24 -1 Q25 -10 13 -9 L3 -8 Q0 -5 2 -1Z" fill="${o.shoe||'#3B2F2A'}" ${sw()}/></g>`);
+    const dir=o.face==='left'?-1:1;
+    out=`<g transform="rotate(${dir*a} 0 0)">${out}</g>`+(r?[0,1,2].map(k=>`<path d="M${-dir*(52+k*6)} ${-80+k*22} h${-dir*22}" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity=".85"/>`).join(''):'');}
+  if(st==='lie'){out=`<g transform="translate(0 30) rotate(${o.face==='right'?90:-90} 0 -60)">${out.replace(/^<ellipse[^>]*\/>/,'')}</g>`;out=`<ellipse cx="0" cy="1" rx="74" ry="8" fill="#2B1E16" opacity=".2"/>`+out}
   return g(x,y,s,out);
 }
+let STUID=0;
 const king=(x,y,s,o={})=>person(x,y,s,{robe:'#C9473B',...o,
   deco:`<path d="M-12 -66 L0 -48 L12 -66" fill="none" stroke="#FFF8EC" stroke-width="5"/><circle cx="0" cy="-45" r="11" fill="${K.gold}" ${sw()}/><path d="M-5 -45 q3 -7 8 -2 q3 4 -2 6 q-4 1 -3 -3" fill="none" stroke="#8A5A12" stroke-width="1.7"/><path d="M-36 -30 Q0 -24 36 -30 L37 -23 Q0 -17 -37 -23Z" fill="#3A2E2A" ${sw()}/><circle cx="-18" cy="-24" r="2.2" fill="${K.gold}"/><circle cx="0" cy="-21" r="2.2" fill="${K.gold}"/><circle cx="18" cy="-24" r="2.2" fill="${K.gold}"/>`,
   back:`<ellipse cx="-30" cy="-128" rx="13" ry="7" fill="#2C2A33" ${sw()} transform="rotate(-22 -30 -128)"/><ellipse cx="30" cy="-128" rx="13" ry="7" fill="#2C2A33" ${sw()} transform="rotate(22 30 -128)"/>`,
@@ -86,9 +137,15 @@ const woman=(x,y,s,o={})=>person(x,y,s,{sleeve:'#F6E2A6',...o,
   deco:`<path d="M0 -50 l-7 18 M0 -50 l5 15" stroke="#C9473B" stroke-width="4" stroke-linecap="round"/><circle cx="0" cy="-50" r="4" fill="#C9473B"/>`,
   back:`<ellipse cx="0" cy="-100" rx="33" ry="29" fill="${HAIR}" ${sw()}/><circle cx="28" cy="-80" r="11" fill="${HAIR}" ${sw()}/><path d="M18 -76 L44 -84" stroke="${K.gold}" stroke-width="3.5" stroke-linecap="round"/>`,
   front:`<path d="M-31 -96 Q-30 -126 0 -126 Q30 -126 31 -96 Q18 -114 0 -116 Q-18 -114 -31 -96Z" fill="${HAIR}" ${sw()}/>`});
+/* 옛날 아이: 한복. 노란 별 티셔츠 아이(kid)는 지금 우리 아이에게만 쓴다. */
+const OLDKID=['#E7D7B4','#C9D8E8','#D9E6C8','#EFE6D2','#E9CFC0'];
+const oldKid=(x,y,s,o={})=>hero(x,y,s,{robe:OLDKID[Math.abs(Math.round(x/7))%5],hair:'braid',belt:'#8C7350',ribbon:'#C9473B',skin:'#F2C9A2',...o});
+const oldGirl=(x,y,s,o={})=>hero(x,y,s,{body:'dress',top:'#FFF3C4',skirt:['#E98FA0','#7FB3C8','#C9A0D6'][Math.abs(Math.round(x/7))%3],hair:'braid',ribbon:'#C9473B',...o});
+/* 70여 년 전 아이: 셔츠와 반바지 */
+const boy50=(x,y,s,o={})=>kid(x,y,s,{sleeve:'#E6E1D6',shoe:'#5A4A3E',...o,body50:true});
 const kid=(x,y,s,o={})=>person(x,y,s,{sleeve:'#F2C14E',shoe:'#E0574A',...o,
-  body:`<path d="M-24 -30 L-26 -6 L-4 -6 L-2 -24 L2 -24 L4 -6 L26 -6 L24 -30Z" fill="#5B7FB8" ${sw()}/><path d="M-28 -64 Q-32 -46 -30 -28 Q0 -22 30 -28 Q32 -46 28 -64 Q0 -72 -28 -64Z" fill="#F2C14E" ${sw()}/>`,
-  deco:`<path d="M0 -52 l3 6 l7 1 l-5 5 l1 7 l-6 -3 l-6 3 l1 -7 l-5 -5 l7 -1Z" fill="#FFF3C4" ${sw(1.4)}/>`,
+  body:`<path d="M-24 -30 L-26 -6 L-4 -6 L-2 -24 L2 -24 L4 -6 L26 -6 L24 -30Z" fill="${o.body50?'#6E6A5E':'#5B7FB8'}" ${sw()}/><path d="M-28 -64 Q-32 -46 -30 -28 Q0 -22 30 -28 Q32 -46 28 -64 Q0 -72 -28 -64Z" fill="${o.body50?'#E6E1D6':'#F2C14E'}" ${sw()}/>`,
+  deco:o.body50?`<path d="M-10 -66 L0 -56 L10 -66" fill="none" ${sw(1.6)}/>`:`<path d="M0 -52 l3 6 l7 1 l-5 5 l1 7 l-6 -3 l-6 3 l1 -7 l-5 -5 l7 -1Z" fill="#FFF3C4" ${sw(1.4)}/>`,
   back:`<ellipse cx="0" cy="-100" rx="33" ry="30" fill="${HAIR}" ${sw()}/>`,
   front:`<path d="M-31 -96 Q-30 -128 0 -128 Q30 -128 31 -96 Q26 -108 16 -106 Q8 -114 0 -106 Q-10 -114 -16 -106 Q-24 -110 -31 -96Z" fill="${HAIR}" ${sw()}/><path d="M2 -128 Q8 -140 16 -136" fill="none" stroke="${HAIR}" stroke-width="3.5" stroke-linecap="round"/>`});
 
@@ -182,7 +239,7 @@ function hero(x,y,s,o={}){
   if(o.belt!==false) deco+=`<path d="M-35 -32 Q0 -25 35 -32" fill="none" stroke="${o.belt||'#8C7350'}" stroke-width="4"/>`;
   if(o.collar!==false) deco=`<path d="M-12 -66 L0 -50 L12 -66" fill="none" stroke="${o.collar||'#FFF8EC'}" stroke-width="4"/>`+deco;
   if(o.beard) front=`<path d="M-15 -72 Q0 -42 15 -72 Q0 -64 -15 -72Z" fill="${o.beard}" ${sw(1.6)}/>`+front;
-  return person(x,y,s,{robe:o.robe||'#D9CDAF',skin:o.skin,sleeve:o.sleeve||(o.body==='dress'?(o.top||'#F6E2A6'):undefined),shoe:o.shoe,pose:o.pose,mood:o.mood,tear:o.tear,item:o.item,
+  return person(x,y,s,{robe:o.robe||'#D9CDAF',skin:o.skin,sleeve:o.sleeve||(o.body==='dress'?(o.top||'#F6E2A6'):undefined),shoe:o.shoe,pose:o.pose,mood:o.mood,tear:o.tear,item:o.item,face:o.face,still:o.still,armR:o.armR,arms:o.arms,prop:o.prop,stance:o.stance,lap:o.lap||(o.body==='dress'?o.skirt:undefined),
     body:bodyS||undefined,deco,back,front:front+hat});
 }
 const aface=(m,y)=>m==='joy'?`<path d="M-12 ${y} Q-8 ${y-5} -4 ${y} M4 ${y} Q8 ${y-5} 12 ${y}" fill="none" ${sw(2.4)}/>`
@@ -216,7 +273,7 @@ ${o.rider||''}
 <ellipse cx="66" cy="-106" rx="20" ry="11" fill="${c}" ${sw()} transform="rotate(28 66 -106)"/>
 <path d="M50 -116 L54 -130 L60 -114Z" fill="${c}" ${sw()}/><circle cx="64" cy="-110" r="2.6" fill="${L}"/><circle cx="80" cy="-98" r="2" fill="${L}"/>
 <path d="M32 -74 Q38 -96 50 -114 Q42 -96 36 -76Z" fill="${mane}" ${sw(1.4)}/>
-<path d="M-14 -82 Q0 -86 14 -82 L16 -64 Q0 -60 -16 -64Z" fill="${o.saddle||'#C9473B'}" ${sw()}/>`)}
+<path d="M-14 -82 Q0 -86 14 -82 L16 -64 Q0 -60 -16 -64Z" fill="${o.saddle||'#C9473B'}" ${sw()}/>${o.rider?`<path d="M-8 -76 Q-2 -54 -6 -40" fill="none" stroke="${L}" stroke-width="15" stroke-linecap="round"/><path d="M-8 -76 Q-2 -54 -6 -40" fill="none" stroke="${o.legColor||'#5A4A3E'}" stroke-width="11" stroke-linecap="round"/><path d="M-14 -38 Q-12 -46 0 -44 Q6 -40 2 -34Z" fill="#3B2F2A" ${sw(1.6)}/>`:''}`)}
 const rider=(who)=>`<g transform="translate(-4 -54) scale(.82)">${who}</g>`;
 const egg=(x,y,s)=>g(x,y,s,`<circle cx="0" cy="-30" r="44" fill="url(#eggGlow)"/><ellipse cx="0" cy="-30" rx="22" ry="28" fill="#FFFBEE" ${sw()}/><circle cx="-6" cy="-40" r="2.4" fill="#E9D8B4"/><circle cx="7" cy="-26" r="2" fill="#E9D8B4"/><circle cx="-3" cy="-18" r="1.6" fill="#E9D8B4"/>`);
 const fish=(x,y,c='#F2A24B')=>`<ellipse cx="${x}" cy="${y}" rx="15" ry="8" fill="${c}" ${sw(1.6)}/><path d="M${x+13} ${y} L${x+25} ${y-8} L${x+25} ${y+8}Z" fill="${c}" ${sw(1.6)}/><circle cx="${x-8}" cy="${y-2}" r="1.8" fill="${L}"/>`;
@@ -224,7 +281,7 @@ const turtle=(x,y)=>`<ellipse cx="${x-18}" cy="${y}" rx="7" ry="5" fill="#8CB07A
 const bow=(x,y,r=1)=>`<path d="M${x} ${y-34*r} Q${x+22*r} ${y} ${x} ${y+34*r}" fill="none" stroke="${K.wood}" stroke-width="${4*r}" stroke-linecap="round"/><path d="M${x} ${y-34*r} L${x} ${y+34*r}" stroke="#F4EFE0" stroke-width="1.4"/>`;
 const bowItem=`${bow(40,-40,.9)}`;
 const herbBasket=`<path d="M-34 -44 L34 -44 L28 -14 Q0 -8 -28 -14Z" fill="#C9A15A" ${sw()}/><path d="M-30 -36 H30 M-28 -26 H28" stroke="#9A7A3A" stroke-width="1.5"/><path d="M-20 -44 Q-24 -62 -14 -66 M-6 -44 Q-4 -64 6 -68 M10 -44 Q18 -60 26 -60" fill="none" stroke="#5E9C5A" stroke-width="3" stroke-linecap="round"/><circle cx="-14" cy="-66" r="4" fill="#7CB66E"/><circle cx="6" cy="-68" r="4" fill="#E98FA0"/><circle cx="26" cy="-60" r="4" fill="#7CB66E"/>`;
-const bigBook=(t,c='#3F6FA8')=>`<rect x="-34" y="-54" width="68" height="46" rx="3" fill="${c}" ${sw()}/><rect x="-24" y="-48" width="48" height="16" fill="#FFFDF6" ${sw(1.4)}/><text x="0" y="-36" text-anchor="middle" font-family="Jua,sans-serif" font-size="12" fill="${K.ink}">${t}</text>`;
+const bigBook=(t,c='#3F6FA8')=>`<g transform="rotate(-6 0 -30)"><rect x="-30" y="-58" width="54" height="48" rx="2" fill="#E9DFC4" ${sw(1.4)} transform="translate(5 3)"/><rect x="-30" y="-58" width="54" height="48" rx="2" fill="${c}" ${sw()}/>${[-50,-40,-28,-18].map(y=>`<path d="M-30 ${y} h5" stroke="#F4EFE0" stroke-width="1.6"/>`).join('')}<path d="M-24 -58 V-10" stroke="#2B1E16" stroke-width="1" opacity=".4"/><rect x="2" y="-52" width="12" height="30" fill="#FFFDF6" ${sw(1.2)}/><path d="M5 -46 h6 M5 -40 h6 M5 -34 h6" stroke="${K.ink}" stroke-width="1.4"/></g>`;
 const scrollPic=`<rect x="-36" y="-56" width="72" height="48" rx="2" fill="#FFFDF6" ${sw()}/><circle cx="-14" cy="-36" r="6" fill="#E9B24A"/><path d="M-30 -14 Q-14 -36 2 -18 Q14 -30 30 -14" fill="none" stroke="#5E9C5A" stroke-width="3"/>`;
 function taeguk(x,y,s,rot=0){const tri=(cx,cy,pat,a)=>`<g transform="rotate(${a} ${cx} ${cy})">${pat.map((solid,k)=>solid?`<rect x="${cx-7}" y="${cy-6+k*4.4}" width="14" height="2.8" fill="#1E1E24"/>`:`<rect x="${cx-7}" y="${cy-6+k*4.4}" width="6" height="2.8" fill="#1E1E24"/><rect x="${cx+1}" y="${cy-6+k*4.4}" width="6" height="2.8" fill="#1E1E24"/>`).join('')}</g>`;
   return g(x,y,s,`<g transform="rotate(${rot})"><path d="M-46 -30 V40" stroke="#8A6A44" stroke-width="4" stroke-linecap="round"/><rect x="-44" y="-30" width="78" height="52" fill="#FFFFFF" ${sw(1.8)}/>
@@ -448,17 +505,17 @@ function camera(inner){
   if(!figs.length||/id="/.test(inner))return '';
   if(figs.some(f=>f.y>290||f.s>1.3))return '';
   let shot=SHOTS[(SCN.shotI++)%SHOTS.length];
-  if(shot==='close'&&caps.length)shot='two';
+  if(shot==='close'&&(caps.length||figs.length>1))shot='two';
   const clampV=(left,top,z)=>{const vw=400/z,vh=280/z;left=Math.max(-6,Math.min(406-vw,left));top=Math.max(-6,Math.min(286-vh,top));return `scale(${z.toFixed(3)}) translate(${(-left).toFixed(1)} ${(-top).toFixed(1)})`};
   if(shot==='close'){
     const m=figs.slice().sort((a,b)=>(b.s-a.s)||(Math.abs(a.x-200)-Math.abs(b.x-200)))[0];
-    const hx=m.x,hy=m.y-94*m.s,z=Math.max(1.4,Math.min(2.0,60/(31*m.s)));
+    const hx=m.x,hy=m.y-94*m.s,z=Math.max(1.3,Math.min(1.6,60/(31*m.s)));
     return clampV(hx-200/z,hy-.36*280/z,z)}
   if(shot==='two'){
     let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
     for(const f of figs){x0=Math.min(x0,f.x-52*f.s);x1=Math.max(x1,f.x+52*f.s);y0=Math.min(y0,f.y-150*f.s);y1=Math.max(y1,f.y+14*f.s)}
     for(const c of caps){x0=Math.min(x0,c.x-c.sz*c.len*.55);x1=Math.max(x1,c.x+c.sz*c.len*.55);y0=Math.min(y0,c.y-c.sz*1.2)}
-    const W=Math.max(x1-x0,(y1-y0)*400/280)*1.12,z=Math.min(1.55,400/W);
+    const W=Math.max(x1-x0,(y1-y0)*400/280)*1.12,z=Math.min(1.3,400/W);
     if(z<1.1)return '';
     return clampV((x0+x1)/2-200/z,(y0+y1)/2-140/z,z)}
   return '';

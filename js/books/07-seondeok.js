@@ -21,7 +21,7 @@ const P=[
   text:`어느 날 당나라 임금이 모란꽃 그림과 꽃씨를 보내왔어요. 그림을 본 덕만 공주가 말했어요. "이 꽃은 향기가 없겠네요."`},
  {chips:LEG, svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#E8D3B0"/><rect x="-6" y="222" width="412" height="64" fill="#A87E52"/>
   <g id="tPaint">${painting(60,40,170,130,`${peony(120,100,1.4)}${peony(176,124,1.1,'#F2A9C0')}`)}</g>
-  <g id="tPrin">${princess(310,272,.92,{pose:'up',mood:'smile'})}</g>`,'#E8D3B0'),
+  <g id="tPrin">${princess(310,272,.92,{arms:'pointL',mood:'smile',face:'left'})}</g>`,'#E8D3B0'),
   taps:[{label:'모란 그림',el:'tPaint',say:'예쁜 꽃인데, 나비가 한 마리도 없어요.'},{label:'덕만 공주',el:'tPrin',say:'향기로운 꽃에는 나비와 벌이 날아오잖아요.'}],tapHint:'그림에서 무엇이 빠졌을까요?',
   text:`"왜 그렇게 생각하세요?" 공주가 웃으며 그림을 가리켰어요. "꽃 둘레에 나비가 한 마리도 없잖아요. 향기가 있다면 나비가 날아왔을 거예요."`},
  {chips:LEG, svg:SV(`<circle cx="340" cy="46" r="22" fill="${K.gold}" ${sw()}/>${hills('#A9CDB4','#C7D88F',196,220)}

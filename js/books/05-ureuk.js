@@ -18,8 +18,8 @@ const P=[
   ${gasil(120,272,.9,{mood:'smile',pose:'hold'})}${gayageum(280,250,.7)}${ur(300,272,.84,{mood:'o'})}`,'#EAD8B4'),
   text:`가야의 가실왕은 열두 줄로 된 새 악기를 만들었어요. 그리고 노래 잘하는 우륵을 불렀지요. "이 악기로 우리 가야의 노래를 지어 주게."`},
  {svg:SV(`${room()}
-  <g id="tGayageum">${gayageum(220,236,1.4,'tStrings')}</g>
-  ${ur(220,206,.66,{mood:'joy'})}
+  ${ur(220,214,.78,{stance:'sit',arms:{L:[-40,-6],R:[30,-4]},mood:'joy',still:true})}
+  <g id="tGayageum">${gayageum(220,246,1.4,'tStrings')}</g>${[[178,226],[262,228]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="6" ry="5" fill="${SK}" ${sw(1.6)}/>`).join('')}
   ${notes(330,120)}${notes(360,90)}`,'#EADCC0'),
   taps:[{label:'뜯기',el:'tGayageum',say:'띵~ 둥~ 줄을 뜯으면 맑은 소리가 나요.'},{label:'열두 줄',el:'tGayageum',say:'줄이 모두 열두 개예요. 하나, 둘, 셋… 열둘!'}],tapHint:'가야금 줄을 뜯어 볼까요?',
   text:`우륵은 줄을 뜯고 튕기며 소리를 찾았어요. 띵~ 둥~ 가야 곳곳의 산과 강과 마을을 떠올리며 열두 곡의 노래를 지었어요.`},

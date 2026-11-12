@@ -24,7 +24,7 @@ const P=[
   text:`이이는 자라서 나라의 시험을 볼 때마다 일등을 했어요. 아홉 번이나요! 사람들은 '아홉 번 장원한 사람'이라고 불렀어요.`},
  {svg:SV(`${room()}
   <g id="tBook">${g(260,236,1.6,book('격몽요결','#5E9C8A'))}</g>
-  ${yi(120,268,.88,{pose:'hold',mood:'smile',item:brush})}`,'#EADCC0'),
+  ${yi(130,262,.88,{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'smile',face:'right'})}<rect x="150" y="244" width="70" height="10" fill="#8A5A3C" ${sw(1.2)}/><rect x="156" y="236" width="44" height="10" fill="#FFFDF6" ${sw(1)}/>`,'#EADCC0'),
   taps:[{label:'격몽요결',el:'tBook',say:'아침에 일어나면 이불을 개고, 어른께 인사드리고… 아이들이 지킬 일이 적혀 있어요.'}],tapHint:'아이들을 위한 책을 펼쳐 볼까요?',
   text:`이이는 처음 공부하는 아이들을 위해 쉬운 책도 썼어요. 이름은 『격몽요결』이에요. 바르게 앉기, 부모님께 인사하기처럼 날마다 지킬 일을 차근차근 적었어요.`},
  {svg:SV(`${palace()}

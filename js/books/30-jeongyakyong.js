@@ -38,7 +38,7 @@ const P=[
   text:`정약용은 곰곰이 생각하고, 먼 나라의 책도 찾아 읽었어요. 그리고 도르래를 이용한 기계를 그렸어요. 이름은 거중기예요.`},
  {svg:SV(`${yard(214)}
   ${crane(200,226,1.0,false)}
-  <g id="tWorker">${worker(70,268,.74,{pose:'hold',mood:'joy'})}</g>${worker(330,268,.74,{pose:'hold',mood:'joy'})}`,'url(#jy5)',sky('jy5','#CFE7F2','#F6EAD0')),
+  <g id="tWorker">${worker(70,268,.74,{arms:'pullUp',mood:'joy',face:'right',prop:H=>`<path d="M${H.L[0]} ${H.L[1]} L146 -259 M${H.R[0]} ${H.R[1]} L146 -259" stroke="#8A6A44" stroke-width="3"/>`})}</g>${worker(330,268,.74,{arms:'pullUp',mood:'joy',face:'left',prop:H=>`<path d="M${H.L[0]} ${H.L[1]} L-146 -259 M${H.R[0]} ${H.R[1]} L-146 -259" stroke="#8A6A44" stroke-width="3"/>`})}`,'url(#jy5)',sky('jy5','#CFE7F2','#F6EAD0')),
   taps:[{label:'줄 당기기',el:'tWorker',say:'영차! 줄을 당기니 무거운 돌이 번쩍 올라가요.',show:['highStone'],hide:['lowStone']},{label:'다시 내리기',el:'tWorker',say:'스르르, 돌이 다시 내려와요.',show:['lowStone'],hide:['highStone']}],tapHint:'줄을 당겨 볼까요?',
   text:`거중기의 줄을 당기자, 그렇게 무겁던 돌이 번쩍 올라갔어요! 도르래 여러 개가 힘을 나눠 주어서 적은 힘으로도 들 수 있었지요.`},
  {chips:['1796년'], svg:SV(`${cloud(80,40,.7)}${wall(160)}

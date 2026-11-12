@@ -17,7 +17,7 @@ const P=[
   text:`김정호가 지도를 만들던 무렵, 서울에 석영이라는 아이가 살았어요. 석영이는 아픈 사람을 낫게 하는 의학책 읽기를 좋아했어요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#D9CDB4"/><rect x="-6" y="216" width="412" height="70" fill="#B9A475"/>
   <rect x="40" y="226" width="150" height="26" rx="6" fill="#F4EFE0" ${sw()}/>
-  ${kid(120,244,.7,{mood:'sad',front:''})}
+  ${oldKid(120,244,.7,{mood:'sad',front:''})}
   ${hero(260,268,.86,{body:'dress',hair:'bun',mood:'sad',tear:true})}
   ${T(300,110,'마마가 무서워요',16,K.ink)}`,'url(#js2)',sky('js2','#C9C2B4','#D9CDB4')),
   text:`그때는 천연두라는 무서운 병이 있었어요. 사람들은 '마마'라고 불렀어요. 열이 펄펄 나고 온몸에 붉은 점이 돋아서, 많은 아이들이 크게 아팠어요.`},
@@ -36,14 +36,14 @@ const P=[
   taps:[{label:'소',el:'tCow',say:'음매! 우두는 소에게서 얻었어요. 그래서 이름이 우두예요.'},{label:'지석영',el:'tSeok',say:'이걸로 아이들을 지킬 수 있어!'}],tapHint:'우두는 어디서 왔을까요?',
   text:`'우두'는 소의 천연두라는 뜻이에요. 석영은 우두를 구해서 기쁜 마음으로 처가가 있는 충주로 달려갔어요.`},
  {svg:SV(`${room()}
-  <g id="tBaby">${kid(260,268,.8,{mood:'o'})}</g>
+  <g id="tBaby">${oldKid(260,268,.8,{mood:'o'})}</g>
   <g id="tNeedle">${jsDoc(130,268,.92,{pose:'hold',mood:'smile',item:needle})}</g>
   ${T(280,110,'따끔!',26,K.red)}`,'#EADCC0'),
   taps:[{label:'주사',el:'tNeedle',say:'따끔! 아주 조금만 아파요.'},{label:'꾹 참기',el:'tBaby',say:'으앙… 아니, 꾹! 참았어요.'}],
   text:`석영은 두 살배기 어린 처남에게 처음으로 우두를 놓아 주었어요. 따끔! 처남은 꾹 참았지요. 그리고 천연두에 걸리지 않았어요.`},
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   ${jsDoc(80,268,.8,{pose:'hold',mood:'joy',item:needle})}
-  ${[150,200,250,300,350].map((x,k)=>kid(x,270,.56,{mood:'joy',pose:k%2?'up':'down'})).join('')}`,'url(#js7)',sky('js7','#CFE7F2','#F6EAD0')),
+  ${[150,200,250,300,350].map((x,k)=>oldKid(x,270,.56,{mood:'joy',pose:k%2?'up':'down'})).join('')}`,'url(#js7)',sky('js7','#CFE7F2','#F6EAD0')),
   text:`그 뒤로 석영은 여러 곳을 다니며 우두를 놓고, 다른 의사들에게 우두법을 가르쳤어요. 무서운 마마에 걸리는 아이들이 점점 줄어들었어요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#E9F2F8"/><rect x="-6" y="216" width="412" height="70" fill="#C9D8E0"/>
   ${hero(270,268,.9,{robe:'#FFFFFF',hair:'bun',body:'dress',top:'#FFFFFF',skirt:'#7FB3C8',pose:'hold',mood:'smile',item:needle})}

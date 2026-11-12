@@ -31,7 +31,7 @@ const P=[
  {chips:['1795년'], svg:SV(`${[30,90,150,210,270,330,390].map((x,k)=>`<path d="M${x} ${20+(k%3)*30} l-12 18" stroke="#9FC3E0" stroke-width="2.6" stroke-linecap="round"/>`).join('')}
   <path d="M-6 200 Q200 186 406 200 L406 286 L-6 286Z" fill="#A89A7A" ${sw()}/>
   ${[60,110,160].map(x=>`<path d="M${x} 236 q4 -16 -6 -22" stroke="#8A7A5A" stroke-width="3" fill="none"/>`).join('')}
-  ${hero(250,268,.84,{robe:'#D6CDB4',skin:'#EDBF95',mood:'sad'})}${kid(320,270,.64,{mood:'sad',tear:true})}`,'url(#md4)',sky('md4','#8E97A6','#C9C9C2')),
+  ${hero(250,268,.84,{robe:'#D6CDB4',skin:'#EDBF95',mood:'sad'})}${oldKid(320,270,.64,{mood:'sad',tear:true})}`,'url(#md4)',sky('md4','#8E97A6','#C9C9C2')),
   text:`그런데 몇 해 동안 거센 바람과 비가 몰아쳐 농사를 다 망쳤어요. 먹을 것이 없어 배고픈 사람들이 섬 곳곳에 가득했어요.`},
  {svg:SV(`${yard(200)}
   <g id="tSacks">${[[230,220],[270,220],[310,220],[250,190],[290,190],[270,160]].map(([x,y])=>riceSack(x,y,.8)).join('')}</g>

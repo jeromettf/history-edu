@@ -7,7 +7,7 @@ const painter=(x,y,s,o={})=>person(x,y,s,{robe:'#6E5A4A',pose:o.pose,mood:o.mood
   deco:`<path d="M-14 -66 L0 -50 L14 -66" fill="#E6E1D6" ${sw(1.6)}/><path d="M-36 -32 Q0 -26 36 -32" fill="none" stroke="#4A3A30" stroke-width="3"/>`,
   front:`<path d="M-32 -96 Q-34 -132 0 -132 Q34 -132 32 -96 Q20 -120 4 -112 Q-14 -122 -32 -96Z" fill="${HAIR}" ${sw()}/>`});
 const wife=(x,y,s,o={})=>hero(x,y,s,{body:'dress',hair:'bun',top:'#F6E2A6',skirt:'#7FB3C8',...o});
-const boy=(x,y,s,o={})=>kid(x,y,s,{...o});
+const boy=(x,y,s,o={})=>boy50(x,y,s,{...o});
 const easel=(x,y,s,inner)=>g(x,y,s,`<path d="M-40 0 L-20 -130 M40 0 L20 -130 M0 -130 V0" stroke="${K.wood}" stroke-width="5" stroke-linecap="round"/><rect x="-46" y="-120" width="92" height="76" fill="#FBF4E2" ${sw()}/>${inner}`);
 const foil=(x,y,w,h,inner)=>`<g id="tFoil"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#D9DCE2" ${sw()}/><path d="M${x+6} ${y+8} L${x+w-10} ${y+20} M${x+10} ${y+h-14} L${x+w-6} ${y+h-30}" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>${inner}</g>`;
 const letter=`<rect x="-30" y="-56" width="60" height="42" fill="#FFFDF6" ${sw()}/>${g(-10,-26,.12,ox(0,0,1,'#B9763E'))}<path d="M8 -46 H24 M8 -38 H22 M8 -30 H20" stroke="#9A9087" stroke-width="1.6"/>`;

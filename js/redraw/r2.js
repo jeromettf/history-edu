@@ -141,9 +141,9 @@ redraw('munikjeom',4,()=>SVn(`<path d="M-6 200 Q200 186 406 200 L406 290 L-6 290
 /* 황희 2: 넓은 밭, 두 마리 소와 농부 */
 redraw('hwanghui',2,()=>SVn(`${ridge(140,'#A9CDB4',30,2)}
   <path d="M-6 170 Q200 160 406 170 L406 290 L-6 290Z" fill="#B99B6A"/>${[...Array(8)].map((_,k)=>`<path d="M-6 ${180+k*14} Q200 ${170+k*16} 406 ${180+k*14}" fill="none" stroke="#8A6A4A" stroke-width="2"/>`).join('')}
-  ${ox(220,236,.7,'#D9A441')}${ox(300,240,.7,'#3A322B')}
-  ${farmer(370,250,.7,{mood:'smile',face:'left'})}
-  ${hh(70,300,1.15,{mood:'o',face:'right',pose:'up'})}
+  ${ox(230,238,.7,'#D9A441')}${ox(310,242,.7,'#3A322B')}<path d="M196 204 L346 208" stroke="${K.wood}" stroke-width="6" stroke-linecap="round"/><path d="M196 204 L160 236 M150 226 L134 206" stroke="${K.wood}" stroke-width="5" stroke-linecap="round"/><path d="M156 236 l14 8 l-18 2Z" fill="#7D7F88" ${sw(1.2)}/>
+  ${hero(130,250,.62,{robe:'#D6CDB4',skin:'#EDBF95',hat:'band',bandColor:'#FFFDF6',arms:{L:[-10,-40],R:[30,-46]},mood:'smile',face:'right'})}
+  ${hh(60,300,1.15,{mood:'o',face:'right',arms:'pointR'})}
   ${T(190,80,'어느 소가 더 잘하오?',20,K.red)}`,'url(#rh12)',sky('rh12','#CFE7F2','#F6EAD0')));
 
 /* 황희 6: 껄껄 웃는 황희, 가까이 */

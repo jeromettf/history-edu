@@ -32,9 +32,9 @@ const P=[
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#D8C7A4"/>
   <path d="M-6 120 L200 40 L406 120 L406 220 L-6 220Z" fill="#C9B48A" ${sw()}/>
   <rect x="-6" y="216" width="412" height="70" fill="#A88A5A"/>
-  <rect x="150" y="210" width="100" height="16" rx="3" fill="#8A5A3C" ${sw()}/>
-  <g id="tSeo">${seohui(110,272,.92,{pose:'hold',mood:'smile'})}</g>
-  <g id="tSo">${khitan(290,272,.92,{mood:'o'})}</g>`,'#D8C7A4'),
+  <g id="tSeo">${seohui(120,262,.92,{stance:'sit',arms:'pointR',mood:'smile',face:'right'})}</g>
+  <g id="tSo">${khitan(280,262,.92,{stance:'sit',arms:'lap',mood:'o',face:'left'})}</g>
+  <rect x="150" y="236" width="100" height="14" rx="3" fill="#8A5A3C" ${sw()}/><path d="M160 250 v20 M240 250 v20" stroke="#8A5A3C" stroke-width="6"/><rect x="184" y="226" width="32" height="10" fill="#FFFDF6" ${sw(1)}/>`,'#D8C7A4'),
   taps:[{label:'서희',el:'tSeo',say:'고려는 고구려를 이은 나라요. 그러니 이 땅은 우리 땅이오.'},{label:'소손녕',el:'tSo',say:'음… 그 말이 맞구려.'}],tapHint:'두 사람의 이야기를 들어 볼까요?',
   text:`서희는 거란 진영에 가서 소손녕과 마주 앉았어요. "고려는 고구려를 이은 나라요. 이름도 고려이지 않소?" 소손녕은 할 말이 없었어요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#D8C7A4"/>

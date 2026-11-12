@@ -63,8 +63,8 @@ const P=[
   ${river(150,250)}
   <path d="M-6 150 Q200 140 406 150 L406 100 L-6 100Z" fill="#A9CDB4" ${sw()}/>
   <path d="M-6 250 Q200 244 406 250 L406 286 L-6 286Z" fill="#BCD38F" ${sw()}/>
-  <g id="tFish">${[60,160,260,360].map((x,k)=>fish(x-8,208,k%2?'#F2A24B':'#E98FA0')).join('')}</g><g id="tTurtle">${[110,210,310].map(x=>turtle(x,206)).join('')}</g>
-  ${horse(200,204,.62,{color:'#F4EFE0',rider:rider(jumong(0,0,1,{pose:'up',mood:'joy'}))})}`,'url(#j7)',sky('j7','#CFE7F2','#F6EAD0')),
+  <g id="tTurtle">${[20,100,180,260,340].map(x=>turtle(x+20,222)).join('')}</g><g id="tFish">${[0,40,80,120,160,200,240,280,320,360,400].map((x,k)=>fish(x-8,212,k%2?'#F2A24B':'#E98FA0')).join('')}</g>
+  ${horse(210,212,.62,{color:'#F4EFE0',rider:rider(jumong(0,0,1,{arms:'waveR',mood:'joy',face:'right'}))})}`,'url(#j7)',sky('j7','#CFE7F2','#F6EAD0')),
   taps:[{label:'물고기',el:'tFish',say:'물고기가 꼬리를 살랑살랑 흔들어요.'},{label:'자라',el:'tTurtle',say:'자라가 등을 쭉 펴서 다리가 되어 줘요.'}],tapHint:'다리가 되어 준 친구들을 눌러 보세요.',
   text:`그러자 물고기와 자라들이 떠올라 다리를 만들어 주었어요! 주몽이 무사히 건너자 다리는 흩어졌고, 쫓아오던 군사들은 강을 건너지 못했대요.`},
  {chips:['기원전 37년'], svg:SV(`

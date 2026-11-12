@@ -17,7 +17,7 @@ const P=[
  {svg:SV(`<path d="M-6 200 Q100 150 200 170 Q300 150 406 200 L406 286 L-6 286Z" fill="#B8C4C0" ${sw()}/>
   ${flag(40,200,'#5E9C8A','신라')}${flag(170,180,'#C9A15A','후백제')}${flag(300,200,'#7A6AA8','후고구려')}
   <path d="M-6 236 Q200 226 406 236 L406 286 L-6 286Z" fill="#C7D88F" ${sw()}/>
-  ${hero(120,272,.7,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(220,272,.66,{body:'dress',hair:'bun',mood:'sad'})}${kid(300,274,.58,{mood:'sad'})}`,'url(#wg2)',sky('wg2','#C9D2D8','#E6E2D4')),
+  ${hero(120,272,.7,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(220,272,.66,{body:'dress',hair:'bun',mood:'sad'})}${oldKid(300,274,.58,{mood:'sad'})}`,'url(#wg2)',sky('wg2','#C9D2D8','#E6E2D4')),
   text:`그때 우리 땅은 다시 세 나라로 나뉘어 다투었어요. 후고구려, 후백제, 그리고 힘이 약해진 신라였지요. 백성들은 지치고 힘들었어요.`},
  {svg:SV(`${sea(150)}
   ${shipW(120,196,.6)}${shipW(270,186,.5)}

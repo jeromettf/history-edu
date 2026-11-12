@@ -31,7 +31,7 @@ const P=[
   text:`일연은 결심했어요. "옛이야기를 모아서 책으로 남기자!" 그리고 오래된 책을 찾아 읽고, 여러 곳을 다니며 이야기를 들었어요.`},
  {svg:SV(`${room()}
   <g id="tGranny">${granny(120,268,.9,{pose:'up',mood:'joy'})}</g>
-  <g id="tIl">${il(290,268,.9,{pose:'hold',mood:'o',item:bigBook('적기','#8A6A44')})}</g>`,'#EADCC0'),
+  <g id="tIl">${il(290,262,.9,{stance:'sit',face:'left',mood:'o',arms:'writeR',prop:H=>PROP.brush(H)+`<g transform="translate(${H.R[0]-30} ${H.R[1]+48}) scale(.9)">${openBook}</g>`})}</g>`,'#EADCC0'),
   taps:[{label:'할머니',el:'tGranny',say:'옛날 옛날에 곰 한 마리가 사람이 되고 싶어서…'},{label:'일연',el:'tIl',say:'잊지 않게 꼭꼭 적어 둘게요!'}],tapHint:'할머니 이야기를 들어 볼까요?',
   text:`마을 할머니 할아버지들이 들려주는 이야기도 하나하나 귀 기울여 듣고 꼼꼼히 적었어요. "그래서 어떻게 되었나요?"`},
  {chips:['1281년 무렵'], svg:SV(`<circle cx="200" cy="150" r="150" fill="url(#irg6)"/>

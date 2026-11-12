@@ -43,7 +43,7 @@ const P=[
   <path d="M-6 200 Q100 150 200 170 Q300 150 406 200 L406 286 L-6 286Z" fill="#B8C4C0" ${sw()}/>
   ${flag(50,200,'#4F7DBA','고구려')}${flag(170,180,'#C9A15A','백제')}${flag(290,200,'#5E9C8A','신라')}
   <path d="M-6 236 Q200 226 406 236 L406 286 L-6 286Z" fill="#C7D88F" ${sw()}/>
-  ${hero(120,272,.74,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(220,272,.7,{body:'dress',hair:'bun',mood:'sad'})}${kid(300,272,.62,{mood:'sad'})}`,'url(#k5)',sky('k5','#C9D2D8','#E6E2D4')),
+  ${hero(120,272,.74,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(220,272,.7,{body:'dress',hair:'bun',mood:'sad'})}${oldKid(300,272,.62,{mood:'sad'})}`,'url(#k5)',sky('k5','#C9D2D8','#E6E2D4')),
   text:`그런데 세 나라는 자주 다투었어요. 다툼이 오래 이어지자 백성들은 지쳐 갔어요.`},
  {svg:SV(`
   ${palace()}

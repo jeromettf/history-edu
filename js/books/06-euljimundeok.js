@@ -26,8 +26,8 @@ const P=[
   <path d="M170 200 h-40 l8 -6 M130 200 l8 6" fill="none" ${sw(2.4)}/>${T(220,90,'졌다, 도망가자! (일부러)',16,K.red)}`,'url(#ul4)',sky('ul4','#CFE7F2','#F6EAD0')),
   text:`그리고 싸울 때마다 일부러 지는 척 뒤로 물러났어요. 하루에 일곱 번이나요! 수나라 군사들은 신이 나서 고구려 깊숙이 따라 들어왔어요.`},
  {svg:SV(`${hills('#A9CDB4','#BCD38F',196,222)}
-  <g id="tLetter">${g(200,170,2.2,letter)}</g>
-  <g id="tSui">${sui(320,272,.8,{mood:'o'})}</g>${ul(80,272,.74,{mood:'joy'})}`,'url(#ul5)',sky('ul5','#CFE7F2','#F6EAD0')),
+  <g id="tSui">${sui(310,272,.84,{mood:'o',arms:'holdFront',face:'left'})}</g>
+  <g id="tLetter">${g(310,282,1.1,letter)}</g><path d="M180 150 q40 -30 90 40" fill="none" stroke="#5A3B2C" stroke-width="2" stroke-dasharray="5 6"/>${ul(80,272,.74,{mood:'joy'})}`,'url(#ul5)',sky('ul5','#CFE7F2','#F6EAD0')),
   taps:[{label:'편지',el:'tLetter',say:'"그대는 이미 많이 이겼으니, 이제 그만 돌아가시오."'},{label:'적장 우중문',el:'tSui',say:'헉, 우리가 꾀에 넘어간 거였어?'}],tapHint:'편지를 읽어 볼까요?',
   text:`을지문덕은 적의 장수 우중문에게 짧은 시를 보냈어요. "그대의 꾀는 하늘에 닿았고, 이긴 공도 높으니 이제 그만 돌아가시오." 놀리는 듯한 편지였지요.`},
  {chips:['612년'], svg:SV(`${hills('#A9CDB4','#BCD38F',180,236)}

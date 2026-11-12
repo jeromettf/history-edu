@@ -16,7 +16,7 @@ const P=[
   ${hero(110,268,.74,{robe:'#EFE6D2',skin:'#EDBF95',mood:'o'})}`,'url(#cm1)',sky('cm1','#B9C2CC','#DCDCD4')),
   text:`일연 스님이 책을 쓰고 몇십 년 뒤의 고려예요. 바다 건너 왜구라는 해적들이 자꾸 쳐들어와 바닷가 마을 사람들을 괴롭혔어요.`},
  {svg:SV(`${room()}
-  ${cm(140,268,.92,{pose:'hold',mood:'o',item:bigBook('화약','#5A5560')})}
+  ${cm(140,268,.92,{pose:'hold',mood:'o',item:`<ellipse cx="0" cy="-30" rx="20" ry="18" fill="#8A6A44" ${sw()}/><path d="M-8 -46 q8 -8 16 0" fill="none" ${sw(2)}/><path d="M-12 -24 q12 6 24 0" fill="none" stroke="#3A322B" stroke-width="1.4"/><circle cx="18" cy="-50" r="3" fill="#3A322B"/><circle cx="24" cy="-44" r="2" fill="#3A322B"/>`})}
   ${T(290,110,'만드는 법이 비밀이래',18,K.red)}${T(290,150,'?',40,K.red)}`,'#EADCC0'),
   text:`최무선은 생각했어요. "화약이 있으면 해적을 물리칠 수 있을 텐데!" 하지만 화약 만드는 법은 이웃 나라가 꽁꽁 숨긴 비밀이었어요.`},
  {svg:SV(`<circle cx="340" cy="46" r="22" fill="${K.gold}" ${sw()}/>${sea(170)}

@@ -50,8 +50,8 @@ const P=[
   text:`네 해 만에 당나라로 돌아온 혜초는 여행 이야기를 책으로 엮었어요. 이름은 『왕오천축국전』, '다섯 천축국을 다녀온 이야기'라는 뜻이에요.`},
  {chips:['1908년'], svg:SV(`<path d="M-6 220 L406 220 L406 286 L-6 286Z" fill="#C9A57A"/>
   ${cave2(200,226,1.2)}
-  <g id="tScroll">${g(200,212,1.3,diary)}</g>
-  ${hero(330,272,.7,{robe:'#5A5560',hair:'topknot',belt:false,mood:'o'})}`,'url(#hc8)',sky('hc8','#F6DFA8','#F2C27A')),
+  ${hero(300,272,.8,{robe:'#5A5560',hair:'topknot',belt:false,mood:'o',arms:'holdFront',face:'left'})}
+  <g id="tScroll">${g(300,268,.8,diary)}</g>${[0,1,2].map(k=>`<path d="M${270+k*30} ${190-k*6} l-6 -12" stroke="${K.gold}" stroke-width="3" stroke-linecap="round"/>`).join('')}`,'url(#hc8)',sky('hc8','#F6DFA8','#F2C27A')),
   taps:[{label:'오래된 책',el:'tScroll',say:'천이백 년 동안 동굴 속에서 잠자고 있던 혜초의 여행기예요.'}],tapHint:'동굴에서 찾은 것을 눌러 보세요.',
   text:`그 책은 오랫동안 잊혔어요. 그런데 천이백 년 가까이 지나, 먼 사막의 동굴에서 한 학자가 이 책을 찾아냈대요!`},
  {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}

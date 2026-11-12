@@ -29,7 +29,7 @@ const P=[
   <g id="goodSpace" opacity="0"><text x="200" y="118" text-anchor="middle" font-family="Jua,sans-serif" font-size="30" fill="#FFFDF6">아버지가 방에 들어가신다</text></g>
   <g id="badSpace" opacity="0"><text x="200" y="118" text-anchor="middle" font-family="Jua,sans-serif" font-size="30" fill="#F6D24A">아버지 가방에 들어가신다</text></g>
   <rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
-  <g id="tSg">${sg(90,272,.66,{pose:'up',mood:'joy'})}</g>${kid(320,272,.66,{mood:'o'})}`,'#EFE3C8'),
+  <g id="tSg">${sg(90,272,.66,{pose:'up',mood:'joy'})}</g>${oldKid(320,272,.66,{mood:'o'})}`,'#EFE3C8'),
   taps:[{label:'바르게 띄우기',el:'tSg',say:'아버지가 방에 들어가신다. 아버지가 방으로 들어가셨어요.',show:['goodSpace'],hide:['noSpace','badSpace']},{label:'잘못 띄우기',el:'tSg',say:'아버지 가방에 들어가신다? 아버지가 가방 속으로 쏙! 하하.',show:['badSpace'],hide:['noSpace','goodSpace']},{label:'붙여 쓰기',el:'tSg',say:'다 붙여 쓰면 어디서 끊어 읽을지 헷갈려요.',show:['noSpace'],hide:['goodSpace','badSpace']}],tapHint:'띄어쓰기를 바꿔 볼까요?',
   text:`그때는 글을 띄지 않고 다닥다닥 붙여 썼어요. 그래서 헷갈리기 일쑤였지요. 신문을 만들 때 주시경 같은 사람들이 낱말 사이를 띄어 쓰자고 했어요.`},
  {svg:SV(`${cloud(300,40,.7)}${hills('#A9CDB4','#D9CCAE',196,214)}
@@ -41,7 +41,7 @@ const P=[
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#EFE3C8"/>${board(60,30,280,150)}
   ${T(200,120,'한글',70,'#FFFDF6')}
   <rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
-  ${sg(110,272,.8,{pose:'up',mood:'joy'})}${sgKid(260,272,.66,{mood:'joy',pose:'up'})}${kid(330,272,.6,{mood:'joy'})}`,'#EFE3C8'),
+  ${sg(110,272,.8,{pose:'up',mood:'joy'})}${sgKid(260,272,.66,{mood:'joy',pose:'up'})}${oldKid(330,272,.6,{mood:'joy'})}`,'#EFE3C8'),
   text:`그리고 세종대왕이 만든 우리 글자에 새 이름을 붙였어요. '한글'이에요. '크고 하나뿐인 훌륭한 글'이라는 뜻을 담았어요.`},
  {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
   <rect x="290" y="32" width="80" height="88" rx="4" fill="#FFFFFF" ${sw()}/><rect x="290" y="32" width="80" height="22" rx="4" fill="${K.red}" ${sw()}/>

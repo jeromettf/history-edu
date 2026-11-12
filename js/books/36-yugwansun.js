@@ -13,13 +13,13 @@ const P=[
   text:`안창호 선생님이 나라를 되찾자고 외치던 무렵이에요. 천안의 한 마을에 관순이라는 씩씩한 소녀가 살았어요. 관순이는 공부하기를 좋아해서 서울에 있는 학교에 다녔어요.`},
  {svg:SV(`${hills('#9DAEA8','#A9B48F',196,220)}
   ${hut(30,176)}
-  ${hero(160,268,.86,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(240,268,.8,{body:'dress',hair:'bun',mood:'sad',tear:true})}${kid(316,270,.66,{mood:'sad'})}`,'url(#u2)',sky('u2','#A9B2BC','#CFCFC6')),
+  ${hero(160,268,.86,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(240,268,.8,{body:'dress',hair:'bun',mood:'sad',tear:true})}${oldKid(316,270,.66,{mood:'sad'})}`,'url(#u2)',sky('u2','#A9B2BC','#CFCFC6')),
   text:`그 무렵 우리나라는 이웃 나라 일본에게 나라를 빼앗겼어요. 우리 땅인데도 우리 마음대로 할 수 없었어요. 사람들은 슬프고 억울했어요.`},
  {chips:['1919년 3월 1일'], svg:SV(`${cloud(300,40,.7)}
   <rect x="-6" y="190" width="412" height="96" fill="#D9CCAE"/>
-  <g id="tFlags">${taeguk(70,120,.8)}${taeguk(330,110,.8)}${taeguk(200,90,.7)}</g>
+  <g id="tFlags">${[64,124,304,364].map(x=>`<path d="M${x} 236 V160" stroke="${K.wood}" stroke-width="3"/>${taeguk(x+20,150,.45)}`).join('')}</g>
   ${crowd(270,.6,[[50,{robe:'#EFE6D2'}],[110,{body:'dress',hair:'bun'}],[290,{robe:'#E9DFC8',hat:'gat'}],[350,{robe:'#EFE6D2'}]])}
-  <g id="tGs">${gwansun(200,272,.86,{pose:'up',mood:'joy'})}</g>
+  <g id="tGs">${gwansun(200,272,.86,{arms:'flagR',prop:H=>PROP.taeguk(H),mood:'joy'})}</g>
   ${T(200,40,'대한 독립 만세!',24,K.red,`stroke="#FFF8EC" stroke-width="5" paint-order="stroke"`)}`,'url(#u3)',sky('u3','#CFE7F2','#F6EAD0')),
   taps:[{label:'태극기',el:'tFlags',say:'태극기가 바람에 펄럭펄럭!'},{label:'만세',el:'tGs',say:'대한 독립 만세!'}],
   text:`1919년 3월 1일, 사람들이 태극기를 들고 거리로 나왔어요. 그리고 다 함께 외쳤어요. "대한 독립 만세!" 관순이도 친구들과 함께 만세를 불렀지요.`},

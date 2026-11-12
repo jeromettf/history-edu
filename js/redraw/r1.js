@@ -35,12 +35,12 @@ redraw('dangun',6,()=>SVn(`${ridge(170,'#94BFA6',40,3)}<path d="M-6 200 Q200 186
   ${[0,1,2].map(k=>`<path d="M${200-k*14} ${190+k*20} h-40" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity=".8"/>`).join('')}
   ${T(310,70,'더는 못 참겠어!',22,K.red)}`,'url(#rd2)',sky('rd2','#D3E9F1','#EEF2DC')));
 
-/* 주몽 4: 어린 주몽의 어깨 너머로 보이는 먼 과녁 */
+/* 주몽 4: 시위를 당겨 먼 과녁을 겨누는 어린 주몽 */
 redraw('jumong',4,()=>SVn(`${ridge(170,'#B7CBD3',30,2)}${hills('#A9CDB4','#BCD38F',190,214)}
-  <path d="M330 214 V150" stroke="#8A5A3C" stroke-width="6"/>${target(330,150,16)}
-  <path d="M120 150 L318 150" stroke="#5A3B2C" stroke-width="2" stroke-dasharray="6 6"/>
-  ${backView(90,380,2.1,{robe:'#E7C76A',pose:'up'})}${g(150,140,1.6,`<path d="M0 -40 Q30 0 0 40" fill="none" stroke="${K.wood}" stroke-width="6" stroke-linecap="round"/><path d="M0 -40 L-14 0 L0 40" fill="none" stroke="#F4EFE0" stroke-width="1.6"/><path d="M-14 0 H60" ${sw(3)}/>`)}
-  ${T(300,96,'백 번 쏘면 백 번!',18,K.red)}`,'url(#rd3)',sky('rd3','#CFE7F2','#F6EBD0')));
+  <path d="M70 214 V160" stroke="#8A5A3C" stroke-width="5"/>${target(70,160,15)}${[0,1,2].map(k=>`<path d="M${62+k*6} ${150+k*5} l-14 -6" stroke="#5A3B2C" stroke-width="2.4"/>`).join('')}
+  <path d="M100 168 Q170 150 220 186" fill="none" stroke="#5A3B2C" stroke-width="2" stroke-dasharray="5 6" opacity=".6"/>
+  ${jmKid(290,268,1.2,{arms:'aimL',prop:H=>PROP.bow(H),mood:'smile',face:'left',still:true})}
+  ${T(150,70,'백 번 쏘면 백 번!',20,K.red)}`,'url(#rd3)',sky('rd3','#CFE7F2','#F6EBD0')));
 
 /* 주몽 6: 강가 절벽에 멈춘 말, 뒤에서 쫓아오는 흙먼지 */
 redraw('jumong',6,()=>SVn(`<path d="M-6 120 Q100 100 200 116 L406 110 L406 290 L-6 290Z" fill="#5B9BC2"/>${[40,120,200,300,370].map((x,k)=>`<path d="M${x-24} ${150+(k%2)*40} q12 -10 24 0 q12 10 24 0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>`).join('')}
