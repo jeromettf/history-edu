@@ -147,7 +147,7 @@ function gridHTML(){
 document.addEventListener('click',e=>{const l=e.target.closest('[data-like]');if(l){likeSel=likeSel===l.dataset.like?'':l.dataset.like;$('likes').innerHTML=likesHTML();$('grid').innerHTML=gridHTML();return}
   const sy=e.target.closest('[data-say]');if(sy){e.stopPropagation();e.preventDefault();const b=BOOKS.find(x=>x.id===sy.dataset.say);if(b)speak(b.title);return}},true);
 function shelf(){
-  stopSpeak();
+  stopSpeak(); document.body.classList.add('onshelf');
   $('reader').hidden=true; $('shelf').hidden=false;
   const n=Object.keys(done).filter(id=>BOOKS.some(b=>b.id===id)).length;
   $('progress').textContent=n?`별 스티커 ${n}개를 모았어요. ${BOOKS.length}권을 다 읽으면 책장이 반짝반짝!`:`책을 끝까지 읽으면 별 스티커를 받아요.`;
@@ -189,6 +189,7 @@ ${a.go?`<div class="card go-card"><span class="age">가 보면 좋은 곳: ${a.g
 ${nextCard(nx)}</div>`}
 function showBook(id,n=0){
   book=BOOKS.find(b=>b.id===id); if(!book){shelf();return}
+  document.body.classList.remove('onshelf');
   $('shelf').hidden=true; $('reader').hidden=false;
   $('btitle').textContent=`${book.no}권 ${book.title}`;
   dots.innerHTML='';
