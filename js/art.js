@@ -8,52 +8,61 @@ const sky=(id,a,b)=>`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><sto
 const glow=(id,c,o=.8)=>`<radialGradient id="${id}"><stop offset="0" stop-color="${c}" stop-opacity="${o}"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></radialGradient>`;
 
 /* 그림책 질감: 손그림 흔들림, 수채 얼룩, 종이 결, 가장자리 그늘 */
-function SV(inner,bg,defs=''){return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img"><defs>
+function SV(inner,bg,defs=''){const fx=sceneFX(bg,defs);return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img"><defs>
 <filter id="wob" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
-<filter id="wash" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="3" seed="9"/><feColorMatrix values="0 0 0 0 0.42  0 0 0 0 0.28  0 0 0 0 0.14  0 0 0 0.32 -0.08"/></filter>
-<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 0.3  0 0 0 0 0.22  0 0 0 0 0.15  0 0 0 0.35 -0.1"/></filter>
+<filter id="wash" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="3" seed="9"/><feColorMatrix values="0 0 0 0 0.42  0 0 0 0 0.28  0 0 0 0 0.14  0 0 0 0.22 -0.06"/></filter>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 0.3  0 0 0 0 0.22  0 0 0 0 0.15  0 0 0 0.24 -0.08"/></filter>
 <radialGradient id="eggGlow"><stop offset="0" stop-color="#FFF3C4" stop-opacity=".9"/><stop offset="1" stop-color="#FFF3C4" stop-opacity="0"/></radialGradient>
 <radialGradient id="vig" cx="50%" cy="48%" r="70%"><stop offset=".62" stop-color="#3B2614" stop-opacity="0"/><stop offset="1" stop-color="#3B2614" stop-opacity=".28"/></radialGradient>
-${defs}</defs>
-<g filter="url(#wob)"><rect x="-6" y="-6" width="412" height="292" fill="${bg}"/>${inner}</g>
+${defs}${fx.defs}</defs>
+<g filter="url(#wob)"><rect x="-6" y="-6" width="412" height="292" fill="${bg}"/>${inner}${fx.fg}</g>${fx.light}
 <rect width="400" height="280" filter="url(#wash)" pointer-events="none" style="mix-blend-mode:multiply"/>
 <rect width="400" height="280" filter="url(#grain)" pointer-events="none" style="mix-blend-mode:multiply"/>
 <rect width="400" height="280" fill="url(#vig)" pointer-events="none"/>
 <rect x="2.5" y="2.5" width="395" height="275" rx="9" fill="none" stroke="#FFF8EC" stroke-width="5" opacity=".5" pointer-events="none"/></svg>`;}
 
 /* 얼굴: 큰 머리, 반짝이는 눈, 눈썹으로 감정 */
-function head(m,sk,tear){
-  const brows={smile:'M-16 -104 Q-11 -107 -6 -104 M6 -104 Q11 -107 16 -104',joy:'M-16 -105 Q-11 -109 -6 -105 M6 -105 Q11 -109 16 -105',
-    sad:'M-17 -101 Q-12 -104 -6 -107 M6 -107 Q12 -104 17 -101',o:'M-16 -109 Q-11 -113 -6 -109 M6 -109 Q11 -113 16 -109',sleep:'M-16 -104 Q-11 -106 -6 -104 M6 -104 Q11 -106 16 -104'}[m];
-  const eyes=m==='sleep'?`<path d="M-16 -91 Q-11 -87 -6 -91 M6 -91 Q11 -87 16 -91" fill="none" ${sw(2.6)}/>`:m==='joy'
-    ?`<path d="M-16 -91 Q-11 -97 -6 -91 M6 -91 Q11 -97 16 -91" fill="none" ${sw(2.6)}/>`
-    :`<ellipse cx="-11" cy="-92" rx="3.8" ry="4.8" fill="${L}"/><ellipse cx="11" cy="-92" rx="3.8" ry="4.8" fill="${L}"/><circle cx="-12.3" cy="-94" r="1.5" fill="#fff"/><circle cx="9.7" cy="-94" r="1.5" fill="#fff"/>`;
-  const mouth={smile:`<path d="M-7 -81 Q0 -75 7 -81" fill="none" ${sw()}/>`,
-    joy:`<path d="M-9 -82 Q0 -69 9 -82Z" fill="#B5473A" ${sw(2)}/>`,
-    sad:`<path d="M-7 -77 Q0 -83 7 -77" fill="none" ${sw()}/>`,
+function head(m,sk,tear,dx=0){
+  const brows={smile:'M-16 -105 Q-11 -108 -6 -105 M6 -105 Q11 -108 16 -105',joy:'M-16 -106 Q-11 -110 -6 -106 M6 -106 Q11 -110 16 -106',
+    sad:'M-17 -101 Q-12 -104 -6 -108 M6 -108 Q12 -104 17 -101',o:'M-16 -110 Q-11 -114 -6 -110 M6 -110 Q11 -114 16 -110',sleep:'M-16 -104 Q-11 -106 -6 -104 M6 -104 Q11 -106 16 -104'}[m];
+  const eye=(cx)=>`<ellipse cx="${cx}" cy="-92" rx="4.4" ry="5.6" fill="${L}"/><ellipse cx="${cx-1.2}" cy="-94.4" rx="1.9" ry="2.2" fill="#fff"/><circle cx="${cx+1.6}" cy="-89.6" r=".9" fill="#fff"/>`;
+  let eyes=m==='sleep'?`<path d="M-16 -91 Q-11 -87 -6 -91 M6 -91 Q11 -87 16 -91" fill="none" ${sw(2.6)}/>`:m==='joy'
+    ?`<path d="M-16 -91 Q-11 -98 -6 -91 M6 -91 Q11 -98 16 -91" fill="none" ${sw(2.8)}/>`
+    :eye(-11)+eye(11)+(m==='sad'?`<path d="M-16 -96 Q-11 -98 -6 -95 M6 -95 Q11 -98 16 -96" fill="none" ${sw(1.6)}/>`:'');
+  const mouth={smile:`<path d="M-7 -81 Q0 -74.5 7 -81" fill="none" ${sw(2.2)}/>`,
+    joy:`<path d="M-9 -82 Q0 -68 9 -82Z" fill="#B5473A" ${sw(2)}/><path d="M-5 -76 Q0 -72 5 -76" fill="#F0907F"/>`,
+    sad:`<path d="M-7 -77 Q0 -83 7 -77" fill="none" ${sw(2.2)}/>`,
     o:`<ellipse cx="0" cy="-79" rx="4" ry="5.2" fill="#B5473A" ${sw(1.8)}/>`,sleep:`<ellipse cx="0" cy="-79" rx="3" ry="3.4" fill="#B5473A" ${sw(1.5)}/>`}[m];
-  return `<circle cx="-30" cy="-91" r="6.5" fill="${sk}" ${sw()}/><circle cx="30" cy="-91" r="6.5" fill="${sk}" ${sw()}/>
-<ellipse cx="0" cy="-94" rx="31" ry="29" fill="${sk}" ${sw()}/>
-<ellipse cx="-19" cy="-84" rx="6.5" ry="4" fill="#F0907F" opacity=".5"/><ellipse cx="19" cy="-84" rx="6.5" ry="4" fill="#F0907F" opacity=".5"/>
-${eyes}<path d="${brows}" fill="none" ${sw(1.9)}/><path d="M-1.8 -87.5 Q0 -85.5 1.8 -87.5" fill="none" ${sw(1.6)}/>${mouth}
-${tear?`<path d="M-15 -87 q-4 7 0 10 q4 -3 0 -10Z" fill="#8CC4EA" stroke="#4E83AE" stroke-width="1.2"/>`:''}`;
+  const ex=-dx*.6;
+  return `<circle cx="${-30+ex}" cy="-91" r="6.5" fill="${sk}" ${sw()}/><path d="M${-31+ex} -94 q-3 3 0 6" fill="none" stroke="#C98F70" stroke-width="1.4"/><circle cx="${30+ex}" cy="-91" r="6.5" fill="${sk}" ${sw()}/><path d="M${31+ex} -94 q3 3 0 6" fill="none" stroke="#C98F70" stroke-width="1.4"/>
+<ellipse cx="0" cy="-94" rx="31" ry="29" fill="${sk}" ${sw()}/><path d="M18 -116 Q30 -104 28 -84 Q20 -72 6 -66 Q24 -78 22 -100Z" fill="#C98F70" opacity=".18"/>
+<g transform="translate(${dx} 0)"><ellipse cx="-19" cy="-83" rx="7" ry="4.2" fill="#F0907F" opacity=".45"/><ellipse cx="19" cy="-83" rx="7" ry="4.2" fill="#F0907F" opacity=".45"/>
+${eyes}<path d="${brows}" fill="none" ${sw(2)}/><path d="M-1 -89 Q1.8 -86.5 0 -85" fill="none" stroke="#B5785A" stroke-width="1.8" stroke-linecap="round"/>${mouth}
+${tear?`<path d="M-15 -87 q-4 7 0 10 q4 -3 0 -10Z" fill="#8CC4EA" stroke="#4E83AE" stroke-width="1.2"/>`:''}</g>`;
 }
 /* 팔: 소매 + 손. down(내림) / hold(가슴 앞에 들기) / up(만세) */
 const SL={down:{p:'M-26 -60 Q-45 -46 -46 -24 Q-38 -16 -30 -22 Q-30 -40 -18 -52Z',h:[-39,-19]},
   hold:{p:'M-26 -60 Q-45 -46 -42 -30 Q-36 -22 -28 -27 Q-26 -40 -18 -50Z',h:[-32,-27]},
   up:{p:'M-24 -60 Q-45 -70 -48 -96 Q-40 -103 -33 -95 Q-30 -76 -16 -62Z',h:[-41,-101]}};
 const mirror=s=>`${s}<g transform="scale(-1 1)">${s}</g>`;
-const sleeves=(pose,c)=>mirror(`<path d="${SL[pose].p}" fill="${c}" ${sw()}/>`);
-const hands=(pose,sk)=>mirror(`<circle cx="${SL[pose].h[0]}" cy="${SL[pose].h[1]}" r="6.8" fill="${sk}" ${sw()}/>`);
+const sleeves=(pose,c,pr=pose)=>`<path d="${SL[pose].p}" fill="${c}" ${sw()}/><g transform="scale(-1 1)"><path d="${SL[pr].p}" fill="${c}" ${sw()}/></g>`;
+const hand1=(h,sk)=>`<ellipse cx="${h[0]}" cy="${h[1]}" rx="6.6" ry="7.2" fill="${sk}" ${sw()}/><ellipse cx="${h[0]+4.4}" cy="${h[1]-3}" rx="2.6" ry="3.4" fill="${sk}" ${sw(1.4)}/>`;
+const hands=(pose,sk,pr=pose)=>hand1(SL[pose].h,sk)+`<g transform="scale(-1 1)">${hand1(SL[pr].h,sk)}</g>`;
 const ROBE='M-28 -62 Q-36 -30 -44 -4 Q0 6 44 -4 Q36 -30 28 -62 Q0 -72 -28 -62Z';
 
 function person(x,y,s,o){
-  const sk=o.skin||SK,pose=o.pose||'down';
-  let out=`<ellipse cx="0" cy="1" rx="42" ry="7" fill="#2B1E16" opacity=".18"/>`;
-  out+=`<ellipse cx="-13" cy="-3" rx="10" ry="5.5" fill="${o.shoe||'#3B2F2A'}" ${sw()}/><ellipse cx="13" cy="-3" rx="10" ry="5.5" fill="${o.shoe||'#3B2F2A'}" ${sw()}/>`;
-  out+=o.body||`<path d="${ROBE}" fill="${o.robe}" ${sw()}/>`;
-  out+=`<path d="M8 -66 Q28 -64 29 -60 Q37 -30 44 -4 Q26 3 12 3Z" fill="#2B1E16" opacity=".08"/>`;
-  out+=(o.deco||'')+sleeves(pose,o.sleeve||o.robe)+(o.item||'')+hands(pose,sk)+(o.back||'')+head(o.mood||'smile',sk,o.tear)+(o.front||'');
+  const sk=o.skin||SK,pose=o.pose||'down',mood=o.mood||'smile';
+  const seed=Math.abs(Math.round(x*7+y*3));
+  const dx=o.face==='front'?0:o.face==='left'?-4:o.face==='right'?4:Math.max(-4,Math.min(4,(200-x)/30));
+  let pr=o.armR||pose;
+  if(!o.armR&&pose==='down'&&!o.item){ if(mood==='joy') pr=seed%2?'up':'hold'; else if(mood==='smile'&&seed%3===0) pr='hold'; }
+  const tilt=o.still?0:((seed%5)-2)*2.2, lean=o.still?0:((seed%3)-1)*1.4;
+  let out=`<ellipse cx="0" cy="1" rx="44" ry="7" fill="#2B1E16" opacity=".2"/>`;
+  out+=`<path d="M-24 -1 Q-25 -10 -13 -9 L-3 -8 Q0 -5 -2 -1Z M24 -1 Q25 -10 13 -9 L3 -8 Q0 -5 2 -1Z" fill="${o.shoe||'#3B2F2A'}" ${sw()}/><path d="M-24 -1 q-4 -4 -2 -7 M24 -1 q4 -4 2 -7" fill="none" ${sw(1.6)}/>`;
+  let body=o.body||`<path d="${ROBE}" fill="${o.robe}" ${sw()}/>`;
+  body+=`<path d="M6 -66 Q28 -64 29 -60 Q37 -30 44 -4 Q26 3 10 3 Q20 -30 6 -66Z" fill="#2B1E16" opacity=".13"/><path d="M-24 -58 Q-32 -30 -38 -8" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".22" stroke-linecap="round"/><path d="M-8 -48 Q-12 -28 -16 -6 M10 -44 Q13 -26 18 -6" fill="none" stroke="#2B1E16" stroke-width="1.4" opacity=".2"/><path d="M-42 -8 Q0 2 42 -8" fill="none" stroke="#2B1E16" stroke-width="1.6" opacity=".22"/>`;
+  out+=`<g transform="rotate(${lean} 0 0)">`+body+(o.deco||'')+sleeves(pose,o.sleeve||o.robe,pr)+(o.item||'')+hands(pose,sk,pr);
+  out+=`<g transform="rotate(${tilt} 0 -70)">`+(o.back||'')+head(mood,sk,o.tear,dx)+(o.front||'')+`<path d="M-20 -118 Q-8 -127 6 -125" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".3" stroke-linecap="round"/></g></g>`;
   return g(x,y,s,out);
 }
 const king=(x,y,s,o={})=>person(x,y,s,{robe:'#C9473B',...o,
@@ -255,7 +264,7 @@ const queen=(x,y,s,o={})=>hero(x,y,s,{body:'dress',top:'#F6D24A',skirt:'#C9473B'
 /* ---------- 배경 체계: 시대·계절에 따라 달라지는 풍경 ---------- */
 /* 책마다 맨 앞에서 setScene(시대, 계절)을 부르면, 그 책의 들판·궁궐·방·마당·바다·표지가 거기에 맞춰 그려진다. */
 const SCN={era:'joseon',season:'spring',n:0,book:0};
-function setScene(era,season){SCN.era=era;SCN.season=season;SCN.book++;SCN.n=0}
+function setScene(era,season,light){SCN.era=era;SCN.season=season;SCN.book++;SCN.n=0;SCN.light=light||['morning','noon','golden','soft'][SCN.book%4];SCN.kind=''}
 const srnd=k=>{const v=Math.sin((SCN.book*97+SCN.n*13+k)*12.9898)*43758.5453;return v-Math.floor(v)};
 const pickOf=(arr,k)=>arr[Math.floor(srnd(k)*arr.length)];
 const SEASON={
@@ -284,7 +293,7 @@ function landmark(x,y,s=1){const e=SCN.era;let o='';
   return g(x,y,s,o)}
 
 /* 들판: 먼 산, 시대 풍경, 계절 나무, 앞쪽 풀꽃 */
-function hills(c1='#A9CDB4',c2='#BCD38F',y1=190,y2=212){SCN.n++;const S=SEASON[SCN.season];
+function hills(c1='#A9CDB4',c2='#BCD38F',y1=190,y2=212){SCN.n++;SCN.kind='out';const S=SEASON[SCN.season];
   if(isGreen(c1)) c1=S.hill; if(isGreen(c2)) c2=S.field;
   const v=Math.floor(srnd(1)*4), flip=v%2?-1:1;
   const far=SCN.season==='winter'?'#C9D6DE':'#B7CBD3';
@@ -306,7 +315,7 @@ function hills(c1='#A9CDB4',c2='#BCD38F',y1=190,y2=212){SCN.n++;const S=SEASON[S
   return o}
 
 /* 바다: 수평선의 섬, 반짝임, 물결 */
-function sea(y){SCN.n++;const v=Math.floor(srnd(2)*3);
+function sea(y){SCN.n++;SCN.kind='sea';const v=Math.floor(srnd(2)*3);
   let o=`<rect x="-6" y="${y}" width="412" height="${290-y}" fill="#6FA8C8"/><rect x="-6" y="${y+40}" width="412" height="${250-y}" fill="#5B97BA" opacity=".6"/>`;
   if(v!==2) o+=`<path d="M${v?300:20} ${y+1} Q${v?330:50} ${y-16} ${v?360:80} ${y+1}Z M${v?345:65} ${y+1} Q${v?362:82} ${y-9} ${v?380:100} ${y+1}Z" fill="#7FA88E" ${sw(1.2)}/>`;
   o+=`<path d="M-6 ${y} H406" stroke="#FFFFFF" stroke-width="2" opacity=".6"/>`;
@@ -315,7 +324,7 @@ function sea(y){SCN.n++;const v=Math.floor(srnd(2)*3);
   return o}
 
 /* 궁궐: 단청 들보, 기둥과 주춧돌, 뒤 배경(일월오봉도·창살문·모란 병풍), 마루 */
-function palace(){SCN.n++;const v=Math.floor(srnd(3)*3);
+function palace(){SCN.n++;SCN.kind='palace';const v=Math.floor(srnd(3)*3);
   const wall=SCN.era==='samguk'?'#E6CFAA':SCN.era==='goryeo'?'#EAD8B4':'#E8D3B0';
   let o=`<rect x="-6" y="-6" width="412" height="232" fill="${wall}"/>`;
   if(v===0) o+=`<rect x="108" y="40" width="184" height="150" fill="#27467A" ${sw()}/><circle cx="134" cy="66" r="11" fill="#D9442F"/><circle cx="266" cy="66" r="10" fill="#F6F1E1"/><path d="M112 186 L140 120 L160 152 L186 92 L200 70 L214 92 L240 152 L260 120 L288 186Z" fill="#3F8471" ${sw(1.4)}/><path d="M112 186 Q150 170 200 182 Q250 170 288 186 L288 190 L112 190Z" fill="#2C6E92"/><rect x="100" y="186" width="200" height="12" fill="#8A5A3C" ${sw(1.2)}/>`;
@@ -327,7 +336,7 @@ function palace(){SCN.n++;const v=Math.floor(srnd(3)*3);
   return o}
 
 /* 방: 창호문, 족자, 장판, 문갑. 100여 년 전부터는 유리창과 책상 */
-function room(){SCN.n++;const v4=Math.floor(srnd(4)*4), v=v4%2, modern=SCN.era==='modern'||SCN.era==='hyeondae';
+function room(){SCN.n++;SCN.kind='room';const v4=Math.floor(srnd(4)*4), v=v4%2, modern=SCN.era==='modern'||SCN.era==='hyeondae';
   let o='';
   if(modern){
     o+=`<rect x="-6" y="-6" width="412" height="226" fill="#ECE5D4"/>${[0,1,2,3,4,5,6,7,8,9,10].map(k=>`<path d="M${k*40} -6 V216" stroke="#E2D8C2" stroke-width="10"/>`).join('')}`;
@@ -356,7 +365,7 @@ function room(){SCN.n++;const v4=Math.floor(srnd(4)*4), v=v4%2, modern=SCN.era==
   return o}
 
 /* 마당: 돌담, 장독대, 감나무 */
-function yard(y){SCN.n++;const v=Math.floor(srnd(5)*2);
+function yard(y){SCN.n++;SCN.kind='yard';const v=Math.floor(srnd(5)*2);
   let o=`<path d="M-6 ${y-34} H406 V${y} H-6Z" fill="#B9B3A6" ${sw(1.4)}/>`+[0,1].map(r=>[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(c=>`<ellipse cx="${c*30+(r%2)*15-6}" cy="${y-26+r*15}" rx="13" ry="6" fill="${(c+r)%3?'#C9C2B4':'#A9A397'}" ${sw(1)}/>`).join('')).join('')+`<path d="M-6 ${y-36} Q100 ${y-44} 200 ${y-38} Q300 ${y-44} 406 ${y-36}" stroke="#6E6A60" stroke-width="5" fill="none"/>`;
   if(SCN.season==='autumn'||SCN.season==='winter') o+=g(v?360:40,y-30,.9,`<path d="M0 0 Q-4 -40 4 -70 M2 -50 Q-20 -60 -30 -70 M2 -60 Q20 -70 30 -84" fill="none" stroke="#6B4A33" stroke-width="5" stroke-linecap="round"/>${[[-26,-70],[28,-82],[-12,-66],[14,-74],[0,-86]].map(([a,b])=>`<circle cx="${a}" cy="${b}" r="5" fill="#F07A2A" ${sw(1)}/>`).join('')}`);
   else o+=tree(v?360:40,y-30,.8);
@@ -374,3 +383,53 @@ ${landmark(SCN.era==='modern'?108:290,214,1.3)}
 <rect x="96" y="22" width="208" height="58" rx="4" fill="${K.paper}" ${sw()}/><rect x="96" y="22" width="208" height="8" fill="${ERA_BANNER[SCN.era]}" opacity=".85"/><rect x="96" y="72" width="208" height="8" fill="${ERA_BANNER[SCN.era]}" opacity=".85"/><rect x="84" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/><rect x="300" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/>${T(200,62,banner,banner.length>6?26:32,K.red)}
 ${extra}${star(52,118,9)}${star(350,120,8,'#F28C7C')}${who}`;
   return SV(body,`url(#cs${id})`,sky('cs'+id,sk[0],sk[1])+glow('cg'+id,'#FFF6D8',.9))};
+
+/* ---------- 빛과 앞쪽 소품: 책마다 다른 빛, 장면마다 깊이 ---------- */
+const LIGHT={morning:{c1:'#FFD9C2',c2:'#C9DFF2',sun:[40,30],op:.32},noon:{c1:'#FFF6DA',c2:'#F4F8FA',sun:[200,0],op:.18},
+  golden:{c1:'#FFC27A',c2:'#F2A65A',sun:[370,40],op:.36},soft:{c1:'#E6ECEF',c2:'#D6E0E6',sun:[200,20],op:.22}};
+function lum(hex){const m=/#([0-9A-F]{6})/i.exec(hex||'');if(!m)return 1;const n=parseInt(m[1],16);return((n>>16&255)*.3+(n>>8&255)*.59+(n&255)*.11)/255}
+function sceneFX(bg,defs){
+  const first=bg&&bg.startsWith('url')?(/stop-color="(#[0-9A-F]{6})"/i.exec(defs||'')||[])[1]:bg;
+  const night=lum(first)<.32, kind=SCN.kind; SCN.kind=''; SCN.fx=(SCN.fx||0)+1;
+  const L0=night?{c1:'#3B4A7A',c2:'#1E2440',sun:[320,40],op:.3}:LIGHT[SCN.light||'noon'];
+  const defs2=`<linearGradient id="lgt" x1="${L0.sun[0]/400}" y1="${L0.sun[1]/280}" x2="${1-L0.sun[0]/400}" y2="1"><stop offset="0" stop-color="${L0.c1}"/><stop offset="1" stop-color="${L0.c2}"/></linearGradient>
+<radialGradient id="sunR" cx="${L0.sun[0]/400}" cy="${L0.sun[1]/280}" r=".45"><stop offset="0" stop-color="${night?'#9FB6FF':'#FFF4D6'}" stop-opacity="${night?.22:.32}"/><stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/></radialGradient>
+<filter id="fgb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.4"/></filter>`;
+  const light=`<rect width="400" height="280" fill="url(#lgt)" opacity="${L0.op}" style="mix-blend-mode:${night?'multiply':'soft-light'}" pointer-events="none"/><rect width="400" height="280" fill="url(#sunR)" style="mix-blend-mode:screen" pointer-events="none"/>`;
+  const S=SEASON[SCN.season]||SEASON.summer, side=SCN.fx%2;
+  let fg='';
+  if(kind==='out'||kind==='yard'){
+    const leaf=S.leaf?S.leaf:['#E8EEF2','#FFFFFF','#DDE5EA'];
+    const br=`<path d="M-10 -6 Q30 18 78 22 M20 10 Q34 30 30 48" fill="none" stroke="#5A3B2C" stroke-width="5" stroke-linecap="round"/>${[[10,4,13],[34,18,15],[58,22,12],[78,20,10],[28,40,11],[44,6,10],[66,34,9]].map(([lx,ly,r],k)=>`<ellipse cx="${lx}" cy="${ly}" rx="${r}" ry="${r*.7}" fill="${leaf[k%leaf.length]}" ${sw(1.4)} transform="rotate(${k*25} ${lx} ${ly})"/>`).join('')}`;
+    fg+=`<g filter="url(#fgb)" opacity=".95" transform="${side?'translate(400 0) scale(-1 1)':''}">${br}</g>`;
+    const blade=SCN.season==='winter'?'#C9D3D8':SCN.season==='autumn'?'#B39A55':'#4E7A4A';
+    fg+=`<g filter="url(#fgb)" transform="${side?'':'translate(400 0) scale(-1 1)'}">${[0,1,2,3,4,5,6].map(k=>`<path d="M${-4+k*8} 290 Q${k*8+(k%2?10:-6)} ${250-k%3*12} ${6+k*9} ${226+k%4*8}" fill="none" stroke="${blade}" stroke-width="${5-k%3}" stroke-linecap="round"/>`).join('')}</g>`;
+  } else if(kind==='room'){
+    fg+=`<path d="M${side?250:40} 30 L${side?370:150} 30 L${side?300:250} 286 L${side?140:110} 286Z" fill="#FFF6DA" opacity=".16" style="mix-blend-mode:screen"/><rect x="-6" y="-6" width="412" height="14" fill="#6B4A33"/>${[20,80,140,200,260,320,380].map(cx=>`<circle cx="${cx}" cy="8" r="7" fill="#8A5A3C" ${sw(1.2)}/><circle cx="${cx}" cy="8" r="2.6" fill="#C9A15A"/>`).join('')}`;
+  } else if(kind==='palace'){
+    const lx=side?362:38;
+    fg+=`<path d="M${lx} 26 V44" ${sw(1.6)}/><g filter="url(#fgb)"><rect x="${lx-14}" y="44" width="28" height="8" rx="2" fill="#3F6FA8" ${sw(1.2)}/><path d="M${lx-14} 52 Q${lx-18} 70 ${lx-14} 86 L${lx+14} 86 Q${lx+18} 70 ${lx+14} 52Z" fill="#C9473B" ${sw(1.4)}/><path d="M${lx-14} 86 h28 l-4 8 h-20Z" fill="#3F6FA8" ${sw(1.2)}/><path d="M${lx} 94 v10" stroke="#C9473B" stroke-width="2"/></g><circle cx="${lx}" cy="70" r="26" fill="#FFD27A" opacity=".18"/>`;
+  } else if(kind==='sea'){
+    fg+=`<g filter="url(#fgb)" transform="${side?'translate(400 0) scale(-1 1)':''}"><path d="M-10 290 L-10 236 Q14 222 34 238 Q52 230 62 250 L70 290Z" fill="#7A7468" ${sw()}/><path d="M-10 250 Q20 240 40 256 Q54 250 66 266" fill="none" stroke="#FFFFFF" stroke-width="3"/></g>`;
+  }
+  return {defs:defs2,fg,light};
+}
+
+/* ---------- 연출 도구: 뒷모습, 마을, 방(榜), 병풍, 옥좌, 이불, 촛불 ---------- */
+function backView(x,y,s,o={}){const c=o.robe||'#EFE6D2',hat=o.hat;
+  const h=hat==='gat'?`<ellipse cx="0" cy="-108" rx="48" ry="8" fill="#26242C" opacity=".92" ${sw()}/><path d="M-16 -110 L-14 -136 Q0 -140 14 -136 L16 -110Z" fill="#26242C" ${sw()}/>`
+   :hat==='king'?`<path d="M-32 -98 Q-33 -132 0 -134 Q33 -132 32 -98 Q0 -106 -32 -98Z" fill="#2C2A33" ${sw()}/><ellipse cx="-30" cy="-128" rx="13" ry="7" fill="#2C2A33" ${sw()} transform="rotate(-22 -30 -128)"/><ellipse cx="30" cy="-128" rx="13" ry="7" fill="#2C2A33" ${sw()} transform="rotate(22 30 -128)"/>`
+   :hat==='bun'?`<circle cx="0" cy="-80" r="12" fill="${HAIR}" ${sw()}/>`:`<ellipse cx="0" cy="-129" rx="7" ry="8" fill="${HAIR}" ${sw()}/>`;
+  return g(x,y,s,`<ellipse cx="0" cy="1" rx="44" ry="7" fill="#2B1E16" opacity=".2"/><path d="${ROBE}" fill="${c}" ${sw()}/><path d="M-6 -64 Q0 -30 -4 -2" fill="none" stroke="#2B1E16" stroke-width="1.4" opacity=".25"/>
+${mirror(`<path d="${SL[o.pose||'down'].p}" fill="${c}" ${sw()}/>`)}${o.pose==='up'?mirror(`<ellipse cx="-41" cy="-101" rx="6.6" ry="7" fill="${o.skin||SK}" ${sw()}/>`):''}
+<circle cx="-30" cy="-91" r="6.5" fill="${o.skin||SK}" ${sw()}/><circle cx="30" cy="-91" r="6.5" fill="${o.skin||SK}" ${sw()}/>
+<ellipse cx="0" cy="-94" rx="31" ry="29" fill="${o.hairBack||HAIR}" ${sw()}/><path d="M-10 -120 Q0 -100 -4 -72" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".18"/>${h}`)}
+const townscape=(y,n=7)=>[...Array(n)].map((_,k)=>{const x=k*62-10+(k%2)*18,yy=y-(k%3)*10,tile=k%3!==1;
+  return tile?`<rect x="${x}" y="${yy-22}" width="50" height="22" fill="#E8DCC4" ${sw(1.2)}/><path d="M${x-8} ${yy-18} Q${x+25} ${yy-40} ${x+58} ${yy-18} L${x+52} ${yy-26} Q${x+25} ${yy-44} ${x-2} ${yy-26}Z" fill="#4A4A55" ${sw(1.2)}/>`
+  :`<rect x="${x}" y="${yy-20}" width="46" height="20" fill="#F3E6CB" ${sw(1.2)}/><path d="M${x-6} ${yy-16} Q${x+23} ${yy-40} ${x+52} ${yy-16}Z" fill="#D2A85A" ${sw(1.2)}/>`}).join('');
+const noticeBoard=(x,y,s,lines=['國','法','令','告','示','民','書'])=>g(x,y,s,`<path d="M-60 0 V-120 M60 0 V-120" stroke="#6B4A33" stroke-width="8" stroke-linecap="round"/><rect x="-70" y="-126" width="140" height="10" fill="#4A4A55" ${sw()}/><rect x="-54" y="-112" width="108" height="76" fill="#FFFDF6" ${sw()}/>${lines.map((c,k)=>`<text x="${40-k*14}" y="${-92+(k%2)*24}" text-anchor="middle" font-family="serif" font-size="16" fill="#2E2522">${c}</text>`).join('')}`);
+const screenFold=(x,y,s,c1='#FBF3DE',c2='#EFE2C2')=>g(x,y,s,[0,1,2,3].map(k=>`<path d="M${k*44} ${-(k%2)*10} L${k*44+44} ${-((k+1)%2)*10} L${k*44+44} ${-((k+1)%2)*10-150} L${k*44} ${-(k%2)*10-150}Z" fill="${k%2?c2:c1}" ${sw()}/><path d="M${k*44+8} ${-(k%2)*10-20} Q${k*44+20} ${-60} ${k*44+30} ${-120}" fill="none" stroke="#7FA88E" stroke-width="2"/><circle cx="${k*44+30}" cy="-118" r="6" fill="${['#E36B8A','#F2B84B','#E36B8A','#7FB3C8'][k]}"/>`).join(''));
+const throne=(x,y,s)=>g(x,y,s,`<rect x="-120" y="-10" width="240" height="14" fill="#8A5A3C" ${sw()}/><rect x="-100" y="-24" width="200" height="14" fill="#A06A42" ${sw()}/><rect x="-80" y="-38" width="160" height="14" fill="#B5784A" ${sw()}/><path d="M-120 4 h240 M-100 -10 h200" stroke="#5A3B2C" stroke-width="1.4"/>`);
+const bedQuilt=(x,y,s,c='#E98FA0')=>g(x,y,s,`<rect x="-90" y="-16" width="180" height="22" rx="8" fill="#F4EFE0" ${sw()}/><path d="M-70 -24 Q0 -40 92 -22 L92 2 L-70 2Z" fill="${c}" ${sw()}/>${[0,1,2,3].map(k=>`<circle cx="${-40+k*36}" cy="-14" r="5" fill="#FFFDF6" opacity=".7"/>`).join('')}<rect x="-100" y="-30" width="40" height="18" rx="8" fill="#FFFDF6" ${sw()}/>`);
+const candle=(x,y,s=1)=>g(x,y,s,`<circle cx="0" cy="-34" r="60" fill="url(#candleG)"/><rect x="-7" y="-22" width="14" height="30" rx="3" fill="#FFF8E8" ${sw()}/><path d="M0 -44 Q10 -32 0 -22 Q-10 -32 0 -44Z" fill="#FFC24A" ${sw(1.4)}/><path d="M0 -36 Q4 -30 0 -25 Q-4 -30 0 -36Z" fill="#FFF2B0"/><ellipse cx="0" cy="10" rx="16" ry="5" fill="#A8744A" ${sw()}/>`);
+const candleDef=glow('candleG','#FFD27A',.75);
