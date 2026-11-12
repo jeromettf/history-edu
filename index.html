@@ -128,7 +128,9 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 
 /* 세로 화면 기본값 보강: 단추 글자가 줄바꿈되지 않게, 위 막대 정리 */
 .side,.sidebody{display:flex;flex-direction:column;gap:14px;min-width:0}
-.top .auto{flex-basis:100%;order:3}
+.top .opts{flex-basis:100%;order:3;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.autobtn{font-family:var(--font-d);font-size:16px;border:2px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:999px;padding:6px 14px;cursor:pointer;white-space:nowrap}
+.autobtn.on{background:var(--accent);color:#fff}
 .btn{white-space:nowrap;font-size:clamp(16px,4.6vw,20px)}
 .top h1{word-break:keep-all;line-height:1.3}
 .chip{letter-spacing:0}
@@ -141,7 +143,8 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
     column-gap:20px;row-gap:10px;height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 24px);padding-block:0}
   .wrap:has(#reader:not([hidden])){padding-block:12px}
   .book .top{grid-column:1/-1;flex-wrap:nowrap}
-  .top .auto{flex-basis:auto;order:0;white-space:nowrap}
+  .top .opts{flex-basis:auto;order:0;flex-wrap:nowrap}
+  .top .auto{white-space:nowrap}
   .book .stage{grid-column:1;grid-row:2;align-self:start;height:auto;
     width:min(calc(100vw - 392px),calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 90px)*400/280))}
   .side{grid-column:2;grid-row:2;min-height:0;gap:10px}
@@ -165,6 +168,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
   .top h1{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .backbtn{font-size:14px;padding:4px 10px}
   .count,.auto{font-size:14px}
+  .autobtn{font-size:14px;padding:4px 10px}
   .auto input{width:18px;height:18px}
   .book .stage{border-width:2px;border-radius:14px;width:min(58vw,calc((100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 70px)*400/280))}
   .book:not([hidden]){row-gap:6px;height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 16px)}
@@ -195,7 +199,10 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
       <button class="backbtn" id="back" type="button">← 책장</button>
       <h1 id="btitle"></h1>
       <span class="count" id="count"></span>
-      <label class="auto"><input type="checkbox" id="autoRead"> 넘기면 읽어주기</label>
+      <div class="opts">
+        <button class="autobtn" id="autoPlay" type="button" aria-pressed="false">▶ 저절로 읽기</button>
+        <label class="auto"><input type="checkbox" id="autoRead"> 넘기면 읽어주기</label>
+      </div>
     </div>
     <figure class="stage" id="stage" role="img"></figure>
     <div class="side" id="side">

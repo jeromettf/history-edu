@@ -34,19 +34,43 @@ function markDone(id){if(!done[id]){done[id]=1;store.set('wiin-done',JSON.string
 const canSpeak='speechSynthesis' in window;
 if(!canSpeak) readB.disabled=true;
 const plain=t=>t.replace('{no}',book?book.no:'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-function speak(t){
-  if(!canSpeak) return;
-  try{
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(plain(t));
-    u.lang='ko-KR'; u.rate=.85; u.pitch=1.05;
-    const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.startsWith('ko')); if(v) u.voice=v;
+/* 읽어주기: 문장 단위로 나눠 차례로 읽는다(긴 글을 한 번에 읽으면 중간에 끊기는 브라우저가 있다) */
+let spTok=0;
+function speak(t,onDone){
+  const tok=++spTok; const fin=()=>{if(tok!==spTok)return;spTok++;readB.classList.remove('speaking');onDone&&onDone()};
+  const parts=plain(t).split(/(?<=[.!?…])\s+/).filter(Boolean);
+  if(!canSpeak||!parts.length){if(onDone)setTimeout(()=>tok===spTok&&fin(),Math.max(2500,plain(t).length*170));return}
+  try{speechSynthesis.cancel()}catch(e){}
+  const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.startsWith('ko'));
+  let k=0,guard=null;
+  const next=()=>{clearTimeout(guard); if(tok!==spTok)return; if(k>=parts.length){fin();return}
+    const txt=parts[k++]; const u=new SpeechSynthesisUtterance(txt);
+    u.lang='ko-KR'; u.rate=.85; u.pitch=1.05; if(v) u.voice=v;
     u.onstart=()=>readB.classList.add('speaking');
-    u.onend=u.onerror=()=>readB.classList.remove('speaking');
-    speechSynthesis.speak(u);
-  }catch(e){}
+    u.onend=u.onerror=()=>{if(tok===spTok)setTimeout(next,250)};
+    /* onend가 오지 않는 경우를 대비한 안전 시간 */
+    guard=setTimeout(()=>{if(tok===spTok){try{speechSynthesis.cancel()}catch(e){}next()}},txt.length*260+4000);
+    try{speechSynthesis.speak(u)}catch(e){next()}};
+  next();
 }
-function stopSpeak(){ if(canSpeak){try{speechSynthesis.cancel()}catch(e){}} readB.classList.remove('speaking'); }
+function stopSpeak(){ spTok++; if(canSpeak){try{speechSynthesis.cancel()}catch(e){}} readB.classList.remove('speaking'); }
+
+/* 저절로 넘기며 읽기: 글을 읽고, 누르기 장면이면 하나씩 눌러 보여 주고, 잠깐 쉬었다가 다음 쪽으로 */
+const autoB=$('autoPlay'); let auto=false,autoT=null,wake=null;
+function setAuto(on){auto=on; clearTimeout(autoT);
+  autoB.classList.toggle('on',on); autoB.setAttribute('aria-pressed',on); autoB.textContent=on?'⏸ 멈추기':'▶ 저절로 읽기';
+  if(on){try{navigator.wakeLock&&navigator.wakeLock.request('screen').then(w=>wake=w).catch(()=>{})}catch(e){}}
+  else{stopSpeak(); try{wake&&wake.release()}catch(e){} wake=null}}
+function runAuto(){clearTimeout(autoT); if(!auto||!book)return; const p=book.pages[i], here=i;
+  if(p.kind==='talk'||p.kind==='try'){setAuto(false);return}
+  const ok=()=>auto&&book&&i===here;
+  const turn=()=>{if(!ok())return; if(p.kind==='end'){setAuto(false);return}
+    autoT=setTimeout(()=>{if(ok())render(i+1,false)},1600)};
+  const taps=p.taps?p.taps.map((_,k)=>k):p.kind==='letters'?LETTERS.map((_,k)=>k):p.kind==='sundial'?SUN.map((_,k)=>k):p.kind==='clock'?DRUM.map((_,k)=>k):[];
+  const tapNext=()=>{if(!ok())return; if(!taps.length){turn();return} const k=taps.shift(); autoT=setTimeout(()=>{if(ok())pick(p,k,tapNext)},700)};
+  autoT=setTimeout(()=>{if(ok())speak(p.text||'',tapNext)},500);
+}
+autoB.addEventListener('click',()=>{setAuto(!auto); if(auto){const p=book.pages[i]; if(p.kind==='talk'||p.kind==='try'||p.kind==='end')render(0,false); else runAuto()}});
 const uniq=(svg,suf)=>svg.replace(/id="([^"]+)"/g,`id="$1${suf}"`).replace(/url\(#([^)]+)\)/g,`url(#$1${suf})`);
 /* 책장 표지는 질감 필터를 빼서 가볍게 그린다 */
 const thumb=svg=>svg.replace('<g filter="url(#wob)">','<g>').replace(/<rect width="400" height="280" [^>]*filter="url\(#(wash|grain)\)"[^>]*\/>/g,'');
@@ -118,20 +142,21 @@ function render(n,fromUser){
   body.innerHTML=h;
   $('reader').classList.toggle('nostage',stage.hidden); $('side').querySelector('.sidebody').scrollTop=0;
   const dB=$('didB'); if(dB) dB.addEventListener('click',()=>{markTried(book.id);const on=!!tried[book.id];dB.classList.toggle('on',on);dB.setAttribute('aria-pressed',on);dB.textContent=on?'✓ 해 봤어요':'해 봤어요'});
-  body.querySelectorAll('[data-t]').forEach(b=>b.addEventListener('click',()=>pick(p,+b.dataset.t)));
+  body.querySelectorAll('[data-t]').forEach(b=>b.addEventListener('click',()=>{setAuto(false);pick(p,+b.dataset.t)}));
   if(p.taps){const groups={};p.taps.forEach((t,k)=>{if(t.el)(groups[t.el]=groups[t.el]||[]).push(k)});
     Object.entries(groups).forEach(([id,ks])=>{const el=stage.querySelector('#'+id); if(!el) return; let n=0; el.classList.add('tappable');
-      el.addEventListener('click',()=>{pick(p,ks[n%ks.length]);n++})});}
+      el.addEventListener('click',()=>{setAuto(false);pick(p,ks[n%ks.length]);n++})});}
   prevB.disabled=i===0;
   nextB.textContent=i===P.length-1?'책장으로 ↺':(i===0?'펼치기 →':'넘기기 →');
   readB.disabled=!canSpeak||p.kind==='talk'||p.kind==='try';
   count.textContent=`${i+1} / ${P.length}`;
   [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
-  if(fromUser&&autoR.checked&&p.text) speak(p.text);
+  if(auto) runAuto(); else if(fromUser&&autoR.checked&&p.text) speak(p.text);
+  autoB.hidden=p.kind==='talk'||p.kind==='try';
 }
 function press(k){body.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.t===k?'true':'false'))}
 function wiggle(el){if(!el||el.tagName==='rect')return;el.classList.remove('hit');void el.getBoundingClientRect();el.classList.add('hit')}
-function pick(p,k){
+function pick(p,k,onDone){
   press(k); const tip=$('tip'), kind=p.kind;
   if(p.taps){
     stage.querySelectorAll('.tappable').forEach(e=>e.classList.add('tapped'));
@@ -139,31 +164,31 @@ function pick(p,k){
     wiggle(t.el&&stage.querySelector('#'+t.el));
     (t.show||[]).forEach(id=>{const e=stage.querySelector('#'+id); if(e) e.setAttribute('opacity','1')});
     (t.hide||[]).forEach(id=>{const e=stage.querySelector('#'+id); if(e){e.setAttribute('opacity','0');e.style.pointerEvents='none'}});
-    tip.innerHTML=`<b>${t.label}</b> ${t.say}`; speak(`${t.label}. ${t.say}`);
+    tip.innerHTML=`<b>${t.label}</b> ${t.say}`; speak(`${t.label}. ${t.say}`,onDone);
   }else if(kind==='letters'){
     LETTERS.forEach((t,j)=>{const el=$('L'+j); if(el) el.setAttribute('fill',j===k?K.red:K.ink)});
-    const t=LETTERS[k]; tip.innerHTML=`<b>${t[0]} ${t[1]}</b>: ${t[2]}`; speak(`${t[1]}. ${t[2]}`);
+    const t=LETTERS[k]; tip.innerHTML=`<b>${t[0]} ${t[1]}</b>: ${t[2]}`; speak(`${t[1]}. ${t[2]}`,onDone);
   }else if(kind==='sundial'){
     const t=SUN[k]; const sh=$('shadow'); if(sh) sh.setAttribute('d',t[3]);
     [0,1,2].forEach(j=>{const m=$('mk'+j); if(m) m.setAttribute('opacity',j===k?'1':'.35')});
-    tip.innerHTML=`<b>${t[0]}</b>: 그림자가 ${t[1]}${t[2]}를 가리켜요.`; speak(t[4]);
+    tip.innerHTML=`<b>${t[0]}</b>: 그림자가 ${t[1]}${t[2]}를 가리켜요.`; speak(t[4],onDone);
   }else if(kind==='clock'){
     const t=DRUM[k]; wiggle($('inst'+k));
     const bm=$('boom'); if(bm) bm.textContent=t[1];
-    tip.innerHTML=`<b>${t[0]} ${t[1]}</b> ${t[2]}`; speak(`${t[1]} ${t[2]}`);
+    tip.innerHTML=`<b>${t[0]} ${t[1]}</b> ${t[2]}`; speak(`${t[1]} ${t[2]}`,onDone);
   }
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(b){location.hash=b.dataset.go;return}
   const er=e.target.closest('[data-era]'); if(er){const s=document.getElementById('era-'+er.dataset.era); if(s) s.scrollIntoView({behavior:'smooth',block:'start'})}});
-$('back').addEventListener('click',()=>{location.hash='shelf'});
+$('back').addEventListener('click',()=>{setAuto(false);location.hash='shelf'});
 prevB.addEventListener('click',()=>render(i-1,true));
 nextB.addEventListener('click',()=>{ if(i===book.pages.length-1) location.hash='shelf'; else render(i+1,true)});
-readB.addEventListener('click',()=>{const p=book.pages[i]; if(p.text) speak(p.text)});
+readB.addEventListener('click',()=>{setAuto(false);const p=book.pages[i]; if(p.text) speak(p.text)});
 document.addEventListener('keydown',e=>{if(!book||$('reader').hidden)return;if(e.key==='ArrowRight')render(i+1,true);if(e.key==='ArrowLeft')render(i-1,true)});
 let sx=null;
 stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
 stage.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)render(dx<0?i+1:i-1,true);sx=null});
-function route(){const h=location.hash.slice(1); if(BOOKS.some(b=>b.id===h)) showBook(h); else {book=null;shelf()}}
+function route(){const h=location.hash.slice(1); if(auto)setAuto(false); if(BOOKS.some(b=>b.id===h)) showBook(h); else {book=null;shelf()}}
 window.addEventListener('hashchange',route);
 if(canSpeak){try{speechSynthesis.getVoices()}catch(e){}}
 route();
