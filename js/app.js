@@ -62,7 +62,7 @@ function setAuto(on){auto=on; clearTimeout(autoT); resumeNext=false; autoB.class
   if(on){try{navigator.wakeLock&&navigator.wakeLock.request('screen').then(w=>wake=w).catch(()=>{})}catch(e){}}
   else{stopSpeak(); try{wake&&wake.release()}catch(e){} wake=null}}
 let resumeNext=false;
-function pauseAuto(){setAuto(false); resumeNext=true; autoB.textContent='▶ 대답했으면 이어서'; autoB.classList.add('wait')}
+function pauseAuto(){setAuto(false); resumeNext=true; autoB.textContent='▶ 이어서 읽기'; autoB.classList.add('wait')}
 function runAuto(){clearTimeout(autoT); if(!auto||!book)return; const p=book.pages[i], here=i;
   if(p.kind==='talk'||p.kind==='try'){setAuto(false);return}
   const ok=()=>auto&&book&&i===here;
@@ -105,10 +105,16 @@ function shelf(){
 }
 function talkHTML(){
   const t=book.talk, nx=BOOKS[book.no%BOOKS.length];
+  /* 생각 멈춤에서 이미 물은 것과 가장 덜 겹치는 질문을 오늘의 질문으로 고른다 */
+  const big=x=>new Set([...x.replace(/[^가-힣]/g,'')].map((c,k,a)=>c+(a[k+1]||''))), th=THINK[book.id];
+  const sim=q=>{if(!th)return 0;const A=big(q),B=big(th.q);let n=0;A.forEach(x=>{if(B.has(x))n++});return n/Math.min(A.size,B.size)};
+  const pickI=t.five.map((q,k)=>[sim(q),k]).sort((a,b)=>a[0]-b[0]||a[1]-b[1])[0][1];
+  const q1=t.five[pickI], rest=t.five.filter((_,k)=>k!==pickI);
+  /* 질문은 하나만 보이고, 나머지는 더 이야기하고 싶을 때 펼친다 */
   return `<div class="talk">
 <h2 class="talkh">이야기 나누기</h2>
-<div class="card"><span class="age">3살과 함께</span><ul>${t.three.map(q=>`<li>${q}</li>`).join('')}</ul></div>
-<div class="card"><span class="age">5살과 함께</span><ul>${t.five.map(q=>`<li>${q}</li>`).join('')}</ul></div>
+<div class="card"><span class="age">오늘의 질문 하나</span><p class="q1">${q1}</p>
+<details class="more"><summary>더 이야기하고 싶으면</summary><ul>${rest.map(q=>`<li>${q}</li>`).join('')}</ul><span class="age">더 쉬운 질문</span><ul>${t.three.map(q=>`<li>${q}</li>`).join('')}</ul></details></div>
 ${ACT[book.id]?'':nextCard(nx)}
 <p class="note">부모님께: ${t.note}</p></div>`}
 const nextCard=nx=>`<div class="card next"><h2>${nx.no===1?'처음 이야기로':'다음 이야기'}: ${nx.who}</h2><p>${nx.teaser}</p><button class="go" type="button" data-go="${nx.id}">${nx.no}권 「${nx.title}」 읽기 →</button></div>`;
@@ -136,8 +142,9 @@ function showBook(id,n=0){
 let tell=false;
 const storyPage=p=>!!p.text&&!['cover','end','talk','try'].includes(p.kind);
 function tellHTML(p){const P=book.pages, story=P.map((q,k)=>(!q.kind&&q.text)?k:-1).filter(k=>k>=0), pos=story.indexOf(i);
-  const ask=pos===0?TELL.first:pos===story.length-1?TELL.last:TELL.mid[(pos-1)%TELL.mid.length];
-  return `<p class="story tell">🗣 ${ask}</p><details class="peek"><summary>엄마 아빠가 볼 원래 문장</summary><p>${p.text}</p></details>`}
+  /* 물음은 첫 쪽과 마지막 쪽에만. 생각 멈춤 쪽은 그 질문 카드가 대신하고, 나머지 쪽은 그림만 보며 이어 간다 */
+  const ask=pos===0?TELL.first:pos===story.length-1?TELL.last:'';
+  return `${ask?`<p class="story tell">🗣 ${ask}</p>`:''}<details class="peek"><summary>엄마 아빠가 볼 원래 문장</summary><p>${p.text}</p></details>`}
 function setTell(on){tell=on; if(on&&auto)setAuto(false); const b=$('tellB'); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); b.textContent=on?'📖 다시 읽어 주기':'🗣 네가 들려줘'; render(i,false)}
 function tilesHTML(items,hint,wide){return `<div class="tiles">${items.map((t,k)=>`<button class="tile${wide?' wide':''}" type="button" data-t="${k}" aria-pressed="false">${t}</button>`).join('')}</div><p class="tip" id="tip">${hint}</p>`}
 function render(n,fromUser){
@@ -152,7 +159,7 @@ function render(n,fromUser){
   let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():(tell&&isStory)?tellHTML(p):`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
   if(p.kind==='cover'&&th) h+=`<div class="think pre"><b>🤔 읽으면서 알아봐요</b><p>${th.q}</p></div>`;
   if(p.kind==='cover'&&done[book.id]&&!tell) h+=`<button class="tellnudge" type="button" id="tellGo">🗣 다 읽은 책이에요. 이번엔 네가 들려줄래?</button>`;
-  if(th&&i===th.p) h+=`<div class="think"><b>🤔 잠깐! 생각해 봐요</b><p>${th.q}</p><small>대답해 본 다음에 넘겨요.</small></div>`;
+  if(th&&i===th.p) h+=`<div class="think"><b>🤔 잠깐! 생각해 봐요</b><p>${th.q}</p><small>생각해 보고 넘겨도 되고, 그냥 넘겨도 돼요.</small></div>`;
   if(p.kind==='letters') h+=tilesHTML(LETTERS.map(t=>t[0]),'글자를 눌러 보세요.');
   if(p.kind==='sundial') h+=tilesHTML(SUN.map(t=>`${t[0]} ${t[2]}`),'아침, 한낮, 저녁을 눌러 보세요.',true);
   if(p.kind==='clock') h+=tilesHTML(DRUM.map(t=>t[0]),'종, 북, 징을 눌러 보세요.',true);
