@@ -15,7 +15,7 @@ const P=[
   text:`<span class="big">간송 전형필과 우리 보물</span><br>위인 그림책 {no}권`},
  {svg:SV(`${yard(206)}
   ${hpKid(140,268,.86,{mood:'joy',pose:'hold',item:`<rect x="-24" y="-50" width="48" height="34" fill="#3F6FA8" ${sw()}/>`})}${hero(280,268,.84,{robe:'#EDE9E0',hat:'gat',beard:HAIR,mood:'smile'})}`,'#D9CCAE'),
-  text:`권기옥이 비행사가 되어 하늘을 날던 무렵, 서울에 형필이라는 젊은이가 살았어요. 형필이네는 아주 큰 부잣집이었어요. 형필이는 옛 책과 그림을 좋아했어요.`},
+  text:`지금으로부터 백 년쯤 전, 서울에 형필이라는 젊은이가 살았어요. 형필이네는 아주 큰 부잣집이었어요. 형필이는 옛 책과 그림을 좋아했어요.`},
  {svg:SV(`${sea(170)}
   ${g(280,200,.5,`<path d="M-80 -6 Q-70 22 0 24 Q70 22 90 -6Z" fill="#3A3A44" ${sw(3)}/><rect x="-40" y="-50" width="80" height="44" fill="#5A5560" ${sw(3)}/>`)}
   <path d="M-6 170 Q100 150 200 166 L200 290 L-6 290Z" fill="#C9C2B4" ${sw()}/>

@@ -12,7 +12,7 @@ const P=[
  {svg:SV(`${cloud(80,40,.7)}${cloud(320,56,.6)}${hills('#A9CDB4','#C7D88F',196,220)}
   <rect x="40" y="130" width="120" height="76" fill="#E8DCC4" ${sw()}/><path d="M24 136 Q100 86 176 136Z" fill="#4A4A55" ${sw()}/>
   ${hero(240,268,.82,{robe:'#EFE6D2',skin:'#EDBF95',mood:'joy',pose:'up'})}${hero(320,268,.78,{body:'dress',hair:'bun',top:'#F6E2A6',skirt:'#B8862F',mood:'joy'})}`,'url(#s1)',sky('s1','#CFE7F2','#F6EAD0')),
-  text:`왕건이 고려를 세우고 칠십 년쯤 지났어요. 고려라는 이름에는 "우리는 고구려를 이은 나라예요" 하는 뜻이 담겨 있지요.`},
+  text:`옛날 우리나라가 고려라는 이름이던 때예요. 고려라는 이름에는 "우리는 고구려를 이은 나라예요" 하는 뜻이 담겨 있지요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#E8D3B0"/><rect x="-6" y="222" width="412" height="64" fill="#A87E52"/>
   ${seohui(200,272,.95,{pose:'hold',mood:'smile',item:bigBook('책','#5E7FA8')})}
   ${official(80,272,.7,{mood:'joy'})}${official(320,272,.7,{mood:'joy'})}

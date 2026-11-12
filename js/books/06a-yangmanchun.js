@@ -14,7 +14,7 @@ const P=[
  {svg:SV(`${ridge(150,'#B7CBD3',30,2)}<path d="M-6 180 Q200 170 406 182 L406 290 L-6 290Z" fill="#C9C08E"/>
   ${[...Array(16)].map((_,k)=>`<path d="M${(k%8)*52} ${200+Math.floor(k/8)*24} l10 -16 l10 16Z" fill="#8E9AA6" ${sw(1)}/>`).join('')}
   ${taizong(300,282,.9,{mood:'o',arms:'pointL',face:'left'})}${tang(200,276,.66,{mood:'o',face:'left'})}`,'url(#ym1)',sky('ym1','#B9C2CC','#E6E2D4')),
-  text:`을지문덕이 수나라를 물리치고 몇십 년 뒤, 이번에는 당나라의 임금 태종이 큰 군대를 이끌고 고구려로 쳐들어왔어요.`},
+  text:`먼 옛날, 중국 당나라의 임금 태종이 큰 군대를 이끌고 고구려로 쳐들어왔어요.`},
  {svg:SV(`${ridge(150,'#A9B8A0',40,3)}${wall(240,80)}
   ${ym(200,150,.62,{mood:'smile',arms:'pointL',face:'left'})}${gsol(140,152,.5,{mood:'o'})}${gsol(260,152,.5,{mood:'o'})}
   <path d="M-6 240 Q200 230 406 240 L406 290 L-6 290Z" fill="#C9C08E"/>

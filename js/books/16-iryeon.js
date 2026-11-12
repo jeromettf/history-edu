@@ -14,7 +14,7 @@ const P=[
  {svg:SV(`${room()}
   ${ilKid(140,268,.9,{pose:'hold',mood:'joy',item:bigBook('옛이야기','#8A6A44')})}
   ${hero(280,268,.84,{hair:'bald',robe:'#A7A49B',belt:false,collar:'#EDE9E0',deco:kasa,beard:'#D9D3C8',mood:'smile'})}`,'#EADCC0'),
-  text:`강감찬이 나라를 지키고 이백 년쯤 지난 고려예요. 일연이라는 아이는 아홉 살에 절에 들어가 공부를 시작했어요. 옛이야기 듣는 걸 좋아했어요.`},
+  text:`옛날 고려라는 나라에 살던 일연이라는 아이는 아홉 살에 절에 들어가 공부를 시작했어요. 옛이야기 듣는 걸 좋아했어요.`},
  {svg:SV(`<path d="M-6 170 Q100 140 200 156 Q300 136 406 166 L406 286 L-6 286Z" fill="#B8C4C0" ${sw()}/>
   ${[60,140,220,300,370].map((x,k)=>mongol(x,240-(k%2)*14,.46,{mood:'sad'})).join('')}
   <path d="M-6 236 Q200 226 406 236 L406 286 L-6 286Z" fill="#C7D88F" ${sw()}/>

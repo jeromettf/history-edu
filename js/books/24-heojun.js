@@ -13,7 +13,7 @@ const P=[
  {svg:SV(`${roomBg}${sickKid}
   ${hero(250,268,.78,{body:'dress',hair:'bun',mood:'sad'})}
   ${heojun(330,268,.86,{pose:'hold',mood:'smile',item:`<rect x="-14" y="-46" width="28" height="22" rx="4" fill="#C9A15A" ${sw()}/><path d="M-10 -46 Q0 -56 10 -46" fill="none" ${sw(1.6)}/>`})}`,'#EADCC0'),
-  text:`세종대왕이 한글을 만들고 백 년쯤 지난 조선이에요. 허준이라는 사람은 아픈 사람을 보면 그냥 지나치지 못했어요. 그래서 병을 고치는 의원이 되었어요.`},
+  text:`옛날 우리나라가 조선이라는 이름이던 때예요. 허준이라는 사람은 아픈 사람을 보면 그냥 지나치지 못했어요. 그래서 병을 고치는 의원이 되었어요.`},
  {svg:SV(`${cloud(80,44,.7)}${mtn}
   <path d="M-6 220 Q200 206 406 220 L406 286 L-6 286Z" fill="#BCD38F" ${sw()}/>
   <g id="tSsuk">${herb(60,262)}${herb(352,258)}</g><g id="tDoraji">${herb(300,262,'#9B7FD1')}${herb(100,256,'#9B7FD1')}</g>${herb(250,270,'#7CB66E')}

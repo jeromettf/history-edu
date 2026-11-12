@@ -16,7 +16,7 @@ const P=[
   ${sbKid(140,266,.92,{pose:'hold',mood:'joy',item:brush})}
   <path d="M210 250 q10 -20 20 0 q10 -20 20 0 M262 250 h22 M296 236 v18" fill="none" stroke="#3A3330" stroke-width="4" stroke-linecap="round"/>
   ${mom(330,266,.7,{mood:'smile'})}`,'url(#sb1)',sky('sb1','#CFE7F2','#F6EAD0')),
-  text:`허준과 같은 시절, 개성에 석봉이라는 아이가 살았어요. 석봉이는 글씨 쓰기를 좋아해서 땅바닥에도 물로 글씨를 썼대요.`},
+  text:`옛날 조선의 개성에 석봉이라는 아이가 살았어요. 석봉이는 글씨 쓰기를 좋아해서 땅바닥에도 물로 글씨를 썼대요.`},
  {svg:SV(`${room()}
   ${tteok(260,232,true)}
   ${mom(180,268,.92,{pose:'hold',mood:'smile'})}${sbKid(330,270,.68,{mood:'joy'})}`,'#EADCC0'),

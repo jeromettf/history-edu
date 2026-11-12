@@ -17,7 +17,7 @@ const P=[
   ${[[30,190],[70,160],[350,170],[380,200]].map(([x,y])=>`<path d="M${x} 214 V${y}" stroke="#2F6B4E" stroke-width="5"/><path d="M${x} ${y+10} l-10 -6 M${x} ${y+24} l10 -6" stroke="#4E8A5E" stroke-width="3"/>`).join('')}
   ${bfly(270,140,1.2)}${bfly(310,110,.9,'#E98FA0')}${hopper(240,236,1)}
   ${girl(150,268,.92,{pose:'up',mood:'joy'})}`,'url(#sa1)',sky('sa1','#CFE7F2','#F6EAD0')),
-  text:`세종대왕이 세상을 떠나고 오십 년쯤 지난 강릉에 한 여자아이가 살았어요. 아이는 마당의 꽃과 나비, 풀벌레를 한참씩 들여다보았어요.`},
+  text:`옛날 조선이라는 나라의 강릉에 한 여자아이가 살았어요. 아이는 마당의 꽃과 나비, 풀벌레를 한참씩 들여다보았어요.`},
  {svg:SV(`${room()}
   ${paper(220,60,140,100,`<path d="M232 150 L262 90 L282 120 L304 80 L348 150Z" fill="#A9C2B4"/><path d="M240 150 Q290 130 348 150" fill="none" stroke="#7FA6A0" stroke-width="3"/>`)}
   ${girl(130,268,.92,{pose:'hold',mood:'smile',item:brush})}`,'#EADCC0'),

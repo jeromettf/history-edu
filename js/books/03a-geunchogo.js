@@ -11,7 +11,7 @@ const P=[
  {svg:SV(`${palace()}
   ${gc(200,270,.96,{mood:'smile',arms:'armsOpen'})}
   ${hero(80,276,.6,{robe:'#5E9C8A',hair:'braid',mood:'joy',face:'right'})}${hero(320,276,.6,{robe:'#B5874F',hair:'braid',mood:'joy',face:'left'})}`,'#E6CFAA'),
-  text:`온조가 세운 백제는 쑥쑥 자랐어요. 백제의 열세 번째 임금, 근초고왕 때는 나라가 가장 커지고 힘이 셌어요.`},
+  text:`아주 먼 옛날, 백제라는 나라가 있었어요. 백제의 열세 번째 임금, 근초고왕 때는 나라가 가장 커지고 힘이 셌어요.`},
  {svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
   <path d="M-6 230 Q200 214 406 232 L406 290 L-6 290Z" fill="#E6D3A6"/>
   ${gc(150,276,.86,{mood:'joy',arms:'pointR',face:'right'})}

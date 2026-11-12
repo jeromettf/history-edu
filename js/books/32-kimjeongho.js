@@ -19,7 +19,7 @@ const P=[
  {svg:SV(`<path d="M-6 200 Q60 120 130 160 Q200 90 280 150 Q340 110 406 170 L406 286 L-6 286Z" fill="#94BFA6" ${sw()}/>
   <path d="M100 286 Q160 230 140 200 Q120 170 200 150 M200 150 Q280 140 300 110" fill="none" stroke="#E6D3A6" stroke-width="10" stroke-linecap="round"/><path d="M200 150 Q160 120 110 120" fill="none" stroke="#E6D3A6" stroke-width="10" stroke-linecap="round"/>
   ${traveler(190,268,.86,{mood:'o'})}${T(250,100,'어느 길로 가지?',18,K.red)}`,'url(#jh1)',sky('jh1','#CFE7F2','#F6EAD0')),
-  text:`정약용이 먼 바닷가 마을에서 책을 쓰던 무렵, 김정호가 태어났어요. 그때는 먼 길을 가다가 길을 잃는 사람이 많았어요. 쓸 만한 지도가 귀했거든요.`},
+  text:`옛날 조선에서 김정호가 태어났어요. 그때는 먼 길을 가다가 길을 잃는 사람이 많았어요. 쓸 만한 지도가 귀했거든요.`},
  {chips:LEG, svg:SV(`${room()}
   ${mapArt(220,60,140,110)}
   ${jhKid(130,268,.92,{pose:'up',mood:'joy'})}`,'#EADCC0'),

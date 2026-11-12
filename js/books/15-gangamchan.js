@@ -16,7 +16,7 @@ const P=[
   <path d="M-6 214 Q200 204 406 214 L406 286 L-6 286Z" fill="#4E5A4A" ${sw()}/>
   <rect x="140" y="150" width="120" height="64" fill="#E8DCC4" ${sw()}/><path d="M124 156 Q200 108 276 156Z" fill="#4A4A55" ${sw()}/>
   ${hero(80,272,.7,{robe:'#EFE6D2',mood:'o',pose:'up'})}`,'url(#gc1)',sky('gc1','#1F2748','#46406A')),
-  text:`서희가 살던 고려의 어느 밤, 커다란 별 하나가 반짝이며 어느 집으로 떨어졌대요. 그날 그 집에서 아기가 태어났어요. 이름은 감찬이었어요.`},
+  text:`옛날 고려라는 나라의 어느 밤, 커다란 별 하나가 반짝이며 어느 집으로 떨어졌대요. 그날 그 집에서 아기가 태어났어요. 이름은 감찬이었어요.`},
  {svg:SV(`${cloud(300,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   ${gcKid(130,268,.82,{pose:'hold',mood:'smile',item:bigBook('책','#3F6FA8')})}
   ${hero(250,268,.96,{robe:'#E9DFC8',hair:'braid',mood:'o'})}${hero(320,268,.96,{robe:'#D6CDB4',hair:'braid',mood:'o'})}
@@ -25,7 +25,7 @@ const P=[
  {chips:['1018년'], svg:SV(`<path d="M-6 170 Q100 140 200 156 Q300 136 406 166 L406 286 L-6 286Z" fill="#C8C2A8" ${sw()}/>
   ${[60,140,220,300,370].map((x,k)=>khitan(x,250-(k%2)*16,.5,{mood:'sad'})).join('')}
   ${T(200,60,'거란이 또 쳐들어왔어요!',22,K.red,`stroke="#FFF8EC" stroke-width="5" paint-order="stroke"`)}`,'url(#gc3)',sky('gc3','#B9C2CC','#DCDCD4')),
-  text:`예전에 서희의 말을 듣고 물러갔던 거란이 몇십 년 뒤 다시 쳐들어왔어요. 이번엔 군사가 아주 많았어요. 임금님은 강감찬을 장군으로 세웠어요.`},
+  text:`예전에 한 번 물러갔던 거란이 몇십 년 뒤 다시 쳐들어왔어요. 이번엔 군사가 아주 많았어요. 임금님은 강감찬을 장군으로 세웠어요.`},
  {svg:SV(`${palace()}
   ${king(120,272,.84,{robe:'#B8862F',mood:'sad'})}${gc(280,272,.9,{pose:'up',mood:'smile'})}
   ${T(280,70,'제가 지키겠습니다!',18,K.red)}`,'#E8D3B0'),

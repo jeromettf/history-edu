@@ -20,7 +20,7 @@ const P=[
   <g transform="translate(183 150) scale(.9)">${ipchun}</g><g transform="translate(217 150) scale(.9)">${ipchun}</g>
   ${jhKid(90,268,.8,{pose:'hold',mood:'joy',item:brush})}${hero(320,268,.84,{robe:'#7A6AA8',hat:'gat',beard:HAIR,mood:'o'})}
   ${T(320,80,'이 글씨를 누가 썼지?',16,K.red)}`,'#D9CCAE'),
-  text:`정약용이 거중기를 만들던 무렵, 정희라는 아이가 태어났어요. 여섯 살 정희가 봄을 맞아 대문에 쓴 글씨를 보고, 지나가던 학자가 깜짝 놀랐대요.`,chips:['전해 오는 이야기']},
+  text:`옛날 조선에 정희라는 아이가 태어났어요. 여섯 살 정희가 봄을 맞아 대문에 쓴 글씨를 보고, 지나가던 학자가 깜짝 놀랐대요.`,chips:['전해 오는 이야기']},
  {svg:SV(`${room()}
   ${jh(140,268,.9,{pose:'hold',mood:'smile',item:brush})}
   ${[0,1,2].map(k=>`<rect x="${240+k*40}" y="${110+k*6}" width="34" height="80" fill="#FFFDF6" ${sw(1.4)}/><path d="M${250+k*40} ${126+k*6} v50 M${264+k*40} ${130+k*6} q-6 20 4 40" fill="none" stroke="#2E2522" stroke-width="${3+k}"/>`).join('')}`,'#EADCC0'),

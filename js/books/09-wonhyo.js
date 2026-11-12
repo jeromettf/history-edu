@@ -15,7 +15,7 @@ const P=[
  {svg:SV(`${cloud(300,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   <rect x="40" y="130" width="120" height="76" fill="#E8DCC4" ${sw()}/><path d="M24 136 Q100 86 176 136Z" fill="#4A4A55" ${sw()}/>
   ${monk(240,268,.95,{pose:'hold',mood:'smile',item:bigBook('불경','#8A6A44')})}`,'url(#w1)',sky('w1','#CFE7F2','#F6EAD0')),
-  text:`김유신이 살던 신라에 원효라는 스님이 있었어요. 원효는 궁금한 게 아주 많았어요. "더 많이 배우고 싶어!"`},
+  text:`먼 옛날 신라에 원효라는 스님이 있었어요. 원효는 궁금한 게 아주 많았어요. "더 많이 배우고 싶어!"`},
  {svg:SV(`${hills('#A9CDB4','#C7D88F',196,220)}
   <path d="M60 286 Q140 240 240 222 Q330 208 406 200 L406 216 Q330 226 260 238 Q170 256 130 286Z" fill="#E6D3A6" ${sw()}/>
   ${monk(150,262,.86,{pose:'hold',mood:'joy',item:bundle})}${uisang(240,256,.8,{pose:'hold',mood:'joy',item:bundle})}

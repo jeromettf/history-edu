@@ -14,7 +14,7 @@ const P=[
   ${pirateShip(250,196,.9)}${pirateShip(340,180,.7)}
   <path d="M-6 170 Q80 160 160 176 L160 290 L-6 290Z" fill="#E6D3A6" ${sw()}/>${hut(20,150)}
   ${hero(110,268,.74,{robe:'#EFE6D2',skin:'#EDBF95',mood:'o'})}`,'url(#cm1)',sky('cm1','#B9C2CC','#DCDCD4')),
-  text:`일연 스님이 책을 쓰고 몇십 년 뒤의 고려예요. 바다 건너 왜구라는 해적들이 자꾸 쳐들어와 바닷가 마을 사람들을 괴롭혔어요.`},
+  text:`옛날 우리나라가 고려라는 이름이던 때예요. 바다 건너 왜구라는 해적들이 자꾸 쳐들어와 바닷가 마을 사람들을 괴롭혔어요.`},
  {svg:SV(`${room()}
   ${cm(140,268,.92,{pose:'hold',mood:'o',item:`<ellipse cx="0" cy="-30" rx="20" ry="18" fill="#8A6A44" ${sw()}/><path d="M-8 -46 q8 -8 16 0" fill="none" ${sw(2)}/><path d="M-12 -24 q12 6 24 0" fill="none" stroke="#3A322B" stroke-width="1.4"/><circle cx="18" cy="-50" r="3" fill="#3A322B"/><circle cx="24" cy="-44" r="2" fill="#3A322B"/>`})}
   ${T(290,110,'만드는 법이 비밀이래',18,K.red)}${T(290,150,'?',40,K.red)}`,'#EADCC0'),

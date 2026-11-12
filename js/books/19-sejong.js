@@ -14,7 +14,7 @@ const SEJONG_PAGES=[
   ${backView(210,262,.5,{robe:'#EFE6D2'})}${backView(250,264,.48,{robe:'#E9DFC8',hat:'gat'})}${backView(290,262,.5,{robe:'#F2E6D4',hat:'bun'})}
   ${T(330,128,'?',30,K.red)}${T(200,130,'?',24,K.red)}
   ${farmer(70,340,1.9,{mood:'o',pose:'hold',still:true,face:'right'})}`,'url(#sj1)',sky('sj1','#CFE6F2','#FBEBD8')),
-  text:`고려 다음에는 조선이라는 나라가 생겼어요. 그때는 한자라는 글자를 썼는데, 수천 개나 되고 너무 어려웠어요. 그래서 글을 읽을 줄 아는 사람이 아주 적었답니다.`},
+  text:`옛날 우리나라가 조선이라는 이름이던 때예요. 그때는 한자라는 글자를 썼는데, 수천 개나 되고 너무 어려웠어요. 그래서 글을 읽을 줄 아는 사람이 아주 적었답니다.`},
 
  /* 2. 가까이: 촛불에 비친 이도의 얼굴 */
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#2B2440"/>

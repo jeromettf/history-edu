@@ -16,7 +16,7 @@ const P=[
   ${hero(270,268,.82,{robe:'#EDE9E0',hair:'bald',belt:false,collar:'#EDE9E0',deco:kasa,beard:'#D9D3C8',mood:'smile'})}
   ${hyKid(140,268,.86,{mood:'o'})}
   ${T(200,100,'저 멀리 서쪽에는…',18,K.red)}`,'url(#hc1)',sky('hc1','#CFE7F2','#F6EAD0')),
-  text:`원효 스님이 살던 신라에서 몇십 년 뒤, 혜초라는 아이가 살았어요. 혜초는 먼 나라 이야기를 들을 때마다 눈이 반짝반짝 빛났어요.`},
+  text:`먼 옛날 신라에 혜초라는 아이가 살았어요. 혜초는 먼 나라 이야기를 들을 때마다 눈이 반짝반짝 빛났어요.`},
  {svg:SV(`<circle cx="340" cy="46" r="22" fill="${K.gold}" ${sw()}/>${sea(170)}
   ${g(200,206,.36,`<path d="M-80 -6 Q-70 22 0 24 Q70 22 90 -6Z" fill="#8A5A3C" ${sw(3)}/><path d="M0 -6 V-110" ${sw(5)}/><path d="M-44 -104 L44 -104 L38 -30 L-38 -30Z" fill="#F4E7C6" ${sw(3)}/>`)}
   ${hyKid(196,170,.4,{mood:'joy',pose:'up'})}${T(200,110,'당나라로!',20,K.red)}`,'url(#hc2)',sky('hc2','#CFE7F2','#F6EAD0')),

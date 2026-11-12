@@ -14,7 +14,7 @@ const P=[
   ${horse(210,266,.9,{color:'#A9714A',rider:rider(damdeok(0,0,1,{pose:'up',mood:'joy'}))})}
   <path d="M60 250 q-14 -4 -24 4 M70 236 q-16 -2 -26 6" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
   ${tufts(262,[30,120,300,370])}`,'url(#g1)',sky('g1','#CFE7F2','#F6EAD0')),
-  text:`주몽이 세운 고구려에 담덕이라는 왕자님이 태어났어요. 담덕은 몸집이 크고 씩씩했어요. 말을 타고 들판을 달리는 걸 좋아했어요.`},
+  text:`아주 먼 옛날, 고구려라는 나라에 담덕이라는 왕자님이 태어났어요. 담덕은 몸집이 크고 씩씩했어요. 말을 타고 들판을 달리는 걸 좋아했어요.`},
  {chips:['391년'], svg:SV(`
   ${palace()}
   ${gking(200,268,1.0,{pose:'up',mood:'joy'})}

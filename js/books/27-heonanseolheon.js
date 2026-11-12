@@ -13,7 +13,7 @@ const P=[
  {svg:SV(`${room()}
   ${teacher(270,268,.86,{mood:'smile',pose:'hold',item:`<rect x="-26" y="-50" width="52" height="34" fill="#8A6A44" ${sw()}/>`})}${brother(160,270,.7,{mood:'o'})}
   ${chKid(70,270,.62,{mood:'joy'})}`,'#EADCC0'),
-  text:`이순신과 같은 시절, 강릉에 초희라는 여자아이가 살았어요. 그때는 여자아이가 글공부하기 어려웠어요. 초희는 오빠들이 공부할 때 옆에서 귀를 쫑긋 세웠어요.`},
+  text:`옛날 조선의 강릉에 초희라는 여자아이가 살았어요. 그때는 여자아이가 글공부하기 어려웠어요. 초희는 오빠들이 공부할 때 옆에서 귀를 쫑긋 세웠어요.`},
  {svg:SV(`${room()}
   ${teacher(120,268,.86,{mood:'joy'})}${chKid(270,270,.7,{pose:'hold',mood:'joy',item:brush})}
   ${T(200,90,'초희도 함께 배우거라',18,K.red)}`,'#EADCC0'),

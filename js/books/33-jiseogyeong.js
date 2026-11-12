@@ -14,7 +14,7 @@ const P=[
  {svg:SV(`${room()}
   ${jsKid(140,268,.92,{pose:'hold',mood:'smile',item:bigBook('의학책','#3F6FA8')})}
   ${hero(290,268,.7,{robe:'#EDE9E0',hat:'gat',beard:'#D9D3C8',mood:'smile'})}`,'#EADCC0'),
-  text:`김정호가 지도를 만들던 무렵, 서울에 석영이라는 아이가 살았어요. 석영이는 아픈 사람을 낫게 하는 의학책 읽기를 좋아했어요.`},
+  text:`조선의 서울에 석영이라는 아이가 살았어요. 석영이는 아픈 사람을 낫게 하는 의학책 읽기를 좋아했어요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#D9CDB4"/><rect x="-6" y="216" width="412" height="70" fill="#B9A475"/>
   <rect x="40" y="226" width="150" height="26" rx="6" fill="#F4EFE0" ${sw()}/>
   ${oldKid(120,244,.7,{mood:'sad',front:''})}

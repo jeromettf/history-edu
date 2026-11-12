@@ -14,7 +14,7 @@ const P=[
  {svg:SV(`<circle cx="340" cy="46" r="22" fill="${K.gold}" ${sw()}/>${halla}${sea(220)}
   ${jejuStone(200,224)}
   ${mdKid(150,262,.86,{pose:'up',mood:'joy'})}${hero(250,262,.7,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#8C7A6A',mood:'smile'})}`,'url(#md1)',sky('md1','#CFE7F2','#F6EAD0')),
-  text:`이순신 장군이 바다를 지키고 백오십 년쯤 지난 제주도에 만덕이라는 여자아이가 살았어요. 바람 많고 돌 많은 섬이었지요.`},
+  text:`옛날 조선의 제주도에 만덕이라는 여자아이가 살았어요. 바람 많고 돌 많은 섬이었지요.`},
  {svg:SV(`${halla}${hills('#A9CDB4','#C7D88F',210,230)}
   ${mdKid(200,268,.9,{mood:'sad',tear:true})}
   ${T(200,80,'씩씩하게 살아야지',18,K.red)}`,'url(#md2)',sky('md2','#B9C8D6','#E3E8EE')),

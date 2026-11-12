@@ -14,7 +14,7 @@ const P=[
  {svg:SV(`${cloud(300,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   ${peony(60,186,1.1)}${peony(100,196,.9,'#F2A9C0')}${peony(340,190,1)}
   ${princess(200,268,.94,{pose:'up',mood:'joy'})}`,'url(#sd1)',sky('sd1','#CFE7F2','#F6EAD0')),
-  text:`광개토대왕이 세상을 떠나고 이백 년쯤 지난 신라예요. 덕만이라는 공주님은 꽃을 보고 별을 세는 걸 좋아했어요. 무엇이든 오래 들여다보는 아이였어요.`},
+  text:`먼 옛날, 신라라는 나라에 덕만이라는 공주님은 꽃을 보고 별을 세는 걸 좋아했어요. 무엇이든 오래 들여다보는 아이였어요.`},
  {chips:LEG, svg:SV(`${palace()}
   ${painting(160,40,110,110,`${peony(200,90,1)}${peony(236,110,.8,'#F2A9C0')}`)}
   ${tang(320,272,.8,{pose:'hold',mood:'smile',item:seedBox})}${princess(90,272,.8,{mood:'o'})}`,'#E8D3B0'),

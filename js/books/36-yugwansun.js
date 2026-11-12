@@ -10,7 +10,7 @@ const P=[
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   <rect x="230" y="110" width="150" height="100" fill="#E8DCC4" ${sw()}/><path d="M220 116 L305 76 L390 116Z" fill="#8E5A48" ${sw()}/>${[250,290,330].map(x=>`<rect x="${x}" y="130" width="26" height="30" fill="#BFE0F0" ${sw(1.4)}/>`).join('')}
   ${gwansun(140,268,.95,{pose:'hold',mood:'joy',item:bigBook('공부','#5E9C8A')})}`,'url(#u1)',sky('u1','#CFE7F2','#F6EAD0')),
-  text:`안창호 선생님이 나라를 되찾자고 외치던 무렵이에요. 천안의 한 마을에 관순이라는 씩씩한 소녀가 살았어요. 관순이는 공부하기를 좋아해서 서울에 있는 학교에 다녔어요.`},
+  text:`지금으로부터 백 년쯤 전, 천안의 한 마을에 관순이라는 씩씩한 소녀가 살았어요. 관순이는 공부하기를 좋아해서 서울에 있는 학교에 다녔어요.`},
  {svg:SV(`${hills('#9DAEA8','#A9B48F',196,220)}
   ${hut(30,176)}
   ${hero(160,268,.86,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(240,268,.8,{body:'dress',hair:'bun',mood:'sad',tear:true})}${oldKid(316,270,.66,{mood:'sad'})}`,'url(#u2)',sky('u2','#A9B2BC','#CFCFC6')),
