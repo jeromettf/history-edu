@@ -4,12 +4,13 @@ const DRUM=[['종','땡!','시간이 되면 인형이 종을 땡 쳤어요.'],['
 
 /* 시대: 책장 묶음과 시간의 길 */
 const ERAS=[
-  ['gojoseon','아주아주 먼 옛날','고조선'],
-  ['samguk','먼 옛날','삼국과 통일 신라'],
-  ['goryeo','옛날','고려'],
-  ['joseon','조금 옛날','조선'],
-  ['modern','100여 년 전','나라를 되찾던 때'],
-  ['now','지금','우리']];
+  ['gojoseon','아주아주 먼 옛날','고조선','고조선'],
+  ['samguk','먼 옛날','삼국과 통일 신라','삼국'],
+  ['goryeo','옛날','고려','고려'],
+  ['joseon','조금 옛날','조선','조선'],
+  ['modern','100여 년 전','나라를 되찾던 때','100년 전'],
+  ['hyeondae','70여 년 전','할머니 할아버지 어릴 적','70년 전'],
+  ['now','지금','우리','지금 우리']];
 
 /* 책 번호는 불러온 순서(시대 순)대로 매긴다 */
 BOOKS.forEach((b,k)=>{b.no=k+1});
@@ -45,10 +46,10 @@ const uniq=(svg,suf)=>svg.replace(/id="([^"]+)"/g,`id="$1${suf}"`).replace(/url\
 const thumb=svg=>svg.replace('<g filter="url(#wob)">','<g>').replace(/<rect width="400" height="280" [^>]*filter="url\(#(wash|grain)\)"[^>]*\/>/g,'');
 
 function roadHTML(cur){
-  return `<div class="road"><h2>시간의 길</h2><div class="path">${ERAS.map(([id,when,name])=>{
+  return `<div class="road"><h2>시간의 길</h2><div class="path">${ERAS.map(([id,when,name,short])=>{
     const here=cur&&cur.era===id, list=BOOKS.filter(b=>b.era===id);
     const who=list.map(b=>`<button class="who${cur&&b.id===cur.id?' cur':''}" type="button" data-go="${b.id}">${b.who}</button>`).join('');
-    return `<div class="stop${here?' here':''}${id==='now'?' now':''}"><i></i><span class="when">${id==='now'?'지금<br>우리':name}</span>${who?`<span class="whos">${who}</span>`:''}</div>`}).join('')}</div></div>`;
+    return `<div class="stop${here?' here':''}${id==='now'?' now':''}"><i></i><span class="when">${short}</span>${who?`<span class="whos">${who}</span>`:''}</div>`}).join('')}</div></div>`;
 }
 function shelf(){
   stopSpeak();
@@ -56,9 +57,10 @@ function shelf(){
   const n=Object.keys(done).filter(id=>BOOKS.some(b=>b.id===id)).length;
   $('progress').textContent=n?`별 스티커 ${n}개를 모았어요. ${BOOKS.length}권을 다 읽으면 책장이 반짝반짝!`:`책을 끝까지 읽으면 별 스티커를 받아요.`;
   $('shelf').classList.toggle('allDone',n===BOOKS.length);
-  $('grid').innerHTML=ERAS.filter(([id])=>id!=='now').map(([id,when,name])=>{
-    const list=BOOKS.filter(b=>b.era===id); if(!list.length) return '';
-    return `<section class="era"><h2><i></i>${name}<small>${when}</small></h2><div class="cards">${list.map(b=>
+  const eras=ERAS.filter(([id])=>id!=='now'&&BOOKS.some(b=>b.era===id));
+  $('grid').innerHTML=`<nav class="eranav" aria-label="시대 바로 가기">${eras.map(([id,,name])=>`<button type="button" data-era="${id}">${name}</button>`).join('')}</nav>`+eras.map(([id,when,name])=>{
+    const list=BOOKS.filter(b=>b.era===id);
+    return `<section class="era" id="era-${id}"><h2><i></i>${name}<small>${when}</small></h2><div class="cards">${list.map(b=>
       `<button class="bookcard" type="button" data-go="${b.id}"><span class="cv">${uniq(thumb(b.pages[0].svg),'-c'+b.id)}${done[b.id]?'<span class="sticker" aria-label="다 읽음">★</span>':''}</span><span class="no">${b.no}권</span><span class="tt">${b.title}</span></button>`).join('')}</div></section>`}).join('');
   window.scrollTo(0,0);
 }
@@ -94,7 +96,9 @@ function render(n,fromUser){
   if(p.kind==='end') h+=`<p class="got">★ 별 스티커를 받았어요!</p>`+roadHTML(book);
   body.innerHTML=h;
   body.querySelectorAll('[data-t]').forEach(b=>b.addEventListener('click',()=>pick(p,+b.dataset.t)));
-  if(p.taps) p.taps.forEach((t,k)=>{const el=t.el&&stage.querySelector('#'+t.el); if(el){el.classList.add('tappable');el.addEventListener('click',()=>pick(p,k))}});
+  if(p.taps){const groups={};p.taps.forEach((t,k)=>{if(t.el)(groups[t.el]=groups[t.el]||[]).push(k)});
+    Object.entries(groups).forEach(([id,ks])=>{const el=stage.querySelector('#'+id); if(!el) return; let n=0; el.classList.add('tappable');
+      el.addEventListener('click',()=>{pick(p,ks[n%ks.length]);n++})});}
   prevB.disabled=i===0;
   nextB.textContent=i===P.length-1?'책장으로 ↺':(i===0?'펼치기 →':'넘기기 →');
   readB.disabled=!canSpeak||p.kind==='talk';
@@ -107,6 +111,7 @@ function wiggle(el){if(!el||el.tagName==='rect')return;el.classList.remove('hit'
 function pick(p,k){
   press(k); const tip=$('tip'), kind=p.kind;
   if(p.taps){
+    stage.querySelectorAll('.tappable').forEach(e=>e.classList.add('tapped'));
     const t=p.taps[k];
     wiggle(t.el&&stage.querySelector('#'+t.el));
     (t.show||[]).forEach(id=>{const e=stage.querySelector('#'+id); if(e) e.setAttribute('opacity','1')});
@@ -125,7 +130,8 @@ function pick(p,k){
     tip.innerHTML=`<b>${t[0]} ${t[1]}</b> ${t[2]}`; speak(`${t[1]} ${t[2]}`);
   }
 }
-document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(b){location.hash=b.dataset.go}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(b){location.hash=b.dataset.go;return}
+  const er=e.target.closest('[data-era]'); if(er){const s=document.getElementById('era-'+er.dataset.era); if(s) s.scrollIntoView({behavior:'smooth',block:'start'})}});
 $('back').addEventListener('click',()=>{location.hash='shelf'});
 prevB.addEventListener('click',()=>render(i-1,true));
 nextB.addEventListener('click',()=>{ if(i===book.pages.length-1) location.hash='shelf'; else render(i+1,true)});

@@ -14,7 +14,7 @@ const P=[
   ${hdKid(150,266,.92,{pose:'hold',mood:'joy',item:stickDraw})}
   <path d="M210 258 Q230 240 250 258 M262 250 a10 10 0 1 0 0.1 0 M290 260 l10 -18 l10 18" fill="none" stroke="#8A6A44" stroke-width="3" stroke-linecap="round"/>
   ${star(250,200,8)}`,'url(#m1)',sky('m1','#CFE7F2','#F6EAD0')),
-  text:`이순신 장군이 바다를 지키고 백오십 년쯤 지난 조선이에요. 홍도라는 아이는 그림 그리기를 세상에서 제일 좋아했어요. 땅바닥에도 종이에도 쓱쓱 그렸지요.`},
+  text:`만덕이 제주에서 장사를 하던 무렵이에요. 홍도라는 아이는 그림 그리기를 세상에서 제일 좋아했어요. 땅바닥에도 종이에도 쓱쓱 그렸지요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#EADCC0"/><rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   ${teacher(110,268,.9,{mood:'o'})}
   ${hdKid(280,268,.86,{pose:'hold',mood:'smile',item:scrollPic})}

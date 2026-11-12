@@ -16,7 +16,7 @@ ${o.mood==='sad'?`<path d="M42 -78 Q46 -76 50 -78" fill="none" ${sw(2)}/><path d
 const plow=`<path d="M-60 -40 L-110 -10" stroke="${K.wood}" stroke-width="5" stroke-linecap="round"/>`;
 const hutBroken=`<rect x="40" y="130" width="130" height="80" fill="#EFE3C8" ${sw()}/><path d="M24 136 Q105 84 186 136Z" fill="#C9A15A" ${sw()}/><path d="M80 110 l6 10 l-4 4" stroke="${L}" stroke-width="1.6" fill="none"/>${[70,100,130].map(x=>`<path d="M${x} 140 q-2 6 0 10" stroke="#8CC4EA" stroke-width="2.4"/>`).join('')}`;
 const P=[
- {kind:'cover', svg:coverBase('hh','다정한 정승',`${cow(320,250,.42,'#D9A55A')}`,hhOld(160,264,1.0,{pose:'up',mood:'joy'})),
+ {kind:'cover', svg:coverBase('hh','다정한 정승',`${cow(290,262,.8,'#D9A55A')}`,hhOld(110,264,1.0,{pose:'up',mood:'joy'})),
   text:`<span class="big">황희 정승과 누렁소</span><br>위인 그림책 {no}권`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#E8D3B0"/>
   <rect x="14" y="-6" width="22" height="236" fill="#B5473A" ${sw()}/><rect x="364" y="-6" width="22" height="236" fill="#B5473A" ${sw()}/>

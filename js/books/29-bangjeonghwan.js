@@ -51,7 +51,7 @@ const P=[
   ${['단군','세종','이순신','유관순','방정환'].map((n,k)=>T(30+k*80,72,n,12)).join('')}
   <rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   ${kid(130,266,1.0,{pose:'up',mood:'joy'})}${hero(270,266,.96,{body:'dress',hair:'braid',top:'#F2C14E',skirt:'#5B7FB8',pose:'up',mood:'joy'})}`,'#EFE3C8'),
-  text:`단군 이야기부터 방정환 선생님까지, 우리는 먼 옛날부터 지금까지 걸어왔어요. 그리고 이제 그 이야기를 이어 갈 주인공은 바로 우리예요!`},
+  text:`어린이날의 주인공은 바로 우리예요. 그리고 앞으로 우리나라 이야기를 이어 갈 주인공도 바로 우리랍니다!`},
  {kind:'end', svg:endBase('pj',`${balloon(150,110,'#E98FA0')}${balloon(200,90,'#F2C14E')}${balloon(250,110,'#7FB3C8')}${T(200,210,'어린이',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),pjMan(338,276,.55,{pose:'up',mood:'joy'})),
   text:`어린이를 사랑한 이야기꾼이 남긴 선물,<br>어린이날.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

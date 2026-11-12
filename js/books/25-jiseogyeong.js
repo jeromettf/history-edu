@@ -8,7 +8,7 @@ const needle=`<rect x="-6" y="-60" width="12" height="34" rx="3" fill="#E9F2F8" 
 function cowS(x,y,s){return g(x,y,s,`<ellipse cx="0" cy="1" rx="50" ry="7" fill="#2B1E16" opacity=".18"/>${[-30,-16,18,32].map(lx=>`<rect x="${lx-5}" y="-40" width="10" height="38" rx="4" fill="#FFFDF6" ${sw()}/>`).join('')}<ellipse cx="0" cy="-52" rx="46" ry="24" fill="#FFFDF6" ${sw()}/><ellipse cx="-14" cy="-58" rx="12" ry="8" fill="#3E3A3A"/><ellipse cx="18" cy="-46" rx="9" ry="7" fill="#3E3A3A"/><ellipse cx="48" cy="-72" rx="20" ry="18" fill="#FFFDF6" ${sw()}/><ellipse cx="58" cy="-62" rx="12" ry="9" fill="#F2B8B0" ${sw(1.6)}/><path d="M36 -88 Q30 -100 38 -102 M54 -88 Q62 -100 56 -104" fill="none" stroke="#C9B48A" stroke-width="4" stroke-linecap="round"/><circle cx="46" cy="-76" r="2.6" fill="${L}"/>`)}
 const bigBox=(x,y,t)=>`<rect x="${x-60}" y="${y-36}" width="120" height="36" rx="4" fill="#3F6FA8" ${sw()}/>${T(x,y-12,t,16,'#FFFFFF')}`;
 const P=[
- {kind:'cover', svg:coverBase('js','따끔한 선물',`${g(70,246,.9,needle)}`,jsDoc(210,264,1.0,{pose:'up',mood:'joy'})),
+ {kind:'cover', svg:coverBase('js','따끔한 선물',`${g(66,262,1.9,needle)}${heart(340,150)}`,jsDoc(210,264,1.0,{pose:'up',mood:'joy'})),
   text:`<span class="big">지석영과 따끔한 주사</span><br>위인 그림책 {no}권`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#EADCC0"/><rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   ${jsKid(140,268,.92,{pose:'hold',mood:'smile',item:bigBook('의학책','#3F6FA8')})}

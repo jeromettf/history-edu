@@ -9,7 +9,7 @@ const page=(x,y,neat)=>`<rect x="${x-46}" y="${y-60}" width="92" height="60" fil
 const lamp=(x,y)=>`<rect x="${x-4}" y="${y-30}" width="8" height="30" fill="#8A6A44" ${sw(1.4)}/><ellipse cx="${x}" cy="${y-30}" rx="12" ry="5" fill="#C9A15A" ${sw(1.4)}/><path d="M${x} ${y-50} Q${x+8} ${y-40} ${x} ${y-34} Q${x-8} ${y-40} ${x} ${y-50}Z" fill="#FFC24A" ${sw(1.2)}/>`;
 const temple=(x,y,s)=>g(x,y,s,`<rect x="-70" y="-60" width="140" height="60" fill="#C9B48A" ${sw()}/><path d="M-96 -56 Q-60 -86 0 -92 Q60 -86 96 -56 L86 -64 Q50 -104 0 -108 Q-50 -104 -86 -64Z" fill="#4A4A55" ${sw()}/><rect x="-16" y="-40" width="32" height="40" fill="#8A5A3C" ${sw()}/>`);
 const P=[
- {kind:'cover', svg:coverBase('sb','불 끄고 하는 시합',`${g(70,252,.8,`<rect x="-30" y="-6" width="60" height="8" rx="2" fill="#B98A5A"/>`)}`,sb(210,264,1.0,{pose:'hold',mood:'joy',item:brush})),
+ {kind:'cover', svg:coverBase('sb','불 끄고 하는 시합',`${tteok(80,256,true)}${lamp(340,256)}`,sb(210,264,1.0,{pose:'hold',mood:'joy',item:brush})),
   text:`<span class="big">한석봉과 어머니의 떡</span><br>위인 그림책 {no}권`},
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#D9CCAE',196,214)}
   ${sbKid(140,266,.92,{pose:'hold',mood:'joy',item:brush})}

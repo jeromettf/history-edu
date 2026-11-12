@@ -17,7 +17,7 @@ const P=[
   ${fish(300,230,'#F2A24B')}${fish(350,250,'#E98FA0')}
   ${bogoKid(220,250,.9,{pose:'up',mood:'joy'})}
   <path d="M168 240 Q220 226 272 240" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>`,'url(#b1)',sky('b1','#CFE7F2','#F4EBD2')),
-  text:`원효 스님이 살던 때에서 백 년쯤 지난 신라예요. 바닷가 섬마을에 궁복이라는 아이가 살았어요. 궁복이는 헤엄치기를 세상에서 제일 좋아했어요.`},
+  text:`혜초 스님이 먼 여행에서 돌아오고 몇십 년 뒤의 신라예요. 바닷가 섬마을에 궁복이라는 아이가 살았어요. 궁복이는 헤엄치기를 세상에서 제일 좋아했어요.`},
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   <path d="M330 216 V140" stroke="#8A5A3C" stroke-width="10" stroke-linecap="round"/><ellipse cx="330" cy="120" rx="44" ry="32" fill="#5E9C6A" ${sw()}/>
   <circle cx="330" cy="160" r="20" fill="#FFFDF6" ${sw()}/><circle cx="330" cy="160" r="12" fill="#C9473B"/><circle cx="330" cy="160" r="4" fill="#FFFDF6"/>

@@ -6,7 +6,7 @@ const official=(x,y,s,o={})=>hero(x,y,s,{robe:'#7A8C6E',hat:'gat',belt:'#3A2E2A'
 const khitan=(x,y,s,o={})=>hero(x,y,s,{robe:'#8A5A3C',hat:'helmet',body:'armor',beard:'#3B2618',...o});
 const tent=(x,y,s,c='#C9B48A')=>g(x,y,s,`<path d="M-60 0 L0 -70 L60 0Z" fill="${c}" ${sw()}/><path d="M-14 0 L0 -40 L14 0Z" fill="#3A2B1E" ${sw(1.6)}/><path d="M0 -70 V-90" ${sw(3)}/><path d="M0 -90 L22 -84 L0 -78Z" fill="#5A5560"/>`);
 const P=[
- {kind:'cover', svg:coverBase('s','말로 지킨 땅',`${tent(64,240,.5)}`,seohui(220,264,1.0,{pose:'hold',mood:'joy'})),
+ {kind:'cover', svg:coverBase('s','말로 지킨 땅',`${tent(62,250,.9)}${tent(352,250,.7)}`,seohui(220,264,1.0,{pose:'hold',mood:'joy'})),
   text:`<span class="big">서희와 지혜로운 말</span><br>위인 그림책 {no}권`},
  {svg:SV(`${cloud(80,40,.7)}${cloud(320,56,.6)}${hills('#A9CDB4','#C7D88F',196,220)}
   <rect x="40" y="130" width="120" height="76" fill="#E8DCC4" ${sw()}/><path d="M24 136 Q100 86 176 136Z" fill="#4A4A55" ${sw()}/>

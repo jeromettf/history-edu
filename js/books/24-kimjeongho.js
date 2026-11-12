@@ -13,12 +13,12 @@ const foldMap=`<rect x="-30" y="-56" width="60" height="44" fill="#F6EBCB" ${sw(
 const woodblock=(x,y)=>`<rect x="${x-50}" y="${y-30}" width="100" height="30" fill="#A87E52" ${sw()}/><path d="M${x-40} ${y-18} l10 -6 l10 6 l10 -6 l10 6 M${x+4} ${y-12} h30" fill="none" stroke="#6B4A33" stroke-width="2.4"/>`;
 const phone=`<rect x="-16" y="-62" width="32" height="54" rx="5" fill="#3A3A44" ${sw()}/><rect x="-12" y="-56" width="24" height="40" fill="#CFE6D8"/><path d="M-8 -22 L-2 -40 L8 -30" fill="none" stroke="#C9473B" stroke-width="2"/><circle cx="8" cy="-30" r="2.4" fill="#C9473B"/>`;
 const P=[
- {kind:'cover', svg:coverBase('jh','우리 땅 지도',`${mapArt(30,180,70,60)}`,jh(220,264,1.0,{pose:'hold',mood:'joy',item:foldMap})),
+ {kind:'cover', svg:coverBase('jh','우리 땅 지도',`${mapArt(14,150,110,92)}`,jh(220,264,1.0,{pose:'hold',mood:'joy',item:foldMap})),
   text:`<span class="big">김정호와 대동여지도</span><br>위인 그림책 {no}권`},
  {svg:SV(`<path d="M-6 200 Q60 120 130 160 Q200 90 280 150 Q340 110 406 170 L406 286 L-6 286Z" fill="#94BFA6" ${sw()}/>
   <path d="M100 286 Q160 230 140 200 Q120 170 200 150 M200 150 Q280 140 300 110" fill="none" stroke="#E6D3A6" stroke-width="10" stroke-linecap="round"/><path d="M200 150 Q160 120 110 120" fill="none" stroke="#E6D3A6" stroke-width="10" stroke-linecap="round"/>
   ${traveler(190,268,.86,{mood:'o'})}${T(250,100,'어느 길로 가지?',18,K.red)}`,'url(#jh1)',sky('jh1','#CFE7F2','#F6EAD0')),
-  text:`김홍도가 그림을 그리던 무렵, 김정호가 태어났어요. 그때는 먼 길을 가다가 길을 잃는 사람이 많았어요. 쓸 만한 지도가 귀했거든요.`},
+  text:`정약용이 먼 바닷가 마을에서 책을 쓰던 무렵, 김정호가 태어났어요. 그때는 먼 길을 가다가 길을 잃는 사람이 많았어요. 쓸 만한 지도가 귀했거든요.`},
  {chips:LEG, svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#EADCC0"/><rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   ${mapArt(220,60,140,110)}
   ${jhKid(130,268,.92,{pose:'up',mood:'joy'})}`,'#EADCC0'),
@@ -40,8 +40,8 @@ const P=[
   <rect x="40" y="20" width="160" height="230" fill="#F6EBCB" ${sw()}/>${[0,1,2,3,4,5,6,7].map(k=>`<path d="M40 ${20+k*28.75} H200" stroke="#C9B48A" stroke-width="1.4"/>`).join('')}
   <path d="M120 20 V250" stroke="#C9B48A" stroke-width="1.4"/>
   ${kid(330,270,.9,{pose:'up',mood:'o'})}
-  <path d="M240 20 V250" stroke="${L}" stroke-width="1.6" stroke-dasharray="4 4"/>${T(260,140,'3층',14)}${T(260,156,'집 높이',14)}`,'#EADCC0'),
-  text:`대동여지도를 모두 펼치면 3층 집 높이만큼 커다래요! 하지만 스물두 권의 책처럼 접을 수 있어서 들고 다니기 편했어요.`},
+  <path d="M240 20 V250" stroke="${L}" stroke-width="1.6" stroke-dasharray="4 4"/>${T(260,140,'2층',14)}${T(260,156,'집 높이',14)}`,'#EADCC0'),
+  text:`대동여지도를 모두 펼치면 2층 집만큼 커다래요! 하지만 스물두 권의 책처럼 접을 수 있어서 들고 다니기 편했어요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#EADCC0"/><rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   ${woodblock(130,236)}
   ${mapArt(250,120,60,46)}${mapArt(290,150,60,46)}${mapArt(326,120,60,46)}
@@ -59,5 +59,5 @@ const P=[
 BOOKS.push({id:'kimjeongho',era:'joseon',title:'김정호와 대동여지도',who:'김정호',teaser:'우리 땅을 한눈에 보는 커다란 지도를 만든 김정호 이야기예요.',pages:P,
  talk:{three:['지도에서 강은 무슨 색이지?','지도를 펼치는 흉내, 쫙!','우리 집에서 놀이터 가는 길을 그려 볼까?'],
   five:['대동여지도를 왜 접을 수 있게 만들었을까?','길에 점을 찍은 까닭은 뭘까?','우리 동네 지도를 그린다면 무엇을 넣을래?'],
-  note:'김정호(1804년 무렵~1866년 무렵)는 1861년 목판본 대동여지도를 펴냈습니다. 22첩으로 접을 수 있고, 모두 펼치면 세로 약 6.6미터, 가로 약 4미터입니다. 백두산을 여러 번 오르고 전국을 걸어 다녔다는 이야기는 근거가 약하고, 실제로는 이전의 지도와 지리책을 모아 정밀하게 다듬은 공이 큽니다. 그래서 직접 다녔다는 장면에는 전해 오는 이야기 표시를 달았습니다.'}});
+  note:'김정호(1804년 무렵~1866년 무렵)는 1861년 목판본 대동여지도를 펴냈습니다. 22첩으로 접을 수 있고, 모두 펼치면 세로 약 6.7미터, 가로 약 3.8미터입니다. 백두산을 여러 번 오르고 전국을 걸어 다녔다는 이야기는 근거가 약하고, 실제로는 이전의 지도와 지리책을 모아 정밀하게 다듬은 공이 큽니다. 그래서 직접 다녔다는 장면에는 전해 오는 이야기 표시를 달았습니다.'}});
 })();
