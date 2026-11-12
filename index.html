@@ -152,6 +152,22 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 .peek summary{cursor:pointer;font-size:14px}
 .peek p{margin:6px 0 0;line-height:1.6;word-break:keep-all}
 .tellnudge{align-self:flex-start;font-family:var(--font-d);font-size:17px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:14px;padding:8px 14px;cursor:pointer;text-align:left}
+.gift{margin:0;font-family:var(--font-d);font-size:18px;color:var(--ink);background:var(--chip);border-radius:12px;padding:8px 12px}
+.dex{border:2px solid var(--line);border-radius:16px;background:var(--surface);padding:10px 14px}
+.dex summary{cursor:pointer;font-family:var(--font-d);font-size:19px}
+.dex summary b{font-weight:400;color:var(--accent);margin-left:6px}
+.dextypes{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.dextypes button{font-family:var(--font-d);font-size:14px;border:2px solid var(--c,var(--ink));background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer}
+.dextypes button.on{background:var(--c,var(--ink));color:#fff}
+.dexgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.dexc{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border-radius:14px;border:2px solid var(--c);background:var(--bg);color:var(--ink);cursor:pointer;font:inherit;min-width:0;text-align:center}
+.dexc small{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.dexc .dx-e{font-size:34px;line-height:1.1}
+.dexc b{font-family:var(--font-d);font-weight:400;font-size:16px}
+.dexc .dx-t{font-size:12px;color:#fff;background:var(--c);border-radius:999px;padding:1px 8px}
+.dexc .dx-s{font-size:12px;color:var(--muted);word-break:keep-all;line-height:1.3}
+.dexc.unmet{border-style:dashed;opacity:.75}
+.dexc.unmet .dx-e{filter:grayscale(1);color:var(--muted)}
 
 /* 가로 화면: 그림은 왼쪽에 화면 높이만큼, 글과 넘김 단추는 오른쪽 */
 @media (orientation:landscape) and (min-width:640px){
@@ -209,6 +225,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
     <p class="lead">아주아주 먼 옛날부터 할머니 할아버지 어릴 적까지, 시대 순서대로 꽂혀 있어요. 읽고 싶은 책을 골라 보세요.</p>
     <p class="progress" id="progress"></p>
     <div class="comptally" id="comptally"></div>
+    <div id="dexwrap"></div>
     <div id="grid"></div>
   </section>
   <section class="book" id="reader" hidden>
@@ -309,6 +326,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 <script src="js/redraw/r6.js"></script>
 <script src="js/redraw/r7.js"></script>
 <script src="js/think.js"></script>
+<script src="js/bridge.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

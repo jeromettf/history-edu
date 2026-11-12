@@ -88,6 +88,18 @@ function roadHTML(cur){
     const who=list.map(b=>`<button class="who${cur&&b.id===cur.id?' cur':''}" type="button" data-go="${b.id}">${b.who}</button>`).join('');
     return `<div class="stop${here?' here':''}${id==='now'?' now':''}"><i></i><span class="when">${short}</span>${who?`<span class="whos">${who}</span>`:''}</div>`}).join('')}</div></div>`;
 }
+/* 위인 도감: 다 읽은 위인은 물건과 기술이 보이고, 아직 못 만난 위인은 그림자로 */
+let dexType='';
+function dexHTML(){
+  const met=BOOKS.filter(b=>done[b.id]).length;
+  const list=BOOKS.filter(b=>!dexType||(WIIN_DEX[b.id]||[])[0]===dexType);
+  return `<details class="dex" ${dexOpen?'open':''}><summary>📇 위인 도감 <b>${met} / ${BOOKS.length}</b></summary>
+<div class="dextypes"><button type="button" data-dt="" class="${dexType?'':'on'}">전체</button>${Object.entries(WIIN_TYPES).map(([k,[n,e,c]])=>`<button type="button" data-dt="${k}" class="${dexType===k?'on':''}" style="--c:${c}">${e} ${n} ${BOOKS.filter(b=>(WIIN_DEX[b.id]||[])[0]===k&&done[b.id]).length}/${BOOKS.filter(b=>(WIIN_DEX[b.id]||[])[0]===k).length}</button>`).join('')}</div>
+<div class="dexgrid">${list.map(b=>{const d=WIIN_DEX[b.id]||['heart','','📖',''],T=WIIN_TYPES[d[0]],m=!!done[b.id];
+  return `<button type="button" class="dexc${m?'':' unmet'}" data-go="${b.id}" style="--c:${T[2]}"><small>No.${String(b.no).padStart(3,'0')}</small><span class="dx-e">${m?d[2]:'?'}</span><b>${m?b.who:'???'}</b><span class="dx-t">${T[1]} ${T[0]}</span><span class="dx-s">${m?d[1]:'책을 읽으면 알 수 있어요'}</span></button>`}).join('')}</div></details>`}
+let dexOpen=false;
+document.addEventListener('click',e=>{const t=e.target.closest('[data-dt]');if(!t)return;dexType=t.dataset.dt;dexOpen=true;$('dexwrap').innerHTML=dexHTML()});
+document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('dex'))dexOpen=e.target.open},true);
 function shelf(){
   stopSpeak();
   $('reader').hidden=true; $('shelf').hidden=false;
@@ -96,6 +108,7 @@ function shelf(){
   $('shelf').classList.toggle('allDone',n===BOOKS.length);
   const tc=compTally(), tn=Object.keys(tried).filter(id=>ACT[id]).length;
   $('comptally').innerHTML=tn?`<p>해 본 활동 ${tn}개. 이만큼 자랐어요.</p><div class="bars">${Object.keys(COMP).map(k=>`<span class="bar" title="${COMP_NOTE[k]}"><b style="--c:${COMP[k][1]};--n:${tc[k]||0}"></b><i>${COMP[k][0]} ${tc[k]||0}</i></span>`).join('')}</div>`:`<p>책 끝의 "해 보기"를 하고 "해 봤어요"를 누르면 여기에 쌓여요.</p>`;
+  $('dexwrap').innerHTML=dexHTML();
   const eras=ERAS.filter(([id])=>id!=='now'&&BOOKS.some(b=>b.era===id));
   $('grid').innerHTML=`<nav class="eranav" aria-label="시대 바로 가기">${eras.map(([id,,name])=>`<button type="button" data-era="${id}">${name}</button>`).join('')}</nav>`+eras.map(([id,when,name])=>{
     const list=BOOKS.filter(b=>b.era===id);
@@ -136,6 +149,7 @@ function showBook(id,n=0){
   $('btitle').textContent=`${book.no}권 ${book.title}`;
   dots.innerHTML='';
   book.pages.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${k+1}쪽`);b.addEventListener('click',()=>render(k,true));dots.appendChild(b)});
+  seenP=new Set(); prevI=-1;
   tell=false; const tb=$('tellB'); tb.classList.remove('on'); tb.setAttribute('aria-pressed','false'); tb.textContent='🗣 네가 들려줘';
   render(n,false); window.scrollTo(0,0);
 }
@@ -147,8 +161,12 @@ function tellHTML(p){const P=book.pages, story=P.map((q,k)=>(!q.kind&&q.text)?k:
   return `${ask?`<p class="story tell">🗣 ${ask}</p>`:''}<details class="peek"><summary>엄마 아빠가 볼 원래 문장</summary><p>${p.text}</p></details>`}
 function setTell(on){tell=on; if(on&&auto)setAuto(false); const b=$('tellB'); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); b.textContent=on?'📖 다시 읽어 주기':'🗣 네가 들려줘'; render(i,false)}
 function tilesHTML(items,hint,wide){return `<div class="tiles">${items.map((t,k)=>`<button class="tile${wide?' wide':''}" type="button" data-t="${k}" aria-pressed="false">${t}</button>`).join('')}</div><p class="tip" id="tip">${hint}</p>`}
+/* 포켓몬 마을 선물: 이야기 쪽을 70% 넘게 2.5초 이상 보거나 저절로 읽기로 들었을 때만 "읽음"으로 쳐요 */
+let seenP=new Set(), enterT=0, prevI=-1;
+function noteDwell(){if(book&&prevI>=0&&storyPage(book.pages[prevI])&&(auto||Date.now()-enterT>=2500))seenP.add(prevI)}
 function render(n,fromUser){
-  const P=book.pages; i=Math.max(0,Math.min(P.length-1,n)); const p=P[i];
+  noteDwell();
+  const P=book.pages; i=Math.max(0,Math.min(P.length-1,n)); const p=P[i]; prevI=i; enterT=Date.now();
   if(fromUser&&resumeNext){resumeNext=false;autoB.textContent='▶ 저절로 읽기';autoB.classList.remove('wait')}
   stopSpeak();
   if(p.kind==='talk'||p.kind==='try'){stage.hidden=true}
@@ -164,11 +182,20 @@ function render(n,fromUser){
   if(p.kind==='sundial') h+=tilesHTML(SUN.map(t=>`${t[0]} ${t[2]}`),'아침, 한낮, 저녁을 눌러 보세요.',true);
   if(p.kind==='clock') h+=tilesHTML(DRUM.map(t=>t[0]),'종, 북, 징을 눌러 보세요.',true);
   if(p.taps) h+=tilesHTML(p.taps.map(t=>t.label),p.tapHint||'그림이나 단추를 눌러 보세요.',true);
-  if(p.kind==='end') h+=`<p class="got">★ 별 스티커를 받았어요!</p>`+roadHTML(book);
+  if(p.kind==='end'){
+    const nStory=P.filter(storyPage).length, wasRead=!!(wbLoad().books[book.id]||{}).read;
+    if(seenP.size>=Math.ceil(nStory*.7)) wbMark(book,'read');
+    const nowRead=!!(wbLoad().books[book.id]||{}).read, told=!!(wbLoad().books[book.id]||{}).told;
+    h+=`<p class="got">★ 별 스티커를 받았어요!</p>`;
+    if(nowRead&&!wasRead) {const d=WIIN_DEX[book.id]||[];h+=`<p class="gift">🎁 포켓몬 마을 박물관에 새 전시품이 생겨요: ${d[2]||''} ${d[3]||book.who}</p>`}
+    if(tell) h+=`<button class="did${told?' on':''}" type="button" id="toldB" aria-pressed="${told}">${told?'✓ 이야기를 들려줬어요':'🗣 아이가 이야기를 들려줬어요'}</button><p class="note">부모님이 눌러 주세요. 포켓몬 마을에 선물이 가요.</p>`;
+    h+=roadHTML(book);
+  }
   body.innerHTML=h;
+  const tdB=$('toldB'); if(tdB) tdB.addEventListener('click',()=>{if((wbLoad().books[book.id]||{}).told)return; wbMark(book,'told'); tdB.classList.add('on'); tdB.setAttribute('aria-pressed','true'); tdB.textContent='✓ 이야기를 들려줬어요'});
   const tg=$('tellGo'); if(tg) tg.addEventListener('click',()=>{setTell(true);render(1,false)});
   $('reader').classList.toggle('nostage',stage.hidden); $('side').querySelector('.sidebody').scrollTop=0;
-  const dB=$('didB'); if(dB) dB.addEventListener('click',()=>{markTried(book.id);const on=!!tried[book.id];dB.classList.toggle('on',on);dB.setAttribute('aria-pressed',on);dB.textContent=on?'✓ 해 봤어요':'해 봤어요'});
+  const dB=$('didB'); if(dB) dB.addEventListener('click',()=>{markTried(book.id);const on=!!tried[book.id];wbMark(book,'tried',on);dB.classList.toggle('on',on);dB.setAttribute('aria-pressed',on);dB.textContent=on?'✓ 해 봤어요':'해 봤어요'});
   body.querySelectorAll('[data-t]').forEach(b=>b.addEventListener('click',()=>{setAuto(false);pick(p,+b.dataset.t)}));
   if(p.taps){const groups={};p.taps.forEach((t,k)=>{if(t.el)(groups[t.el]=groups[t.el]||[]).push(k)});
     Object.entries(groups).forEach(([id,ks])=>{const el=stage.querySelector('#'+id); if(!el) return; let n=0; el.classList.add('tappable');
@@ -218,4 +245,6 @@ stage.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouc
 function route(){const h=location.hash.slice(1); if(auto)setAuto(false); if(BOOKS.some(b=>b.id===h)) showBook(h); else {book=null;shelf()}}
 window.addEventListener('hashchange',route);
 if(canSpeak){try{speechSynthesis.getVoices()}catch(e){}}
+/* 연결 전에 읽은 책과 해 본 활동도 포켓몬 마을에 알려요 (한 번만) */
+if(!store.get('wiin-bridge-seeded')){BOOKS.forEach(b=>{if(done[b.id])wbMark(b,'read');if(tried[b.id])wbMark(b,'tried')});store.set('wiin-bridge-seeded','1')}
 route();
