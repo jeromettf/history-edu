@@ -57,20 +57,27 @@ function stopSpeak(){ spTok++; if(canSpeak){try{speechSynthesis.cancel()}catch(e
 
 /* 저절로 넘기며 읽기: 글을 읽고, 누르기 장면이면 하나씩 눌러 보여 주고, 잠깐 쉬었다가 다음 쪽으로 */
 const autoB=$('autoPlay'); let auto=false,autoT=null,wake=null;
-function setAuto(on){auto=on; clearTimeout(autoT);
+function setAuto(on){auto=on; clearTimeout(autoT); resumeNext=false; autoB.classList.remove('wait');
   autoB.classList.toggle('on',on); autoB.setAttribute('aria-pressed',on); autoB.textContent=on?'⏸ 멈추기':'▶ 저절로 읽기';
   if(on){try{navigator.wakeLock&&navigator.wakeLock.request('screen').then(w=>wake=w).catch(()=>{})}catch(e){}}
   else{stopSpeak(); try{wake&&wake.release()}catch(e){} wake=null}}
+let resumeNext=false;
+function pauseAuto(){setAuto(false); resumeNext=true; autoB.textContent='▶ 대답했으면 이어서'; autoB.classList.add('wait')}
 function runAuto(){clearTimeout(autoT); if(!auto||!book)return; const p=book.pages[i], here=i;
   if(p.kind==='talk'||p.kind==='try'){setAuto(false);return}
   const ok=()=>auto&&book&&i===here;
   const turn=()=>{if(!ok())return; if(p.kind==='end'){setAuto(false);return}
     autoT=setTimeout(()=>{if(ok())render(i+1,false)},1600)};
   const taps=p.taps?p.taps.map((_,k)=>k):p.kind==='letters'?LETTERS.map((_,k)=>k):p.kind==='sundial'?SUN.map((_,k)=>k):p.kind==='clock'?DRUM.map((_,k)=>k):[];
-  const tapNext=()=>{if(!ok())return; if(!taps.length){turn();return} const k=taps.shift(); autoT=setTimeout(()=>{if(ok())pick(p,k,tapNext)},700)};
-  autoT=setTimeout(()=>{if(ok())speak(p.text||'',tapNext)},500);
+  let turn2=null;
+  const tapNext=()=>{if(!ok())return; if(!taps.length){(turn2||turn)();return} const k=taps.shift(); autoT=setTimeout(()=>{if(ok())pick(p,k,tapNext)},700)};
+  const th=THINK[book.id];
+  const say=(p.text||'')+(p.kind==='cover'&&th?` 읽으면서 알아봐요. ${th.q}`:'');
+  if(th&&here===th.p){turn2=()=>{if(!ok())return; speak(`잠깐! 생각해 봐요. ${th.q}`,()=>{if(!ok())return; pauseAuto()})}}
+  autoT=setTimeout(()=>{if(ok())speak(say,tapNext)},500);
 }
-autoB.addEventListener('click',()=>{setAuto(!auto); if(auto){const p=book.pages[i]; if(p.kind==='talk'||p.kind==='try'||p.kind==='end')render(0,false); else runAuto()}});
+$('tellB').addEventListener('click',()=>setTell(!tell));
+autoB.addEventListener('click',()=>{if(resumeNext&&!auto){resumeNext=false;setAuto(true);render(i+1,false);return} setAuto(!auto); if(auto){const p=book.pages[i]; if(p.kind==='talk'||p.kind==='try'||p.kind==='end')render(0,false); else runAuto()}});
 const uniq=(svg,suf)=>svg.replace(/id="([^"]+)"/g,`id="$1${suf}"`).replace(/url\(#([^)]+)\)/g,`url(#$1${suf})`);
 /* 책장 표지는 질감 필터를 빼서 가볍게 그린다 */
 const thumb=svg=>svg.replace('<g filter="url(#wob)">','<g>').replace(/<rect width="400" height="280" [^>]*filter="url\(#(wash|grain)\)"[^>]*\/>/g,'');
@@ -123,23 +130,36 @@ function showBook(id,n=0){
   $('btitle').textContent=`${book.no}권 ${book.title}`;
   dots.innerHTML='';
   book.pages.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${k+1}쪽`);b.addEventListener('click',()=>render(k,true));dots.appendChild(b)});
+  tell=false; const tb=$('tellB'); tb.classList.remove('on'); tb.setAttribute('aria-pressed','false'); tb.textContent='🗣 네가 들려줘';
   render(n,false); window.scrollTo(0,0);
 }
+let tell=false;
+const storyPage=p=>!!p.text&&!['cover','end','talk','try'].includes(p.kind);
+function tellHTML(p){const P=book.pages, story=P.map((q,k)=>(!q.kind&&q.text)?k:-1).filter(k=>k>=0), pos=story.indexOf(i);
+  const ask=pos===0?TELL.first:pos===story.length-1?TELL.last:TELL.mid[(pos-1)%TELL.mid.length];
+  return `<p class="story tell">🗣 ${ask}</p><details class="peek"><summary>엄마 아빠가 볼 원래 문장</summary><p>${p.text}</p></details>`}
+function setTell(on){tell=on; if(on&&auto)setAuto(false); const b=$('tellB'); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); b.textContent=on?'📖 다시 읽어 주기':'🗣 네가 들려줘'; render(i,false)}
 function tilesHTML(items,hint,wide){return `<div class="tiles">${items.map((t,k)=>`<button class="tile${wide?' wide':''}" type="button" data-t="${k}" aria-pressed="false">${t}</button>`).join('')}</div><p class="tip" id="tip">${hint}</p>`}
 function render(n,fromUser){
   const P=book.pages; i=Math.max(0,Math.min(P.length-1,n)); const p=P[i];
+  if(fromUser&&resumeNext){resumeNext=false;autoB.textContent='▶ 저절로 읽기';autoB.classList.remove('wait')}
   stopSpeak();
   if(p.kind==='talk'||p.kind==='try'){stage.hidden=true}
   else{stage.hidden=false;stage.innerHTML=p.svg;stage.setAttribute('aria-label',plain(p.text||''));stage.classList.remove('fade');void stage.offsetWidth;stage.classList.add('fade')}
   if(p.kind==='talk'||p.kind==='end') markDone(book.id);
   meta.innerHTML=(p.chips||[]).map(c=>`<span class="chip">${c}</span>`).join(''); meta.hidden=!(p.chips&&p.chips.length);
-  let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
+  const th=THINK[book.id], isStory=storyPage(p);
+  let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():(tell&&isStory)?tellHTML(p):`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
+  if(p.kind==='cover'&&th) h+=`<div class="think pre"><b>🤔 읽으면서 알아봐요</b><p>${th.q}</p></div>`;
+  if(p.kind==='cover'&&done[book.id]&&!tell) h+=`<button class="tellnudge" type="button" id="tellGo">🗣 다 읽은 책이에요. 이번엔 네가 들려줄래?</button>`;
+  if(th&&i===th.p) h+=`<div class="think"><b>🤔 잠깐! 생각해 봐요</b><p>${th.q}</p><small>대답해 본 다음에 넘겨요.</small></div>`;
   if(p.kind==='letters') h+=tilesHTML(LETTERS.map(t=>t[0]),'글자를 눌러 보세요.');
   if(p.kind==='sundial') h+=tilesHTML(SUN.map(t=>`${t[0]} ${t[2]}`),'아침, 한낮, 저녁을 눌러 보세요.',true);
   if(p.kind==='clock') h+=tilesHTML(DRUM.map(t=>t[0]),'종, 북, 징을 눌러 보세요.',true);
   if(p.taps) h+=tilesHTML(p.taps.map(t=>t.label),p.tapHint||'그림이나 단추를 눌러 보세요.',true);
   if(p.kind==='end') h+=`<p class="got">★ 별 스티커를 받았어요!</p>`+roadHTML(book);
   body.innerHTML=h;
+  const tg=$('tellGo'); if(tg) tg.addEventListener('click',()=>{setTell(true);render(1,false)});
   $('reader').classList.toggle('nostage',stage.hidden); $('side').querySelector('.sidebody').scrollTop=0;
   const dB=$('didB'); if(dB) dB.addEventListener('click',()=>{markTried(book.id);const on=!!tried[book.id];dB.classList.toggle('on',on);dB.setAttribute('aria-pressed',on);dB.textContent=on?'✓ 해 봤어요':'해 봤어요'});
   body.querySelectorAll('[data-t]').forEach(b=>b.addEventListener('click',()=>{setAuto(false);pick(p,+b.dataset.t)}));
@@ -151,8 +171,8 @@ function render(n,fromUser){
   readB.disabled=!canSpeak||p.kind==='talk'||p.kind==='try';
   count.textContent=`${i+1} / ${P.length}`;
   [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
-  if(auto) runAuto(); else if(fromUser&&autoR.checked&&p.text) speak(p.text);
-  autoB.hidden=p.kind==='talk'||p.kind==='try';
+  if(auto) runAuto(); else if(fromUser&&autoR.checked&&p.text&&!(tell&&storyPage(p))) speak(p.text);
+  autoB.hidden=tell||p.kind==='talk'||p.kind==='try'; $('tellB').hidden=p.kind==='talk'||p.kind==='try';
 }
 function press(k){body.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.t===k?'true':'false'))}
 function wiggle(el){if(!el||el.tagName==='rect')return;el.classList.remove('hit');void el.getBoundingClientRect();el.classList.add('hit')}
@@ -183,7 +203,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(
 $('back').addEventListener('click',()=>{setAuto(false);location.hash='shelf'});
 prevB.addEventListener('click',()=>render(i-1,true));
 nextB.addEventListener('click',()=>{ if(i===book.pages.length-1) location.hash='shelf'; else render(i+1,true)});
-readB.addEventListener('click',()=>{setAuto(false);const p=book.pages[i]; if(p.text) speak(p.text)});
+readB.addEventListener('click',()=>{setAuto(false);const p=book.pages[i]; if(tell&&storyPage(p)){const t=body.querySelector('.story.tell');if(t)speak(t.textContent.replace('🗣',''));return} if(p.text) speak(p.text)});
 document.addEventListener('keydown',e=>{if(!book||$('reader').hidden)return;if(e.key==='ArrowRight')render(i+1,true);if(e.key==='ArrowLeft')render(i-1,true)});
 let sx=null;
 stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
