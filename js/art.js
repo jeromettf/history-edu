@@ -16,9 +16,9 @@ function SV(inner,bg,defs=''){return `<svg viewBox="0 0 400 280" xmlns="http://w
 <radialGradient id="vig" cx="50%" cy="48%" r="70%"><stop offset=".62" stop-color="#3B2614" stop-opacity="0"/><stop offset="1" stop-color="#3B2614" stop-opacity=".28"/></radialGradient>
 ${defs}</defs>
 <g filter="url(#wob)"><rect x="-6" y="-6" width="412" height="292" fill="${bg}"/>${inner}</g>
-<rect width="400" height="280" filter="url(#wash)" style="mix-blend-mode:multiply"/>
-<rect width="400" height="280" filter="url(#grain)" style="mix-blend-mode:multiply"/>
-<rect width="400" height="280" fill="url(#vig)"/></svg>`;}
+<rect width="400" height="280" filter="url(#wash)" pointer-events="none" style="mix-blend-mode:multiply"/>
+<rect width="400" height="280" filter="url(#grain)" pointer-events="none" style="mix-blend-mode:multiply"/>
+<rect width="400" height="280" fill="url(#vig)" pointer-events="none"/></svg>`;}
 
 /* 얼굴: 큰 머리, 반짝이는 눈, 눈썹으로 감정 */
 function head(m,sk,tear){
@@ -58,7 +58,7 @@ function person(x,y,s,o){
 const king=(x,y,s,o={})=>person(x,y,s,{robe:'#C9473B',...o,
   deco:`<path d="M-12 -66 L0 -48 L12 -66" fill="none" stroke="#FFF8EC" stroke-width="5"/><circle cx="0" cy="-45" r="11" fill="${K.gold}" ${sw()}/><path d="M-5 -45 q3 -7 8 -2 q3 4 -2 6 q-4 1 -3 -3" fill="none" stroke="#8A5A12" stroke-width="1.7"/><path d="M-36 -30 Q0 -24 36 -30 L37 -23 Q0 -17 -37 -23Z" fill="#3A2E2A" ${sw()}/><circle cx="-18" cy="-24" r="2.2" fill="${K.gold}"/><circle cx="0" cy="-21" r="2.2" fill="${K.gold}"/><circle cx="18" cy="-24" r="2.2" fill="${K.gold}"/>`,
   back:`<ellipse cx="-30" cy="-128" rx="13" ry="7" fill="#2C2A33" ${sw()} transform="rotate(-22 -30 -128)"/><ellipse cx="30" cy="-128" rx="13" ry="7" fill="#2C2A33" ${sw()} transform="rotate(22 30 -128)"/>`,
-  front:`<path d="M-32 -98 Q-33 -132 0 -134 Q33 -132 32 -98 Q0 -110 -32 -98Z" fill="#2C2A33" ${sw()}/><path d="M-28 -106 Q0 -116 28 -106" fill="none" stroke="#575466" stroke-width="3"/><path d="M-5 -66 Q0 -59 5 -66Z" fill="${L}"/>`});
+  front:`${o.beard?`<path d="M-15 -72 Q0 -42 15 -72 Q0 -64 -15 -72Z" fill="${o.beard}" ${sw(1.6)}/>`:''}<path d="M-32 -98 Q-33 -132 0 -134 Q33 -132 32 -98 Q0 -110 -32 -98Z" fill="#2C2A33" ${sw()}/><path d="M-28 -106 Q0 -116 28 -106" fill="none" stroke="#575466" stroke-width="3"/><path d="M-5 -66 Q0 -59 5 -66Z" fill="${L}"/>`});
 const prince=(x,y,s,o={})=>person(x,y,s,{robe:'#4F7DBA',...o,
   deco:`<path d="M-12 -66 L0 -48 L12 -66" fill="none" stroke="#FFF8EC" stroke-width="4.5"/><path d="M-35 -32 Q0 -25 35 -32" fill="none" stroke="#D45A4A" stroke-width="5"/>`,
   back:`<ellipse cx="0" cy="-100" rx="33" ry="30" fill="${HAIR}" ${sw()}/><path d="M26 -84 Q40 -66 33 -48" fill="none" stroke="${HAIR}" stroke-width="7" stroke-linecap="round"/><path d="M33 -50 l-6 10 l10 -2Z" fill="#D45A4A"/>`,

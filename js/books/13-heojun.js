@@ -2,7 +2,7 @@
 (()=>{
 const heojun=(x,y,s,o={})=>hero(x,y,s,{robe:'#EDE9E0',hat:'gat',belt:'#5E9C8A',collar:'#5E9C8A',...o});
 const heojunOld=(x,y,s,o={})=>heojun(x,y,s,{beard:'#8A8580',...o});
-const seonjo=(x,y,s,o={})=>king(x,y,s,o);
+const seonjo=(x,y,s,o={})=>king(x,y,s,{beard:HAIR,...o});
 const mtn=`<path d="M-6 190 Q60 90 130 140 Q200 60 280 130 Q340 90 406 150 L406 236 L-6 236Z" fill="#94BFA6" ${sw()}/>`;
 const roomBg=`<rect x="-6" y="-6" width="412" height="230" fill="#EADCC0"/><rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/><path d="M-6 236 H406 M-6 258 H406" stroke="#C99A52" stroke-width="2"/>`;
 const sickKid=`<rect x="40" y="226" width="150" height="26" rx="6" fill="#F4EFE0" ${sw()}/><rect x="40" y="222" width="110" height="20" rx="6" fill="#E98FA0" ${sw()}/>`+g(166,226,.6,`<ellipse cx="0" cy="0" rx="26" ry="24" fill="${SK}" ${sw()}/><path d="M-26 -6 Q-24 -26 0 -26 Q24 -26 26 -6Z" fill="${HAIR}" ${sw()}/><path d="M-12 2 Q-8 5 -4 2 M4 2 Q8 5 12 2" fill="none" ${sw(2.2)}/><path d="M-5 12 Q0 8 5 12" fill="none" ${sw(2)}/>`)+`<rect x="150" y="196" width="30" height="10" rx="3" fill="#FFFFFF" ${sw(1.4)}/>`;
@@ -15,9 +15,10 @@ const P=[
   text:`세종대왕이 한글을 만들고 백 년쯤 지난 조선이에요. 허준이라는 사람은 아픈 사람을 보면 그냥 지나치지 못했어요. 그래서 병을 고치는 의원이 되었지요.`},
  {svg:SV(`${cloud(80,44,.7)}${mtn}
   <path d="M-6 220 Q200 206 406 220 L406 286 L-6 286Z" fill="#BCD38F" ${sw()}/>
-  ${herb(60,262)}${herb(100,256,'#7CB66E')}${herb(300,262,'#E98FA0')}${herb(352,258)}${herb(250,270,'#7CB66E')}
+  <g id="tSsuk">${herb(60,262)}${herb(352,258)}</g><g id="tDoraji">${herb(300,262,'#9B7FD1')}${herb(100,256,'#9B7FD1')}</g>${herb(250,270,'#7CB66E')}
   ${heojun(180,268,.92,{pose:'hold',mood:'joy',item:herbBasket})}
-  ${T(330,190,'쑥',16)}${T(80,226,'도라지',14)}`,'url(#h2)',sky('h2','#CFE7F2','#F6EAD0')),
+  `,'url(#h2)',sky('h2','#CFE7F2','#F6EAD0')),
+  taps:[{label:'쑥',el:'tSsuk',say:'배가 아플 때 쓰던 쑥이에요. 향이 아주 좋아요.'},{label:'도라지',el:'tDoraji',say:'기침할 때 쓰던 도라지예요. 보라색 꽃이 피어요.'}],tapHint:'약이 되는 풀을 눌러 보세요.',
   text:`허준은 산과 들을 다니며 약이 되는 풀을 찾았어요. 쑥과 도라지처럼 우리 땅에서 자라는 풀도 좋은 약이 되었지요.`},
  {svg:SV(`
   <rect x="-6" y="-6" width="412" height="230" fill="#E8D3B0"/>
@@ -64,9 +65,8 @@ const P=[
   text:`아픈 사람을 그냥 지나치지 못한 의원이 남긴 선물,<br>건강을 지키는 지혜.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'heojun',no:7,era:'joseon',title:'허준과 동의보감',who:'허준',pages:P,
+BOOKS.push({id:'heojun',era:'joseon',title:'허준과 동의보감',who:'허준',teaser:'아픈 사람을 그냥 지나치지 못한 허준이 약초 책을 만들었어요.',pages:P,
  talk:{three:['허준 할아버지 바구니에 무엇이 있지?','아플 때 누가 돌봐 줘?','"아야!" 하는 친구에게 "괜찮아?" 해 볼까?'],
   five:['허준은 왜 약초 이름을 한글로도 적었을까?','전쟁 중에도 책을 쓴 까닭은 뭘까?','아픈 친구를 도우려면 어떻게 할까?'],
-  friend:{title:'같은 시대 친구',name:'이순신',text:'허준이 책을 쓰던 때, 바다에서는 이순신 장군이 나라를 지키고 있었어요.',go:'yisunsin'},
   note:'허준(1539~1615)은 선조의 명으로 1596년 동의보감을 쓰기 시작해, 임진왜란과 귀양 중에도 집필을 이어 1610년 25권으로 완성했습니다. 2009년 유네스코 세계기록유산에 올랐습니다. 어린 시절 기록은 거의 남아 있지 않아 이야기에 넣지 않았고, 드라마로 널리 알려진 스승 유의태 이야기는 소설에서 지어낸 내용입니다.'}});
 })();

@@ -15,7 +15,7 @@ const P=[
   ${ssKid(150,268,.92,{pose:'hold',mood:'joy',item:woodSword})}
   ${kid(250,270,.64,{mood:'joy',pose:'up'})}${hero(310,270,.64,{robe:'#E7C76A',hair:'braid',mood:'joy',pose:'up'})}${hero(360,270,.6,{robe:'#E98FA0',hair:'braid',mood:'joy'})}
   ${T(150,110,'나를 따르라!',18,K.red)}`,'url(#y1)',sky('y1','#CFE7F2','#F6EAD0')),
-  text:`허준과 같은 시절, 순신이라는 아이가 살았어요. 순신은 동네 아이들과 전쟁놀이를 할 때면 늘 대장을 맡았대요. 나무로 활과 칼을 만들어 놀았지요.`},
+  text:`석봉이와 같은 시절, 순신이라는 아이가 살았어요. 순신은 동네 아이들과 전쟁놀이를 할 때면 늘 대장을 맡았대요. 나무로 활과 칼을 만들어 놀았지요.`},
  {chips:LEG, svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   <path d="M320 216 Q312 150 330 100" stroke="#8A6A44" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M330 104 Q300 130 290 170 M330 110 Q350 140 362 176 M326 120 Q316 150 316 188" fill="none" stroke="#7CB66E" stroke-width="4" stroke-linecap="round"/>
   ${horse(170,266,.9,{color:'#8A5A3C',rider:rider(ssMan(0,0,1,{pose:'up',mood:'smile'}))})}
@@ -27,9 +27,10 @@ const P=[
   ${g(290,210,.34,`<path d="M-50 -6 Q-40 14 0 16 Q40 14 54 -6Z" fill="#8A5A3C" ${sw(3)}/><path d="M0 -6 V-60" ${sw(4)}/><path d="M-26 -58 L26 -58 L22 -14 L-22 -14Z" fill="#E8E2D2" ${sw(3)}/>`)}`,'url(#y3)',sky('y3','#CFE7F2','#F6EAD0')),
   text:`몇 해 뒤 다시 시험을 보아 장군이 된 순신은 남쪽 바다를 지키게 되었어요. 순신은 바다를 지키려면 튼튼한 배가 필요하다고 생각했지요.`},
  {svg:SV(`${cloud(80,40,.7)}${sea2(200)}
-  ${turtleShip(210,210,1.25)}
-  ${general(56,268,.72,{pose:'up',mood:'joy'})}
+  <g id="tShip">${turtleShip(210,210,1.25)}</g>
+  <g id="tGen">${general(56,268,.72,{pose:'up',mood:'joy'})}</g>
   ${star(330,70,9)}${star(260,40,7,'#F28C7C')}`,'url(#y4)',sky('y4','#CFE7F2','#F6EAD0')),
+  taps:[{label:'거북선',el:'tShip',say:'등에 뾰족한 쇠못이 있어서 아무도 올라탈 수 없었어요.'},{label:'장군',el:'tGen',say:'이순신 장군이 출발! 하고 외쳐요.'}],
   text:`그래서 거북선을 만들었어요. 거북처럼 등이 둥글게 덮여 있고 뾰족한 쇠못이 박혀 있어서, 아무도 함부로 올라탈 수 없었지요. 머리는 용 모양이었어요.`},
  {chips:['1592년'], svg:SV(`${sea2(150)}
   ${[[80,190],[160,176],[240,196],[320,180],[380,200],[120,230],[280,232]].map(([x,y])=>bigShip(x,y,.5)).join('')}
@@ -49,7 +50,7 @@ const P=[
   <path d="M170 160 q20 20 0 40 q-20 20 0 40" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
   ${general(80,138,.62,{pose:'up',mood:'smile'})}
   ${T(110,40,'아직 열두 척이 있다!',18,'#FFFFFF',`stroke="#2E3A55" stroke-width="4" paint-order="stroke"`)}`,'url(#y7)',sky('y7','#B9C2CC','#DCDCD4')),
-  text:`한번은 배가 열두 척밖에 남지 않았어요. 적의 배는 백 척이 넘었지요. 그래도 장군은 말했어요. "아직 열두 척이 남아 있습니다!" 그리고 울돌목의 거센 물살을 이용해 이겼어요.`},
+  text:`한번은 배가 열두 척밖에 남지 않았어요. 적의 배는 백 척이 넘었지요. 그래도 장군은 "아직 열두 척이 남아 있다!" 하고, 울돌목의 거센 물살을 이용해 이겼어요.`},
  {svg:SV(`${cloud(300,40,.7)}
   <path d="M-6 200 L406 200 L406 286 L-6 286Z" fill="#D9CCAE"/>
   <rect x="236" y="150" width="80" height="54" fill="#B9B3A6" ${sw()}/>
@@ -61,9 +62,8 @@ const P=[
   text:`놀이할 때도 대장이던 아이가 지켜 낸 선물,<br>포기하지 않는 마음.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'yisunsin',no:8,era:'joseon',title:'이순신과 거북선',who:'이순신',pages:P,
+BOOKS.push({id:'yisunsin',era:'joseon',title:'이순신과 거북선',who:'이순신',teaser:'나무 칼로 대장 놀이를 하던 아이가 거북선으로 바다를 지켰어요.',pages:P,
  talk:{three:['거북선의 머리는 무슨 모양이었지?','거북처럼 엉금엉금 걸어 볼까?','동전 속 장군을 찾아볼까?'],
   five:['다리를 다쳤을 때 순신은 어떻게 했지?','배가 열두 척뿐인데도 포기하지 않은 까닭은 뭘까?','힘들어도 끝까지 해 본 적이 있어?'],
-  friend:{title:'다음 이야기',name:'김홍도',text:'전쟁이 끝나고 오랜 시간이 흐른 조선에는, 사람들의 웃는 얼굴을 그린 화가 김홍도가 나타나요.',go:'kimhongdo'},
   note:'이순신(1545~1598)은 임진왜란 때 수군을 이끈 장군입니다. 어린 시절 전쟁놀이와 무과 시험 중 말에서 떨어진 일은 『이충무공행록』 등에 전합니다. 1597년 명량 해전에서는 13척으로 130여 척을 상대했습니다. 1598년 노량 해전에서 총탄에 맞아 세상을 떠나며 "나의 죽음을 알리지 말라"는 말을 남겼다고 전하며, 본문에서는 아이 눈높이에 맞춰 이 부분을 뺐습니다.'}});
 })();

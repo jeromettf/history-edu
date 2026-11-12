@@ -18,7 +18,7 @@ const P=[
   <path d="M120 268 Q200 254 280 268" fill="none" stroke="#C7DCC4" stroke-width="10" stroke-linecap="round" opacity=".7"/>
   ${hwanung(200,236,1.0,{mood:'smile'})}
   ${star(60,60,10)}${star(340,70,9)}${star(110,30,6,'#F28C7C')}`,'url(#d1)',sky('d1','#F9E6B6','#CFE6F3')+glow('dg1','#FFF8DE',.9)),
-  text:`아주아주 먼 옛날, 하늘나라에 환웅이라는 왕자님이 살았어요. 환웅은 구름 아래 사람들이 사는 세상을 자주 내려다보았지요. "사람들이 모두 행복하게 살도록 돕고 싶어."`},
+  text:`아주아주 먼 옛날, 하늘나라에 환웅이라는 왕자님이 살았어요. 환웅은 구름 아래 사람들이 사는 세상을 자주 내려다보았지요. "사람들을 행복하게 해 주고 싶어."`},
  {chips:LEG, svg:SV(`
   ${hills('#A9CDB4','#BCD38F',196,222)}
   ${cloud(200,150,1.6)}
@@ -38,8 +38,9 @@ const P=[
   ${forest(214)}
   <path d="M-6 210 Q200 200 406 210 L406 286 L-6 286Z" fill="#9FC48A" ${sw()}/>
   ${hwanung(98,268,.86,{pose:'hold',mood:'smile',item:herbBasket})}
-  ${garlic(170,262)}${garlic(186,266)}${herb(208,266)}
+  <g id="tGarlic">${garlic(170,262)}${garlic(186,266)}</g><g id="tHerb">${herb(208,266)}</g>
   ${bear(262,266,.74,{mood:'o'})}${tiger(350,266,.72,{mood:'o'})}`,'url(#d4)',sky('d4','#D3E9F1','#EEF2DC')),
+  taps:[{label:'마늘',el:'tGarlic',say:'맵고 알싸한 마늘이에요.'},{label:'쑥',el:'tHerb',say:'쓴맛이 나는 쑥이에요.'}],tapHint:'곰이 먹을 것을 눌러 보세요.',
   text:`환웅이 말했어요. "이 쑥과 마늘을 먹으며 백 일 동안 햇빛을 보지 말고 동굴에서 지내렴. 그러면 사람이 될 수 있단다."`},
  {chips:LEG, svg:SV(`
   <rect x="-6" y="-6" width="412" height="292" fill="#4A3F36"/>
@@ -95,9 +96,8 @@ const P=[
   text:`꾹 참고 기다린 곰과 단군왕검이 남긴 선물,<br>우리나라의 시작.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'dangun',no:1,era:'gojoseon',title:'단군과 우리나라의 시작',who:'단군',pages:P,
+BOOKS.push({id:'dangun',era:'gojoseon',title:'단군과 우리나라의 시작',who:'단군',teaser:'우리나라가 처음 시작된 이야기예요. 꾹 참고 기다린 곰이 나와요.',pages:P,
  talk:{three:['동굴 속에서 곰은 무엇을 먹었지?','곰처럼 "꾹!" 참는 흉내 내 볼까?','하늘에서 내려온 사람은 누구였지?'],
   five:['호랑이는 왜 동굴 밖으로 나갔을까?','꾹 참고 기다려서 좋았던 적이 있어?','개천절에는 무엇을 축하할까?'],
-  friend:{title:'다음 이야기',name:'주몽',text:'고조선 뒤로 여러 나라가 생겨났어요. 알에서 태어났다는 활 잘 쏘는 주몽이 고구려를 세웠대요.',go:'jumong'},
   note:'단군 이야기는 고려 때 일연이 쓴 『삼국유사』에 실린 건국 신화로, 책 전체가 전해 오는 이야기입니다. 기원전 2333년이라는 연도도 옛 책에 전하는 것입니다. 곰과 호랑이는 곰을 섬기던 무리와 호랑이를 섬기던 무리를 뜻한다고 풀이하기도 합니다.'}});
 })();

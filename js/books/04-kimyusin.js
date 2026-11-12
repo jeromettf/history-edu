@@ -13,7 +13,7 @@ const P=[
   <path d="M-6 170 Q60 90 140 140 Q210 70 290 136 Q350 100 406 150 L406 230 L-6 230Z" fill="#94BFA6" ${sw()}/>
   ${cloud(320,40,.7)}${hills('#A9CDB4','#C7D88F',200,226)}
   ${hwarang(150,268,.9,{pose:'up',mood:'joy'})}${hwarang(250,270,.74,{robe:'#E79AA8',mood:'joy'})}${hwarang(320,272,.7,{robe:'#E7C76A',mood:'smile'})}`,'url(#k1)',sky('k1','#CFE7F2','#F6EAD0')),
-  text:`고구려, 백제, 신라, 세 나라가 함께 있던 때예요. 신라에 유신이라는 소년이 살았어요. 열다섯 살에 유신은 화랑이 되었어요. 화랑은 산과 들을 다니며 몸과 마음을 씩씩하게 기르는 소년들이에요.`},
+  text:`고구려, 백제, 신라, 세 나라가 있던 때, 신라에 유신이라는 소년이 살았어요. 유신은 열다섯 살에 화랑이 되었어요. 화랑은 산과 들을 다니며 몸과 마음을 기르는 소년들이에요.`},
  {chips:['전해 오는 이야기'], svg:SV(`
   ${star(60,40,4,'#F6F0D6')}${star(200,30,3,'#F6F0D6')}${star(340,50,4,'#F6F0D6')}
   ${cave(200,250,1.6)}
@@ -24,9 +24,10 @@ const P=[
  {chips:['전해 오는 이야기'], svg:SV(`
   ${cloud(80,40,.8)}${hills('#A9CDB4','#C7D88F',196,220)}
   ${hwarang(130,268,.9,{pose:'up',mood:'joy'})}
-  ${chunchu(270,268,.9,{pose:'down',mood:'o'})}
-  ${ball(196,210,12)}<path d="M176 222 q-8 6 -16 4" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <g id="tChunchu">${chunchu(270,268,.9,{pose:'down',mood:'o'})}</g>
+  <g id="tBall">${ball(196,210,12)}</g><path d="M176 222 q-8 6 -16 4" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
   <path d="M296 230 q8 12 4 22" fill="none" stroke="#5E9C8A" stroke-width="4" stroke-linecap="round"/>${T(330,236,'툭!',20,K.red)}`,'url(#k3)',sky('k3','#CFE7F2','#F6EAD0')),
+  taps:[{label:'공',el:'tBall',say:'뻥! 공이 하늘 높이 날아가요.'},{label:'춘추',el:'tChunchu',say:'앗, 옷고름이 툭 떨어졌어요!'}],
   text:`유신에게는 춘추라는 단짝 친구가 있었어요. 하루는 둘이 공차기를 하다가, 유신이 그만 춘추의 옷고름을 밟아 떨어뜨렸어요.`},
  {chips:['전해 오는 이야기'], svg:SV(`
   <rect x="-6" y="-6" width="412" height="230" fill="#EADCC0"/>
@@ -67,9 +68,8 @@ const P=[
   text:`친구와 공놀이를 좋아한 소년이 남긴 선물,<br>힘을 모으는 마음.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'kimyusin',no:4,era:'samguk',title:'김유신과 하나 된 세 나라',who:'김유신',pages:P,
+BOOKS.push({id:'kimyusin',era:'samguk',title:'김유신과 하나 된 세 나라',who:'김유신',teaser:'공차기를 좋아한 소년 유신이 친구와 힘을 모아 세 나라를 하나로 모았어요.',pages:P,
  talk:{three:['유신과 춘추가 한 놀이는 뭐였지?','공 차는 흉내, 뻥!','깃발을 세어 볼까? 하나, 둘, 셋!'],
   five:['유신은 왜 춘추를 집으로 데려갔을까?','친구랑 힘을 합쳐서 해낸 일이 있어?','다툼을 끝내려면 어떻게 해야 할까?'],
-  friend:{title:'다음 이야기',name:'세종대왕',text:'세 나라가 하나가 되고 오랜 시간이 흘러, 조선에는 책을 사랑한 임금님이 나타나요.',go:'sejong'},
   note:'김유신(595~673)은 가야 왕족의 후손으로 신라의 장군이 되었습니다. 동굴 기도와 공차기 일화는 『삼국사기』와 『삼국유사』에 전합니다. 삼국 통일은 신라가 당나라와 손잡고 백제(660)와 고구려(668)를 무너뜨린 뒤, 당나라 군대까지 몰아낸 676년에 마무리되었습니다. 김유신은 통일이 마무리되기 전인 673년에 세상을 떠났고, 고구려의 북쪽 땅까지 모두 아우른 통일은 아니었다는 점도 아이가 크면 함께 이야기해 볼 만합니다.'}});
 })();

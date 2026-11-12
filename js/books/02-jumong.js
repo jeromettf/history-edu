@@ -62,8 +62,9 @@ const P=[
   ${river(150,250)}
   <path d="M-6 150 Q200 140 406 150 L406 100 L-6 100Z" fill="#A9CDB4" ${sw()}/>
   <path d="M-6 250 Q200 244 406 250 L406 286 L-6 286Z" fill="#BCD38F" ${sw()}/>
-  ${[60,110,160,210,260,310,360].map((x,k)=>k%2?turtle(x,206):fish(x-8,208,k%3?'#F2A24B':'#E98FA0')).join('')}
+  <g id="tFish">${[60,160,260,360].map((x,k)=>fish(x-8,208,k%2?'#F2A24B':'#E98FA0')).join('')}</g><g id="tTurtle">${[110,210,310].map(x=>turtle(x,206)).join('')}</g>
   ${horse(200,204,.62,{color:'#F4EFE0',rider:rider(jumong(0,0,1,{pose:'up',mood:'joy'}))})}`,'url(#j7)',sky('j7','#CFE7F2','#F6EAD0')),
+  taps:[{label:'물고기',el:'tFish',say:'물고기가 꼬리를 살랑살랑 흔들어요.'},{label:'자라',el:'tTurtle',say:'자라가 등을 쭉 펴서 다리가 되어 줘요.'}],tapHint:'다리가 되어 준 친구들을 눌러 보세요.',
   text:`그러자 물고기와 자라들이 떠올라 다리를 만들어 주었어요! 주몽이 무사히 건너자 다리는 흩어졌고, 쫓아오던 군사들은 강을 건너지 못했대요.`},
  {chips:['기원전 37년'], svg:SV(`
   ${cloud(80,50,.8)}<circle cx="330" cy="54" r="24" fill="${K.gold}" ${sw()}/>
@@ -83,9 +84,8 @@ const P=[
   text:`활쏘기를 좋아한 아이가 세운 나라, 고구려.<br>그 씩씩한 이야기가<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'jumong',no:2,era:'samguk',title:'주몽과 고구려',who:'주몽',pages:P,
+BOOKS.push({id:'jumong',era:'samguk',title:'주몽과 고구려',who:'주몽',teaser:'알에서 태어난 아이가 활을 쏘면 백 번 쏘아 백 번 다 맞혔대요.',pages:P,
  talk:{three:['알에서 누가 나왔지?','물고기와 자라를 찾아볼까?','활 쏘는 흉내, 슝!'],
   five:['새들은 왜 알을 덮어 주었을까?','주몽은 강을 어떻게 건넜을까?','너라면 어떤 동물에게 도와 달라고 할래?'],
-  friend:{title:'다음 이야기',name:'광개토대왕',text:'주몽이 세운 고구려에는 훗날 땅을 아주 넓게 넓힌 임금님, 광개토대왕이 나타나요.',go:'gwanggaeto'},
   note:'주몽 이야기는 『삼국사기』와 『삼국유사』에 실린 고구려 건국 신화로, 책 전체가 전해 오는 이야기입니다. 기원전 37년은 『삼국사기』에 전하는 고구려 건국 연도입니다. 활 쏘며 사냥하는 모습은 무용총 같은 고구려 무덤 벽화에 실제로 남아 있습니다.'}});
 })();

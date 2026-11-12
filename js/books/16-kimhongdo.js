@@ -3,7 +3,7 @@
 const hdKid=(x,y,s,o={})=>hero(x,y,s,{robe:'#D9E6C8',hair:'braid',belt:'#5E9C8A',ribbon:'#5E9C8A',...o});
 const hongdo=(x,y,s,o={})=>hero(x,y,s,{robe:'#D9E6C8',hat:'gat',belt:'#5E9C8A',collar:'#5E9C8A',...o});
 const teacher=(x,y,s,o={})=>hero(x,y,s,{robe:'#EDE9E0',hat:'gat',beard:'#D9D3C8',belt:'#8C7350',...o});
-const jeongjo=(x,y,s,o={})=>king(x,y,s,o);
+const jeongjo=(x,y,s,o={})=>king(x,y,s,{beard:HAIR,...o});
 const stickDraw=`<path d="M30 -28 L56 -2" stroke="${K.wood}" stroke-width="4" stroke-linecap="round"/>`;
 const frame=(x,y,w,h,inner)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#8C6A48" ${sw()}/><rect x="${x+6}" y="${y+6}" width="${w-12}" height="${h-12}" fill="#FBF4E2"/>${inner}`;
 const wrestlers=(x,y,s)=>g(x,y,s,`${hero(-22,0,.8,{robe:'#EFE6D2',skin:'#EDBF95',pose:'hold',mood:'o'})}${hero(22,0,.8,{robe:'#E9DFC8',skin:'#EDBF95',pose:'hold',mood:'smile'})}<path d="M-30 -40 Q0 -54 30 -40" fill="none" stroke="#EFE6D2" stroke-width="8" stroke-linecap="round"/>`);
@@ -41,9 +41,10 @@ const P=[
  {svg:SV(`<path d="M-6 120 L406 120 L406 286 L-6 286Z" fill="#E6D3A6"/>
   <ellipse cx="200" cy="200" rx="160" ry="60" fill="none" stroke="#C9B48A" stroke-width="3" stroke-dasharray="4 6"/>
   ${hero(60,180,.5,{robe:'#E9DFC8',mood:'joy'})}${hero(110,166,.5,{robe:'#C9D8E8',hat:'gat',mood:'o'})}${hero(290,166,.5,{body:'dress',hair:'bun',mood:'joy'})}${hero(340,180,.5,{robe:'#E9DFC8',hat:'gat',mood:'joy'})}
-  ${wrestlers(200,250,1.0)}
-  ${hdKid(350,270,.58,{pose:'hold',mood:'smile',item:`<rect x="-26" y="-40" width="52" height="14" rx="3" fill="#C9A15A" ${sw()}/>`})}
+  <g id="tWrestle">${wrestlers(200,250,1.0)}</g>
+  <g id="tYeot">${hdKid(350,270,.58,{pose:'hold',mood:'smile',item:`<rect x="-26" y="-40" width="52" height="14" rx="3" fill="#C9A15A" ${sw()}/>`})}</g>
   ${hero(56,272,.58,{robe:'#EFE6D2',mood:'joy',pose:'up'})}`,'#E6D3A6'),
+  taps:[{label:'씨름',el:'tWrestle',say:'영차! 영차! 누가 이길까요?'},{label:'엿장수 아이',el:'tYeot',say:'달콤한 엿 사세요! 엿 사세요!'}],
   text:`씨름하는 아저씨들, 빙 둘러앉아 구경하는 사람들, 엿을 파는 아이까지 쓱쓱 그렸어요. 그림 속 사람들은 모두 살아 움직이는 것 같았지요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="230" fill="#EADCC0"/><rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   ${teacher(200,250,.8,{mood:'smile'})}
@@ -60,9 +61,8 @@ const P=[
   text:`그림 그리기를 좋아한 아이가 남긴 선물,<br>옛사람들의 웃음.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'kimhongdo',no:9,era:'joseon',title:'김홍도와 웃음 가득 그림',who:'김홍도',pages:P,
+BOOKS.push({id:'kimhongdo',era:'joseon',title:'김홍도와 웃음 가득 그림',who:'김홍도',teaser:'그림 그리기를 좋아한 아이가 사람들의 웃는 모습을 그렸어요.',pages:P,
  talk:{three:['씨름하는 아저씨들은 몇 명이지?','훌쩍이는 아이를 찾아볼까?','오늘 본 것을 그림으로 그려 볼까?'],
   five:['김홍도는 왜 보통 사람들을 그렸을까?','글방 아이는 왜 울고 있을까?','우리 가족의 하루를 그린다면 무엇을 그릴래?'],
-  friend:{title:'다음 이야기',name:'유관순',text:'김홍도가 살던 때에서 백 년도 더 지나, 나라를 되찾으려고 용기를 낸 소녀 유관순이 있었어요.',go:'yugwansun'},
   note:'김홍도(1745~1806년 무렵, 호는 단원)는 정조 때 활동한 궁중 화원으로, 스승 강세황에게 그림을 배웠습니다. 이 책의 씨름과 글방 장면은 김홍도의 풍속화를 떠올리게 하도록 새로 그린 그림이며, 실제 작품은 국립중앙박물관의 『단원 풍속도첩』(보물)에서 볼 수 있습니다. 어린 시절 땅바닥에 그림을 그리는 장면은 이야기를 위해 꾸민 것입니다.'}});
 })();
