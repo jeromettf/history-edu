@@ -36,7 +36,7 @@ const SEJONG_PAGES=[
   text:`하루는 책을 너무 많이 읽다가 몸이 아팠어요. 걱정한 아버지는 책을 모두 치워 버렸어요. 그런데 병풍 뒤에 딱 한 권이 남아 있었어요! 이도는 그 책을 백 번도 넘게 읽었대요.`},
 
  /* 4. 올려다보는 구도: 일월오봉도 앞 옥좌의 세종, 앞쪽에 엎드린 신하들의 등 */
- {svg:SV(`${palace()}
+ {svg:SV(`${palace(false)}
   <rect x="90" y="34" width="220" height="150" fill="#27467A" ${sw()}/><circle cx="122" cy="62" r="14" fill="#D9442F"/><circle cx="278" cy="62" r="13" fill="#F6F1E1"/><path d="M94 180 L130 110 L156 146 L184 84 L200 54 L216 84 L244 146 L270 110 L306 180Z" fill="#3F8471" ${sw(1.4)}/>
   ${throne(200,232,1.0)}
   ${king(200,196,.95,{pose:'down',mood:'smile',still:true,face:'front'})}

@@ -12,6 +12,7 @@ const ERAS=[
   ['hyeondae','70여 년 전','할머니 할아버지 어릴 적','70년 전'],
   ['now','지금','우리','지금 우리']];
 
+applyRedraws();
 /* 책 번호는 불러온 순서(시대 순)대로 매긴다 */
 BOOKS.forEach((b,k)=>{b.no=k+1});
 

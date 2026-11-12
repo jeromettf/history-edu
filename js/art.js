@@ -1,5 +1,9 @@
 /* 그림 라이브러리: 그림책 질감, 인물, 소품 */
 const BOOKS=[];
+BOOKS.push=function(b){b.scene={era:SCN.era,season:SCN.season,light:SCN.light,book:SCN.book};return Array.prototype.push.call(this,b)};
+const REDRAW=[];
+function redraw(id,page,fn){REDRAW.push({id,page,fn})}
+function applyRedraws(){for(const r of REDRAW){const b=BOOKS.find(x=>x.id===r.id);if(!b||!b.pages[r.page])continue;Object.assign(SCN,b.scene);SCN.n=r.page*7+3;SCN.figs=[];SCN.caps=[];SCN.shotI=0;b.pages[r.page].svg=r.fn();b.pages[r.page].redrawn=true}}
 const K={ink:'#2E3A55',red:'#C9473B',gold:'#E9B24A',jade:'#5E9C8A',wood:'#9A6B45',paper:'#FBF4E2'};
 const L='#5A3B2C', SK='#F6D2AE', HAIR='#2E2522';
 const sw=(w=2.2)=>`stroke="${L}" stroke-width="${w}" stroke-linejoin="round" stroke-linecap="round"`;
@@ -8,7 +12,7 @@ const sky=(id,a,b)=>`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><sto
 const glow=(id,c,o=.8)=>`<radialGradient id="${id}"><stop offset="0" stop-color="${c}" stop-opacity="${o}"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></radialGradient>`;
 
 /* 그림책 질감: 손그림 흔들림, 수채 얼룩, 종이 결, 가장자리 그늘 */
-function SV(inner,bg,defs=''){const fx=sceneFX(bg,defs);return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img"><defs>
+function SV(inner,bg,defs=''){const cam=camera(inner);const fx=sceneFX(bg,defs);if(cam)inner=`<g transform="${cam}">${inner}</g>`;return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img"><defs>
 <filter id="wob" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
 <filter id="wash" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="3" seed="9"/><feColorMatrix values="0 0 0 0 0.42  0 0 0 0 0.28  0 0 0 0 0.14  0 0 0 0.22 -0.06"/></filter>
 <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 0.3  0 0 0 0 0.22  0 0 0 0 0.15  0 0 0 0.24 -0.08"/></filter>
@@ -51,6 +55,7 @@ const hands=(pose,sk,pr=pose)=>hand1(SL[pose].h,sk)+`<g transform="scale(-1 1)">
 const ROBE='M-28 -62 Q-36 -30 -44 -4 Q0 6 44 -4 Q36 -30 28 -62 Q0 -72 -28 -62Z';
 
 function person(x,y,s,o){
+  if(!(x===0&&y===0)&&SCN.figs){const near=SCN.figs.filter(f=>Math.abs(f.y-y)<6&&Math.abs(f.s-s)<.1&&y<290);if(!o.still&&near.length%2===1&&s<1.2){y-=9*s;s*=.93}SCN.figs.push({x,y,s})}
   const sk=o.skin||SK,pose=o.pose||'down',mood=o.mood||'smile';
   const seed=Math.abs(Math.round(x*7+y*3));
   const dx=o.face==='front'?0:o.face==='left'?-4:o.face==='right'?4:Math.max(-4,Math.min(4,(200-x)/30));
@@ -102,7 +107,7 @@ const hut=(x,y)=>`<rect x="${x}" y="${y}" width="64" height="40" fill="#F3E6CB" 
 <path d="M${x-12} ${y+6} Q${x-8} ${y-30} ${x+32} ${y-34} Q${x+72} ${y-30} ${x+76} ${y+6} Q${x+32} ${y+12} ${x-12} ${y+6}Z" fill="#D2A85A" ${sw()}/><path d="M${x} ${y-6} Q${x+32} ${y-22} ${x+64} ${y-6} M${x+6} ${y-18} Q${x+32} ${y-30} ${x+58} ${y-18}" fill="none" stroke="#A57F3A" stroke-width="1.6"/>`;
 const hj=(x,y,c,r=0)=>`<g transform="rotate(${r} ${x} ${y})"><rect x="${x-17}" y="${y-17}" width="34" height="34" rx="5" fill="#FFFDF6" ${sw()}/><text x="${x}" y="${y+9}" text-anchor="middle" font-size="23" font-family="serif" fill="#3A3330">${c}</text></g>`;
 const pine=(x,y,s=1)=>g(x,y,s,`<path d="M0 0 Q-8 -40 4 -82" fill="none" stroke="#8E3A2B" stroke-width="8" stroke-linecap="round"/><path d="M0 -40 Q12 -48 22 -52" fill="none" stroke="#8E3A2B" stroke-width="5" stroke-linecap="round"/><ellipse cx="4" cy="-88" rx="24" ry="10" fill="#2F6B4E" ${sw()}/><ellipse cx="-14" cy="-66" rx="18" ry="8" fill="#2F6B4E" ${sw()}/><ellipse cx="26" cy="-56" rx="16" ry="7" fill="#2F6B4E" ${sw()}/>`);
-const T=(x,y,t,sz,f=K.ink,extra='')=>`<text x="${x}" y="${y}" text-anchor="middle" font-family="Jua,sans-serif" font-size="${sz}" fill="${f}" ${extra||(/^#F[0-9A-F]{5}$|^#FFF/i.test(f)?'':`stroke="#FFF8EC" stroke-width="${Math.max(3,sz*.22)}" stroke-linejoin="round" paint-order="stroke"`)}>${t}</text>`;
+const T=(x,y,t,sz,f=K.ink,extra='')=>(SCN.caps&&SCN.caps.push({x,y,sz,len:String(t).length}),`<text x="${x}" y="${y}" text-anchor="middle" font-family="Jua,sans-serif" font-size="${sz}" fill="${f}" ${extra||(/^#F[0-9A-F]{5}$|^#FFF/i.test(f)?'':`stroke="#FFF8EC" stroke-width="${Math.max(3,sz*.22)}" stroke-linejoin="round" paint-order="stroke"`)}>${t}</text>`);
 const heart=(x,y,crack)=>`<path d="M${x} ${y+16} Q${x-22} ${y} ${x-16} ${y-8} Q${x-8} ${y-16} ${x} ${y-4} Q${x+8} ${y-16} ${x+16} ${y-8} Q${x+22} ${y} ${x} ${y+16}Z" fill="#E0605A" ${sw()}/>${crack?`<path d="M${x} ${y-4} l-4 7 l6 4 l-3 7" fill="none" stroke="#FFF8EC" stroke-width="2.4" stroke-linecap="round"/>`:''}`;
 
 
@@ -237,7 +242,7 @@ const garlic=(x,y)=>`<path d="M${x} ${y} Q${x-12} ${y-4} ${x-10} ${y-14} Q${x-4}
 const stele=(x,y,s)=>g(x,y,s,`<rect x="-26" y="-150" width="52" height="150" rx="6" fill="#9E9686" ${sw()}/>${[-136,-120,-104,-88,-72,-56,-40,-24].map(yy=>`<path d="M-16 ${yy} H-4 M4 ${yy} H16" stroke="#7A7366" stroke-width="2.4" stroke-linecap="round"/>`).join('')}<rect x="-34" y="-6" width="68" height="10" rx="2" fill="#8A8272" ${sw()}/>`);
 const ball=(x,y,r=10)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#F4EFE0" ${sw()}/><path d="M${x-r} ${y} Q${x} ${y-r*.6} ${x+r} ${y} M${x} ${y-r} Q${x+r*.5} ${y} ${x} ${y+r}" fill="none" stroke="#C9473B" stroke-width="1.6"/>`;
 const scroll=(t,c=K.paper,tc=K.red,sz=32)=>`<rect x="96" y="22" width="208" height="58" rx="4" fill="${c}" ${sw()}/><rect x="84" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/><rect x="300" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/>${T(200,62,t,sz,tc)}`;
-const endBase=(id,center,left,right)=>SV(`<circle cx="200" cy="136" r="150" fill="url(#eg${id})"/>${center}${star(66,56,14)}${star(334,52,12,'#F28C7C')}${star(110,236,9,K.jade)}${star(290,236,10)}${left}${right}`,`url(#es${id})`,sky('es'+id,...({spring:['#FCEFEA','#F6DCC8'],summer:['#EAF4F6','#F6E8C8'],autumn:['#FBEBD0','#F2CF9A'],winter:['#EEF3F7','#DCE6EE']}[SCN.season]||['#FBEFD2','#F6DFAE']))+glow('eg'+id,'#FFF8DE',.95));
+const endBase=(id,center,left,right)=>(SCN.noCam=true,SV(`<circle cx="200" cy="136" r="150" fill="url(#eg${id})"/>${center}${star(66,56,14)}${star(334,52,12,'#F28C7C')}${star(110,236,9,K.jade)}${star(290,236,10)}${left}${right}`,`url(#es${id})`,sky('es'+id,...({spring:['#FCEFEA','#F6DCC8'],summer:['#EAF4F6','#F6E8C8'],autumn:['#FBEBD0','#F2CF9A'],winter:['#EEF3F7','#DCE6EE']}[SCN.season]||['#FBEFD2','#F6DFAE']))+glow('eg'+id,'#FFF8DE',.95)));
 
 /* ---------- 21~30권에서 함께 쓰는 그림 ---------- */
 function ox(x,y,s,c='#B9763E',o={}){return g(x,y,s,`<g transform="scale(${o.flip||1} 1)"><ellipse cx="0" cy="1" rx="52" ry="7" fill="#2B1E16" opacity=".18"/>
@@ -264,7 +269,7 @@ const queen=(x,y,s,o={})=>hero(x,y,s,{body:'dress',top:'#F6D24A',skirt:'#C9473B'
 /* ---------- 배경 체계: 시대·계절에 따라 달라지는 풍경 ---------- */
 /* 책마다 맨 앞에서 setScene(시대, 계절)을 부르면, 그 책의 들판·궁궐·방·마당·바다·표지가 거기에 맞춰 그려진다. */
 const SCN={era:'joseon',season:'spring',n:0,book:0};
-function setScene(era,season,light){SCN.era=era;SCN.season=season;SCN.book++;SCN.n=0;SCN.light=light||['morning','noon','golden','soft'][SCN.book%4];SCN.kind=''}
+function setScene(era,season,light){SCN.era=era;SCN.season=season;SCN.book++;SCN.n=0;SCN.light=light||['morning','noon','golden','soft'][SCN.book%4];SCN.kind='';SCN.shotI=0;SCN.figs=[];SCN.caps=[]}
 const srnd=k=>{const v=Math.sin((SCN.book*97+SCN.n*13+k)*12.9898)*43758.5453;return v-Math.floor(v)};
 const pickOf=(arr,k)=>arr[Math.floor(srnd(k)*arr.length)];
 const SEASON={
@@ -324,10 +329,11 @@ function sea(y){SCN.n++;SCN.kind='sea';const v=Math.floor(srnd(2)*3);
   return o}
 
 /* 궁궐: 단청 들보, 기둥과 주춧돌, 뒤 배경(일월오봉도·창살문·모란 병풍), 마루 */
-function palace(){SCN.n++;SCN.kind='palace';const v=Math.floor(srnd(3)*3);
+function palace(back=true){SCN.n++;SCN.kind='palace';const v=Math.floor(srnd(3)*3);
   const wall=SCN.era==='samguk'?'#E6CFAA':SCN.era==='goryeo'?'#EAD8B4':'#E8D3B0';
   let o=`<rect x="-6" y="-6" width="412" height="232" fill="${wall}"/>`;
-  if(v===0) o+=`<rect x="108" y="40" width="184" height="150" fill="#27467A" ${sw()}/><circle cx="134" cy="66" r="11" fill="#D9442F"/><circle cx="266" cy="66" r="10" fill="#F6F1E1"/><path d="M112 186 L140 120 L160 152 L186 92 L200 70 L214 92 L240 152 L260 120 L288 186Z" fill="#3F8471" ${sw(1.4)}/><path d="M112 186 Q150 170 200 182 Q250 170 288 186 L288 190 L112 190Z" fill="#2C6E92"/><rect x="100" y="186" width="200" height="12" fill="#8A5A3C" ${sw(1.2)}/>`;
+  if(!back){}
+  else if(v===0) o+=`<rect x="108" y="40" width="184" height="150" fill="#27467A" ${sw()}/><circle cx="134" cy="66" r="11" fill="#D9442F"/><circle cx="266" cy="66" r="10" fill="#F6F1E1"/><path d="M112 186 L140 120 L160 152 L186 92 L200 70 L214 92 L240 152 L260 120 L288 186Z" fill="#3F8471" ${sw(1.4)}/><path d="M112 186 Q150 170 200 182 Q250 170 288 186 L288 190 L112 190Z" fill="#2C6E92"/><rect x="100" y="186" width="200" height="12" fill="#8A5A3C" ${sw(1.2)}/>`;
   else if(v===1) o+=[60,130,200,270].map(x=>`<rect x="${x}" y="44" width="68" height="160" fill="#F7F0DC" ${sw(1.6)}/>${[1,2,3].map(c=>`<path d="M${x+c*17} 44 V204" stroke="#B5874F" stroke-width="1.6"/>`).join('')}${[1,2,3,4,5,6,7].map(r=>`<path d="M${x} ${44+r*20} H${x+68}" stroke="#B5874F" stroke-width="1.6"/>`).join('')}`).join('');
   else o+=[0,1,2,3,4,5].map(k=>`<rect x="${74+k*42}" y="92" width="42" height="112" fill="${k%2?'#F4EAD0':'#FBF3DE'}" ${sw(1.6)}/>`).join('')+[95,179,263].map((x,k)=>`<path d="M${x} 196 Q${x-4} 160 ${x+4} 130" fill="none" stroke="#5E8C4A" stroke-width="2.4"/><circle cx="${x+4}" cy="126" r="9" fill="${['#E36B8A','#F2A9C0','#E36B8A'][k]}" ${sw(1.2)}/><circle cx="${x-6}" cy="150" r="6" fill="#F2A9C0" ${sw(1)}/>`).join('');
   o+=`<rect x="-6" y="-6" width="412" height="30" fill="#3E7A6A"/>`+[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map(k=>`<circle cx="${k*30+8}" cy="9" r="7" fill="#C9473B" ${sw(1)}/><circle cx="${k*30+8}" cy="9" r="3" fill="#F6E2A6"/><path d="M${k*30+18} 4 l6 5 l-6 5" fill="none" stroke="#F6F0D6" stroke-width="1.6"/>`).join('')+`<rect x="-6" y="22" width="412" height="5" fill="#B5473A"/>`;
@@ -382,7 +388,7 @@ ${hills('#A9CDB4','#BCD38F',214,244)}
 ${landmark(SCN.era==='modern'?108:290,214,1.3)}
 <rect x="96" y="22" width="208" height="58" rx="4" fill="${K.paper}" ${sw()}/><rect x="96" y="22" width="208" height="8" fill="${ERA_BANNER[SCN.era]}" opacity=".85"/><rect x="96" y="72" width="208" height="8" fill="${ERA_BANNER[SCN.era]}" opacity=".85"/><rect x="84" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/><rect x="300" y="16" width="16" height="70" rx="8" fill="${K.wood}" ${sw()}/>${T(200,62,banner,banner.length>6?26:32,K.red)}
 ${extra}${star(52,118,9)}${star(350,120,8,'#F28C7C')}${who}`;
-  return SV(body,`url(#cs${id})`,sky('cs'+id,sk[0],sk[1])+glow('cg'+id,'#FFF6D8',.9))};
+  SCN.noCam=true;return SV(body,`url(#cs${id})`,sky('cs'+id,sk[0],sk[1])+glow('cg'+id,'#FFF6D8',.9))};
 
 /* ---------- 빛과 앞쪽 소품: 책마다 다른 빛, 장면마다 깊이 ---------- */
 const LIGHT={morning:{c1:'#FFD9C2',c2:'#C9DFF2',sun:[40,30],op:.32},noon:{c1:'#FFF6DA',c2:'#F4F8FA',sun:[200,0],op:.18},
@@ -433,3 +439,38 @@ const throne=(x,y,s)=>g(x,y,s,`<rect x="-120" y="-10" width="240" height="14" fi
 const bedQuilt=(x,y,s,c='#E98FA0')=>g(x,y,s,`<rect x="-90" y="-16" width="180" height="22" rx="8" fill="#F4EFE0" ${sw()}/><path d="M-70 -24 Q0 -40 92 -22 L92 2 L-70 2Z" fill="${c}" ${sw()}/>${[0,1,2,3].map(k=>`<circle cx="${-40+k*36}" cy="-14" r="5" fill="#FFFDF6" opacity=".7"/>`).join('')}<rect x="-100" y="-30" width="40" height="18" rx="8" fill="#FFFDF6" ${sw()}/>`);
 const candle=(x,y,s=1)=>g(x,y,s,`<circle cx="0" cy="-34" r="60" fill="url(#candleG)"/><rect x="-7" y="-22" width="14" height="30" rx="3" fill="#FFF8E8" ${sw()}/><path d="M0 -44 Q10 -32 0 -22 Q-10 -32 0 -44Z" fill="#FFC24A" ${sw(1.4)}/><path d="M0 -36 Q4 -30 0 -25 Q-4 -30 0 -36Z" fill="#FFF2B0"/><ellipse cx="0" cy="10" rx="16" ry="5" fill="#A8744A" ${sw()}/>`);
 const candleDef=glow('candleG','#FFD27A',.75);
+
+/* ---------- 카메라: 장면마다 거리를 바꾼다 (가까이, 두 사람, 보통) ---------- */
+const SHOTS=['two','medium','close','two','medium','close','two','medium'];
+function camera(inner){
+  const figs=SCN.figs||[],caps=SCN.caps||[];SCN.figs=[];SCN.caps=[];
+  if(SCN.noCam){SCN.noCam=false;return ''}
+  if(!figs.length||/id="/.test(inner))return '';
+  if(figs.some(f=>f.y>290||f.s>1.3))return '';
+  let shot=SHOTS[(SCN.shotI++)%SHOTS.length];
+  if(shot==='close'&&caps.length)shot='two';
+  const clampV=(left,top,z)=>{const vw=400/z,vh=280/z;left=Math.max(-6,Math.min(406-vw,left));top=Math.max(-6,Math.min(286-vh,top));return `scale(${z.toFixed(3)}) translate(${(-left).toFixed(1)} ${(-top).toFixed(1)})`};
+  if(shot==='close'){
+    const m=figs.slice().sort((a,b)=>(b.s-a.s)||(Math.abs(a.x-200)-Math.abs(b.x-200)))[0];
+    const hx=m.x,hy=m.y-94*m.s,z=Math.max(1.4,Math.min(2.0,60/(31*m.s)));
+    return clampV(hx-200/z,hy-.36*280/z,z)}
+  if(shot==='two'){
+    let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+    for(const f of figs){x0=Math.min(x0,f.x-52*f.s);x1=Math.max(x1,f.x+52*f.s);y0=Math.min(y0,f.y-150*f.s);y1=Math.max(y1,f.y+14*f.s)}
+    for(const c of caps){x0=Math.min(x0,c.x-c.sz*c.len*.55);x1=Math.max(x1,c.x+c.sz*c.len*.55);y0=Math.min(y0,c.y-c.sz*1.2)}
+    const W=Math.max(x1-x0,(y1-y0)*400/280)*1.12,z=Math.min(1.55,400/W);
+    if(z<1.1)return '';
+    return clampV((x0+x1)/2-200/z,(y0+y1)/2-140/z,z)}
+  return '';
+}
+
+/* ---------- 다시 그리기에 쓰는 풍경 조각 ---------- */
+const rainFX=(n=40,c='#9FC3E0')=>[...Array(n)].map((_,k)=>{const x=(k*53)%410-4,y=(k*37)%280;return `<path d="M${x} ${y} l-7 18" stroke="${c}" stroke-width="2" stroke-linecap="round" opacity=".8"/>`}).join('');
+const snowFX=(n=40)=>[...Array(n)].map((_,k)=>`<circle cx="${(k*61)%404}" cy="${(k*43)%276}" r="${1.6+(k%3)}" fill="#FFFFFF" opacity=".9"/>`).join('');
+const rays=(x,y,c='#FFF2C4',n=9,len=260,op=.35)=>`<g opacity="${op}">${[...Array(n)].map((_,k)=>{const a=(-160+k*(140/(n-1)))*Math.PI/180;return `<path d="M${x} ${y} L${x+len*Math.cos(a-.05)} ${y+len*Math.sin(a-.05)} L${x+len*Math.cos(a+.05)} ${y+len*Math.sin(a+.05)}Z" fill="${c}"/>`}).join('')}</g>`;
+const ridge=(y,c,amp=30,seed=1)=>{let d=`M-6 ${y}`;for(let x=0;x<=420;x+=40){d+=` L${x} ${y-amp*(0.4+0.6*Math.abs(Math.sin(x*0.013*seed+seed)))}`}return `<path d="${d} L406 290 L-6 290Z" fill="${c}" ${sw(1.4)}/>`};
+const dust=(x,y,s=1)=>g(x,y,s,`<circle cx="0" cy="0" r="14" fill="#E6D8B8" opacity=".8"/><circle cx="-18" cy="4" r="10" fill="#E6D8B8" opacity=".7"/><circle cx="-34" cy="8" r="7" fill="#E6D8B8" opacity=".6"/>`);
+const kasaL=`<path d="M-26 -64 L32 -6 L42 -12 L-14 -68Z" fill="#B5473A" ${sw(1.6)}/>`;
+const gayaG=(x,y,s)=>g(x,y,s,`<path d="M-90 0 Q-96 -14 -84 -20 L84 -20 Q96 -14 90 0Z" fill="#B5874F" ${sw()}/>${[0,1,2,3,4,5,6,7,8,9,10,11].map(k=>`<path d="M-80 ${-17+k*1.4} L80 ${-17+k*1.4}" stroke="#FFF8EC" stroke-width=".8"/><path d="M${-30+k*5} ${-26+(k%3)*2} l4 6 l-8 0Z" fill="#F4EFE0" ${sw(.8)}/>`).join('')}<path d="M84 -20 Q100 -24 104 -8" fill="none" stroke="#C9473B" stroke-width="3"/>`);
+const flagPole=(x,y,c,t,h=90,w=60)=>`<path d="M${x} ${y} V${y-h}" ${sw(3)}/><path d="M${x} ${y-h} Q${x+w*.5} ${y-h-8} ${x+w} ${y-h+4} L${x+w} ${y-h+36} Q${x+w*.5} ${y-h+28} ${x} ${y-h+34}Z" fill="${c}" ${sw(1.6)}/>${t?T(x+w/2,y-h+24,t,15,'#FBF4E2'):''}`;
+const SVn=(i,b,d)=>{SCN.noCam=true;return SV(i,b,d)};
