@@ -7,6 +7,8 @@ const ILL_TAPS={
  'yisunsin-4':{tGen:[4,62,128,214],tShip:[140,92,256,136]},
  'yugwansun-3':{tFlags:[2,12,164,94],tGs:[186,110,156,170]},
  'seokbong-6':{dark:[150,8,100,84],tTteok:[4,96,190,180],tGeul:[206,96,190,180]}};
+/* 누르면 글자를 바꿔 보여 주는 쪽은 그림 모델이 한글을 못 그려서 예전 그림을 그대로 쓴다. */
+const ILL_KEEP=new Set(['jusigyeong-4']);
 let PILOT_ON=true; try{PILOT_ON=localStorage.getItem('wiin-pilot')!=='0'}catch(e){}
 function illTaps(id,i,p){
   if(ILL_TAPS[`${id}-${i}`]) return ILL_TAPS[`${id}-${i}`];
@@ -21,5 +23,5 @@ function illSVG(id,i,p){
 function applyPilot(){
   if(!PILOT_ON||typeof ILL_HAVE==='undefined') return;
   Object.entries(ILL_HAVE).forEach(([id,pages])=>{const b=BOOKS.find(x=>x.id===id); if(!b) return; b.pilot=true;
-    pages.forEach(i=>{const p=b.pages[i]; if(p&&p.svg&&!['letters','sundial','clock'].includes(p.kind)){p.svgOld=p.svg; p.svg=illSVG(id,i,p)}});
+    pages.forEach(i=>{const p=b.pages[i]; if(p&&p.svg&&!['letters','sundial','clock'].includes(p.kind)&&!ILL_KEEP.has(`${id}-${i}`)){p.svgOld=p.svg; p.svg=illSVG(id,i,p)}});
     const e=b.pages.find(p=>p.kind==='end'); if(e&&pages.includes(0)){e.svgOld=e.svg; e.svg=illSVG(id,0,{})}})}
