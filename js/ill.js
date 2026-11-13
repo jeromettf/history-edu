@@ -5,7 +5,8 @@
    칸 위치는 ILL_TAPS에 따로 적은 것이 없으면, 누를 대상이 둘이면 왼쪽 반 · 오른쪽 반, 셋이면 세 칸, 하나면 가운데. */
 const ILL_TAPS={
  'yisunsin-4':{tGen:[4,62,128,214],tShip:[140,92,256,136]},
- 'yugwansun-3':{tFlags:[2,12,164,94],tGs:[186,110,156,170]}};
+ 'yugwansun-3':{tFlags:[2,12,164,94],tGs:[186,110,156,170]},
+ 'seokbong-6':{dark:[150,8,100,84],tTteok:[4,96,190,180],tGeul:[206,96,190,180]}};
 let PILOT_ON=true; try{PILOT_ON=localStorage.getItem('wiin-pilot')!=='0'}catch(e){}
 function illTaps(id,i,p){
   if(ILL_TAPS[`${id}-${i}`]) return ILL_TAPS[`${id}-${i}`];
