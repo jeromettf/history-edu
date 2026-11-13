@@ -53,7 +53,12 @@ function speak(t,onDone){
     try{speechSynthesis.speak(u)}catch(e){next()}};
   next();
 }
-function stopSpeak(){ spTok++; if(canSpeak){try{speechSynthesis.cancel()}catch(e){}} readB.classList.remove('speaking'); }
+/* 녹음이 있으면 엄마 아빠 목소리, 없으면 기계 음성. extra는 녹음 뒤에 기계 음성으로 이어 읽는다 */
+function speakPage(p,k,onDone,extra=''){
+  if(vHas(k)){const tok=++spTok; try{speechSynthesis.cancel()}catch(e){} readB.classList.add('speaking');
+    vPlay(k,()=>{if(tok!==spTok)return; readB.classList.remove('speaking'); if(extra) speak(extra,onDone); else onDone&&onDone()}); return}
+  speak((p.text||'')+(extra?' '+extra:''),onDone)}
+function stopSpeak(){ vStop(); spTok++; if(canSpeak){try{speechSynthesis.cancel()}catch(e){}} readB.classList.remove('speaking'); }
 
 /* 저절로 넘기며 읽기: 글을 읽고, 누르기 장면이면 하나씩 눌러 보여 주고, 잠깐 쉬었다가 다음 쪽으로 */
 const autoB=$('autoPlay'); let auto=false,autoT=null,wake=null;
@@ -72,11 +77,22 @@ function runAuto(){clearTimeout(autoT); if(!auto||!book)return; const p=book.pag
   let turn2=null;
   const tapNext=()=>{if(!ok())return; if(!taps.length){(turn2||turn)();return} const k=taps.shift(); autoT=setTimeout(()=>{if(ok())pick(p,k,tapNext)},700)};
   const th=THINK[book.id];
-  const say=(p.text||'')+(p.kind==='cover'&&th?` 읽으면서 알아봐요. ${th.pre||th.q}`:'');
+  const extra=p.kind==='cover'&&th?`읽으면서 알아봐요. ${th.pre||th.q}`:'';
   if(th&&here===th.p){turn2=()=>{if(!ok())return; speak(`잠깐! 생각해 봐요. ${th.q}`,()=>{if(!ok())return; pauseAuto()})}}
-  autoT=setTimeout(()=>{if(ok())speak(say,tapNext)},500);
+  autoT=setTimeout(()=>{if(ok())speakPage(p,here,tapNext,extra)},500);
 }
 $('tellB').addEventListener('click',()=>setTell(!tell));
+/* 목소리 녹음 막대 */
+let recOn=false,recBusy=false;
+function recBar(){const el=$('recbar'); if(!el) return; const has=vHas(i);
+  el.innerHTML=recBusy?`<span class="rs live">● 녹음 중</span><button type="button" class="rb stop" id="rStop">■ 멈추고 저장</button>`
+   :`<span class="rs">${has?'✓ 이 쪽은 녹음했어요':'이 쪽 글을 소리 내어 읽어 녹음해요'}</span><button type="button" class="rb" id="rGo">● ${has?'다시 녹음':'녹음'}</button>${has?'<button type="button" class="rb" id="rPlay">▶ 들어보기</button><button type="button" class="rb ghost" id="rDel">지우기</button>':''}`;
+  const g=$('rGo'); if(g) g.onclick=async()=>{stopSpeak(); setAuto(false); if(await vStart()){recBusy=true;recBar()} else el.querySelector('.rs').textContent='마이크를 쓸 수 없어요. 브라우저에서 마이크를 허용해 주세요.'};
+  const st=$('rStop'); if(st) st.onclick=async()=>{const b=await vFinish(); recBusy=false; if(b&&b.size>800) await vPut(book.id,i,b); recBar()};
+  const pl=$('rPlay'); if(pl) pl.onclick=()=>{stopSpeak(); vPlay(i)};
+  const d=$('rDel'); if(d) d.onclick=async()=>{await vDel(book.id,i); recBar()};
+  const n=book.pages.filter((q,k)=>vHas(k)).length; $('recB').textContent=recOn?`🎙 녹음 끝내기 (${n}쪽)`:(n?`🎙 목소리 ${n}쪽`:'🎙 목소리 녹음')}
+$('recB').addEventListener('click',async()=>{if(recBusy){await vFinish();recBusy=false} recOn=!recOn; $('recB').classList.toggle('on',recOn); if(recOn)setAuto(false); render(i,false)});
 autoB.addEventListener('click',()=>{if(resumeNext&&!auto){resumeNext=false;setAuto(true);render(i+1,false);return} setAuto(!auto); if(auto){const p=book.pages[i]; if(p.kind==='talk'||p.kind==='try'||p.kind==='end')render(0,false); else runAuto()}});
 const uniq=(svg,suf)=>svg.replace(/id="([^"]+)"/g,`id="$1${suf}"`).replace(/url\(#([^)]+)\)/g,`url(#$1${suf})`);
 /* 책장 표지는 질감 필터를 빼서 가볍게 그린다 */
@@ -195,6 +211,7 @@ function showBook(id,n=0){
   dots.innerHTML='';
   book.pages.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${k+1}쪽`);b.addEventListener('click',()=>render(k,true));dots.appendChild(b)});
   seenP=new Set(); prevI=-1; book._counted=0;
+  vLoadBook(book.id).then(()=>{if(book&&book.id===id)recBar()});
   tell=false; const tb=$('tellB'); tb.classList.remove('on'); tb.setAttribute('aria-pressed','false'); tb.textContent='🗣 네가 들려줘';
   render(n,false); window.scrollTo(0,0);
 }
@@ -240,7 +257,8 @@ function render(n,fromUser){
     if(tell) h+=`<button class="did${told?' on':''}" type="button" id="toldB" aria-pressed="${told}">${told?'✓ 이야기를 들려줬어요':'🗣 아이가 이야기를 들려줬어요'}</button><p class="note">부모님이 눌러 주세요. 포켓몬 마을에 선물이 가요.</p>`;
     h+=roadHTML(book);
   }
-  body.innerHTML=h;
+  body.innerHTML=h+(recOn&&p.text&&p.kind!=='talk'&&p.kind!=='try'?'<div class="recbar" id="recbar"></div>':'');
+  recBar();
   const tdB=$('toldB'); if(tdB) tdB.addEventListener('click',()=>{if((wbLoad().books[book.id]||{}).told)return; wbMark(book,'told'); tdB.classList.add('on'); tdB.setAttribute('aria-pressed','true'); tdB.textContent='✓ 이야기를 들려줬어요'});
   const tg=$('tellGo'); if(tg) tg.addEventListener('click',()=>{setTell(true);render(1,false)});
   $('reader').classList.toggle('nostage',stage.hidden); $('side').querySelector('.sidebody').scrollTop=0;
@@ -254,7 +272,7 @@ function render(n,fromUser){
   readB.disabled=!canSpeak||p.kind==='talk'||p.kind==='try';
   count.textContent=`${i+1} / ${P.length}`;
   [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
-  if(auto) runAuto(); else if(fromUser&&autoR.checked&&p.text&&!(tell&&storyPage(p))) speak(p.text);
+  if(auto) runAuto(); else if(fromUser&&autoR.checked&&p.text&&!(tell&&storyPage(p))) speakPage(p,i);
   autoB.hidden=tell||p.kind==='talk'||p.kind==='try'; $('tellB').hidden=p.kind==='talk'||p.kind==='try';
 }
 function press(k){body.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.t===k?'true':'false'))}
@@ -287,7 +305,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-go]'); if(
 $('back').addEventListener('click',()=>{setAuto(false);location.hash='shelf'});
 prevB.addEventListener('click',()=>render(i-1,true));
 nextB.addEventListener('click',()=>{ if(i===book.pages.length-1) location.hash='shelf'; else render(i+1,true)});
-readB.addEventListener('click',()=>{setAuto(false);const p=book.pages[i]; if(tell&&storyPage(p)){const t=body.querySelector('.story.tell');if(t)speak(t.textContent.replace('🗣',''));return} if(p.text) speak(p.text)});
+readB.addEventListener('click',()=>{setAuto(false);const p=book.pages[i]; if(tell&&storyPage(p)){const t=body.querySelector('.story.tell');if(t)speak(t.textContent.replace('🗣',''));return} if(p.text) speakPage(p,i)});
 document.addEventListener('keydown',e=>{if(!book||$('reader').hidden)return;if(e.key==='ArrowRight')render(i+1,true);if(e.key==='ArrowLeft')render(i-1,true)});
 let sx=null;
 stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
@@ -297,4 +315,6 @@ window.addEventListener('hashchange',route);
 if(canSpeak){try{speechSynthesis.getVoices()}catch(e){}}
 /* 연결 전에 읽은 책과 해 본 활동도 포켓몬 마을에 알려요 (한 번만) */
 if(!store.get('wiin-bridge-seeded')){BOOKS.forEach(b=>{if(done[b.id])wbMark(b,'read');if(tried[b.id])wbMark(b,'tried')});store.set('wiin-bridge-seeded','1')}
+applyPilot();
+{const pt=$('pilotT'); if(pt){pt.checked=PILOT_ON; pt.addEventListener('change',()=>{try{localStorage.setItem('wiin-pilot',pt.checked?'1':'0')}catch(e){} location.reload()})}}
 route();

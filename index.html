@@ -296,7 +296,24 @@ body.onshelf .dex summary b{color:var(--gold)}
 body.onshelf .dextypes button{background:transparent;color:var(--ink)}
 body.onshelf .dexc b{color:var(--ink)}
 body.onshelf .dexc.unmet .bookc{opacity:.3}
-body.onshelf .parentbox{border-top-color:var(--line)}
+body.onshelf /* 새 그림 위 누르기 칸: 누르면 금빛 테두리가 반짝 */
+.ill-tap{cursor:pointer}
+.ill-tap.hit,.ill-tap.hit rect{animation:none}
+.ill-tap.hit rect{animation:glow 1s ease}
+@keyframes glow{0%{stroke-opacity:0}30%{stroke-opacity:1}100%{stroke-opacity:0}}
+.ill-tap.tappable rect{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{stroke-opacity:0}50%{stroke-opacity:.55}}
+svg.ill{background:#EEE7D6}
+.recbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:#16223F;color:#F3EBD8}
+.recbar .rs{flex:1 1 160px;font-size:15px}
+.recbar .rs.live{color:#FF8A75;font-family:var(--font-d)}
+.recbar .rb{font-family:var(--font-d);font-size:15px;border:0;border-radius:999px;padding:6px 14px;background:#D4AF6A;color:#16223F;cursor:pointer}
+.recbar .rb.stop{background:#E0644B;color:#fff}
+.recbar .rb.ghost{background:transparent;color:#F3EBD8;box-shadow:inset 0 0 0 1.5px #6B7799}
+.autobtn.recb.on{background:#16223F;color:#F3D99B}
+.pilott{display:flex;align-items:center;gap:8px;font-size:15px}
+.pilott input{width:20px;height:20px}
+.parentbox{border-top-color:var(--line)}
 body.onshelf .bookc .sticker{color:var(--gold);text-shadow:0 1px 2px rgba(0,0,0,.5)}
 /* 읽는 화면: 한지 바탕은 그대로, 단추만 쪽빛과 금색 */
 .book .btn.primary{background:#16223F;border-color:#16223F;color:#F3D99B}
@@ -368,6 +385,8 @@ body.onshelf .bookc .sticker{color:var(--gold);text-shadow:0 1px 2px rgba(0,0,0,
       <p class="lead">아주아주 먼 옛날부터 할머니 할아버지 어릴 적까지, 시대 순서대로 꽂혀 있어요. 책 끝의 "해 보기"를 하고 "해 봤어요"를 누르면 아래에 역량별로 쌓여요.</p>
       <p class="progress" id="progress"></p>
       <div class="comptally" id="comptally"></div>
+      <label class="pilott"><input type="checkbox" id="pilotT" checked> 세종대왕 · 이순신 · 유관순 책을 새 그림으로 보기 (시험 중)</label>
+      <p class="note">"🎙 목소리 녹음"을 누르면 쪽마다 엄마 아빠 목소리를 녹음할 수 있어요. 녹음한 쪽은 읽어주기와 저절로 읽기가 그 목소리로 읽어요. 녹음은 이 기기에만 저장돼요.</p>
     </details>
   </section>
   <section class="book" id="reader" hidden>
@@ -378,6 +397,7 @@ body.onshelf .bookc .sticker{color:var(--gold);text-shadow:0 1px 2px rgba(0,0,0,
       <div class="opts">
         <button class="autobtn" id="autoPlay" type="button" aria-pressed="false">▶ 저절로 읽기</button>
         <button class="autobtn tellb" id="tellB" type="button" aria-pressed="false">🗣 네가 들려줘</button>
+        <button class="autobtn recb" id="recB" type="button">🎙 목소리 녹음</button>
         <label class="auto"><input type="checkbox" id="autoRead"> 넘기면 읽어주기</label>
       </div>
     </div>
@@ -468,6 +488,8 @@ body.onshelf .bookc .sticker{color:var(--gold);text-shadow:0 1px 2px rgba(0,0,0,
 <script src="js/redraw/r6.js"></script>
 <script src="js/redraw/r7.js"></script>
 <script src="js/think.js"></script>
+<script src="js/pilot.js"></script>
+<script src="js/voice.js"></script>
 <script src="js/bridge.js"></script>
 <script src="js/app.js"></script>
 </body>
