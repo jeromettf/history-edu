@@ -14,7 +14,7 @@ const SEJONG_PAGES=[
   ${backView(210,262,.5,{robe:'#EFE6D2'})}${backView(250,264,.48,{robe:'#E9DFC8',hat:'gat'})}${backView(290,262,.5,{robe:'#F2E6D4',hat:'bun'})}
   ${T(330,128,'?',30,K.red)}${T(200,130,'?',24,K.red)}
   ${farmer(70,340,1.9,{mood:'o',pose:'hold',still:true,face:'right'})}`,'url(#sj1)',sky('sj1','#CFE6F2','#FBEBD8')),
-  text:`옛날 우리나라가 조선이라는 이름이던 때예요. 그때는 한자라는 글자를 썼는데, 수천 개나 되고 너무 어려웠어요. 그래서 글을 읽을 줄 아는 사람이 아주 적었답니다.`},
+  text:`옛날 우리나라가 조선이라는 이름이던 때예요. 그때는 한자라는 글자를 썼어요. 하나, 둘, 셋… 외워도 외워도 끝이 없었어요. 수천 개나 되었거든요. 그래서 글을 읽을 줄 아는 사람이 아주 적었어요.`},
 
  /* 2. 가까이: 촛불에 비친 이도의 얼굴 */
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#2B2440"/>
@@ -23,7 +23,7 @@ const SEJONG_PAGES=[
   ${candle(330,262,1.6)}
   <circle cx="300" cy="200" r="190" fill="url(#candleG)" opacity=".55"/>
   ${prince(170,360,2.05,{pose:'hold',mood:'smile',item:openBook,still:true,face:'right'})}`,'#2B2440',candleDef),
-  text:`그런데 궁궐에는 책 읽기를 세상에서 제일 좋아하는 왕자님이 살았어요. 이름은 이도였어요. 이도는 밤이 깊어도 촛불을 켜고 책을 읽었지요.`},
+  text:`궁궐에는 책을 세상에서 제일 좋아하는 왕자님이 살았어요. 이름은 이도예요. 사각사각, 책장 넘기는 소리. 밤이 깊어도 이도의 방에는 촛불이 꺼지지 않았어요.`},
 
  /* 3. 비스듬한 병풍 뒤에서 몰래 책을 안은 이도, 뒤로 책을 나르는 사람들 */
  {chips:['전해 오는 이야기'], svg:SVn(`${room()}
@@ -33,7 +33,7 @@ const SEJONG_PAGES=[
   ${screenFold(246,262,.82)}
   ${prince(200,274,.92,{pose:'hold',mood:'joy',item:redBook,face:'right'})}
   ${T(200,64,'딱 한 권!',22,K.red)}${star(250,58,8)}`,'#EADCC0'),
-  text:`하루는 책을 너무 많이 읽다가 몸이 아팠어요. 걱정한 아버지는 책을 모두 치워 버렸어요. 그런데 병풍 뒤에 딱 한 권이 남아 있었어요! 이도는 그 책을 백 번도 넘게 읽었대요.`},
+  text:`하루는 책을 너무 많이 읽다가 몸이 아팠어요. "이제 책은 그만!" 아버지는 방에 있던 책을 모두 치워 버렸어요. 그런데 병풍 뒤에 딱 한 권이 남아 있었어요! 이도는 그 책을 백 번도 넘게 읽었대요.`},
 
  /* 4. 올려다보는 구도: 일월오봉도 앞 옥좌의 세종, 앞쪽에 엎드린 신하들의 등 */
  {svg:SV(`${palace(false)}
@@ -41,7 +41,7 @@ const SEJONG_PAGES=[
   ${throne(200,232,1.0)}
   ${king(200,196,.95,{pose:'down',mood:'smile',still:true,face:'front'})}
   ${backView(46,320,1.3,{robe:'#5E7FA8',hat:'gat'})}${backView(354,320,1.3,{robe:'#7A8C6E',hat:'gat'})}`,'#E8D3B0'),
-  text:`책을 사랑한 이도는 자라서 임금님이 되었어요. 바로 세종대왕이에요. 세종대왕은 백성들이 행복하게 사는 나라를 만들고 싶었어요.`},
+  text:`책을 사랑한 이도는 자라서 임금님이 되었어요. 바로 세종대왕이에요. "백성들이 모두 행복하게 살면 좋겠다." 세종대왕은 늘 그렇게 생각했어요.`},
 
  /* 5. 어깨 너머: 담장 너머로 억울한 농부를 바라보는 임금의 뒷모습 */
  {chips:['이해를 돕는 장면'], svg:SV(`${hills('#A9CDB4','#BCD38F',176,206)}
@@ -51,7 +51,7 @@ const SEJONG_PAGES=[
   <path d="M-6 236 L180 236 L180 286 L-6 286Z" fill="#B9B3A6" ${sw(1.4)}/>${[0,1,2,3,4,5].map(k=>`<ellipse cx="${k*32+8}" cy="${248+(k%2)*14}" rx="15" ry="6" fill="${k%2?'#C9C2B4':'#A9A397'}" ${sw(1)}/>`).join('')}<path d="M-6 234 H182" stroke="#4A4A55" stroke-width="7"/>
   ${backView(96,360,1.85,{robe:'#C9473B',hat:'king'})}
   ${heart(150,96,true)}`,'url(#sj5)',sky('sj5','#D9EDF4','#F3EEDC')),
-  text:`그러던 어느 날, 세종대왕은 속상한 이야기를 들었어요. 백성들이 글을 몰라서 억울한 일이 있어도 글로 쓸 수 없대요. "모두가 글을 읽고 쓸 수 있으면 좋을 텐데."`},
+  text:`어느 날, 한 농부가 세종대왕을 찾아왔어요. "억울한 일이 있는데, 글을 몰라서 쓸 수가 없어요." 세종대왕은 마음이 아팠어요. "모두가 글을 읽고 쓸 수 있으면 좋을 텐데."`},
 
  /* 6. 위에서 내려다본 책상: 큰 종이 위의 자음, 붓을 든 손 */
  {kind:'letters', svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#8A5A3C"/>${[0,1,2,3,4,5,6].map(k=>`<path d="M-6 ${k*44} H406" stroke="#7A4E33" stroke-width="2"/>`).join('')}
@@ -60,7 +60,7 @@ const SEJONG_PAGES=[
   <ellipse cx="350" cy="60" rx="34" ry="12" fill="#3A3A44" ${sw()}/><ellipse cx="350" cy="56" rx="22" ry="6" fill="#1E1E24"/>
   <path d="M410 300 Q370 230 330 200 L312 214 Q350 250 380 300Z" fill="#C9473B" ${sw()}/><ellipse cx="318" cy="200" rx="14" ry="12" fill="${SK}" ${sw()}/><path d="M318 196 L282 150" stroke="${K.wood}" stroke-width="6" stroke-linecap="round"/><path d="M286 156 Q276 140 280 134 Q290 140 288 156Z" fill="${L}"/>
   ${candle(370,150,.7)}`,'#8A5A3C',candleDef),
-  text:`세종대왕은 결심했어요. "누구나 쉽게 배우는 글자를 만들자!" 그래서 말할 때 입과 혀의 모양을 오래오래 살펴보고, 그 모양을 본떠 글자를 만들었어요.`},
+  text:`세종대왕은 결심했어요. "누구나 쉽게 배우는 글자를 만들자!" 그리고 말할 때 입과 혀가 어떻게 움직이는지 오래오래 살펴보았어요. 그 모양을 본떠 글자를 만들었어요.`},
 
  /* 7. 하늘, 땅, 사람을 크게: 해 뜨는 들판 위에 모음의 뿌리 */
  {svg:SV(`<circle cx="110" cy="96" r="60" fill="url(#sjSun)"/><circle cx="110" cy="96" r="26" fill="#E0574A" ${sw()}/>
@@ -78,7 +78,7 @@ const SEJONG_PAGES=[
   ${[60,110,160,210,260,310].map((x,k)=>backView(x,206+(k%2)*6,.42,{robe:['#EFE6D2','#E9DFC8','#F2E6D4'][k%3],hat:['gat','bun',''][k%3],pose:k%2?'up':'down'})).join('')}
   ${farmer(330,340,1.6,{pose:'hold',mood:'joy',item:paperItem('가나다','Jua,sans-serif','#2E3A55'),still:true,face:'left'})}
   ${woman(80,330,1.3,{pose:'up',mood:'joy',still:true,face:'right'})}`,'#E8D3B0'),
-  text:`드디어 새 글자가 완성되었어요! 이름은 훈민정음, '백성을 가르치는 바른 소리'예요. 누구나 열흘이면 배울 수 있어서, 농부 아저씨도 하고 싶은 말을 글로 쓰게 되었어요.`},
+  text:`1446년, 드디어 새 글자가 태어났어요! 이름은 훈민정음, "백성을 가르치는 바른 소리"예요. 누구라도 열흘이면 배울 수 있었어요. 농부 아저씨도 하고 싶은 말을 또박또박 글로 썼어요.`},
 
  /* 9. 지금: 잠자리에서 이 그림책을 읽어 주는 장면 */
  {svg:SV(`${room()}
@@ -87,10 +87,10 @@ const SEJONG_PAGES=[
   ${g(52,300,.62,`<circle cx="0" cy="-94" r="31" fill="${SK}" ${sw()}/><path d="M-31 -96 Q-30 -128 0 -128 Q30 -128 31 -96 Q26 -108 16 -106 Q8 -114 0 -106 Q-10 -114 -16 -106 Q-24 -110 -31 -96Z" fill="${HAIR}" ${sw()}/><path d="M-16 -91 Q-11 -97 -6 -91 M6 -91 Q11 -97 16 -91" fill="none" ${sw(2.6)}/><path d="M-8 -80 Q0 -72 8 -80" fill="none" ${sw(2)}/>`)}
   ${woman(270,272,.95,{pose:'hold',mood:'smile',item:coverBook,face:'left'})}
   ${candle(370,250,.6)}`,'#EADCC0',candleDef),
-  text:`그 글자가 바로 오늘 우리가 쓰는 한글이에요. 지금 읽고 있는 이 그림책도, 네 이름도 한글로 써요. 그래서 해마다 10월 9일 한글날에 그 고마움을 기억해요.`},
+  text:`그 글자가 바로 오늘 우리가 쓰는 한글이에요. 이 그림책도, 네 이름도 한글로 써요. 그래서 해마다 10월 9일 한글날에는 세종대왕에게 고맙다고 말해요.`},
 
  {kind:'end', svg:endBase('sj',`${T(200,150,'한글',100,K.red,`stroke="#FFF8EC" stroke-width="7" paint-order="stroke"`)}`,prince(64,276,.52,{pose:'up',mood:'joy'}),king(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`책을 사랑한 왕자님이<br>모두에게 준 선물, 한글.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`책 한 권을 백 번 읽던 왕자님이<br>모두에게 준 선물, 한글.<br>오늘 네가 쓴 글자 하나도<br>그 선물이에요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 
