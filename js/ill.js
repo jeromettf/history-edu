@@ -17,9 +17,14 @@ function illTaps(id,i,p){
   else els.forEach((e,k)=>{const w=392/els.length;o[e]=[4+k*w,10,w-6,262]});
   return o}
 const illSrc=(id,i)=>(typeof ILL_SRC!=='undefined'&&ILL_SRC[`${id}-${i}`])||`img/ill/${id}-${i}.webp`;
+/* ILL_SPRITE가 있으면(아티팩트처럼 파일 수가 제한된 곳) 책 한 권의 그림을 세로로 이은 한 장에서 i번째 칸만 잘라 보여 준다. */
+function illImg(id,i){
+  const s=typeof ILL_SPRITE!=='undefined'&&ILL_SPRITE[id], k=s?s.p.indexOf(i):-1;
+  if(k<0) return `<image href="${illSrc(id,i)}" x="0" y="0" width="400" height="280" preserveAspectRatio="xMidYMid slice"/>`;
+  return `<svg x="0" y="0" width="400" height="280" viewBox="0 ${k*700} 1050 700" preserveAspectRatio="xMidYMid slice"><image href="${s.src}" x="0" y="0" width="1050" height="${s.p.length*700}"/></svg>`}
 function illSVG(id,i,p){
   const rects=Object.entries(illTaps(id,i,p)).map(([tid,[x,y,w,h]])=>`<g id="${tid}" class="ill-tap"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#FFFFFF" fill-opacity="0" stroke="#F3D99B" stroke-width="3" stroke-opacity="0"/></g>`).join('');
-  return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" class="ill"><image href="${illSrc(id,i)}" x="0" y="0" width="400" height="280" preserveAspectRatio="xMidYMid slice"/>${rects}</svg>`}
+  return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" class="ill">${illImg(id,i)}${rects}</svg>`}
 function applyPilot(){
   if(!PILOT_ON||typeof ILL_HAVE==='undefined') return;
   Object.entries(ILL_HAVE).forEach(([id,pages])=>{const b=BOOKS.find(x=>x.id===id); if(!b) return; b.pilot=true;
