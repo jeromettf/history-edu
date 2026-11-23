@@ -34,7 +34,7 @@ const P=[
   ${[...Array(12)].map((_,k)=>{const x=(k*33)%400+12,y=196+Math.floor(k/6)*20;return hero(x,y,.34,{robe:['#FFFFFF','#EFE6D2','#D6CDB4'][k%3],hat:['gat','','band'][k%3],bandColor:'#FFFFFF',arms:k%2?'flagR':'cheer',prop:k%2?H=>PROP.taeguk(H):'',mood:'joy'})}).join('')}
   ${hero(200,290,.9,{robe:'#FFFFFF',hair:'topknot',arms:'flagR',prop:H=>PROP.taeguk(H),mood:'joy'})}
   ${T(200,40,'대한 독립 만세!',26,K.red)}`,'url(#sb2)',sky('sb2','#CFE7F2','#F6EAD0')),
-  text:`1919년 3월 1일, 서울 탑골공원에서 독립 선언서를 읽고 사람들이 "대한 독립 만세!"를 외쳤어요. 만세 소리는 전국으로 퍼졌어요. 유관순이 만세를 부른 것도 이때였어요.`},
+  text:`3월 1일, 서울 탑골공원에서 독립 선언서를 읽고 사람들이 "대한 독립 만세!"를 외쳤어요. 만세 소리는 전국으로 퍼졌어요. 유관순이 만세를 부른 것도 이때였어요.`},
  {svg:SV(`${room()}
   ${sb(200,272,.9,{mood:'smile',arms:'pray'})}
   ${T(200,80,'겁먹지 않고 당당하게',18,K.red)}`,'#EADCC0'),
