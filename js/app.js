@@ -78,7 +78,6 @@ function runAuto(){clearTimeout(autoT); if(!auto||!book)return; const p=book.pag
   const tapNext=()=>{if(!ok())return; if(!taps.length){(turn2||turn)();return} const k=taps.shift(); autoT=setTimeout(()=>{if(ok())pick(p,k,tapNext)},700)};
   const th=THINK[book.id];
   const extra=p.kind==='cover'&&th?`읽으면서 알아봐요. ${th.pre||th.q}`:'';
-  if(th&&here===th.p&&done[book.id]){turn2=()=>{if(!ok())return; speak(`잠깐! 생각해 봐요. ${th.q}`,()=>{if(!ok())return; pauseAuto()})}}
   autoT=setTimeout(()=>{if(ok())speakPage(p,here,tapNext,extra)},500);
 }
 $('tellB').addEventListener('click',()=>setTell(!tell));
@@ -178,7 +177,7 @@ function shelf(){
 }
 function talkHTML(){
   const t=book.talk, nx=BOOKS[book.no%BOOKS.length];
-  /* 생각 멈춤에서 이미 물은 것과 가장 덜 겹치는 질문을 오늘의 질문으로 고른다 */
+  /* 표지의 "읽으면서 알아봐요"와 겹치지 않는 질문을 오늘의 질문으로 고른다 */
   const big=x=>new Set([...x.replace(/[^가-힣]/g,'')].map((c,k,a)=>c+(a[k+1]||''))), th=THINK[book.id];
   const sim=q=>{if(!th)return 0;const A=big(q),B=big(th.q+(th.pre||""));let n=0;A.forEach(x=>{if(B.has(x))n++});return n/Math.min(A.size,B.size)};
   const pickI=t.five.map((q,k)=>[sim(q),k]).sort((a,b)=>a[0]-b[0]||a[1]-b[1])[0][1];
@@ -219,7 +218,7 @@ function showBook(id,n=0){
 let tell=false;
 const storyPage=p=>!!p.text&&!['cover','end','talk','try'].includes(p.kind);
 function tellHTML(p){const P=book.pages, story=P.map((q,k)=>(!q.kind&&q.text)?k:-1).filter(k=>k>=0), pos=story.indexOf(i);
-  /* 물음은 첫 쪽과 마지막 쪽에만. 생각 멈춤 쪽은 그 질문 카드가 대신하고, 나머지 쪽은 그림만 보며 이어 간다 */
+  /* 물음은 첫 쪽과 마지막 쪽에만. 나머지 쪽은 그림만 보며 이어 간다 */
   const ask=pos===0?TELL.first:pos===story.length-1?TELL.last:'';
   return `${ask?`<p class="story tell">🗣 ${ask}</p>`:''}<details class="peek"><summary>엄마 아빠가 볼 원래 문장</summary><p>${p.text}</p></details>`}
 function setTell(on){tell=on; if(on&&auto)setAuto(false); const b=$('tellB'); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); b.textContent=on?'📖 다시 읽어 주기':'🗣 네가 들려줘'; render(i,false)}
@@ -244,7 +243,6 @@ function render(n,fromUser){
   let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():(tell&&isStory)?tellHTML(p):`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
   if(p.kind==='cover'&&th) h+=`<div class="think pre"><b>🤔 읽으면서 알아봐요</b><p>${th.pre||th.q}</p></div>`;
   if(p.kind==='cover'&&done[book.id]&&!tell) h+=`<button class="tellnudge" type="button" id="tellGo">🗣 다 읽은 책이에요. 이번엔 네가 들려줄래?</button>`;
-  if(th&&i===th.p&&done[book.id]) h+=`<div class="think"><b>🤔 잠깐! 생각해 봐요</b><p>${th.q}</p><small>생각해 보고 넘겨도 되고, 그냥 넘겨도 돼요.</small></div>`;
   if(p.kind==='letters') h+=tilesHTML(LETTERS.map(t=>t[0]),'글자를 눌러 보세요.');
   if(p.kind==='sundial') h+=tilesHTML(SUN.map(t=>`${t[0]} ${t[2]}`),'아침, 한낮, 저녁을 눌러 보세요.',true);
   if(p.kind==='clock') h+=tilesHTML(DRUM.map(t=>t[0]),'종, 북, 징을 눌러 보세요.',true);

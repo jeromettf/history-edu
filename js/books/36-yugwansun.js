@@ -22,7 +22,7 @@ const P=[
   <g id="tGs">${gwansun(200,272,.86,{arms:'flagR',prop:H=>PROP.taeguk(H),mood:'joy'})}</g>
   ${T(200,40,'대한 독립 만세!',24,K.red,`stroke="#FFF8EC" stroke-width="5" paint-order="stroke"`)}`,'url(#u3)',sky('u3','#CFE7F2','#F6EAD0')),
   taps:[{label:'태극기',el:'tFlags',say:'태극기가 바람에 펄럭펄럭!'},{label:'만세',el:'tGs',say:'대한 독립 만세!'}],
-  text:`그날, 사람들이 태극기를 들고 거리로 나왔어요. "대한 독립 만세!" 우리나라를 돌려 달라는 외침이에요. 붙잡힐 수도 있었지만, 관순이도 친구들과 두 팔을 번쩍 들었어요.`},
+  text:`3월 1일, 사람들이 태극기를 들고 서울 거리로 나왔어요. "대한 독립 만세!" 우리나라를 돌려 달라는 외침이에요. 붙잡힐 수도 있었지만, 관순이도 친구들과 두 팔을 번쩍 들었어요.`},
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   ${hut(300,176)}
   ${gwansun(130,268,.92,{pose:'up',mood:'smile'})}
