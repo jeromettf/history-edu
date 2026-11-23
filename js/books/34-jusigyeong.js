@@ -19,7 +19,7 @@ const P=[
  {svg:SV(`${room()}
   ${teacher(280,268,.86,{mood:'joy',pose:'up'})}
   ${sgKid(130,268,.86,{mood:'joy',pose:'up'})}${T(130,100,'아하, 그런 뜻이구나!',18,K.red)}`,'#EADCC0'),
-  text:`그런데 훈장님이 우리말로 풀어서 설명해 주자 단번에 알아들었어요. "우리말을 우리글로 쓰면 누구나 쉽게 알 텐데!"`},
+  text:`그런데 훈장님이 우리말로 풀어 주자 단번에 알아들었어요. "우리말을 우리글로 쓰면 누구나 쉽게 알 텐데!" 그때는 중요한 글을 모두 한자로 쓰고, 한글은 낮춰 보던 때였어요.`},
  {chips:['1896년'], svg:SV(`${room()}
   ${sg(140,268,.9,{pose:'hold',mood:'smile',item:paper})}
   ${[0,1,2].map(k=>`<g transform="translate(${270+k*30} ${200-k*12}) rotate(${k*6-4})">${paper}</g>`).join('')}`,'#E9EEF2'),
@@ -37,23 +37,17 @@ const P=[
   <g id="tBag">${sg(160,262,.9,{pose:'hold',mood:'joy',item:bojagi})}</g>
   <rect x="270" y="150" width="100" height="56" fill="#E8DCC4" ${sw()}/><path d="M260 154 Q320 120 380 154Z" fill="#8E5A48" ${sw()}/>`,'url(#sg5)',sky('sg5','#CFE7F2','#F6EAD0')),
   taps:[{label:'보따리',el:'tBag',say:'보따리 안에는 우리말 책이 가득 들어 있어요.'}],tapHint:'보따리 안에는 뭐가 있을까요?',
-  text:`주시경은 책을 보따리에 싸 들고 이 학교 저 학교를 바쁘게 다니며 우리말을 가르쳤어요. 사람들은 그를 '주보따리'라고 불렀대요.`},
+  text:`나라를 일본에 빼앗긴 뒤에도 주시경은 책을 보따리에 싸 들고 이 학교 저 학교를 다니며 우리말을 가르쳤어요. 사람들은 그를 '주보따리'라고 불렀대요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#EFE3C8"/>${board(60,30,280,150)}
   ${T(200,120,'한글',70,'#FFFDF6')}
   <rect x="-6" y="216" width="412" height="70" fill="#DDB16A"/>
   ${sg(110,272,.8,{pose:'up',mood:'joy'})}${sgKid(260,272,.66,{mood:'joy',pose:'up'})}${oldKid(330,272,.6,{mood:'joy'})}`,'#EFE3C8'),
   text:`그리고 세종대왕이 만든 우리 글자에 새 이름을 붙였어요. '한글'이에요. '크고 하나뿐인 훌륭한 글'이라는 뜻을 담았어요.`},
- {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
-  <rect x="290" y="32" width="80" height="88" rx="4" fill="#FFFFFF" ${sw()}/><rect x="290" y="32" width="80" height="22" rx="4" fill="${K.red}" ${sw()}/>
-  ${T(330,49,'10월',14,'#fff')}${T(330,94,'9',38)}${T(330,114,'한글날',13,K.red)}
-  <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/><ellipse cx="190" cy="260" rx="124" ry="18" fill="#BFD7A8" ${sw()}/>
-  ${kid(190,266,1.0,{pose:'hold',mood:'joy',item:coverBook})}`,'url(#sg7)',sky('sg7','#E8F2F8','#DCEAF2')),
-  text:`세종대왕이 한글을 만들고, 주시경이 그 이름을 지어 주었어요. 우리가 쓰는 띄어쓰기와 맞춤법에도 주시경의 노력이 담겨 있어요.`},
  {kind:'end', svg:endBase('sg',`${T(200,170,'한글',90,K.red,`stroke="#FFF8EC" stroke-width="7" paint-order="stroke"`)}${g(200,240,1.3,bojagi)}`,sgKid(64,276,.5,{pose:'up',mood:'joy'}),sg(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`우리말을 사랑한 아이가 남긴 선물,<br>한글이라는 이름.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`보따리를 들고 뛰어다닌 선생님,<br>우리 글에 '한글'이라는 이름을 붙였어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'jusigyeong',era:'modern',title:'주시경과 한글이라는 이름',who:'주시경',teaser:'세종대왕이 만든 우리 글자에 "한글"이라는 이름을 붙여 준 보따리 선생님 이야기예요.',pages:P,
+BOOKS.push({id:'jusigyeong',era:'modern',title:'주시경과 한글이라는 이름',who:'주시경',teaser:'세종대왕이 만든 우리 글자에 "한글"이라는 이름을 붙여 준 보따리 선생님 이야기예요.',pages:P,now:"우리가 쓰는 띄어쓰기와 맞춤법에도 주시경의 노력이 들어 있어요. 이 그림책의 글도 띄어쓰기를 하고 있지요.",
  talk:{three:['주시경 선생님 보따리는 무슨 색이었지?','"한글" 하고 크게 읽어 볼까?','손가락으로 한글 자음 하나 써 볼까?'],
   five:['"아버지 가방에 들어가신다"는 왜 웃길까?','띄어쓰기가 없으면 어떤 점이 불편할까?','"한글"이라는 이름에는 어떤 뜻이 담겼지?'],
   note:'주시경(1876~1914)은 황해도에서 태어나 배재학당에서 공부했고, 1896년 『독립신문』 교정을 맡아 한글 전용과 띄어쓰기에 힘썼습니다. 여러 학교를 다니며 우리말을 가르쳐 "주보따리"라는 별명을 얻었고, 1910년대 초 "한글"이라는 이름을 처음 쓴 사람으로 알려져 있습니다. 서당 장면은 주시경이 한문을 우리말로 풀어 듣고 깨우쳤다는 이야기를 바탕으로 했습니다. 1914년 이른 나이에 세상을 떠났습니다.'}});

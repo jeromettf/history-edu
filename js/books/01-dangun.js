@@ -69,14 +69,14 @@ const P=[
   ${g(0,0,1,`<g opacity=".25">${bear(116,262,.7,{mood:'joy'})}</g>`)}
   ${ungnyeo(200,266,1.0,{pose:'up',mood:'joy'})}
   ${star(120,120,12)}${star(286,108,10,'#F28C7C')}${star(150,70,7)}${star(260,170,8,K.jade)}${star(310,60,6)}`,'url(#d7)',sky('d7','#FCE9C2','#E8F1E2')+glow('dg7','#FFF6D8',.95)),
-  text:`스무하루가 지나자, 곰은 아름다운 여인이 되었어요! 사람들은 그 여인을 웅녀라고 불렀어요.`},
+  text:`백 일이 다 되기도 전, 스무하루째 되는 날 아침이었어요. 곰은 여인이 되어 있었어요! 사람들은 그 여인을 웅녀라고 불렀어요.`},
  {chips:LEG, svg:SV(`
   ${hills('#A9CDB4','#BCD38F',196,220)}
   <rect x="150" y="150" width="100" height="56" fill="#F3E6CB" ${sw()}/><path d="M138 156 Q200 108 262 156Z" fill="#C9A15A" ${sw()}/>
   ${hwanung(110,268,.86,{mood:'joy'})}
   ${ungnyeo(290,268,.86,{pose:'hold',mood:'joy',item:`<ellipse cx="0" cy="-34" rx="22" ry="15" fill="#FFFDF6" ${sw()}/><circle cx="10" cy="-40" r="9" fill="${SK}" ${sw(1.4)}/><path d="M7 -40 Q10 -37 13 -40" fill="none" ${sw(1.2)}/>`})}
   ${heart(200,120)}`,'url(#d8)',sky('d8','#D9EDF4','#F3EEDC')),
-  text:`웅녀와 환웅은 결혼해 아기를 낳았어요. 그 아기가 바로 단군왕검이에요.`},
+  text:`웅녀와 환웅은 결혼해 아기를 낳았어요. 그 아기가 단군왕검이에요.`},
  {chips:['기원전 2333년'], svg:SV(`
   ${cloud(80,50,.8)}<circle cx="330" cy="54" r="24" fill="${K.gold}" ${sw()}/>
   <path d="M-6 200 Q80 150 200 120 Q320 150 406 200 L406 286 L-6 286Z" fill="#A9CDB4" ${sw()}/>
@@ -85,19 +85,11 @@ const P=[
   ${dangun(200,206,.86,{pose:'up',mood:'joy'})}
   ${hero(80,272,.62,{mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#E9DFC8',mood:'joy',pose:'up'})}${hero(332,272,.62,{body:'dress',hair:'braid',mood:'joy'})}`,'url(#d9)',sky('d9','#CFE7F2','#F6EAD0')),
   text:`어른이 된 단군왕검은 우리 땅에 처음으로 나라를 세웠어요. 그 나라의 이름은 고조선이에요. 우리나라 역사의 맨 처음이에요.`},
- {svg:SV(`
-  <rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
-  <rect x="290" y="32" width="80" height="88" rx="4" fill="#FFFFFF" ${sw()}/><rect x="290" y="32" width="80" height="22" rx="4" fill="${K.red}" ${sw()}/>
-  ${T(330,49,'10월',14,'#fff')}${T(330,94,'3',38)}${T(330,114,'개천절',13,K.red)}
-  <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/><ellipse cx="190" cy="260" rx="124" ry="18" fill="#F2B3A6" ${sw()}/>
-  ${kid(190,266,1.02,{pose:'up',mood:'joy'})}
-  ${star(126,160,8)}${star(258,150,7,'#F28C7C')}`,'url(#d10)',sky('d10','#E8F2F8','#DCEAF2')),
-  text:`지금도 해마다 10월 3일 개천절에 우리나라의 시작을 기념해요. 개천절은 '하늘이 열린 날'이라는 뜻이에요.`},
  {kind:'end', svg:endBase('d',`<path d="M60 220 Q130 110 200 70 Q270 110 340 220Z" fill="#A9CDB4" ${sw()}/>${T(200,176,'고조선',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,bear(64,276,.5,{mood:'joy'}),dangun(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`꾹 참고 기다린 곰과 단군왕검이 남긴 선물,<br>우리나라의 시작.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`쑥과 마늘을 먹으며 꾹 참은 곰,<br>그 아들이 세운 첫 나라 고조선.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'dangun',era:'gojoseon',title:'단군과 우리나라의 시작',who:'단군',teaser:'우리나라가 처음 시작된 이야기예요. 꾹 참고 기다린 곰이 나와요.',pages:P,
+BOOKS.push({id:'dangun',era:'gojoseon',title:'단군과 우리나라의 시작',who:'단군',teaser:'우리나라가 처음 시작된 이야기예요. 꾹 참고 기다린 곰이 나와요.',pages:P,now:"해마다 10월 3일 개천절에 우리나라의 시작을 기념해요. 개천절은 '하늘이 열린 날'이라는 뜻이에요.",
  talk:{three:['동굴 속에서 곰은 무엇을 먹었지?','곰처럼 "꾹!" 참는 흉내 내 볼까?','하늘에서 내려온 사람은 누구였지?'],
   five:['호랑이는 왜 동굴 밖으로 나갔을까?','꾹 참고 기다려서 좋았던 적이 있어?','개천절에는 무엇을 축하할까?'],
   note:'단군 이야기는 고려 때 일연이 쓴 『삼국유사』에 실린 건국 신화로, 책 전체가 전해 오는 이야기입니다. 기원전 2333년이라는 연도도 옛 책에 전하는 것입니다. 곰과 호랑이는 곰을 섬기던 무리와 호랑이를 섬기던 무리를 뜻한다고 풀이하기도 합니다.'}});

@@ -17,7 +17,7 @@ const P=[
   ${sm(200,272,.9,{mood:'smile',arms:'pointR',face:'right'})}
   ${[0,1].map(k=>sol(70+k*60,276,.6,{mood:'joy',arms:'handsDown',face:'right'})).join('')}${[0,1].map(k=>town(300+k*50,276,.58,['#D6CDB4','#C9D8B4'][k],{mood:'o',face:'left'})).join('')}
   ${T(200,70,'미리미리 준비하자',18,K.red)}`,'#D9CCAE'),
-  text:`김시민은 적이 오기 전에 미리 준비했어요. 무기를 만들고 성벽을 고치고, 군사들에게 활 쏘는 법을 열심히 가르쳤어요.`},
+  text:`김시민은 적이 오기 전에 말했어요. "적은 반드시 옵니다. 지금 준비합시다!" 그리고 무기를 만들고 성벽을 고치고, 군사들에게 활 쏘는 법을 가르쳤어요.`},
  {chips:['1592년'], svg:SVn(`${wall(180,70)}<path d="M-6 180 H406 V290 H-6Z" fill="#C9C08E"/>
   ${[...Array(18)].map((_,k)=>japan(20+(k%9)*46,250+Math.floor(k/9)*24,.3,{mood:'o',face:'left'})).join('')}
   ${T(200,80,'적군이 몰려와요',20,K.red)}`,'url(#sm2)',sky('sm2','#B9C2CC','#E6E2D4')),
@@ -30,20 +30,16 @@ const P=[
   ${[0,1,2,3,4,5].map(k=>(k%2?sol:(x,y,s,o)=>town(x,y,s,['#D6CDB4','#E9CFC0','#C9D8B4'][k%3],o))(50+k*60,150,.42,{arms:'cheer',mood:'joy'})).join('')}
   ${[0,1,2].map(k=>japan(260+k*40,280,.36,{stance:'walk',arms:'walk',mood:'sad',face:'right'})).join('')}
   ${T(200,40,'진주성을 지켰다!',22,K.red)}`,'url(#sm4)',sky('sm4','#CFE7F2','#F6EAD0')),
-  text:`엿새 동안의 싸움 끝에 적군은 물러갔어요. 진주성을 지켜 낸 이 싸움을 '진주대첩'이라고 해요.`},
+  text:`엿새 동안의 싸움 끝에 적군은 물러갔어요. 크게 이긴 이 싸움을 진주 대첩이라고 해요.`},
  {svg:SV(`${palace()}
   ${[0,1,2,3].map(k=>backView(50+k*100,300,.7,{robe:['#D6CDB4','#4C6A90'][k%2],hat:['bun','gat'][k%2]})).join('')}
   ${candle(200,200,1.2)}<circle cx="200" cy="160" r="120" fill="url(#candleG)" opacity=".4"/>`,'#E6CFAA',candleDef),
   text:`하지만 김시민은 싸우다 크게 다쳐 끝내 세상을 떠났어요. 진주 사람들은 성을 지켜 준 김시민을 오래오래 기억했어요.`},
- {svg:SV(`<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#5B9BC2"/>${wall(200,80)}${pavilion(220,120,.8)}
-  ${kid(90,276,.8,{mood:'o',arms:'pointR',face:'right'})}${hero(330,276,.8,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}
-  ${T(200,40,'진주성 촉석루',20,K.red)}`,'url(#sm5)',sky('sm5','#CFE7F2','#F6EAD0')),
-  text:`지금 진주성에 가면 남강 위로 촉석루가 보여요. 성 안에는 김시민 장군의 동상도 서 있어요.`},
  {kind:'end', svg:endBase('sm',`${pavilion(200,200,1.0)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),sm(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`미리 준비하고 함께 지킨 사람들이 남긴 선물,<br>진주성.<br>오늘도 남강 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`미리 준비하고 함께 버틴 엿새,<br>남강 위의 진주성.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'kimsimin',era:'joseon',title:'김시민과 진주성',who:'김시민',teaser:'군사도 엄마도 아이도 모두 함께 지킨 성이 있어요.',pages:P,
+BOOKS.push({id:'kimsimin',era:'joseon',title:'김시민과 진주성',who:'김시민',teaser:'군사도 엄마도 아이도 모두 함께 지킨 성이 있어요.',pages:P,now:"진주성에 가면 남강 위로 촉석루가 보여요. 성 안에는 김시민 장군의 동상도 서 있어요.",
  talk:{three:['성벽 위에 누가누가 있었지?','돌 나르는 흉내 내 볼까? 영차!','진주성 옆에는 무슨 강이 흘렀지?'],
   five:['김시민은 적이 오기 전에 무엇을 준비했을까?','여러 사람이 함께 지키면 무엇이 좋을까?','미리 준비해서 잘된 일이 있었어?'],
   note:'김시민(1554~1592)은 임진왜란 때 진주 목사로, 1592년 음력 10월 약 3,800명의 군사로 2만여 명의 일본군을 6일 동안 막아 냈습니다(제1차 진주성 전투, 진주대첩). 그는 이 싸움에서 이마에 총탄을 맞아 순국했습니다. 이듬해 제2차 진주성 전투에서는 성이 함락되었습니다. 진주성 안에 촉석루와 김시민 장군 동상이 있습니다.'}});

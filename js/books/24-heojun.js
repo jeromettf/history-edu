@@ -46,7 +46,7 @@ const P=[
   ${heojunOld(170,262,.9,{pose:'hold',mood:'smile',item:bundle})}
   ${[[240,130,-14],[268,104,10],[300,124,-6]].map(([x,y,r])=>`<rect x="${x}" y="${y}" width="22" height="28" fill="#FFFDF6" ${sw(1.4)} transform="rotate(${r} ${x+11} ${y+14})"/>`).join('')}
   <path d="M220 120 q20 -10 40 0 M210 150 q20 -8 36 2" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>`,'url(#h6)',sky('h6','#C9D2D8','#E6E2D4')),
-  text:`전쟁이 나서 피난을 떠날 때도, 먼 곳으로 쫓겨났을 때도 허준은 책 쓰기를 멈추지 않았어요. 아픈 백성들을 생각했거든요.`},
+  text:`전쟁이 나서 피난할 때도 허준은 책을 썼어요. 선조 임금님이 세상을 떠나 임금님을 지키지 못했다는 탓을 듣고 먼 곳으로 쫓겨났을 때도요.`},
  {chips:['1610년'], svg:SV(`<circle cx="200" cy="150" r="150" fill="url(#hg7)"/>
   <path d="M-6 230 Q200 220 406 230 L406 286 L-6 286Z" fill="#DDB16A" ${sw()}/>
   ${[0,1,2,3,4].map(k=>`<rect x="${150+(k%2)*4}" y="${214-k*16}" width="100" height="16" rx="2" fill="${['#3F6FA8','#5E9C8A','#3F6FA8','#5E9C8A','#3F6FA8'][k]}" ${sw(1.4)}/>`).join('')}
@@ -54,17 +54,11 @@ const P=[
   ${heojunOld(80,272,.84,{pose:'up',mood:'joy'})}${hero(320,272,.78,{robe:'#EFE6D2',skin:'#EDBF95',mood:'joy',pose:'up'})}
   ${star(130,70,10)}${star(280,60,9,'#F28C7C')}`,'url(#h7)',sky('h7','#FCE9C2','#F6D9A2')+glow('hg7','#FFF6D8',.9)),
   text:`마침내 열네 해 만에 책이 완성되었어요. 이름은 『동의보감』이에요. 우리 땅의 약초를 쓰고 약초 이름을 한글로도 적어서, 백성들도 알아볼 수 있었어요.`},
- {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
-  <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/><ellipse cx="190" cy="260" rx="124" ry="18" fill="#BFD7A8" ${sw()}/>
-  <circle cx="320" cy="90" r="40" fill="#BFE0F0" ${sw()}/><path d="M290 76 Q310 70 316 86 Q330 96 352 84 M300 110 Q320 100 340 116" fill="none" stroke="#7CB66E" stroke-width="5" stroke-linecap="round"/>
-  ${kid(188,266,1.0,{pose:'hold',mood:'joy',item:bigBook('동의보감')})}
-  ${star(126,160,8)}${star(260,150,7,'#F28C7C')}`,'url(#h8)',sky('h8','#E8F2F8','#DCEAF2')),
-  text:`『동의보감』은 세계 사람들이 함께 지키는 소중한 기록이 되었어요. 지금도 한의원에서는 이 책에 담긴 지혜를 이어 가고 있어요.`},
  {kind:'end', svg:endBase('h',`${g(200,170,2.2,herbBasket)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),heojunOld(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`아픈 사람을 그냥 지나치지 못한 의원이 남긴 선물,<br>건강을 지키는 지혜.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`아픈 사람을 지나치지 못한 의원,<br>열네 해 동안 쓴 『동의보감』.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'heojun',era:'joseon',title:'허준과 동의보감',who:'허준',teaser:'아픈 사람을 그냥 지나치지 못한 허준이 약초 책을 만들었어요.',pages:P,
+BOOKS.push({id:'heojun',era:'joseon',title:'허준과 동의보감',who:'허준',teaser:'아픈 사람을 그냥 지나치지 못한 허준이 약초 책을 만들었어요.',pages:P,now:"『동의보감』은 유네스코 세계기록유산이 되었어요. 지금도 한의원에서 이 책을 공부해요.",
  talk:{three:['허준 할아버지 바구니에 무엇이 있지?','아플 때 누가 돌봐 줘?','"아야!" 하는 친구에게 "괜찮아?" 해 볼까?'],
   five:['허준은 왜 약초 이름을 한글로도 적었을까?','전쟁 중에도 책을 쓴 까닭은 뭘까?','아픈 친구를 도우려면 어떻게 할까?'],
   note:'허준(1539~1615)은 선조의 명으로 1596년 동의보감을 쓰기 시작해, 임진왜란과 귀양 중에도 집필을 이어 1610년 25권으로 완성했습니다. 2009년 유네스코 세계기록유산에 올랐습니다. 어린 시절 기록은 거의 남아 있지 않아 이야기에 넣지 않았고, 드라마로 널리 알려진 스승 유의태 이야기는 소설에서 지어낸 내용입니다.'}});

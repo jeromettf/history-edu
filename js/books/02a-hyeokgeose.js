@@ -16,7 +16,7 @@ const P=[
  {svg:SV(`${hills('#A9CDB4','#BCD38F',196,220)}
   ${[0,1,2,3,4,5].map(k=>chief(40+k*64,270-(k%2)*8,.62,CH[k],{mood:k%2?'o':'smile',face:k<3?'right':'left'})).join('')}
   ${T(200,80,'우리를 이끌어 줄 임금님이 있으면…',16,K.red)}`,'url(#hk1)',sky('hk1','#CFE7F2','#F6EAD0')),
-  text:`아주 먼 옛날, 경주 땅에는 여섯 마을이 있었어요. 여섯 마을의 촌장들이 모여 의논했어요. "우리를 이끌어 줄 임금님이 있으면 좋겠어요."`},
+  text:`먼 옛날, 경주 땅에는 여섯 마을이 있었어요. 마을끼리 다툼이 생겨도 풀어 줄 사람이 없었지요. 촌장들이 모여 말했어요. "우리를 이끌어 줄 임금님이 있으면 좋겠어요."`},
  {chips:LEG, svg:SVn(`${rays(200,0,'#FFF2C4',13,320,.4)}${hills('#A9CDB4','#BCD38F',190,214)}
   ${tree(60,226,1.2,'pine')}${tree(350,230,1.1,'round')}
   ${well(170,262,.9)}${whiteHorse(260,252,.62)}
@@ -38,22 +38,17 @@ const P=[
  {chips:['기원전 57년','전해 오는 이야기'], svg:SV(`${palace()}
   ${hkK(200,270,.96,{mood:'joy',arms:'armsOpen'})}${aryeong(290,272,.8,{mood:'smile',face:'left'})}
   ${[0,1,2].map(k=>chief(40+k*44,276,.5,CH[k],{mood:'joy',arms:'cheer',face:'right'})).join('')}`,'#E6CFAA'),
-  text:`두 아이는 무럭무럭 자랐어요. 열세 살이 되던 해, 촌장들은 혁거세를 첫 임금으로 모셨어요. 혁거세와 알영은 함께 나라를 다스렸어요. 이 나라가 바로 신라예요.`},
+  text:`두 아이는 무럭무럭 자랐어요. 열세 살이 되던 해, 촌장들은 혁거세를 첫 임금으로 모셨어요. 혁거세와 알영은 함께 나라를 다스렸어요. 이 나라가 신라예요.`},
  {svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
   ${[...Array(9)].map((_,k)=>`<path d="M${20+k*44} 260 q-2 -14 -8 -20 M${20+k*44} 260 q2 -16 8 -22 M${20+k*44} 260 v-22" fill="none" stroke="#7CA65A" stroke-width="3" stroke-linecap="round"/>`).join('')}
   ${hkK(120,270,.8,{mood:'smile',arms:'pointR',face:'right'})}${aryeong(190,270,.74,{mood:'smile',arms:'waveR',face:'right'})}
   ${hero(290,272,.66,{robe:'#D6CDB4',skin:'#EDBF95',hat:'band',bandColor:'#FFFDF6',arms:'sowR',mood:'joy',face:'left'})}`,'url(#hk5)',sky('hk5','#CFE7F2','#F6EAD0')),
-  text:`임금님과 알영은 마을을 돌며 농사짓는 사람들을 살폈어요. 사람들은 두 분을 '두 성인'이라고 부르며 따랐대요.`},
- {svg:SV(`${townscape(170,6)}<path d="M-6 200 H406 V290 H-6Z" fill="#BCD38F"/>
-  <path d="M120 250 Q200 170 280 250" fill="#8FB88A" ${sw()}/><path d="M140 250 Q200 190 260 250" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".4"/>
-  ${kid(90,272,.8,{mood:'o',arms:'pointR',face:'right'})}${hero(330,272,.8,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}
-  ${T(200,80,'경주 나정',20,K.red)}`,'url(#hk6)',sky('hk6','#CFE7F2','#F6EAD0')),
-  text:`지금도 경주에는 혁거세가 태어났다고 전하는 '나정'이 있어요. 신라는 그 뒤로 천 년 가까이 이어졌어요.`},
+  text:`임금님과 알영은 마을을 돌며 농사짓는 사람들을 살폈어요. 다투던 여섯 마을은 이제 한 나라가 되어 서로 도우며 살았어요.`},
  {kind:'end', svg:endBase('hk',`${redEgg(200,200,1.2)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),hkK(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`붉은 알에서 태어난 임금님이 남긴 선물,<br>천 년 나라 신라.<br>그 이야기가 경주에 남아 있어요.<br><span class="big">끝</span>`},
+  text:`우물가 붉은 알에서 시작된 나라,<br>신라.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'hyeokgeose',era:'samguk',title:'박혁거세와 신라의 시작',who:'박혁거세',teaser:'붉은 알에서 태어나 신라의 첫 임금이 된 혁거세를 만나요.',pages:P,
+BOOKS.push({id:'hyeokgeose',era:'samguk',title:'박혁거세와 신라의 시작',who:'박혁거세',teaser:'붉은 알에서 태어나 신라의 첫 임금이 된 혁거세를 만나요.',pages:P,now:"경주에는 혁거세가 태어났다고 전하는 우물 터 '나정'이 있어요. 신라는 그 뒤로 천 년 가까이 이어졌어요.",
  talk:{three:['알은 무슨 색이었지?','알에서 나온 아기 흉내 내 볼까? 톡!','흰 말은 어떻게 울었을까?'],
   five:['여섯 마을 사람들은 왜 임금님을 원했을까?','혁거세라는 이름에는 어떤 뜻이 있었지?','너라면 마을 사람들을 위해 무엇을 해 주고 싶어?'],
   note:'박혁거세는 『삼국사기』와 『삼국유사』에 신라의 시조로 기록되어 있으며, 『삼국사기』는 즉위를 기원전 57년으로 적고 있습니다. 나정에서 흰 말 곁의 알로 발견되었다는 이야기, 알영 우물에서 태어난 왕비 알영 이야기는 건국 신화입니다. 경주 나정(사적)은 발굴 조사로 신라 시대 건물터가 확인된 곳입니다.'}});

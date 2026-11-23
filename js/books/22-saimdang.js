@@ -40,25 +40,20 @@ const P=[
   ${hero(110,268,.86,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#7FB3C8',mood:'sad',tear:true})}
   ${saim(270,268,.9,{pose:'hold',mood:'smile',item:brush})}
   <ellipse cx="110" cy="236" rx="10" ry="6" fill="#8A6A44" opacity=".7"/>`,'#EADCC0'),
-  text:`잔칫집에서 한 부인이 빌려 입은 치마에 얼룩이 묻어 울고 있었어요. 신사임당은 그 치마에 포도 그림을 그려 주었어요. 얼룩이 멋진 그림이 되었어요.`},
+  text:`잔칫집에서 한 부인이 울고 있었어요. 빌려 입은 치마에 국물이 쏟아져 얼룩이 졌거든요. "이를 어쩌나, 돌려줄 수가 없어요."`},
  {chips:LEG, svg:SV(`${room()}
   ${hero(150,268,.92,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#7FB3C8',mood:'joy',pose:'up'})}
   ${[[130,236],[142,236],[136,248],[148,248],[142,258]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="5" fill="#7A4E9A" ${sw(1)}/>`).join('')}
   ${saim(280,268,.9,{mood:'joy'})}`,'#EADCC0'),
-  text:`그 치마를 팔아서 부인은 빌린 값을 갚을 수 있었대요.`},
+  text:`신사임당은 얼룩 위에 포도 그림을 그려 주었어요. 그 치마를 팔자, 새 치마를 사고도 남을 만큼 값을 받았대요.`},
  {svg:SV(`${room()}
   ${saim(140,268,.9,{mood:'joy'})}${hero(250,272,.7,{robe:'#D9E6C8',hair:'braid',pose:'hold',mood:'smile',item:bigBook('책','#5E9C8A')})}${kid(330,274,.6,{mood:'joy'})}`,'#EADCC0'),
-  text:`신사임당은 아이들에게 그림과 글을 가르쳤어요. 그중 한 아들은 훗날 훌륭한 학자가 된 율곡 이이예요.`},
- {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
-  <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/><ellipse cx="190" cy="260" rx="124" ry="18" fill="#BFD7A8" ${sw()}/>
-  ${kid(190,266,1.0,{pose:'hold',mood:'joy',item:coin5})}
-  ${bfly(320,100,1)}${star(260,150,7,'#F28C7C')}`,'url(#sa8)',sky('sa8','#E8F2F8','#DCEAF2')),
-  text:`오만 원짜리 지폐에서 신사임당의 얼굴과 그림을 찾아볼 수 있어요. 강릉 오죽헌에 가면 신사임당이 살던 집도 볼 수 있어요.`},
+  text:`신사임당은 아이들에게 그림과 글을 가르쳤어요. 마당의 풀벌레를 함께 들여다보면서요. 그중 한 아들이 나중에 큰 학자가 된 율곡 이이예요.`},
  {kind:'end', svg:endBase('sa',`${bfly(160,110,2.4)}${hopper(250,190,2)}`,girl(64,276,.5,{pose:'up',mood:'joy'}),saim(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`풀벌레를 사랑한 아이가 남긴 선물,<br>자세히 들여다보는 눈.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`닭도 속은 풀벌레 그림,<br>얼룩도 포도가 된 치마.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'saimdang',era:'joseon',title:'신사임당과 살아 있는 그림',who:'신사임당',teaser:'풀벌레를 진짜처럼 그려서 닭이 쪼았다는 신사임당 이야기예요.',pages:P,
+BOOKS.push({id:'saimdang',era:'joseon',title:'신사임당과 살아 있는 그림',who:'신사임당',teaser:'풀벌레를 진짜처럼 그려서 닭이 쪼았다는 신사임당 이야기예요.',pages:P,now:"오만 원짜리 지폐에서 신사임당의 얼굴과 그림을 찾아볼 수 있어요. 강릉 오죽헌에 가면 신사임당이 살던 집도 볼 수 있어요.",
  talk:{three:['그림 속 나비를 찾아볼까?','닭처럼 "콕콕" 쪼는 흉내!','오늘 본 벌레를 그려 볼까?'],
   five:['닭은 왜 그림을 쪼았을까?','얼룩진 치마를 어떻게 도와주었지?','무언가를 자세히 들여다본 적 있어?'],
   note:'신사임당(1504~1551)은 강릉 오죽헌에서 태어난 화가로, 풀과 벌레를 그린 초충도로 유명합니다. 닭이 그림을 쪼았다는 이야기와 치마에 포도를 그려 준 이야기는 전해 오는 일화입니다. 아들 율곡 이이는 조선의 대표 학자이며, 2009년부터 오만 원권에 신사임당의 초상이 실렸습니다.'}});

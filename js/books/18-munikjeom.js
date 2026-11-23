@@ -29,12 +29,12 @@ const P=[
   <path d="M60 286 Q140 240 240 222 Q330 208 406 200 L406 216 Q330 226 260 238 Q170 256 130 286Z" fill="#D9C79A" ${sw()}/>
   ${mun(170,262,.92,{pose:'hold',mood:'smile',item:`<rect x="-6" y="-46" width="12" height="26" rx="5" fill="#3A3A44" ${sw()}/><path d="M0 -46 V-60" stroke="#8A6A44" stroke-width="4"/>`})}
   ${g(250,190,2,seeds)}${T(250,60,'소중한 씨앗',18,K.red)}`,'url(#n3)',sky('n3','#CFE7F2','#F6EAD0')),
-  text:`고려로 돌아올 때 문익점은 목화씨 몇 알을 소중히 챙겨 왔어요. 붓 뚜껑 속에 몰래 넣어 왔다는 이야기도 전해 와요.`},
+  text:`고려로 돌아올 때 문익점은 목화씨 몇 알을 챙겨 왔어요. 붓 뚜껑 속에 몰래 넣어 왔다는 이야기도 전해 와요.`},
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7A878',196,220)}
   ${[60,100,140,180,220,260,300,340].map((x,k)=>sprout(x,252,k===5)).join('')}
   ${mun(80,200,.6,{mood:'sad'})}${jeong(140,200,.6,{mood:'sad'})}
   <circle cx="260" cy="226" r="26" fill="none" stroke="${K.red}" stroke-width="3" stroke-dasharray="4 4"/>${T(310,200,'딱 하나!',18,K.red)}`,'url(#n4)',sky('n4','#CFE7F2','#F6EAD0')),
-  text:`문익점은 장인어른 정천익과 함께 씨를 심었어요. 그런데 싹이 자꾸 시들었어요. 딱 한 그루만 살아남았지요. 그래도 둘은 포기하지 않았어요.`},
+  text:`문익점은 아내의 아버지 정천익과 함께 씨를 심었어요. 그런데 싹이 자꾸 시들었어요. 딱 한 그루만 살아남았지요. 그래도 둘은 포기하지 않았어요.`},
  {svg:SV(`<circle cx="340" cy="46" r="22" fill="${K.gold}" ${sw()}/>${hills('#A9CDB4','#C7A878',196,220)}
   ${[30,70,110,150,190,230,270,310,350,390].map((x,k)=>cotton(x,250-(k%2)*10,.9)).join('')}
   ${mun(110,270,.74,{pose:'up',mood:'joy'})}${jeong(290,270,.74,{pose:'up',mood:'joy'})}`,'url(#n5)',sky('n5','#CFE7F2','#F6EAD0')),
@@ -51,17 +51,11 @@ const P=[
   ${hero(180,266,.86,{robe:'#FFFDF6',skin:'#EDBF95',mood:'joy',pattern:'dots',dotColor:'#E9E4D6'})}${kid(256,268,.7,{mood:'joy'})}
   ${T(320,150,'따뜻해!',20,K.red)}`,'url(#n7)',sky('n7','#B9C8D6','#E3E8EE')),
   text:`이제 사람들은 솜을 넣은 두툼한 옷을 입었어요. 매서운 겨울바람이 불어도 몸이 포근했어요.`},
- {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#1C2347" stroke="#FFFFFF" stroke-width="7"/><circle cx="90" cy="70" r="14" fill="#F6F0D6"/>
-  <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/>
-  <rect x="80" y="220" width="250" height="40" rx="10" fill="#F6E2A6" ${sw()}/>
-  ${kid(200,250,.86,{pose:'hold',mood:'sleep',item:blanket})}
-  ${T(320,120,'쿨쿨',22,K.ink)}`,'url(#n8)',sky('n8','#E8F2F8','#DCEAF2')),
-  text:`오늘 밤 덮는 폭신한 이불에도, 입고 있는 부드러운 면 옷에도 목화솜이 들어 있어요. 문익점이 가져온 작은 씨앗 덕분이에요.`},
  {kind:'end', svg:endBase('n',`${cotton(200,210,3)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),mun(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`작은 씨앗을 소중히 여긴 사람이 남긴 선물,<br>따뜻한 옷과 이불.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`붓 뚜껑 속 목화씨 몇 알,<br>온 나라의 겨울이 따뜻해졌어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'munikjeom',era:'goryeo',title:'문익점과 따뜻한 목화',who:'문익점',teaser:'작은 목화씨 하나가 온 나라 사람들을 따뜻하게 해 주었어요.',pages:P,
+BOOKS.push({id:'munikjeom',era:'goryeo',title:'문익점과 따뜻한 목화',who:'문익점',teaser:'작은 목화씨 하나가 온 나라 사람들을 따뜻하게 해 주었어요.',pages:P,now:"오늘 밤 덮는 폭신한 이불에도, 입고 있는 부드러운 면 옷에도 목화솜이 들어 있어요.",
  talk:{three:['목화솜은 무슨 색이었지?','물레 돌리는 흉내, 빙글빙글!','우리 집 이불을 만져 볼까? 폭신폭신!'],
   five:['싹이 하나만 살았을 때 문익점은 어떻게 했지?','씨앗을 이웃에게 나눠 준 까닭은 뭘까?','작은 것이 큰일이 된 적이 있어?'],
   note:'문익점(1329~1398)은 1363년 원나라에 사신으로 갔다가 목화씨를 가져왔습니다. 붓두껍에 숨겨 왔다는 이야기가 널리 알려져 있지만, 실록에는 씨앗을 얻어 왔다고만 적혀 있습니다. 장인 정천익과 함께 심어 처음에는 한 그루만 살렸으나 3년 만에 널리 퍼뜨렸고, 씨를 빼는 씨아와 실을 잣는 물레를 만들어 무명이 널리 쓰이게 되었습니다.'}});

@@ -16,7 +16,7 @@ const P=[
   ${hero(270,268,.82,{robe:'#EDE9E0',hair:'bald',belt:false,collar:'#EDE9E0',deco:kasa,beard:'#D9D3C8',mood:'smile'})}
   ${hyKid(140,268,.86,{mood:'o'})}
   ${T(200,100,'저 멀리 서쪽에는…',18,K.red)}`,'url(#hc1)',sky('hc1','#CFE7F2','#F6EAD0')),
-  text:`먼 옛날 신라에 혜초라는 아이가 살았어요. 혜초는 먼 나라 이야기를 들을 때마다 눈이 반짝반짝 빛났어요.`},
+  text:`먼 옛날 신라에 혜초라는 아이가 살았어요. 혜초는 먼 나라 이야기를 들으면 자꾸자꾸 물었어요. "거기는 어떤 곳이에요?"`},
  {svg:SV(`<circle cx="340" cy="46" r="22" fill="${K.gold}" ${sw()}/>${sea(170)}
   ${g(200,206,.36,`<path d="M-80 -6 Q-70 22 0 24 Q70 22 90 -6Z" fill="#8A5A3C" ${sw(3)}/><path d="M0 -6 V-110" ${sw(5)}/><path d="M-44 -104 L44 -104 L38 -30 L-38 -30Z" fill="#F4E7C6" ${sw(3)}/>`)}
   ${hyKid(196,170,.4,{mood:'joy',pose:'up'})}${T(200,110,'당나라로!',20,K.red)}`,'url(#hc2)',sky('hc2','#CFE7F2','#F6EAD0')),
@@ -24,7 +24,7 @@ const P=[
  {svg:SV(`${room()}
   ${hy(140,268,.92,{pose:'hold',mood:'joy',item:pack})}
   ${stupa(300,214,.9)}${T(300,70,'천축',22,K.red)}`,'#EADCC0'),
-  text:`"천축에 꼭 가 보고 싶어!" 천축은 지금의 인도예요. 아주 멀고 먼 나라였지만, 혜초는 씩씩하게 길을 떠났어요.`},
+  text:`"천축에 꼭 가 보고 싶어!" 천축은 지금의 인도예요. 아주 멀고 먼 나라였지만, 혜초는 망설이지 않고 길을 떠났어요.`},
  {chips:['723년 무렵'], svg:SV(`<circle cx="340" cy="46" r="26" fill="#F7B640" ${sw()}/>
   <path d="M-6 200 Q200 186 406 200 L406 286 L-6 286Z" fill="#D9B66A" ${sw()}/>
   ${palm(40,210,.9)}${palm(370,214,.8)}
@@ -53,17 +53,12 @@ const P=[
   ${hero(300,272,.8,{robe:'#5A5560',hair:'topknot',belt:false,mood:'o',arms:'holdFront',face:'left'})}
   <g id="tScroll">${g(300,268,.8,diary)}</g>${[0,1,2].map(k=>`<path d="M${270+k*30} ${190-k*6} l-6 -12" stroke="${K.gold}" stroke-width="3" stroke-linecap="round"/>`).join('')}`,'url(#hc8)',sky('hc8','#F6DFA8','#F2C27A')),
   taps:[{label:'오래된 책',el:'tScroll',say:'천이백 년 동안 동굴 속에서 잠자고 있던 혜초의 여행기예요.'}],tapHint:'동굴에서 찾은 것을 눌러 보세요.',
-  text:`그 책은 오랫동안 잊혔어요. 그런데 천이백 년 가까이 지나, 먼 사막의 동굴에서 한 학자가 이 책을 찾아냈대요!`},
- {svg:SV(`<rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>${cloud(80,70,.6)}
-  <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/><ellipse cx="190" cy="260" rx="124" ry="18" fill="#BFD7A8" ${sw()}/>
-  ${kid(190,266,1.0,{pose:'hold',mood:'joy',item:diary})}
-  ${elephant(330,200,.36)}${star(260,150,7,'#F28C7C')}`,'url(#hc9)',sky('hc9','#E8F2F8','#DCEAF2')),
-  text:`혜초가 적어 둔 덕분에 우리는 천이백 년 전 인도 사람들이 어떻게 살았는지 알 수 있어요. 오늘 쓴 그림일기도 오랜 뒤에 누군가 읽을지 몰라요.`},
+  text:`그 책은 오랫동안 잊혔어요. 그런데 아주 오랜 세월이 지나, 먼 사막의 동굴에서 한 학자가 이 책을 찾아냈어요. 혜초가 꼼꼼히 적은 글자들이 다시 세상에 나왔어요.`},
  {kind:'end', svg:endBase('hc',`${g(200,200,2.6,diary)}${elephant(100,140,.4)}${camel(300,140,.42)}`,hyKid(64,276,.5,{pose:'up',mood:'joy'}),hy(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`먼 나라가 궁금했던 아이가 남긴 선물,<br>세상을 적은 여행기.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`"거기는 어떤 곳이에요?" 묻던 아이,<br>그 대답을 책 한 권에 적었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'hyecho',era:'samguk',title:'혜초의 먼 나라 여행기',who:'혜초',teaser:'코끼리가 사는 먼 나라까지 걸어서 다녀온 스님이 있었어요.',pages:P,
+BOOKS.push({id:'hyecho',era:'samguk',title:'혜초의 먼 나라 여행기',who:'혜초',teaser:'코끼리가 사는 먼 나라까지 걸어서 다녀온 스님이 있었어요.',pages:P,now:"혜초의 책이 남아 있어서 우리는 그때 인도와 여러 나라 사람들이 어떻게 살았는지 알 수 있어요. 이 책은 지금 프랑스 파리의 국립도서관에 있어요.",
  talk:{three:['혜초가 본 코가 긴 동물은 뭐지?','코끼리 흉내, 뿌우!','눈 덮인 산에서 혜초는 어떤 얼굴이었지?'],
   five:['혜초는 왜 보고 들은 것을 적었을까?','먼 나라에 간다면 무엇을 보고 싶어?','고향이 그리울 때는 어떤 마음일까?'],
   note:'혜초(700년 무렵~?)는 신라의 스님으로, 당나라에 건너가 공부한 뒤 723년 무렵 인도로 떠나 약 4년 동안 여러 나라를 돌아보고 727년 무렵 돌아왔습니다. 갈 때 바닷길로 갔는지 뭍길로 갔는지는 분명하지 않습니다. 『왕오천축국전』은 1908년 프랑스 학자 펠리오가 중국 둔황 석굴에서 찾아냈고, 지금은 프랑스 국립도서관에 있습니다. 파미르 고원을 넘으며 고향을 그리워한 시가 남아 있습니다.'}});

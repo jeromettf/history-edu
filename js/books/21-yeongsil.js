@@ -41,7 +41,7 @@ const YEONGSIL_PAGES=[
   <path d="M60 286 Q120 240 220 226 Q280 214 314 180 L326 182 Q300 222 240 238 Q160 258 130 286Z" fill="#E6D3A6" ${sw()}/>
   ${ysMan(134,262,.9,{pose:'hold',mood:'smile',item:bundle})}
   ${tufts(250,[20,40,260,300,360])}${cloud(160,52,.7)}`,'url(#y3)',sky('y3','#CFE7F2','#F6EAD0')),
-  text:`영실이의 솜씨는 멀리 한양까지 소문이 났어요. 그래서 어른이 된 영실이는 궁궐에서 일하게 되었답니다. 보따리 하나 메고 먼 길을 떠났지요.`},
+  text:`영실이의 솜씨는 멀리 한양까지 소문이 났어요. 그래서 어른이 된 영실이는 궁궐에서 일하게 되었어요. 보따리 하나 메고 먼 길을 떠났지요.`},
  {svg:SV(`
   ${palace()}<rect x="50" y="24" width="150" height="170" fill="#27467A" ${sw()}/>
   <circle cx="74" cy="48" r="11" fill="#D9442F"/><circle cx="176" cy="48" r="10" fill="#F6F1E1"/>
@@ -50,7 +50,7 @@ const YEONGSIL_PAGES=[
   ${king(124,272,.9,{pose:'down',mood:'smile'})}
   ${ysOfficial(290,272,.92,{pose:'up',mood:'joy'})}
   ${star(230,80,9)}${star(350,70,7,'#F28C7C')}`,'#E8D3B0'),
-  text:`궁궐에서 영실이를 알아본 사람은 바로 세종대왕이었어요. 한글을 만든 바로 그 임금님이에요! 세종대왕은 노비였던 영실이에게 벼슬을 주고 마음껏 만들게 했어요.`},
+  text:`궁궐에서 영실이의 솜씨를 알아본 사람은 세종대왕이었어요. 한글을 만든 그 임금님이에요. 세종대왕은 노비였던 영실이에게 벼슬을 주고 마음껏 만들게 했어요.`},
  {svg:SV(`
   <circle cx="330" cy="54" r="22" fill="#F6F0D6" ${sw()}/>
   ${star(60,40,4,'#F6F0D6')}${star(150,60,3,'#F6F0D6')}${star(250,30,4,'#F6F0D6')}${star(380,110,3,'#F6F0D6')}
@@ -83,28 +83,18 @@ const YEONGSIL_PAGES=[
   ${T(200,58,'땡! 둥! 징!',26,K.red,`stroke="#FFF8EC" stroke-width="5" paint-order="stroke"`)}
   ${star(40,140,8)}${star(366,140,8,'#F28C7C')}`,'url(#y8)',sky('y8','#FCEBC6','#F6D9A2')),
   text:`세종대왕은 크게 기뻐했어요. 이제 해가 없는 밤에도 정확한 시간을 알 수 있게 되었으니까요. 졸던 아저씨도 이제 걱정 없겠지요?`},
- {svg:SV(`
-  <rect x="34" y="34" width="104" height="86" rx="4" fill="#BFE0F0" stroke="#FFFFFF" stroke-width="7"/>
-  ${cloud(80,70,.6)}
-  <path d="M28 28 Q44 80 30 128 L22 128 L22 28Z" fill="#A9C8E8" ${sw()}/><path d="M144 28 Q128 80 142 128 L150 128 L150 28Z" fill="#A9C8E8" ${sw()}/>
-  ${clockFace(312,82,46,8,0)}
-  <rect x="-6" y="216" width="412" height="70" fill="#E9CFA4"/>
-  <ellipse cx="190" cy="260" rx="124" ry="18" fill="#BFD7A8" ${sw()}/>
-  ${kid(190,266,1.02,{pose:'hold',mood:'joy',item:alarm})}
-  ${star(126,160,8)}${star(258,150,7,'#F28C7C')}`,'url(#y9)',sky('y9','#E8F2F8','#DCEAF2')),
-  text:`오늘 우리 집 벽에도 시계가 있지요? 유치원 가는 시간도, 잠자는 시간도 시계가 알려 줘요. 자격루는 지금도 박물관에서 다시 만든 모습을 볼 수 있어요.`},
  {kind:'end', svg:SV(`
   <circle cx="200" cy="136" r="150" fill="url(#gy10)"/>
   ${clockFace(200,126,82,10,2)}
   ${star(66,56,14)}${star(334,52,12,'#F28C7C')}${star(110,236,9,K.jade)}${star(290,236,10)}
   ${ysKid(62,276,.52,{pose:'up',mood:'joy'})}
   ${ysOfficial(338,276,.55,{pose:'up',mood:'joy'})}`,'url(#y10)',sky('y10','#FBEFD2','#F6DFAE')+glow('gy10','#FFF8DE',.95)),
-  text:`손으로 만들기를 좋아한 아이가<br>모두에게 준 선물, 정확한 시간.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`요술 손을 가진 아이,<br>온 나라의 시간을 만들었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 
 
-BOOKS.push({id:'yeongsil',era:'joseon',title:'장영실과 시간 선물',who:'장영실',teaser:'손으로 만들기를 좋아한 영실이가 시간을 알려 주는 시계를 만들었어요.',pages:YEONGSIL_PAGES,
+BOOKS.push({id:'yeongsil',era:'joseon',title:'장영실과 시간 선물',who:'장영실',teaser:'손으로 만들기를 좋아한 영실이가 시간을 알려 주는 시계를 만들었어요.',pages:YEONGSIL_PAGES,now:"국립고궁박물관에 가면 다시 만든 자격루를 볼 수 있어요. 우리 집 벽의 시계도 유치원 가는 시간과 잠자는 시간을 알려 주지요.",
   talk:{three:['해시계 그림에서 토끼를 찾아볼까?','땡! 둥! 징! 따라 해 볼까?','우리 집 시계는 어디 있지?'],
    five:['영실이는 왜 해시계에 동물 그림을 넣었을까?','해시계는 왜 밤에는 쓸 수 없을까?','너라면 무엇을 만들어서 사람들을 돕고 싶어?'],
    note:'어린 시절 물건을 고치던 이야기는 전해 오는 이야기로, 기록에 남은 일은 아닙니다. 장영실은 동래현 관청의 노비 출신으로, 세종이 벼슬을 주어 일하게 했습니다. 해시계 앙부일구와 물시계 자격루는 여러 학자와 함께 1434년에 만들었습니다. 장영실은 1442년 세종이 탈 가마가 부서진 일로 벌을 받은 뒤 기록에서 사라집니다. 아이가 그다음 이야기를 물으면 들려줄 수 있는 내용입니다.'}});

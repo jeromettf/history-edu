@@ -78,7 +78,7 @@ function runAuto(){clearTimeout(autoT); if(!auto||!book)return; const p=book.pag
   const tapNext=()=>{if(!ok())return; if(!taps.length){(turn2||turn)();return} const k=taps.shift(); autoT=setTimeout(()=>{if(ok())pick(p,k,tapNext)},700)};
   const th=THINK[book.id];
   const extra=p.kind==='cover'&&th?`읽으면서 알아봐요. ${th.pre||th.q}`:'';
-  if(th&&here===th.p){turn2=()=>{if(!ok())return; speak(`잠깐! 생각해 봐요. ${th.q}`,()=>{if(!ok())return; pauseAuto()})}}
+  if(th&&here===th.p&&done[book.id]){turn2=()=>{if(!ok())return; speak(`잠깐! 생각해 봐요. ${th.q}`,()=>{if(!ok())return; pauseAuto()})}}
   autoT=setTimeout(()=>{if(ok())speakPage(p,here,tapNext,extra)},500);
 }
 $('tellB').addEventListener('click',()=>setTell(!tell));
@@ -188,6 +188,7 @@ function talkHTML(){
 <h2 class="talkh">이야기 나누기</h2>
 <div class="card"><span class="age">오늘의 질문 하나</span><p class="q1">${q1}</p>
 <details class="more"><summary>더 이야기하고 싶으면</summary><ul>${rest.map(q=>`<li>${q}</li>`).join('')}</ul><span class="age">더 쉬운 질문</span><ul>${t.three.map(q=>`<li>${q}</li>`).join('')}</ul></details></div>
+${book.now?`<div class="card nowc"><span class="age">지금 우리 곁에서</span>${typeof nowSVG==='function'?nowSVG(book.id):''}<p>${book.now}</p></div>`:''}
 ${ACT[book.id]?'':nextCard(nx)}
 <p class="note">부모님께: ${t.note}</p></div>`}
 const nextCard=nx=>`<div class="card next"><h2>${nx.no===1?'처음 이야기로':'다음 이야기'}: ${nx.who}</h2><p>${nx.teaser}</p><button class="go" type="button" data-go="${nx.id}">${nx.no}권 「${nx.title}」 읽기 →</button></div>`;
@@ -243,7 +244,7 @@ function render(n,fromUser){
   let h=p.kind==='talk'?talkHTML():p.kind==='try'?tryHTML():(tell&&isStory)?tellHTML(p):`<p class="story${p.kind==='cover'?' cover':''}">${p.text.replace('{no}',book.no)}</p>`;
   if(p.kind==='cover'&&th) h+=`<div class="think pre"><b>🤔 읽으면서 알아봐요</b><p>${th.pre||th.q}</p></div>`;
   if(p.kind==='cover'&&done[book.id]&&!tell) h+=`<button class="tellnudge" type="button" id="tellGo">🗣 다 읽은 책이에요. 이번엔 네가 들려줄래?</button>`;
-  if(th&&i===th.p) h+=`<div class="think"><b>🤔 잠깐! 생각해 봐요</b><p>${th.q}</p><small>생각해 보고 넘겨도 되고, 그냥 넘겨도 돼요.</small></div>`;
+  if(th&&i===th.p&&done[book.id]) h+=`<div class="think"><b>🤔 잠깐! 생각해 봐요</b><p>${th.q}</p><small>생각해 보고 넘겨도 되고, 그냥 넘겨도 돼요.</small></div>`;
   if(p.kind==='letters') h+=tilesHTML(LETTERS.map(t=>t[0]),'글자를 눌러 보세요.');
   if(p.kind==='sundial') h+=tilesHTML(SUN.map(t=>`${t[0]} ${t[2]}`),'아침, 한낮, 저녁을 눌러 보세요.',true);
   if(p.kind==='clock') h+=tilesHTML(DRUM.map(t=>t[0]),'종, 북, 징을 눌러 보세요.',true);

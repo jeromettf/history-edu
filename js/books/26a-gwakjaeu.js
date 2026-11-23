@@ -17,12 +17,12 @@ const P=[
   ${[0,1,2].map(k=>farmerV(240+k*50,266,.58,VC[k],{stance:'run',arms:'run',mood:'sad',face:'left'})).join('')}
   ${jwS(100,272,.86,{mood:'o',arms:'armsOpen',face:'right'})}
   ${T(200,80,'왜군이 쳐들어왔대요!',18,K.red)}`,'url(#jw2)',sky('jw2','#B9C2CC','#E6E2D4')),
-  text:`1592년, 바다 건너 일본의 군대가 쳐들어왔어요. 임진왜란이에요. 나라의 군대가 밀리자 마을 사람들은 겁에 질렸어요.`},
+  text:`어느 날, 바다 건너 일본의 군대가 쳐들어왔어요. 임진왜란이에요. 나라의 군대가 밀리자 마을 사람들은 겁에 질렸어요.`},
  {svg:SV(`${yard(200)}
   ${jwS(200,272,.9,{mood:'joy',arms:'cheer'})}
   ${[0,1,2,3].map(k=>farmerV(50+k*100+(k>1?20:-20),280,.6,VC[k],{mood:'joy',arms:k%2?'cheer':'pointR',face:k>1?'left':'right'})).join('')}
   ${T(200,70,'우리 마을은 우리가 지킨다!',18,K.red)}`,'#D9CCAE'),
-  text:`곽재우는 집의 재산을 털어 마을 사람들을 모았어요. 나라에서 시키지 않았는데도 스스로 나선 군대, '의병'이 처음으로 일어난 거예요.`},
+  text:`곽재우는 집의 재산을 털어 마을 사람들을 모았어요. "우리 마을은 우리가 지킵시다!" 나라에서 시키지 않았는데도 스스로 나선 군대, '의병'이 일어난 거예요.`},
  {chips:LEG, svg:SV(`${ridge(160,'#A9B8A0',30,3)}<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#BCD38F"/>
   <g id="tRed">${horse(200,262,.8,{color:'#F4EFE0',rider:rider(jw(0,0,1,{arms:'pointR',mood:'joy',face:'right'}))})}</g>
   ${[0,1].map(k=>`<path d="M${120-k*20} ${200+k*14} h-40" stroke="#D9483B" stroke-width="4" stroke-linecap="round" opacity=".7"/>`).join('')}`,'url(#jw3)',sky('jw3','#CFE7F2','#F6EAD0')),
@@ -38,15 +38,11 @@ const P=[
   ${jwS(140,272,.86,{mood:'smile',arms:'handsDown',face:'right',beard:'#E6E1D6'})}
   ${tree(300,262,1.4,'pine')}`,'url(#jw5)',sky('jw5','#CFE7F2','#F6EAD0')),
   text:`전쟁이 끝난 뒤 곽재우는 높은 벼슬을 바라지 않았어요. 다시 조용히 고향으로 돌아가 지냈어요.`},
- {svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
-  ${kid(120,272,.86,{mood:'joy',arms:'flagR',prop:H=>PROP.flag(H,'#D9483B'),face:'right'})}${hero(290,272,.86,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}
-  ${T(200,80,'의령 의병 박물관',18,K.red)}`,'url(#jw6)',sky('jw6','#CFE7F2','#F6EAD0')),
-  text:`지금 의령에는 곽재우와 의병을 기리는 곳이 있고, 해마다 의병의 날을 기념해요. 6월 1일이 바로 의병의 날이에요.`},
  {kind:'end', svg:endBase('jw',`${horse(200,230,1.0,{color:'#F4EFE0'})}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),jw(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`스스로 일어나 마을을 지킨 선비가 남긴 선물,<br>먼저 나서는 용기.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`붉은 옷에 흰 말,<br>스스로 일어나 마을을 지킨 선비.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'gwakjaeu',era:'joseon',title:'곽재우와 붉은 옷',who:'곽재우',teaser:'아무도 시키지 않았는데 스스로 마을 사람들을 모아 나선 선비가 있어요.',pages:P,
+BOOKS.push({id:'gwakjaeu',era:'joseon',title:'곽재우와 붉은 옷',who:'곽재우',teaser:'아무도 시키지 않았는데 스스로 마을 사람들을 모아 나선 선비가 있어요.',pages:P,now:"경남 의령에는 곽재우와 의병을 기리는 곳이 있어요. 해마다 6월 1일은 의병의 날이에요.",
  talk:{three:['곽재우는 무슨 색 옷을 입었지?','말 타고 번쩍! 흉내 내 볼까?','우리 동네를 지키는 사람은 누가 있을까?'],
   five:['"의병"은 어떤 사람들일까?','곽재우는 왜 붉은 옷을 입었을까?','누가 시키지 않아도 먼저 해 본 좋은 일이 있어?'],
   note:'곽재우(1552~1617)는 경남 의령의 선비로, 1592년 4월 임진왜란이 일어나자 가장 먼저 의병을 일으킨 사람 가운데 한 명입니다. 붉은 옷을 입고 "천강홍의장군(하늘이 내린 붉은 옷의 장군)"이라 불렸고, 정암진(남강 나루) 싸움에서 일본군의 전라도 진출을 막았습니다. 흰 말을 탔다는 이야기는 전하는 이야기입니다. 정부는 곽재우가 의병을 일으킨 날(음력 4월 22일)을 양력으로 바꾼 6월 1일을 2010년부터 의병의 날로 기념하고 있습니다.'}});

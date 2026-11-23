@@ -29,21 +29,17 @@ const P=[
   <g id="tTalk">${syOld(110,262,.9,{stance:'sit',arms:'pointR',mood:'smile',face:'right'})}${ieyasu(290,262,.9,{stance:'sit',arms:'lap',mood:'o',face:'left'})}</g>
   <rect x="180" y="244" width="40" height="12" fill="#8A5A3C" ${sw()}/>`,'#EADCC0'),
   taps:[{label:'차분하게',el:'tTalk',say:'"끌려간 우리 백성들을 돌려보내 주시오." 스님은 차분하게 말했어요.'},{label:'고개 끄덕',el:'tTalk',say:'일본의 지도자 도쿠가와 이에야스가 고개를 끄덕였대요.'}],tapHint:'두 사람을 눌러 볼까요?',
-  text:`스님은 일본의 새 지도자 도쿠가와 이에야스를 만났어요. 화내지도, 겁먹지도 않고 차분하게 말했어요. "끌려간 우리 백성들을 돌려보내 주시오."`},
+  text:`스님은 일본의 새 지도자 도쿠가와 이에야스를 만났어요. 도쿠가와는 조선과 다시 사이좋게 지내고 싶어 했어요. 스님은 차분하게 말했어요. "그러려면 끌려간 우리 백성부터 돌려보내 주시오."`},
  {chips:['1605년'], svg:SV(`<path d="M-6 150 Q200 140 406 150 L406 200 L-6 200Z" fill="#4F92BA"/><path d="M-6 196 H406 V290 H-6Z" fill="#E6D3A6"/>
   ${bigShip(320,180,.6,'#8A5A3C')}
   ${[0,1,2,3,4].map(k=>town(40+k*44,262+(k%2)*8,.5,TC[k],{mood:'joy',arms:k%2?'armsOpen':'cheer',face:'right'})).join('')}
   ${syOld(290,272,.62,{mood:'joy',arms:'armsOpen',face:'left'})}`,'url(#sy5)',sky('sy5','#CFE7F2','#F6EAD0')),
   text:`이듬해 봄, 사명 스님은 일본에 끌려갔던 사람 3천여 명과 함께 돌아왔어요. 바닷가에서 기다리던 가족들이 달려와 꼭 껴안았어요.`},
- {svg:SV(`${room()}
-  ${kid(120,266,.86,{mood:'o',arms:'pointR',face:'right'})}${hero(300,266,.86,{body:'dress',hair:'braid',top:'#E98FA0',skirt:'#5B7FB8',mood:'sad',arms:'handsDown',face:'left'})}
-  ${T(200,80,'내 차례도 해 줄래?',18,K.red)}`,'#EFE3C8'),
-  text:`친구와 다툴 때 소리부터 지르면 일이 더 꼬여요. 사명 스님처럼 차분하게 "나는 이렇게 하고 싶어"라고 말해 볼까요?`},
  {kind:'end', svg:endBase('sy',`${bigShip(200,210,1.0,'#8A5A3C')}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),syOld(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`차분한 말로 사람들을 데려온 스님이 남긴 선물,<br>말의 힘.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`칼 대신 차분한 말로,<br>삼천 명과 함께 돌아온 스님.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'samyeong',era:'joseon',title:'사명대사와 돌아온 사람들',who:'사명대사',teaser:'바다 건너 끌려간 사람들을 말 한마디로 데려온 스님이 있어요.',pages:P,
+BOOKS.push({id:'samyeong',era:'joseon',title:'사명대사와 돌아온 사람들',who:'사명대사',teaser:'바다 건너 끌려간 사람들을 말 한마디로 데려온 스님이 있어요.',pages:P,now:"경남 밀양에는 사명대사를 기리는 표충비가 있어요. 나라에 큰일이 생길 때면 비석에 땀이 맺힌다는 이야기가 전해요.",
  talk:{three:['사명 스님은 무엇을 타고 바다를 건넜지?','차분한 목소리로 "안녕하세요" 해 볼까?','가족을 다시 만나면 어떻게 안아 줄까?'],
   five:['사명 스님은 왜 화내지 않고 차분하게 말했을까?','오래 기다린 가족들은 어떤 마음이었을까?','화가 날 때 차분하게 말하는 방법은 뭘까?'],
   note:'사명대사 유정(1544~1610)은 서산대사 휴정의 제자로, 임진왜란 때 승병을 이끌었습니다. 전쟁 뒤 1604년 조선의 사신으로 일본에 건너가 이듬해 도쿠가와 이에야스를 만나 강화를 논의했고, 1605년 포로 3천여 명을 데리고 돌아왔습니다(기록에 따라 숫자에 차이가 있습니다). 책에서 사명 스님의 나이를 예순 살이 넘었다고 한 것은 1604년 당시 61세였기 때문입니다.'}});

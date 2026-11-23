@@ -33,7 +33,7 @@ const P=[
   <rect x="-6" y="216" width="412" height="70" fill="#4A3A30"/>
   ${nan(150,268,.88,{mood:'sad'})}
   <rect x="240" y="190" width="10" height="28" rx="3" fill="#FFF8E8" ${sw(1.4)}/><path d="M245 174 Q253 182 245 190 Q237 182 245 174Z" fill="#FFC24A"/>`,'#2A3150'),
-  text:`난설헌의 삶은 쉽지 않았어요. 슬픈 일이 많았고, 스물일곱 살에 세상을 떠났어요. 떠나기 전 "내 시를 모두 태워 주렴" 하고 부탁했대요.`},
+  text:`그때는 여자가 시를 쓰면 좋게 보지 않는 사람이 많았어요. 난설헌은 스물일곱 살에 세상을 떠나며 부탁했어요. "내 시를 모두 태워 주렴."`},
  {svg:SV(`${room()}
   ${hero(130,268,.9,{robe:'#5E7FA8',hat:'gat',belt:K.gold,mood:'smile',pose:'hold',item:`<rect x="-28" y="-52" width="56" height="40" fill="#7A6AA8" ${sw()}/><rect x="-18" y="-46" width="36" height="16" fill="#FFFDF6"/>`})}
   <g transform="translate(290 214) scale(1.5)">${poemPaper('tP1','蓮')}</g>`,'#EADCC0'),
@@ -44,14 +44,11 @@ const P=[
   <path d="M-6 180 Q80 170 160 186 L160 290 L-6 290Z" fill="#E6D3A6" ${sw()}/>
   ${hero(90,262,.8,{robe:'#7A6AA8',hat:'band',bandColor:K.gold,beard:HAIR,pose:'up',mood:'joy'})}${T(260,80,'명나라에서도 인기!',18,K.red)}`,'url(#nh7)',sky('nh7','#CFE7F2','#F6EAD0')),
   text:`조선에 온 명나라 사신이 이 책을 읽고 감탄해서 중국으로 가져갔어요. 난설헌의 시는 바다 건너 중국과 일본에서도 많은 사람이 읽었대요.`},
- {svg:SV(`${hills('#A9CDB4','#BCD38F',196,222)}
-  ${kid(130,268,.96,{pose:'hold',mood:'joy',item:`<rect x="-26" y="-50" width="52" height="34" fill="#FFFDF6" ${sw()}/><path d="M-18 -40 h36 M-18 -30 h28" stroke="#9A9087" stroke-width="2"/>`})}${hero(260,268,.92,{body:'dress',hair:'braid',top:'#E98FA0',skirt:'#7A6AA8',pose:'up',mood:'joy'})}`,'url(#nh8)',sky('nh8','#E8F2F8','#F2EED8')),
-  text:`지금은 누구나 학교에서 글을 배우고 시를 지을 수 있어요. 강릉 초당동에는 난설헌이 태어난 집터와 기념관이 있어요.`},
  {kind:'end', svg:endBase('nh',`${lotus(200,190,3)}`,chKid(64,276,.5,{pose:'up',mood:'joy'}),nan(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`배우기를 좋아한 소녀가 남긴 선물,<br>바다 건너까지 간 시.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`태워 달라던 시,<br>동생이 지켜 바다 건너까지 갔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'heonanseolheon',era:'joseon',title:'허난설헌과 연꽃 시',who:'허난설헌',teaser:'오빠들 공부하는 소리에 귀를 쫑긋 세우던 여자아이가 바다 건너까지 알려진 시인이 되었어요.',pages:P,
+BOOKS.push({id:'heonanseolheon',era:'joseon',title:'허난설헌과 연꽃 시',who:'허난설헌',teaser:'오빠들 공부하는 소리에 귀를 쫑긋 세우던 여자아이가 바다 건너까지 알려진 시인이 되었어요.',pages:P,now:"강릉 초당동에는 난설헌이 태어난 집터와 기념관이 있어요.",
  talk:{three:['초희가 좋아한 꽃은 뭐였지?','연꽃처럼 두 손을 활짝 펴 볼까?','오늘 본 하늘을 한 줄로 말해 볼까?'],
   five:['그때 여자아이들은 왜 공부하기 어려웠을까?','허균은 왜 누나의 시를 모았을까?','너라면 어떤 시를 지어 보고 싶어?'],
   note:'허난설헌(1563~1589)의 본명은 초희이며, 강릉에서 태어나 오빠 허봉, 동생 허균과 함께 이달에게 시를 배웠습니다. 여덟 살에 「광한전백옥루상량문」을 지었다고 전합니다. 결혼 뒤 어려운 삶을 살다 스물일곱 살에 세상을 떠났고, 자신의 작품을 태우라는 유언을 남겼다고 합니다. 허균이 남은 시를 모아 엮었고, 1606년 명나라 사신 주지번이 이를 가져가 중국에서 『난설헌집』이 간행되었으며 뒤에 일본에서도 출간되었습니다. 강릉 초당동에 생가터와 허균·허난설헌 기념관이 있습니다.'}});

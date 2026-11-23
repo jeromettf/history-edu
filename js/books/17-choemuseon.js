@@ -18,7 +18,7 @@ const P=[
  {svg:SV(`${room()}
   ${cm(140,268,.92,{pose:'hold',mood:'o',item:`<ellipse cx="0" cy="-30" rx="20" ry="18" fill="#8A6A44" ${sw()}/><path d="M-8 -46 q8 -8 16 0" fill="none" ${sw(2)}/><path d="M-12 -24 q12 6 24 0" fill="none" stroke="#3A322B" stroke-width="1.4"/><circle cx="18" cy="-50" r="3" fill="#3A322B"/><circle cx="24" cy="-44" r="2" fill="#3A322B"/>`})}
   ${T(290,110,'만드는 법이 비밀이래',18,K.red)}${T(290,150,'?',40,K.red)}`,'#EADCC0'),
-  text:`최무선은 생각했어요. "화약이 있으면 해적을 물리칠 수 있을 텐데!" 하지만 화약 만드는 법은 이웃 나라가 꽁꽁 숨긴 비밀이었어요.`},
+  text:`고려의 벼슬아치 최무선은 생각했어요. "화약이 있으면 해적을 물리칠 수 있을 텐데!" 하지만 화약 만드는 법은 중국이 꽁꽁 숨긴 비밀이었어요.`},
  {svg:SV(`<circle cx="340" cy="46" r="22" fill="${K.gold}" ${sw()}/>${sea(170)}
   <path d="M-6 190 L406 190 L406 230 L-6 230Z" fill="#B98A5A" ${sw()}/>
   ${g(320,196,.4,`<path d="M-80 -6 Q-70 22 0 24 Q70 22 90 -6Z" fill="#8A5A3C" ${sw(3)}/><path d="M0 -6 V-110" ${sw(5)}/><path d="M-44 -104 L44 -104 L38 -30 L-38 -30Z" fill="#F4E7C6" ${sw(3)}/>`)}
@@ -46,17 +46,11 @@ const P=[
   <path d="M170 172 Q220 130 260 166" fill="none" stroke="#5A5560" stroke-width="2" stroke-dasharray="4 4"/>
   ${T(220,70,'펑! 펑!',30,K.red,`stroke="#FFF8EC" stroke-width="5" paint-order="stroke"`)}`,'url(#cm7)',sky('cm7','#CFE7F2','#F6EAD0')),
   text:`왜구의 배 수백 척이 진포 앞바다에 몰려왔어요. 최무선은 배에 화포를 싣고 나가 펑! 펑! 쏘았어요. 왜구는 크게 져서 물러갔어요.`},
- {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#1F2748"/>
-  <g id="tFire">${firework(90,80,40,'#F29A2E')}${firework(210,60,46,'#E98FA0')}${firework(320,90,38,'#7FB3C8')}</g>
-  <rect x="-6" y="216" width="412" height="70" fill="#3A3A50"/>
-  ${kid(130,266,.96,{pose:'up',mood:'joy'})}${hero(260,266,.9,{body:'dress',hair:'braid',top:'#E98FA0',skirt:'#5B7FB8',pose:'up',mood:'joy'})}`,'#1F2748'),
-  taps:[{label:'불꽃놀이',el:'tFire',say:'펑! 팡! 하늘에 꽃이 피었어요.'}],tapHint:'불꽃을 터뜨려 볼까요?',
-  text:`밤하늘을 수놓는 불꽃놀이에도 화약이 들어 있어요. 펑! 팡! 최무선이 끝까지 알아낸 화약의 비밀이 오늘은 예쁜 불꽃이 되었어요.`},
  {kind:'end', svg:endBase('cm',`${firework(200,120,70,'#F29A2E')}${firework(200,120,40,'#E98FA0')}`,kid(64,276,.5,{pose:'up',mood:'joy'}),cm(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`묻고 또 물어 끝까지 알아낸 사람이 남긴 선물,<br>포기하지 않는 마음.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`묻고 또 물어 알아낸 화약,<br>펑! 진포 앞바다에 울렸어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'choemuseon',era:'goryeo',title:'최무선과 불꽃의 비밀',who:'최무선',teaser:'꽁꽁 숨겨진 화약의 비밀을 알아내려고 묻고 또 물은 사람이 있어요.',pages:P,
+BOOKS.push({id:'choemuseon',era:'goryeo',title:'최무선과 불꽃의 비밀',who:'최무선',teaser:'꽁꽁 숨겨진 화약의 비밀을 알아내려고 묻고 또 물은 사람이 있어요.',pages:P,now:"밤하늘을 수놓는 불꽃놀이에도 화약이 들어 있어요. 펑! 팡!",
  talk:{three:['불꽃은 어떤 소리가 났지?','"펑!" 하고 손을 활짝 펴 볼까?','바다에 온 나쁜 해적은 누구였지?'],
   five:['최무선은 왜 묻고 또 물었을까?','실험이 잘 안 될 때는 어떻게 해야 할까?','궁금한 걸 끝까지 알아낸 적이 있어?'],
   note:'최무선(1325~1395)은 고려 말 왜구를 물리치려고 화약을 연구했습니다. 원나라 상인 이원에게서 염초(질산칼륨) 만드는 법을 배웠고, 1377년 화통도감이 세워지자 여러 화포를 만들었습니다. 1380년 진포 싸움에서 화포로 왜구의 배 500여 척을 불태워 크게 이겼습니다. 해적 이야기는 아이 눈높이에 맞춰 물리쳤다는 내용으로만 담았습니다.'}});

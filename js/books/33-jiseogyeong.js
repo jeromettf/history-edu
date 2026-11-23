@@ -34,27 +34,22 @@ const P=[
   <g id="tCow">${cowS(270,262,.9)}</g>
   <g id="tSeok">${js(110,266,.86,{pose:'up',mood:'joy'})}</g>`,'url(#js5)',sky('js5','#CFE7F2','#F6EAD0')),
   taps:[{label:'소',el:'tCow',say:'음매! 우두는 소에게서 얻었어요. 그래서 이름이 우두예요.'},{label:'지석영',el:'tSeok',say:'이걸로 아이들을 지킬 수 있어!'}],tapHint:'우두는 어디서 왔을까요?',
-  text:`'우두'는 소의 천연두라는 뜻이에요. 석영은 우두를 구해서 기쁜 마음으로 처가가 있는 충주로 달려갔어요.`},
+  text:`'우두'는 소의 천연두라는 뜻이에요. 석영은 우두를 구해서 기쁜 마음으로 아내의 고향 집이 있는 충주로 달려갔어요.`},
  {svg:SV(`${room()}
   <g id="tBaby">${oldKid(260,268,.8,{mood:'o'})}</g>
   <g id="tNeedle">${jsDoc(130,268,.92,{pose:'hold',mood:'smile',item:needle})}</g>
   ${T(280,110,'따끔!',26,K.red)}`,'#EADCC0'),
   taps:[{label:'주사',el:'tNeedle',say:'따끔! 아주 조금만 아파요.'},{label:'꾹 참기',el:'tBaby',say:'으앙… 아니, 꾹! 참았어요.'}],
-  text:`석영은 두 살배기 어린 처남에게 처음으로 우두를 놓아 주었어요. 따끔! 처남은 꾹 참았지요. 그리고 천연두에 걸리지 않았어요.`},
+  text:`석영은 아내의 두 살배기 남동생에게 처음으로 우두를 놓아 주었어요. 따끔! 아이는 꾹 참았지요. 그리고 천연두에 걸리지 않았어요.`},
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   ${jsDoc(80,268,.8,{pose:'hold',mood:'joy',item:needle})}
   ${[150,200,250,300,350].map((x,k)=>oldKid(x,270,.56,{mood:'joy',pose:k%2?'up':'down'})).join('')}`,'url(#js7)',sky('js7','#CFE7F2','#F6EAD0')),
   text:`그 뒤로 석영은 여러 곳을 다니며 우두를 놓고, 다른 의사들에게 우두법을 가르쳤어요. 무서운 마마에 걸리는 아이들이 점점 줄어들었어요.`},
- {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#E9F2F8"/><rect x="-6" y="216" width="412" height="70" fill="#C9D8E0"/>
-  ${hero(270,268,.9,{robe:'#FFFFFF',hair:'bun',body:'dress',top:'#FFFFFF',skirt:'#7FB3C8',pose:'hold',mood:'smile',item:needle})}
-  ${kid(140,268,.96,{mood:'joy',pose:'up'})}
-  <rect x="96" y="196" width="18" height="8" rx="3" fill="#F6D24A" ${sw(1.2)}/>${T(140,96,'씩씩하게!',18,K.red)}`,'#E9F2F8'),
-  text:`아기 수첩을 펴 보면 예방 주사를 맞은 날짜가 적혀 있어요. 그때 맞은 따끔한 주사들이 무서운 병에서 우리 몸을 지켜 줘요.`},
  {kind:'end', svg:endBase('js',`${g(200,200,2.6,needle)}${heart(140,80)}${heart(260,80)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),jsDoc(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`아이들을 지키고 싶었던 사람이 남긴 선물,<br>병을 막는 예방 주사.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`따끔! 한 번 꾹 참으면,<br>마마도 무섭지 않았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'jiseogyeong',era:'modern',title:'지석영과 따끔한 주사',who:'지석영',teaser:'무서운 병 천연두를 막으려고 우리나라에서 처음 우두를 놓은 사람이 있어요.',pages:P,
+BOOKS.push({id:'jiseogyeong',era:'modern',title:'지석영과 따끔한 주사',who:'지석영',teaser:'무서운 병 천연두를 막으려고 우리나라에서 처음 우두를 놓은 사람이 있어요.',pages:P,now:"아기 수첩을 펴 보면 예방 주사를 맞은 날짜가 적혀 있어요. 그때 맞은 주사들이 무서운 병을 막아 줘요.",
  talk:{three:['우두는 어떤 동물에게서 얻었지?','주사 맞을 때처럼 "꾹!" 참아 볼까?','"음매!" 소 흉내 내 볼까?'],
   five:['아프기 전에 병을 막으면 뭐가 좋을까?','처남은 왜 꾹 참았을까?','예방 주사를 맞을 때 어떤 마음이었어?'],
   note:'지석영(1855~1935)은 1879년 부산의 일본 해군 병원인 제생의원에서 종두법을 배우고 우두 두묘를 얻어, 충주 처가에서 두 살 처남에게 처음 접종했습니다. 이후 종두장을 열고 종두법을 널리 가르쳤으며, 한글 연구에도 힘썼습니다. 우두법은 1796년 영국의 제너가 처음 개발했고, 천연두는 1980년 세계에서 사라졌다고 선언되었습니다.'}});

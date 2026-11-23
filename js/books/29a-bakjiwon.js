@@ -23,25 +23,21 @@ const P=[
   <g id="tThings">${cart(150,262,.9)}${bricks(260,190,110,72)}</g>
   ${bj(80,276,.72,{arms:'writeR',prop:H=>PROP.brush(H)+notebook(H),mood:'o',face:'right'})}${qing(330,282,.56,{mood:'smile',face:'left'})}`,'url(#bj2)',sky('bj2','#CFE7F2','#F6EAD0')),
   taps:[{label:'수레',el:'tThings',say:'덜커덕덜커덕! 바퀴 달린 수레가 무거운 짐을 척척 날라요.'},{label:'벽돌',el:'tThings',say:'반듯한 벽돌을 차곡차곡. 튼튼한 벽이 금방 올라가요.'}],tapHint:'신기한 것들을 눌러 볼까요?',
-  text:`가는 곳마다 박지원은 눈을 반짝였어요. 짐을 실어 나르는 수레, 반듯하게 구운 벽돌… "이걸 우리나라에서도 쓰면 사람들이 편해지겠구나!" 박지원은 보는 것마다 적었어요.`},
+  text:`가는 곳마다 박지원은 수첩을 꺼냈어요. 짐을 실어 나르는 수레, 반듯하게 구운 벽돌… "이걸 우리나라에서도 쓰면 사람들이 편해지겠구나!" 박지원은 보는 것마다 적었어요.`},
  {svg:SV(`${townscape(150,6)}<path d="M-6 180 H406 V290 H-6Z" fill="#D9C49A"/>
   ${yangban(300,276,.72,{mood:'o',arms:'handsDown',face:'left'})}
   ${bj(120,276,.82,{arms:'pointR',mood:'smile',face:'right'})}
   ${T(200,80,'똥거름도 쓸모가 있다오!',18,K.red)}`,'url(#bj3)',sky('bj3','#CFE7F2','#F6EAD0')),
-  text:`어떤 선비들은 "오랑캐 나라에서 뭘 배우냐"며 코웃음 쳤어요. 박지원은 말했어요. "백성에게 쓸모가 있다면, 깨진 기와 조각이나 똥거름에서도 배울 수 있소."`},
+  text:`그때 조선의 선비들은 청나라를 '오랑캐 나라'라며 얕잡아 봤어요. "오랑캐에게서 뭘 배우냐"며 코웃음 치기도 했지요. 박지원은 말했어요. "백성에게 쓸모 있으면 깨진 기와에서도 배울 수 있소."`},
  {svg:SV(`${room()}
   ${bj(150,256,.96,{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'smile',face:'right'})}${desk(240,236,110)}<rect x="200" y="226" width="80" height="10" fill="#FFFDF6" ${sw(1)}/>
   ${[0,1,2,3,4,5].map(k=>`<rect x="320" y="${262-k*9}" width="60" height="9" fill="${['#C9473B','#5E7FA8','#B8862F'][k%3]}" ${sw(1)}/>`).join('')}`,'#EADCC0'),
   text:`돌아온 박지원은 보고 들은 것을 모아 『열하일기』를 썼어요. 재미있는 이야기와 새로운 생각이 가득해서, 사람들이 앞다투어 베껴 읽었대요.`},
- {svg:SV(`${room()}
-  ${kid(130,266,.86,{arms:'writeR',prop:H=>PROP.brush(H)+notebook(H),mood:'joy',face:'right'})}${hero(300,266,.86,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left',arms:'pointL'})}
-  ${T(200,80,'오늘 본 신기한 것!',18,K.red)}`,'#EFE3C8'),
-  text:`나들이를 가면 신기한 것을 하나 찾아 그려 볼까요? 박지원처럼 "이건 왜 이렇게 생겼을까?" 물어보면 생각이 쑥쑥 자라요.`},
  {kind:'end', svg:endBase('bj',`${cart(200,220,1.1)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),bj(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`보는 것마다 배운 선비가 남긴 선물,<br>쓸모를 찾는 눈.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`친구들을 배꼽 잡게 하던 이야기꾼,<br>열하까지 가서 배워 온 선비.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'bakjiwon',era:'joseon',title:'박지원과 열하일기',who:'박지원',teaser:'먼 나라를 여행하며 수레와 벽돌을 꼼꼼히 적어 온 선비가 있어요.',pages:P,
+BOOKS.push({id:'bakjiwon',era:'joseon',title:'박지원과 열하일기',who:'박지원',teaser:'먼 나라를 여행하며 수레와 벽돌을 꼼꼼히 적어 온 선비가 있어요.',pages:P,now:"『열하일기』는 지금도 읽히는 우리 옛 여행기예요. 나들이를 가면 신기한 것을 하나 찾아 그려 보세요.",
  talk:{three:['박지원은 무엇을 보고 신기해했지?','수레 바퀴처럼 데굴데굴 굴러 볼까?','여행 가면 무엇을 보고 싶어?'],
   five:['수레가 있으면 무엇이 편해질까?','박지원은 왜 다른 나라에서도 배우려고 했을까?','너라면 여행 일기에 무엇을 적을래?'],
   note:'박지원(1737~1805)은 호가 연암인 조선 후기의 실학자이자 문장가입니다. 1780년 삼종형 박명원이 청 건륭제의 칠순을 축하하러 가는 사신단을 따라 베이징과 열하(지금의 청더)에 다녀왔고, 그 기록을 『열하일기』로 남겼습니다. 이 책에서 수레와 벽돌 사용 등 청의 문물을 받아들여 백성의 삶을 이롭게 해야 한다고 주장했고, "깨진 기와 조각과 똥거름이 장관"이라는 대목이 유명합니다. 「허생전」, 「양반전」 등의 소설도 지었습니다.'}});

@@ -20,7 +20,7 @@ const P=[
   ${teacher(110,268,.9,{mood:'o'})}
   ${hdKid(280,268,.86,{pose:'hold',mood:'smile',item:scrollPic})}
   ${T(110,90,'오호!',22,K.red)}`,'#EADCC0'),
-  text:`홍도는 강세황이라는 훌륭한 선생님께 그림을 배웠어요. 선생님은 홍도의 그림 솜씨에 깜짝 놀라며 아낌없이 칭찬해 주었대요.`},
+  text:`홍도는 이름난 화가 강세황에게 그림을 배웠어요. 강세황은 홍도의 그림을 보고 깜짝 놀랐대요. "이 아이는 못 그리는 것이 없구나!"`},
  {svg:SV(`${palace()}
   ${jeongjo(126,272,.9,{mood:'joy'})}${hongdo(276,272,.9,{pose:'hold',mood:'smile',item:scrollPic})}
   ${star(200,70,9)}`,'#E8D3B0'),
@@ -51,16 +51,11 @@ const P=[
   ${hero(290,272,.66,{robe:'#E9DFC8',hair:'braid',mood:'joy'})}${hero(350,272,.62,{robe:'#C9D8E8',hair:'braid',mood:'joy'})}
   ${T(320,150,'키득키득',16,K.red)}`,'#EADCC0'),
   text:`글방에서 훈장님께 혼나서 훌쩍이는 아이와, 그 모습을 보고 키득키득 웃는 친구들도 그렸어요. 보는 사람마다 웃음이 터졌대요.`},
- {svg:SV(`${room()}
-  ${frame(40,40,100,80,`<ellipse cx="90" cy="96" rx="24" ry="10" fill="none" stroke="#8A6A44" stroke-width="2"/><circle cx="80" cy="84" r="5" fill="${SK}"/><circle cx="100" cy="84" r="5" fill="${SK}"/>`)}
-  ${frame(260,40,100,80,`<circle cx="292" cy="80" r="6" fill="${SK}"/><circle cx="310" cy="90" r="6" fill="${SK}"/><circle cx="328" cy="82" r="6" fill="${SK}"/>`)}
-  ${kid(200,268,1.0,{pose:'up',mood:'joy'})}`,'#E9EEF2'),
-  text:`김홍도의 그림 덕분에 우리는 옛날 사람들이 어떻게 놀고 일했는지 알 수 있어요. 그 그림들은 지금 국립중앙박물관에 소중히 보관되어 있어요.`},
  {kind:'end', svg:endBase('m',`${g(200,186,2.2,scrollPic)}`,hdKid(64,276,.5,{pose:'up',mood:'joy'}),hongdo(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`그림 그리기를 좋아한 아이가 남긴 선물,<br>옛사람들의 웃음.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`땅바닥에 쓱쓱 그리던 아이,<br>장터 사람들의 웃음을 그렸어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'kimhongdo',era:'joseon',title:'김홍도와 웃음 가득 그림',who:'김홍도',teaser:'그림 그리기를 좋아한 아이가 사람들의 웃는 모습을 그렸어요.',pages:P,
+BOOKS.push({id:'kimhongdo',era:'joseon',title:'김홍도와 웃음 가득 그림',who:'김홍도',teaser:'그림 그리기를 좋아한 아이가 사람들의 웃는 모습을 그렸어요.',pages:P,now:"김홍도의 그림 『씨름』과 『서당』은 국립중앙박물관에 있어요. 그림 속에서 웃고 있는 사람을 찾아보세요.",
  talk:{three:['씨름하는 아저씨들은 몇 명이지?','훌쩍이는 아이를 찾아볼까?','오늘 본 것을 그림으로 그려 볼까?'],
   five:['김홍도는 왜 보통 사람들을 그렸을까?','글방 아이는 왜 울고 있을까?','우리 가족의 하루를 그린다면 무엇을 그릴래?'],
   note:'김홍도(1745~1806년 무렵, 호는 단원)는 정조 때 활동한 궁중 화원으로, 스승 강세황에게 그림을 배웠습니다. 이 책의 씨름과 글방 장면은 김홍도의 풍속화를 떠올리게 하도록 새로 그린 그림이며, 실제 작품은 국립중앙박물관의 『단원 풍속도첩』(보물)에서 볼 수 있습니다. 어린 시절 땅바닥에 그림을 그리는 장면은 이야기를 위해 꾸민 것입니다.'}});

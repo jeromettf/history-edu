@@ -32,22 +32,12 @@ const P=[
   ${cy(200,272,.9,{mood:'smile',arms:'handsDown',robe:'#8E5A4A',beard:'#E6E1D6'})}
   <rect x="290" y="210" width="70" height="50" fill="#D9C49A" ${sw()}/><path d="M290 226 h70" stroke="#8A6A44" stroke-width="2"/>
   ${hero(80,272,.7,{robe:'#5A5560',hat:'gat',mood:'o',face:'right',arms:'holdFront',prop:H=>gold((H.L[0]+H.R[0])/2,H.L[1]+4,.6)})}`,'#EADCC0'),
-  text:`높은 장군이 되어서도 최영은 낡은 집에서 소박하게 살았어요. 누군가 선물을 들고 와도 받지 않았대요.`},
- {svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
-  ${cy(130,272,.86,{mood:'smile',arms:'pointR',face:'right',beard:'#E6E1D6'})}
-  ${[0,1,2].map(k=>oldKid(240+k*50,276,.58,{mood:'joy',arms:k===1?'cheer':'handsDown',face:'left'})).join('')}
-  ${T(200,80,'욕심보다 나라와 사람을 먼저!',16,K.red)}`,'url(#cy3)',sky('cy3','#CFE7F2','#F6EAD0')),
-  text:`최영의 말은 오래오래 전해졌어요. 욕심보다 나라와 사람들을 먼저 생각한 장군으로 기억되고 있어요.`},
- {svg:SV(`${room()}
-  ${gold(200,250,1.0)}${stone(250,252,1.0)}
-  ${kid(110,266,.86,{mood:'smile',arms:'pointR',face:'right'})}${hero(320,266,.86,{body:'dress',hair:'braid',top:'#E98FA0',skirt:'#5B7FB8',mood:'joy',face:'left',arms:'handsDown'})}
-  ${T(200,80,'친구 먼저 골라!',18,K.red)}`,'#EFE3C8'),
-  text:`맛있는 과자가 하나 남았을 때, "친구 먼저 골라!" 하고 말해 본 적 있나요? 그것도 욕심을 이기는 멋진 마음이에요.`},
+  text:`높은 장군이 되어서도 최영은 낡은 집에서 소박하게 살았어요. 누군가 선물을 들고 와도 받지 않았대요. 허리에는 여전히 아버지의 말을 적은 띠가 있었어요.`},
  {kind:'end', svg:endBase('cy',`${gold(170,200,1.6)}${stone(240,204,1.6)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),cy(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`욕심을 이긴 장군이 남긴 선물,<br>황금을 돌처럼 보는 마음.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`황금 보기를 돌같이,<br>평생 그 띠를 두른 장군.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'choeyoung',era:'goryeo',title:'최영 장군과 아버지의 말씀',who:'최영',teaser:'"황금 보기를 돌같이 하라." 이 말을 평생 지킨 장군이 있어요.',pages:P,
+BOOKS.push({id:'choeyoung',era:'goryeo',title:'최영 장군과 아버지의 말씀',who:'최영',teaser:'"황금 보기를 돌같이 하라." 이 말을 평생 지킨 장군이 있어요.',pages:P,now:"경기도 고양에는 최영 장군의 무덤이 있어요.",
  talk:{three:['황금은 무슨 색이었지?','돌은 어떤 느낌일까? 딱딱!','말 타는 장군 흉내 내 볼까?'],
   five:['"황금 보기를 돌같이 하라"는 무슨 뜻일까?','욕심이 날 때 어떻게 참을 수 있을까?','친구에게 먼저 양보해 본 적 있어?'],
   note:'최영(1316~1388)은 고려 말의 장군입니다. 아버지 최원직이 "황금 보기를 돌같이 하라"고 당부했고 최영이 이를 평생 지켰다는 이야기는 『고려사』 열전에 실려 있습니다. 1376년 홍산 전투에서 왜구를 크게 물리쳤습니다. 1388년 요동 정벌을 추진했으나 이성계의 위화도 회군으로 실각하고 그해 처형되었습니다. 이 부분은 아이 나이에 맞춰 책에서 다루지 않았습니다.'}});

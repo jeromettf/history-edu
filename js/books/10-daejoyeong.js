@@ -29,7 +29,7 @@ const P=[
   <rect x="140" y="132" width="120" height="70" fill="#E8DCC4" ${sw()}/><path d="M124 138 Q200 90 276 138Z" fill="#4A4A55" ${sw()}/>
   <path d="M300 200 V80" ${sw(3)}/><rect x="300" y="80" width="60" height="38" fill="#5A4E8A" ${sw()}/>${T(330,106,'발해',18,'#FBF4E2')}
   ${djK(200,268,.9,{pose:'up',mood:'joy'})}${walker(90,272,.6,{mood:'joy',pose:'up'})}${hero(330,274,.58,{body:'dress',hair:'bun',mood:'joy'})}`,'url(#dj5)',sky('dj5','#C9D8E6','#F2F5F8')),
-  text:`동모산에 다다른 대조영은 새 나라를 세웠어요. 이 나라가 바로 발해예요. 고구려를 이은 나라라서 다른 나라에 편지를 보낼 때 '고려'라고 쓰기도 했대요.`},
+  text:`동모산에 다다른 대조영은 새 나라를 세웠어요. 이 나라가 발해예요. 고구려를 이은 나라라서 다른 나라에 편지를 보낼 때 '고려'라고 쓰기도 했대요.`},
  {svg:SV(`${room()}
   <g id="tOndol">${ondol(200,240,1.4)}</g>
   ${djKid(140,218,.7,{mood:'joy',stance:'sit',arms:'lap'})}${hero(270,218,.66,{body:'dress',hair:'bun',top:'#F6E2A6',skirt:'#8A6A9E',mood:'joy',stance:'sit',arms:'lap'})}${[0,1,2].map(k=>`<path d="M${180+k*20} 200 q-6 -10 0 -20 q6 -10 0 -20" fill="none" stroke="#E9A05A" stroke-width="2.4" opacity=".7"/>`).join('')}`,'#EADCC0'),
@@ -40,14 +40,11 @@ const P=[
   ${g(290,200,.5,`<path d="M-80 -6 Q-70 22 0 24 Q70 22 90 -6Z" fill="#8A5A3C" ${sw(3)}/><path d="M0 -6 V-110" ${sw(5)}/><path d="M-44 -104 L44 -104 L38 -30 L-38 -30Z" fill="#F4E7C6" ${sw(3)}/>`)}
   ${djK(110,262,.82,{pose:'up',mood:'joy'})}${T(290,80,'해동성국',22,K.red)}`,'url(#dj7)',sky('dj7','#CFE7F2','#F6EAD0')),
   text:`발해는 땅이 아주 넓어졌고, 배를 타고 일본과 당나라를 오가며 사이좋게 지냈어요. 사람들은 발해를 '바다 동쪽의 번성한 나라', 해동성국이라고 불렀어요.`},
- {svg:SV(`${room()}
-  ${kid(130,266,1.0,{pose:'up',mood:'joy'})}${ondol(280,258,.6)}${hero(300,236,.6,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile'})}`,'#EFE3C8'),
-  text:`겨울날 따뜻한 방바닥에 배를 깔고 엎드려 보세요. 그 온돌은 고구려와 발해 사람들 때부터 이어져 온 거예요.`},
  {kind:'end', svg:endBase('dj',`<path d="M110 196 Q200 70 290 196Z" fill="#94BFA6" ${sw()}/>${T(200,176,'발해',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,djKid(64,276,.5,{pose:'up',mood:'joy'}),djK(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`흩어진 사람들을 다독인 장수가 남긴 선물,<br>고구려를 이은 나라 발해.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`언 강을 건너 동쪽으로 간 사람들,<br>그 끝에 세운 나라 발해.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'daejoyeong',era:'samguk',title:'대조영과 발해',who:'대조영',teaser:'고구려가 무너진 뒤, 흩어진 사람들을 모아 새 나라를 세운 장수가 있어요.',pages:P,
+BOOKS.push({id:'daejoyeong',era:'samguk',title:'대조영과 발해',who:'대조영',teaser:'고구려가 무너진 뒤, 흩어진 사람들을 모아 새 나라를 세운 장수가 있어요.',pages:P,now:"겨울에 따뜻한 방바닥에 엎드려 보세요. 온돌은 고구려와 발해 사람들 때부터 이어져 온 거예요.",
  talk:{three:['대조영이 세운 나라 이름은 뭐였지?','눈길 걷는 흉내, 뽀드득뽀드득!','방바닥이 따뜻한 걸 뭐라고 하지?'],
   five:['대조영은 왜 동쪽으로 돌아가려 했을까?','함께 먼 길을 걸을 때 무엇이 힘이 될까?','발해를 왜 해동성국이라고 불렀을까?'],
   note:'대조영(?~719)은 고구려 장수 출신으로, 668년 고구려가 멸망한 뒤 당나라 영주로 옮겨진 고구려 유민을 이끌었습니다. 696년 거란의 반란을 틈타 고구려 유민과 말갈 사람들과 함께 동쪽으로 이동했고, 천문령에서 당나라 군대를 물리친 뒤 698년 동모산에서 나라를 세웠습니다. 처음 이름은 진이었고 713년부터 발해라 했습니다. 발해는 일본에 보낸 문서에서 스스로 고려라 칭했고, 9세기에 해동성국으로 불렸습니다. 발해 유적에서 온돌 시설이 발견되었습니다.'}});

@@ -36,6 +36,13 @@ function illImg(id,i){
   const s=typeof ILL_SPRITE!=='undefined'&&ILL_SPRITE[id], k=s?s.p.indexOf(i):-1;
   if(k<0) return `<image href="${illSrc(id,i)}" x="0" y="0" width="400" height="280" preserveAspectRatio="xMidYMid slice"/>`;
   return `<svg x="0" y="0" width="400" height="280" viewBox="0 ${k*700} 1050 700" preserveAspectRatio="xMidYMid slice"><image href="${s.src}" x="0" y="0" width="1050" height="${s.p.length*700}"/></svg>`}
+/* 끝 뒤 '지금 우리 곁에서' 카드 그림: img/now/<id>.webp (아티팩트에서는 묶음 그림의 'now' 칸) */
+function nowSVG(id){
+  if(!PILOT_ON) return '';
+  const s=typeof ILL_SPRITE!=='undefined'&&ILL_SPRITE[id], k=s?s.p.indexOf('now'):-1;
+  const img=k<0?`<image href="img/now/${id}.webp" x="0" y="0" width="400" height="280" preserveAspectRatio="xMidYMid slice"/>`
+    :`<svg x="0" y="0" width="400" height="280" viewBox="0 ${k*700} 1050 700" preserveAspectRatio="xMidYMid slice"><image href="${s.src}" x="0" y="0" width="1050" height="${s.p.length*700}"/></svg>`;
+  return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">${img}</svg>`}
 function illSVG(id,i,p){
   const rects=Object.entries(illTaps(id,i,p)).map(([tid,[x,y,w,h]])=>`<g id="${tid}" class="ill-tap"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#FFFFFF" fill-opacity="0" stroke="#F3D99B" stroke-width="3" stroke-opacity="0"/></g>`).join('');
   return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" class="ill">${illImg(id,i)}${ILL_OVER[`${id}-${i}`]||''}${rects}</svg>`}

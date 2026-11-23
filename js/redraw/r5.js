@@ -50,13 +50,6 @@ redraw('onjo',2,()=>SVn(`${palace()}
   ${[0,1].map(k=>`<g transform="translate(${370+k*24} 262)"><rect x="-10" y="-30" width="20" height="24" rx="4" fill="#B5874F" ${sw(1.4)}/></g>`).join('')}
   ${T(110,70,'유리 왕자',16,K.ink)}`,'#E6CFAA'));
 
-/* 온조 8: 풍납토성 둘레를 걷는 아이와 엄마 */
-redraw('onjo',8,()=>SVn(`${townscape(120,7)}
-  <path d="M-6 200 Q100 130 200 126 Q300 130 406 200 L406 290 L-6 290Z" fill="#8FB88A" ${sw()}/><path d="M-6 200 Q100 140 200 138 Q300 140 406 200" fill="none" stroke="#B5D49A" stroke-width="8"/>
-  <path d="M-6 250 Q200 236 406 252" fill="none" stroke="#E6D3A6" stroke-width="20" stroke-linecap="round"/>
-  ${kid(170,270,.66,{stance:'walk',arms:'walk',mood:'joy',face:'right'})}${hero(236,268,.72,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',stance:'walk',arms:'walk',mood:'smile',face:'right'})}
-  ${T(200,40,'흙으로 쌓은 성, 풍납토성',18,K.red)}`,'url(#r5b)',sky('r5b','#CFE7F2','#F6EAD0')));
-
 /* 광개토대왕 3: 소로 밭을 갈다 깜짝 놀라는 농부 */
 redraw('gwanggaeto',3,()=>SVn(`${ridge(150,'#B7CBD3',30,3)}<path d="M-6 180 Q200 170 406 182 L406 290 L-6 290Z" fill="#B99B6A"/>${[...Array(7)].map((_,k)=>`<path d="M-6 ${190+k*14} Q200 ${180+k*16} 406 ${190+k*14}" fill="none" stroke="#8A6A4A" stroke-width="2"/>`).join('')}
   ${[300,330,360].map(x=>`<path d="M${x} 160 V120" stroke="${K.wood}" stroke-width="3"/><path d="M${x} 120 h24 v14 h-24Z" fill="#5A3B2C"/>`).join('')}${dust(330,160,1)}
@@ -91,12 +84,6 @@ redraw('ureuk',7,()=>SVn(`${ridge(140,'#C9A06A',40,2)}<path d="M-6 190 Q200 176 
   ${notes(110,110)}${notes(150,80)}${notes(330,90)}${notes(370,120)}
   ${T(90,50,'탄금대',22,K.red)}`,'url(#r5e)',sky('r5e','#F2D6A8','#CFE7F2')));
 
-/* 우륵 8: 지금 아이가 앉아서 가야금을 배워요 */
-redraw('ureuk',8,()=>SVn(`${room()}
-  ${kid(140,236,.86,{stance:'sit',arms:{L:[-40,-6],R:[30,-4]},mood:'joy',still:true})}${gayageum(140,268,1.05)}
-  ${hero(310,268,.86,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',arms:'pointL',mood:'smile',face:'left'})}
-  ${notes(230,120)}${notes(270,96)}`,'#EFE3C8'));
-
 /* 을지문덕 4: 지는 척 달아나는 고구려 군사, 신이 나서 쫓는 수나라 군사 */
 redraw('euljimundeok',4,()=>SVn(`${ridge(160,'#A9CDB4',30,2)}<path d="M-6 200 Q200 190 406 200 L406 290 L-6 290Z" fill="#BCD38F"/>
   ${ul(90,270,.8,{stance:'run',arms:'run',mood:'joy',face:'left'})}${hero(150,262,.62,{body:'armor',robe:'#C9473B',hat:'helmet',stance:'run',arms:'run',mood:'joy',face:'left'})}
@@ -108,13 +95,6 @@ redraw('kimyusin',4,()=>SVn(`${room()}
   ${hwarang(70,272,.78,{mood:'smile',face:'right'})}
   ${chunchu(200,272,.86,{mood:'o',face:'right',still:true})}${munhui(290,268,.82,{arms:{L:[-50,-56],R:[-30,-60]},mood:'smile',face:'left',prop:H=>`<path d="M${H.L[0]} ${H.L[1]} q-14 6 -18 18" fill="none" stroke="#C9473B" stroke-width="3"/>`})}
   ${heart(250,120)}`,'#EADCC0'));
-
-/* 김유신 8: 대릉원의 둥근 무덤들 사이를 걷는 가족 */
-redraw('kimyusin',8,()=>SVn(`${ridge(150,'#B7CBD3',20,2)}
-  ${mound(80,210,90,70)}${mound(300,206,120,96,'#7FA88E')}${mound(200,220,60,40,'#9FC48A')}${mound(380,224,50,34)}
-  <path d="M-6 236 Q200 226 406 236 L406 290 L-6 290Z" fill="#BCD38F"/><path d="M-6 266 Q200 250 406 264" fill="none" stroke="#E6D3A6" stroke-width="18"/>
-  ${kid(150,272,.8,{arms:'pointR',mood:'o',face:'right'})}${hero(220,272,.8,{body:'dress',hair:'braid',top:'#E98FA0',skirt:'#5B7FB8',stance:'walk',arms:'walk',mood:'joy',face:'right'})}
-  ${T(200,40,'경주 대릉원',22,K.red)}`,'url(#r5g)',sky('r5g','#CFE7F2','#F6EAD0')));
 
 /* 혜초 5: 밤마다 앉아서 보고 들은 것을 적는 혜초 */
 redraw('hyecho',5,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill="#3A3048"/>${[...Array(20)].map((_,k)=>`<circle cx="${(k*83)%400}" cy="${(k*47)%120+8}" r="1.4" fill="#FFF8DC"/>`).join('')}
@@ -144,9 +124,4 @@ redraw('jangbogo',6,()=>SVn(`<path d="M-6 140 Q200 130 406 140 L406 290 L-6 290Z
   ${bogo(176,223,.4,{arms:'pointR',mood:'joy',face:'right'})}${hero(88,223,.36,{body:'armor',robe:'#2C6E92',hat:'helmet',arms:'cheer',mood:'joy'})}
   ${T(300,70,'도망가자!',22,'#3A322B')}`,'url(#r5j)',sky('r5j','#CFE7F2','#F6EAD0')));
 
-/* 대조영 8: 따뜻한 방바닥에 배를 깔고 엎드린 아이 */
-redraw('daejoyeong',8,()=>SVn(`${room()}<rect x="-6" y="236" width="412" height="50" fill="#D9A66A"/>${[0,1,2].map(k=>`<path d="M${90+k*90} 250 q-6 -10 0 -20 q6 -10 0 -20" fill="none" stroke="#E9A05A" stroke-width="2.6" opacity=".7"/>`).join('')}
-  ${kid(190,240,.9,{stance:'lie',arms:'chin',mood:'joy'})}
-  <g transform="translate(310 260)">${openBook}</g>
-  ${T(200,70,'뜨끈뜨끈해!',22,K.red)}`,'#EFE3C8'));
 })();

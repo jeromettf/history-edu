@@ -54,13 +54,6 @@ redraw('hwanghui',7,()=>SVn(`${rainFX(40,'#7F9AB8')}${ridge(150,'#8EA2B8',30,2)}
   ${hhOld(120,262,.95,{stance:'sit',mood:'smile',face:'right',arms:'lap'})}${hero(60,262,.8,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#8C7A6A',stance:'sit',arms:'lap',mood:'smile',face:'right'})}
   ${T(300,60,'똑, 똑…',22,'#3F6FA8')}`,'url(#r6b)',sky('r6b','#9FB3C8','#D7E0E6')));
 
-/* 황희 8: 친구의 그림을 보고 칭찬하는 아이 */
-redraw('hwanghui',8,()=>SVn(`${room()}
-  ${kid(120,262,.9,{stance:'sit',arms:'pointR',mood:'joy',face:'right'})}
-  <rect x="160" y="200" width="90" height="60" fill="#FFFDF6" ${sw()} transform="rotate(-6 205 230)"/><path d="M180 240 q20 -40 40 -10 q14 20 20 -6" fill="none" stroke="#5E9C5A" stroke-width="4" transform="rotate(-6 205 230)"/><circle cx="196" cy="214" r="9" fill="#F2A24B"/>
-  ${hero(300,262,.86,{body:'dress',hair:'braid',top:'#F6E2A6',skirt:'#E98FA0',stance:'sit',arms:'lap',mood:'joy',face:'left'})}
-  ${T(200,70,'여기 색이 예쁘다!',22,K.red)}`,'#EFE3C8'));
-
 /* 신사임당 2: 앉아서 그림을 보고 따라 그리는 아이 */
 redraw('saimdang',2,()=>SVn(`${room()}
   ${`<rect x="230" y="60" width="130" height="110" fill="#FBF4E2" ${sw()}/>`}<path d="M260 150 q20 -60 50 -40 q30 20 20 50" fill="none" stroke="#5E9C5A" stroke-width="4"/><circle cx="300" cy="96" r="12" fill="#E98FA0"/><circle cx="330" cy="140" r="6" fill="#7A6AA8"/>
@@ -115,12 +108,6 @@ redraw('kimhongdo',3,()=>SVn(`${palace()}
   ${hongdo(290,266,.9,{stance:'kneel',arms:'pray',mood:'joy',face:'left'})}
   <g transform="rotate(-8 200 230)"><rect x="170" y="210" width="70" height="40" fill="#FBF4E2" ${sw()}/><path d="M178 240 q14 -20 26 -6 q10 10 26 -12" fill="none" stroke="#5E7A4A" stroke-width="2.4"/></g>`,'#E6CFAA'));
 
-/* 김홍도 8: 박물관에서 김홍도 그림을 보는 가족 */
-redraw('kimhongdo',8,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill="#F2EEE4"/><path d="M-6 230 H406 V290 H-6Z" fill="#C9B48A"/>
-  ${frameP(60,60,120,100,`<circle cx="100" cy="120" r="10" fill="#D6CDB4" ${sw(1)}/><circle cx="140" cy="120" r="10" fill="#D6CDB4" ${sw(1)}/><path d="M80 140 h80" stroke="#8A6A44" stroke-width="2"/>`)}${frameP(220,60,120,100,`<path d="M240 140 q20 -30 40 -10 q20 20 40 -14" fill="none" stroke="#5E7A4A" stroke-width="2.4"/><circle cx="300" cy="96" r="8" fill="#C9473B"/>`)}
-  ${kid(150,280,.86,{arms:'pointL',mood:'joy',face:'left'})}${hero(270,280,.86,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}
-  ${T(200,40,'국립중앙박물관',20,K.red)}`,'#F2EEE4'));
-
 /* 정약용 4: 책을 펴 놓고 거중기를 그리는 정약용 */
 redraw('jeongyakyong',4,()=>SVn(`${room()}
   ${jy(130,256,1.0,{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'o',face:'right'})}
@@ -141,12 +128,6 @@ redraw('kimjeonghui',2,()=>SVn(`${room()}
   <ellipse cx="292" cy="230" rx="16" ry="7" fill="#3A322B" ${sw(1.2)}/>
   ${[0,1,2,3].map(k=>`<ellipse cx="${330+k*16}" cy="${270-k*4}" rx="12" ry="5" fill="#4A4A52" ${sw(1)}/><ellipse cx="${330+k*16}" cy="${270-k*4}" rx="4" ry="2" fill="#EADCC0"/>`).join('')}
   ${T(300,80,'벼루에 구멍이 날 때까지',18,K.red)}`,'#EADCC0'));
-
-/* 김정희 7: 박물관에서 세한도를 보는 가족 */
-redraw('kimjeonghui',7,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill="#F2EEE4"/><path d="M-6 230 H406 V290 H-6Z" fill="#C9B48A"/>
-  ${frameP(70,60,260,100,`<path d="M120 140 Q130 90 120 70 M130 110 q20 -10 30 0 M250 140 Q256 100 248 80" fill="none" stroke="#3A322B" stroke-width="3"/><rect x="170" y="110" width="50" height="30" fill="none" stroke="#3A322B" stroke-width="2"/><path d="M165 112 L195 92 L225 112" fill="none" stroke="#3A322B" stroke-width="2"/>`)}
-  ${kid(150,280,.86,{arms:'pointR',mood:'o',face:'right'})}${hero(260,280,.86,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}
-  ${T(200,40,'세한도',22,K.red)}`,'#F2EEE4'));
 
 /* 김정호 3: 옛 지도들을 펼쳐 놓고 비교하는 김정호 */
 redraw('kimjeongho',3,()=>SVn(`${room()}<rect x="-6" y="226" width="412" height="60" fill="#D9B98A"/>

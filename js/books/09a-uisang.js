@@ -21,30 +21,26 @@ const P=[
  {svg:SV(`${room()}
   ${jiyan(110,264,.9,{stance:'sit',arms:'pointR',mood:'smile',face:'right'})}
   ${us(270,264,.88,{stance:'sit',arms:'holdFront',prop:H=>`<g transform="translate(${(H.L[0]+H.R[0])/2} ${H.L[1]+30})">${openBook}</g>`,mood:'o',face:'left'})}`,'#EADCC0'),
-  text:`당나라에서 의상은 지엄이라는 큰스님에게 배웠어요. 모든 것은 서로 이어져 있고, 작은 먼지 하나에도 온 세상이 담겨 있다는 가르침이었어요.`},
+  text:`당나라에서 의상은 지엄이라는 큰스님에게 배웠어요. "모든 것은 서로 이어져 있단다. 밥 한 알에도 농부와 햇빛과 비가 함께 들어 있지."`},
  {chips:LEG, svg:SV(`<path d="M-6 140 Q200 130 406 140 L406 290 L-6 290Z" fill="#3F7EA8"/>${[...Array(9)].map((_,k)=>`<path d="M${(k*97)%420-20} ${170+(k%4)*24} q10 -8 20 0 q10 8 20 0" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>`).join('')}
   ${bigShip(150,214,.9,'#8A5A3C')}${us(188,209,.3,{mood:'o',face:'right'})}
   <g id="tDragon">${dragon(250,250,.9)}</g>`,'url(#us3)',sky('us3','#9FB3C8','#E6E2D4')),
   taps:[{label:'용',el:'tDragon',say:'의상을 아끼던 선묘가 용이 되어 배를 지켜 주었대요.'},{label:'출렁출렁',el:'tDragon',say:'거센 파도가 쳐도 배는 무사했어요.'}],tapHint:'파도 속을 눌러 볼까요?',
-  text:`공부를 마친 의상은 신라로 돌아오는 배에 올랐어요. 당나라에서 의상을 돕던 선묘라는 여인이 용이 되어 거센 바다에서 배를 지켜 주었다는 이야기가 전해요.`},
+  text:`공부를 마친 의상은 신라로 돌아오는 배에 올랐어요. 당나라에서 의상을 늘 도와주던 선묘라는 여인이 용이 되어 거센 바다에서 배를 지켜 주었다는 이야기가 전해요.`},
  {chips:LEG, svg:SV(`${ridge(150,'#7FA88E',40,3)}<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#9FC48A"/>
   ${floatRock(210,130,.9)}
   ${us(90,272,.8,{mood:'o',arms:'pointR',face:'right'})}${[0,1].map(k=>hero(290+k*50,272,.6,{robe:'#5A5560',hat:'band',bandColor:'#3A2E2A',mood:'o',face:'left',arms:'cheer'})).join('')}`,'url(#us4)',sky('us4','#CFE7F2','#F6EAD0')),
-  text:`의상이 절을 지으려 하자 방해하는 사람들이 있었어요. 그때 커다란 바위가 공중에 둥실 떠올랐고, 사람들은 놀라서 물러갔대요.`},
+  text:`의상이 절을 지으려 하자, 그 땅에 살던 사람들이 막아섰어요. 그때 커다란 바위가 공중에 둥실 떠올랐어요. 선묘가 바위가 되어 나타났다는 이야기예요. 사람들은 놀라서 물러갔대요.`},
  {chips:['676년'], svg:SV(`${ridge(150,'#7FA88E',40,3)}<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#9FC48A"/>
   ${g(250,220,1.2,`<rect x="-60" y="-50" width="120" height="50" fill="#E6D3A6" ${sw()}/><path d="M-80 -46 Q0 -80 80 -46 L70 -56 Q0 -90 -70 -56Z" fill="#4A4A52" ${sw()}/>`)}
   ${floatRock(110,220,.6)}${us(170,272,.8,{mood:'joy',arms:'armsOpen',face:'right'})}
   ${T(250,60,'부석사',22,K.red)}`,'url(#us5)',sky('us5','#CFE7F2','#F6EAD0')),
   text:`그곳에 세운 절이 영주 부석사예요. '부석'은 '뜬 돌'이라는 뜻이에요. 의상은 그곳에서 많은 제자를 가르쳤어요.`},
- {svg:SV(`${ridge(150,'#7FA88E',40,3)}<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#9FC48A"/>
-  ${floatRock(220,240,.8)}
-  ${kid(90,276,.8,{mood:'o',stance:'kneel',arms:'pointR',face:'right'})}${hero(330,272,.8,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}`,'url(#us6)',sky('us6','#CFE7F2','#F6EAD0')),
-  text:`지금도 부석사에는 '뜬 돌'이라 불리는 바위가 있어요. 바위 아래로 실을 넣으면 쏙 빠져나간다는 이야기가 있지만, 정말인지는 직접 살펴봐야 해요.`},
  {kind:'end', svg:endBase('us',`${floatRock(200,190,1.0)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),us(338,276,.55,{arms:'pray',mood:'joy'})),
-  text:`바다 건너 배우고 돌아온 스님이 남긴 선물,<br>모든 것은 이어져 있다는 생각.<br>오늘도 우리 곁에 있어요.<br><span class="big">끝</span>`},
+  text:`바다를 지킨 용, 하늘에 뜬 바위,<br>그리고 부석사.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
-BOOKS.push({id:'uisang',era:'samguk',title:'의상과 뜬 바위 절',who:'의상',teaser:'원효와 함께 길을 떠났다가 혼자 바다를 건넌 친구가 있어요.',pages:P,
+BOOKS.push({id:'uisang',era:'samguk',title:'의상과 뜬 바위 절',who:'의상',teaser:'원효와 함께 길을 떠났다가 혼자 바다를 건넌 친구가 있어요.',pages:P,now:"영주 부석사에는 지금도 '뜬 돌'이라 불리는 바위가 있어요. 바위 아래로 실을 넣으면 쏙 빠져나간다는 이야기가 있지만, 정말인지는 직접 살펴봐야 해요.",
  talk:{three:['바위가 어떻게 됐지? 둥실!','용처럼 꿈틀꿈틀 움직여 볼까?','원효와 의상은 어떤 사이였지?'],
   five:['친구와 다른 길을 가게 되면 어떤 마음일까?','"모든 것은 이어져 있다"는 건 무슨 뜻일까?','우리 집 물건 하나가 어디에서 왔는지 따라가 볼까?'],
   note:'의상(625~702)은 원효와 함께 당 유학길에 올랐다가 홀로 당에 건너가 지엄에게 화엄학을 배우고 671년 무렵 돌아왔습니다. 676년 영주 부석사를 세웠고, 화엄의 가르침을 담은 「화엄일승법계도」를 남겼습니다. 선묘가 용이 되어 배를 지켰다는 이야기와 바위가 떠올라 절을 지었다는 부석 이야기는 『송고승전』과 『삼국유사』 등에 전하는 설화입니다. 부석사 무량수전 뒤에 "부석"이라 새긴 바위가 있습니다.'}});
