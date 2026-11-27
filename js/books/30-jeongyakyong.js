@@ -46,14 +46,8 @@ const P=[
   <path d="M-6 230 L406 230 L406 286 L-6 286Z" fill="#BCD38F"/>
   ${jy(90,280,.6,{pose:'up',mood:'joy'})}${worker(170,280,.56,{pose:'up',mood:'joy'})}${worker(250,280,.56,{pose:'up',mood:'joy'})}${worker(330,280,.56,{pose:'up',mood:'joy'})}`,'url(#jy6)',sky('jy6','#CFE7F2','#F6EAD0')),
   text:`그래서 십 년은 걸릴 거라던 수원 화성이 삼 년도 안 되어 완성되었어요. 일한 사람들은 품삯도 받았대요.`},
- {chips:['1801년'], svg:SV(`<circle cx="330" cy="50" r="20" fill="#F6F0D6" ${sw()}/>${sea(190)}
-  <path d="M-6 190 Q100 170 200 186 L200 290 L-6 290Z" fill="#7FA88E" ${sw()}/>
-  ${hut(30,150)}
-  ${jyOld(150,250,.8,{pose:'hold',mood:'smile',item:brush})}
-  ${[0,1,2,3].map(k=>`<rect x="${110+k*4}" y="${270-k*10}" width="60" height="10" rx="2" fill="${['#3F6FA8','#5E9C8A','#C9A15A','#7A6AA8'][k]}" ${sw(1.2)}/>`).join('')}`,'url(#jy7)',sky('jy7','#28305A','#4D4270')),
-  text:`정조 임금님이 세상을 떠나자, 정약용을 미워하던 사람들이 그를 먼 바닷가 마을 강진으로 보냈어요. 정약용은 그곳에서 열여덟 해 동안 오백 권이 넘는 책을 썼어요.`},
  {kind:'end', svg:endBase('jy',`${crane(200,226,1.0,true)}`,jyKid(64,276,.5,{pose:'up',mood:'joy'}),jy(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`강진의 작은 방 창밖으로 산이 보였어요. 정약용은 그 산을 한참 바라보다가 다시 붓을 들었어요.<br><span class="big">끝</span>`},
+  text:`화성이 다 지어지던 날, 정약용은 성벽 위에 올라 아래를 내려다보았어요. 끙끙대던 일꾼들이 웃으며 품삯을 받아 가고 있었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'jeongyakyong',era:'joseon',title:'정약용과 신기한 거중기',who:'정약용',teaser:'무거운 돌을 번쩍 들어 올리는 기계가 있었대요. 누가 만들었을까요?',pages:P,now:"수원 화성은 지금도 그 모습 그대로 남아 세계유산이 되었어요. 공사장의 커다란 크레인에도 거중기처럼 도르래가 들어 있어요.",

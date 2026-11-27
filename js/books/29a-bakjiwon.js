@@ -32,7 +32,7 @@ const P=[
  {svg:SV(`${room()}
   ${bj(150,256,.96,{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'smile',face:'right'})}${desk(240,236,110)}<rect x="200" y="226" width="80" height="10" fill="#FFFDF6" ${sw(1)}/>
   ${[0,1,2,3,4,5].map(k=>`<rect x="320" y="${262-k*9}" width="60" height="9" fill="${['#C9473B','#5E7FA8','#B8862F'][k%3]}" ${sw(1)}/>`).join('')}`,'#EADCC0'),
-  text:`돌아온 박지원은 보고 들은 것을 모아 『열하일기』를 썼어요. 재미있는 이야기와 새로운 생각이 가득해서, 사람들이 앞다투어 베껴 읽었대요.`},
+  text:`돌아온 박지원은 보고 들은 것을 모아 『열하일기』를 썼어요. "오랑캐에게 뭘 배우냐"던 선비들도 몰래 빌려다 밤새 베껴 읽었대요.`},
  {kind:'end', svg:endBase('bj',`${cart(200,220,1.1)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),bj(338,276,.55,{arms:'waveR',mood:'joy'})),
   text:`어느 밤, 박지원의 사랑방에 친구들이 모였어요. "열하 이야기 좀 더 해 주게!" 박지원은 신이 나서 수첩을 펼쳤어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

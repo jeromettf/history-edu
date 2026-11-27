@@ -21,7 +21,7 @@ const P=[
   ${house(200,230,1.4)}<path d="M200 90 V40" stroke="${K.wood}" stroke-width="3"/>${g(220,58,.9,`<rect x="-20" y="-14" width="40" height="28" fill="#FFFFFF" ${sw(1.2)}/><circle cx="0" cy="0" r="6" fill="#C9473B"/><path d="M-6 0 a6 6 0 0 0 12 0Z" fill="#3F6FA8"/>`)}
   ${gu(90,276,.72,{mood:'smile',arms:'pointR',face:'right'})}${govt(320,276,.7,'#3F4A5A',{mood:'smile',face:'left'})}
   ${T(200,40,'대한민국 임시 정부',18,K.red)}`,'url(#gu1)',sky('gu1','#CFE7F2','#F6EAD0')),
-  text:`삼일 운동 뒤, 독립운동가들은 중국 상하이에 '대한민국 임시 정부'를 세웠어요. 나라를 되찾으면 일할 우리 정부를 남의 나라 땅에 미리 세운 거예요. 김구는 문지기라도 하겠다고 했대요.`},
+  text:`삼일 운동 뒤, 김구는 일본 경찰을 피해 중국 상하이로 건너갔어요. 그곳에서 독립운동가들이 '대한민국 임시 정부'를 세우고 있었어요. 김구가 말했어요. "저는 문지기라도 하겠습니다."`},
  {svg:SV(`${room()}
   ${gu(200,272,.92,{mood:'sad',arms:'pray'})}${govt(80,272,.66,'#4C5A6E',{mood:'sad',face:'right'})}${govt(320,272,.66,'#5A4A3E',{mood:'sad',face:'left'})}
   ${T(200,80,'그래도 포기하지 않아요',18,K.red)}`,'#EADCC0'),

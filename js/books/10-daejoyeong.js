@@ -34,7 +34,7 @@ const P=[
   <g id="tOndol">${ondol(200,240,1.4)}</g>
   ${djKid(140,218,.7,{mood:'joy',stance:'sit',arms:'lap'})}${hero(270,218,.66,{body:'dress',hair:'bun',top:'#F6E2A6',skirt:'#8A6A9E',mood:'joy',stance:'sit',arms:'lap'})}${[0,1,2].map(k=>`<path d="M${180+k*20} 200 q-6 -10 0 -20 q6 -10 0 -20" fill="none" stroke="#E9A05A" stroke-width="2.4" opacity=".7"/>`).join('')}`,'#EADCC0'),
   taps:[{label:'온돌',el:'tOndol',say:'아궁이에 불을 때면 방바닥 밑으로 따뜻한 바람이 지나가요.'}],tapHint:'따뜻한 방바닥을 눌러 보세요.',
-  text:`발해 사람들은 고구려 사람들처럼 방바닥을 데우는 온돌을 썼어요. 눈이 펑펑 오는 북쪽 나라에서도 집 안은 뜨끈뜨끈했지요.`},
+  text:`새 나라에도 매서운 겨울이 왔어요. 사람들은 고구려에서 하던 대로 방바닥 밑에 불을 넣어 방을 데웠어요. 눈이 펑펑 와도 집 안은 뜨끈뜨끈했지요. "꼭 고향 집 같구나."`},
  {svg:SV(`${sea(170)}
   <path d="M-6 170 Q100 150 200 166 L200 290 L-6 290Z" fill="#E6D3A6" ${sw()}/>
   ${g(290,200,.5,`<path d="M-80 -6 Q-70 22 0 24 Q70 22 90 -6Z" fill="#8A5A3C" ${sw(3)}/><path d="M0 -6 V-110" ${sw(5)}/><path d="M-44 -104 L44 -104 L38 -30 L-38 -30Z" fill="#F4E7C6" ${sw(3)}/>`)}

@@ -25,7 +25,7 @@ const P=[
   <g id="tPoem">${ks(110,272,.84,{mood:'joy',arms:'pointR',face:'right'})}</g>
   ${host(300,272,.82,{mood:'o',face:'left'})}${T(200,90,'스무 나무 아래 서러운 나그네…',15,K.red)}`,'#D9CCAE'),
   taps:[{label:'재치',el:'tPoem',say:'같은 소리, 다른 뜻의 말을 섞어 웃음이 나는 시를 지었어요.'},{label:'하하',el:'tPoem',say:'구박하던 사람도 시를 듣고는 웃음을 터뜨렸대요.'}],tapHint:'김삿갓을 눌러 볼까요?',
-  text:`김삿갓은 가는 곳마다 시를 지었어요. 밥 한 끼를 얻어먹고 고맙다는 시, 구박하는 사람을 놀리는 재치 있는 시를 지어 사람들을 웃게 했어요.`},
+  text:`어느 날 김삿갓이 부잣집 대문을 두드렸어요. 주인은 묽은 죽 한 그릇만 내밀었어요. 김삿갓은 빙그레 웃으며 시를 지었어요. "죽 그릇에 하늘과 구름이 다 비치는구나." 주인은 얼굴이 빨개졌대요.`},
  {svg:SV(`${yard(200)}
   ${ks(200,272,.84,{stance:'sit',arms:'pointR',mood:'joy',face:'right'})}
   ${[0,1,2].map(k=>kid2(70+k*50+(k>1?140:0),276,.56,['#E7D7B4','#C9D8E8','#E9CFC0'][k],{stance:'sit',arms:'lap',mood:'joy',face:k>1?'left':'right'})).join('')}`,'#D9CCAE'),

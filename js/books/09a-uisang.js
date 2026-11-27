@@ -21,12 +21,12 @@ const P=[
  {svg:SV(`${room()}
   ${jiyan(110,264,.9,{stance:'sit',arms:'pointR',mood:'smile',face:'right'})}
   ${us(270,264,.88,{stance:'sit',arms:'holdFront',prop:H=>`<g transform="translate(${(H.L[0]+H.R[0])/2} ${H.L[1]+30})">${openBook}</g>`,mood:'o',face:'left'})}`,'#EADCC0'),
-  text:`당나라에서 의상은 지엄이라는 큰스님에게 배웠어요. "모든 것은 서로 이어져 있단다. 밥 한 알에도 농부와 햇빛과 비가 함께 들어 있지."`},
+  text:`당나라에서 의상은 큰스님에게 열심히 배웠어요. 선묘라는 여인은 그런 의상을 늘 곁에서 도와주었어요. "스님, 신라에 돌아가시면 꼭 좋은 절을 지으세요."`},
  {chips:LEG, svg:SV(`<path d="M-6 140 Q200 130 406 140 L406 290 L-6 290Z" fill="#3F7EA8"/>${[...Array(9)].map((_,k)=>`<path d="M${(k*97)%420-20} ${170+(k%4)*24} q10 -8 20 0 q10 8 20 0" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>`).join('')}
   ${bigShip(150,214,.9,'#8A5A3C')}${us(188,209,.3,{mood:'o',face:'right'})}
   <g id="tDragon">${dragon(250,250,.9)}</g>`,'url(#us3)',sky('us3','#9FB3C8','#E6E2D4')),
   taps:[{label:'용',el:'tDragon',say:'의상을 아끼던 선묘가 용이 되어 배를 지켜 주었대요.'},{label:'출렁출렁',el:'tDragon',say:'거센 파도가 쳐도 배는 무사했어요.'}],tapHint:'파도 속을 눌러 볼까요?',
-  text:`공부를 마친 의상은 신라로 돌아오는 배에 올랐어요. 당나라에서 의상을 늘 도와주던 선묘라는 여인이 용이 되어 거센 바다에서 배를 지켜 주었다는 이야기가 전해요.`},
+  text:`공부를 마친 의상은 신라로 돌아오는 배에 올랐어요. 거센 바다에서 선묘가 용이 되어 배를 지켜 주었다는 이야기가 전해요.`},
  {chips:LEG, svg:SV(`${ridge(150,'#7FA88E',40,3)}<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#9FC48A"/>
   ${floatRock(210,130,.9)}
   ${us(90,272,.8,{mood:'o',arms:'pointR',face:'right'})}${[0,1].map(k=>hero(290+k*50,272,.6,{robe:'#5A5560',hat:'band',bandColor:'#3A2E2A',mood:'o',face:'left',arms:'cheer'})).join('')}`,'url(#us4)',sky('us4','#CFE7F2','#F6EAD0')),

@@ -21,7 +21,7 @@ const P=[
   ${scholar(90,262,.82,'#7A8C6E',{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'smile',face:'right'})}${desk(150,240,70)}
   <g id="tTeam">${bs(230,262,.86,{stance:'sit',arms:'pointR',mood:'o',face:'right'})}${scholar(330,262,.82,'#B9A475',{stance:'sit',arms:'holdFront',prop:H=>`<g transform="translate(${(H.L[0]+H.R[0])/2} ${H.L[1]+30})">${openBook}</g>`,mood:'smile',face:'left'})}</g>`,'#EADCC0'),
   taps:[{label:'함께',el:'tTeam',say:'김부식 혼자가 아니라 열 명 남짓한 학자가 함께 썼어요.'},{label:'쓱쓱',el:'tTeam',say:'읽고, 맞는지 따져 보고, 쓱쓱 옮겨 적어요.'}],tapHint:'학자들을 눌러 볼까요?',
-  text:`김부식은 혼자 쓰지 않았어요. 여러 학자와 함께 읽고, 맞는지 따져 보고, 다시 옮겨 적었어요.`},
+  text:`그런데 책마다 적힌 이야기가 조금씩 달랐어요. "어느 것이 맞을까?" 김부식은 여러 학자와 함께 읽고, 비교하고, 맞는 것을 골라 다시 옮겨 적었어요.`},
  {chips:['1145년'], svg:SV(`${room()}
   ${stack(120,262,10)}${stack(180,262,10)}${stack(240,262,10)}${stack(300,262,10,['#5E7FA8','#C9473B'])}
   ${bs(200,282,.6,{mood:'joy',arms:'cheer'})}
@@ -31,12 +31,12 @@ const P=[
   <g transform="translate(200 230) scale(1.6)">${openBook}</g>
   ${[[70,'을지문덕'],[330,'김유신']].map(([x,t],k)=>`<rect x="${x-46}" y="80" width="92" height="40" rx="8" fill="#FFFDF6" ${sw()}/>${T(x,106,t,15,K.ink)}`).join('')}
   ${kid(80,282,.7,{mood:'o',arms:'pointR',face:'right'})}${oldKid(320,282,.7,{mood:'joy',arms:'pointL',face:'left'})}`,'#EFE3C8'),
-  text:`을지문덕, 김유신, 온조 이야기도 이 책에 적혔어요. 여기저기 흩어져 있던 이야기들이 쉰 권 안에 나란히 모였어요.`},
+  text:`을지문덕, 김유신, 온조 이야기도 이 책에 적혔어요. 여기저기 흩어져 있던 이야기들이 한자리에 나란히 모였어요.`},
  {svg:SV(`<rect x="-6" y="-6" width="412" height="292" fill="#F2EEE4"/><path d="M-6 230 H406 V290 H-6Z" fill="#C9B48A"/>
   <rect x="120" y="80" width="160" height="130" fill="#E6F2F6" ${sw()}/>${stack(200,200,6)}
   ${kid(80,282,.8,{mood:'o',arms:'pointR',face:'right'})}${hero(320,282,.8,{body:'dress',hair:'bun',top:'#F2C14E',skirt:'#5B7FB8',mood:'smile',face:'left'})}
   ${T(200,40,'지금 남은 가장 오래된 역사책',16,K.red)}`,'#F2EEE4'),
-  text:`책을 다 쓴 김부식은 임금님께 쉰 권을 올렸어요. "이제 우리 이야기가 흩어지지 않을 것입니다."`},
+  text:`책을 다 쓴 김부식은 임금님께 책을 올렸어요. "이제 우리 이야기가 흩어지지 않을 것입니다."`},
  {kind:'end', svg:endBase('bs',`${stack(200,220,9)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),bs(338,276,.55,{arms:'waveR',mood:'joy'})),
   text:`궁궐 서고에 책들이 나란히 꽂혔어요. 김부식은 맨 첫 권을 한 번 더 쓰다듬고 집으로 돌아갔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

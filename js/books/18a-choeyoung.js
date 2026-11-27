@@ -32,9 +32,9 @@ const P=[
   ${cy(200,272,.9,{mood:'smile',arms:'handsDown',robe:'#8E5A4A',beard:'#E6E1D6'})}
   <rect x="290" y="210" width="70" height="50" fill="#D9C49A" ${sw()}/><path d="M290 226 h70" stroke="#8A6A44" stroke-width="2"/>
   ${hero(80,272,.7,{robe:'#5A5560',hat:'gat',mood:'o',face:'right',arms:'holdFront',prop:H=>gold((H.L[0]+H.R[0])/2,H.L[1]+4,.6)})}`,'#EADCC0'),
-  text:`높은 장군이 되어서도 최영은 낡은 집에서 소박하게 살았어요. 누군가 선물을 들고 와도 받지 않았대요. 허리에는 여전히 아버지의 말을 적은 띠가 있었어요.`},
+  text:`높은 장군이 되자 금덩이를 들고 찾아오는 사람이 생겼어요. "장군님, 작은 선물입니다." 최영은 허리띠를 만지며 고개를 저었어요. 그리고 낡은 집에서 소박하게 살았어요.`},
  {kind:'end', svg:endBase('cy',`${gold(170,200,1.6)}${stone(240,204,1.6)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),cy(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`누가 금덩이를 내밀면 최영은 허리띠를 가만히 만졌어요. 그리고 고개를 저었어요.<br><span class="big">끝</span>`},
+  text:`저녁이 되면 최영은 낡은 집 마루에 앉아 허리띠를 풀어 놓고, 아버지의 글씨를 한참 바라보았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'choeyoung',era:'goryeo',title:'최영 장군과 아버지의 말씀',who:'최영',teaser:'"황금 보기를 돌같이 하라." 이 말을 평생 지킨 장군이 있어요.',pages:P,now:"경기도 고양에는 최영 장군의 무덤이 있어요.",

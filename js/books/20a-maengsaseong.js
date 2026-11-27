@@ -31,7 +31,7 @@ const P=[
  {chips:LEG, svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
   ${ox(220,262,.9,'#3A322B')}${msOld(214,196,.5,{stance:'sit',arms:{L:[-10,-80],R:[18,-84]},prop:flute,mood:'smile',face:'right',still:true})}
   ${notes(300,120)}${notes(330,96)}${notes(270,90)}`,'url(#ms1)',sky('ms1','#CFE7F2','#F6EAD0')),
-  text:`높은 정승이 되어서도 맹사성은 가마 대신 검은 소를 타고 다녔대요. 소 등에 앉아 피리를 불면, 사람들은 정승인 줄 모르고 지나쳤어요.`},
+  text:`높은 정승이 되어서도 맹사성은 문틀에서 배운 것을 잊지 않았어요. 가마 대신 검은 소를 타고 다녔지요. 소 등에 앉아 피리를 불면, 사람들은 정승인 줄 모르고 지나쳤대요.`},
  {chips:LEG, svg:SV(`<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#BCD38F"/>${rainFX(30,'#7F9AB8')}
   ${g(260,236,1.6,`<path d="M-60 -50 Q0 -90 60 -50 L50 -40 Q0 -76 -50 -40Z" fill="#C9A878" ${sw()}/><rect x="-44" y="-44" width="88" height="44" fill="#E6D3A6" ${sw()}/>`)}
   ${msOld(120,272,.86,{mood:'smile',arms:'handsDown',face:'right'})}${official(330,272,.62,{mood:'o',face:'left'})}`,'url(#ms2)',sky('ms2','#9FB3C8','#D7E0E6')),

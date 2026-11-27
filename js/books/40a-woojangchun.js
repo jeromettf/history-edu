@@ -18,7 +18,7 @@ const P=[
  {chips:['1950년'], svg:SV(`<path d="M-6 150 Q200 140 406 150 L406 200 L-6 200Z" fill="#4F92BA"/><path d="M-6 196 H406 V290 H-6Z" fill="#C9B48A"/>
   ${bigShip(310,180,.6,'#5A5560')}
   ${wj(140,276,.86,{mood:'joy',arms:'waveR',face:'right'})}${[0,1].map(k=>farmer2(240+k*50,276,.58,['#D6CDB4','#E9CFC0'][k],{mood:'joy',arms:'cheer',face:'left'})).join('')}`,'url(#wj1)',sky('wj1','#CFE7F2','#F6EAD0')),
-  text:`나라를 되찾자, 그동안 일본에서 사 오던 채소 씨앗이 더는 들어오지 않았어요. 농부들은 무엇을 심어야 할지 막막했어요. 사람들이 부탁하자 우장춘은 아버지의 나라로 건너왔어요.`},
+  text:`나라를 되찾자, 일본에서 사 오던 채소 씨앗이 더는 들어오지 않았어요. "올봄엔 무엇을 심나?" 농부들은 빈 밭 앞에서 한숨을 쉬었어요. 사람들의 부탁을 받고 우장춘은 아버지의 나라로 건너왔어요.`},
  {svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
   ${[...Array(6)].map((_,k)=>cabbage(40+k*64,262-(k%2)*8,.9)).join('')}
   <g id="tSeed">${wj(200,266,.82,{mood:'o',stance:'kneel',arms:'reach',prop:seedPack})}</g>`,'url(#wj2)',sky('wj2','#CFE7F2','#F6EAD0')),

@@ -115,13 +115,6 @@ redraw('jeongyakyong',4,()=>SVn(`${room()}
   <g transform="translate(330 232)">${openBook}</g>
   ${T(240,80,'도르래를 여러 개 달면…',18,K.red)}`,'#EADCC0'));
 
-/* 정약용 7: 강진 바닷가 초가에서 책을 쓰는 정약용 */
-redraw('jeongyakyong',7,()=>SVn(`<path d="M-6 150 Q200 140 406 150 L406 200 L-6 200Z" fill="#6FA8C8"/>${ridge(150,'#7FA88E',30,3)}<path d="M-6 196 H406 V290 H-6Z" fill="#C9B48A"/>
-  ${g(200,250,2.0,`<path d="M-90 -60 Q0 -100 90 -60 L80 -50 Q0 -86 -80 -50Z" fill="#C9A878" ${sw()}/><rect x="-72" y="-54" width="144" height="54" fill="#6A5240" ${sw()}/>`)}
-  ${jyOld(160,262,1.0,{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'smile',face:'right'})}
-  ${desk(240,240,90)}${paperOn(240,240,60)}${stack(310,262,6)}${stack(350,262,4)}`,'url(#r6e)',sky('r6e','#CFE7F2','#F6EAD0')));
-
-/* 김정희 2: 벼루 앞에 앉아 날마다 연습하는 김정희 */
 redraw('kimjeonghui',2,()=>SVn(`${room()}
   ${jh(140,256,1.0,{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'o',face:'right'})}
   ${desk(240,236,140)}<rect x="190" y="210" width="80" height="26" fill="#FFFDF6" ${sw(1.2)}/><path d="M204 216 v14 M222 214 v18 M240 216 v14 M256 218 h8" stroke="#2B1E16" stroke-width="3"/>

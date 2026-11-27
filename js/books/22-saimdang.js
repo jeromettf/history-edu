@@ -40,7 +40,7 @@ const P=[
   ${hero(110,268,.86,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#7FB3C8',mood:'sad',tear:true})}
   ${saim(270,268,.9,{pose:'hold',mood:'smile',item:brush})}
   <ellipse cx="110" cy="236" rx="10" ry="6" fill="#8A6A44" opacity=".7"/>`,'#EADCC0'),
-  text:`잔칫집에서 한 부인이 울고 있었어요. 빌려 입은 치마에 국물이 쏟아져 얼룩이 졌거든요. "이를 어쩌나, 돌려줄 수가 없어요."`},
+  text:`어른이 된 신사임당이 잔칫집에 갔을 때예요. 한 부인이 울고 있었어요. 빌려 입은 치마에 국물이 쏟아져 얼룩이 졌거든요. "이를 어쩌나, 돌려줄 수가 없어요."`},
  {chips:LEG, svg:SV(`${room()}
   ${hero(150,268,.92,{body:'dress',hair:'bun',top:'#FFFDF6',skirt:'#7FB3C8',mood:'joy',pose:'up'})}
   ${[[130,236],[142,236],[136,248],[148,248],[142,258]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="5" fill="#7A4E9A" ${sw(1)}/>`).join('')}
