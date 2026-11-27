@@ -36,7 +36,7 @@ const P=[
   ${candle(200,200,1.2)}<circle cx="200" cy="160" r="120" fill="url(#candleG)" opacity=".4"/>`,'#E6CFAA',candleDef),
   text:`하지만 김시민은 싸우다 크게 다쳐 끝내 세상을 떠났어요. 진주 사람들은 성을 지켜 준 김시민을 오래오래 기억했어요.`},
  {kind:'end', svg:endBase('sm',`${pavilion(200,200,1.0)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),sm(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`미리 준비하고 함께 버틴 엿새,<br>남강 위의 진주성.<br><span class="big">끝</span>`},
+  text:`봄이 오자 진주성 아래 남강이 다시 반짝이며 흘렀어요. 사람들은 김시민이 서 있던 성벽에 올라 강을 바라보았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimsimin',era:'joseon',title:'김시민과 진주성',who:'김시민',teaser:'군사도 엄마도 아이도 모두 함께 지킨 성이 있어요.',pages:P,now:"진주성에 가면 남강 위로 촉석루가 보여요. 성 안에는 김시민 장군의 동상도 서 있어요.",

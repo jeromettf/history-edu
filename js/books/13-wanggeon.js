@@ -36,7 +36,7 @@ const P=[
   ${hero(80,272,.62,{robe:'#5E9C8A',mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#C9A15A',mood:'joy',pose:'up'})}${hero(332,272,.62,{robe:'#7A6AA8',mood:'joy',pose:'up'})}`,'url(#wg6)',sky('wg6','#CFE7F2','#F6EAD0')),
   text:`마침내 후백제까지 하나로 모아, 다시 하나의 나라가 되었어요. 왕건은 서로 다투던 사람들 모두를 고려 사람으로 품었어요.`},
  {kind:'end', svg:endBase('wg',`${flag(170,210,'#B8862F','고려',120)}`,wgKid(64,276,.5,{pose:'up',mood:'joy'}),wgK(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`나주 사람들을 돌보던 장군,<br>다투던 사람들을 한 나라로 품었어요.<br><span class="big">끝</span>`},
+  text:`왕건은 송악 바닷가에 나가 오가는 배를 바라보았어요. 어릴 때 아버지와 타던 배와 꼭 닮은 배였어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'wanggeon',era:'goryeo',title:'왕건과 고려의 시작',who:'왕건',teaser:'세계 사람들이 우리나라를 "코리아"라고 부르게 된 이야기가 여기서 시작돼요.',pages:P,now:"세계 사람들은 우리나라를 '코리아'라고 불러요. 이 이름이 고려에서 왔어요. 고려를 오가던 아라비아 상인들이 널리 알렸대요.",

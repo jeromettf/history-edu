@@ -33,7 +33,7 @@ const P=[
   ${wj(250,272,.86,{mood:'joy',arms:'pointL',face:'left'})}${farmer2(340,276,.6,'#D6CDB4',{mood:'joy',face:'left',arms:'cheer'})}`,'url(#wj3)',sky('wj3','#CFE7F2','#F6EAD0')),
   text:`제주도에 귤나무를 기르는 일, 꽃씨를 만드는 일도 도왔어요. 배추와 무는 우장춘의 씨앗으로 더 튼튼하게 자랐어요.`},
  {kind:'end', svg:endBase('wj',`${cabbage(170,220,1.4)}${radish(240,212,1.2)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),wj(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`쉰 살이 넘어 바다를 건너온 과학자,<br>밭에 쪼그려 앉아 만든 씨앗.<br><span class="big">끝</span>`},
+  text:`가을이 되자 밭마다 배추가 통통하게 자랐어요. 우장춘은 쪼그려 앉아 배추 한 포기를 툭툭 두드려 보았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'woojangchun',era:'hyeondae',title:'우장춘과 좋은 씨앗',who:'우장춘',teaser:'우리 땅에 맞는 배추와 무 씨앗을 만든 과학자가 있어요.',pages:P,now:"오늘 저녁 김치를 먹을 때, 배추와 무가 어디서 왔을지 생각해 봐요. 부산에는 우장춘기념관이 있어요.",

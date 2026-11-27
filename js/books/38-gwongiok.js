@@ -38,7 +38,7 @@ const P=[
   ${taeguk2(90,210,1.2)}${T(260,220,'나라를 되찾을 거야',18,K.red)}`,'url(#gk6)',sky('gk6','#9FD0EC','#E6F4F8')),
   text:`기옥이는 하늘을 날며 꿈을 하나 더 키웠어요. "비행기로 나라를 되찾는 일을 돕고 싶어!" 그래서 중국에서 비행사로 일하며 독립운동을 도왔어요.`},
  {kind:'end', svg:endBase('gk',`${plane(200,140,2.2)}`,gkKid(64,276,.5,{pose:'up',mood:'joy'}),pilot(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`비행기를 올려다보던 열여섯 살 소녀,<br>구름 위를 날았어요.<br><span class="big">끝</span>`},
+  text:`구름 위를 날 때면 기옥이는 평양 하늘의 곡예 비행기를 떠올렸어요. 이제는 기옥이가 하늘을 빙글빙글 돌았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'gwongiok',era:'modern',title:'권기옥과 하늘을 나는 꿈',who:'권기옥',teaser:'"여자는 안 된다"는 말에도 포기하지 않고 하늘을 난 사람이 있어요.',pages:P,now:"지금은 여자도 남자도 누구나 비행기를 조종할 수 있어요.",

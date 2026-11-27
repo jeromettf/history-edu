@@ -40,7 +40,7 @@ const P=[
   ${cwA(130,262,.8,{stance:'walk',arms:'walk',mood:'smile',face:'right',beard:'#8A8580'})}`,'url(#cw3)',sky('cw3','#F2D6A8','#FBEBD0')),
   text:`하지만 높은 사람들이 서로 다투느라 최치원의 말을 들어 주지 않았어요. 최치원은 산과 바다를 다니며 글을 짓다가, 가야산 해인사 근처에서 지냈다고 해요.`},
  {kind:'end', svg:endBase('cw',`${g(200,200,2.2,`<path d="M-10 -40 L10 40" stroke="${K.wood}" stroke-width="6" stroke-linecap="round"/><path d="M10 40 q4 12 -4 18 q-4 -8 4 -18Z" fill="#2B1E16"/>`)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),cwA(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`열두 살에 바다를 건넌 아이,<br>평생 붓 한 자루로 이야기했어요.<br><span class="big">끝</span>`},
+  text:`가야산 골짜기에 물소리가 졸졸 흘렀어요. 최치원은 바위에 앉아 그날 본 물과 구름을 글로 적었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'choechiwon',era:'samguk',title:'최치원과 붓 한 자루',who:'최치원',teaser:'열두 살에 혼자 바다를 건너 공부하러 간 아이가 있어요.',pages:P,now:"최치원이 쓴 글은 『계원필경』이라는 책으로 묶여 지금도 읽을 수 있어요. 여러 절에는 그가 쓴 비석도 남아 있어요.",

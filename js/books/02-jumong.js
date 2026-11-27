@@ -76,7 +76,7 @@ const P=[
   ${hero(80,272,.62,{robe:'#E7C76A',pattern:'dots',dotColor:'#7A3B2C',mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#C9473B',pattern:'dots',mood:'joy'})}${hero(332,272,.62,{body:'dress',hair:'braid',top:'#E7C76A',mood:'joy',pose:'up'})}`,'url(#j8)',sky('j8','#CFE7F2','#F6EAD0')),
   text:`주몽은 졸본이라는 곳에 새 나라를 세웠어요. 그 나라가 고구려예요. 고구려 사람들은 주몽처럼 말 타기와 활쏘기를 아주 잘했대요.`},
  {kind:'end', svg:endBase('j',`${target(200,124,70)}${arrowIn(200,124)}`,egg(64,276,.5),jumong(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`백 번 쏘아 백 번 맞힌 아이가 세운 나라,<br>고구려.<br><span class="big">끝</span>`},
+  text:`주몽은 졸본의 언덕에 올라 부여 쪽 하늘을 한참 바라보았어요. "어머니, 저 잘 해냈어요."<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'jumong',era:'samguk',title:'주몽과 고구려',who:'주몽',teaser:'알에서 태어난 아이가 활을 쏘면 백 번 쏘아 백 번 다 맞혔대요.',pages:P,now:"고구려 사람들은 무덤 벽에 말을 타고 활을 쏘는 모습을 그려 남겼어요. 우리나라 양궁 선수들도 세계에서 손꼽히게 활을 잘 쏴요.",

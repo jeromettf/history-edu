@@ -31,7 +31,7 @@ const P=[
   ${[0,1,2].map(k=>kid2(70+k*50+(k>1?140:0),276,.56,['#E7D7B4','#C9D8E8','#E9CFC0'][k],{stance:'sit',arms:'lap',mood:'joy',face:k>1?'left':'right'})).join('')}`,'#D9CCAE'),
   text:`어려운 한자 대신 쉬운 우리말을 섞어 시를 짓기도 했어요. 그래서 글을 잘 모르는 마을 사람과 아이들도 김삿갓의 시를 듣고 함께 웃었대요.`},
  {kind:'end', svg:endBase('ks',`${g(200,240,1.4,satgat)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),ks(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`하늘을 가린 큰 삿갓,<br>그 아래에서 사람들을 웃게 한 시.<br><span class="big">끝</span>`},
+  text:`해가 지면 김삿갓은 삿갓을 눌러쓰고 다음 마을로 걸어갔어요. 등 뒤에서 아이들이 그 시를 흥얼거렸어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimsatgat',era:'joseon',title:'김삿갓과 떠돌이 시',who:'김삿갓',teaser:'커다란 삿갓을 쓰고 조선 팔도를 떠돌며 시를 지은 사람이 있어요.',pages:P,now:"강원도 영월에는 김삿갓 문학관과 무덤이 있어요. 그 동네 이름은 '김삿갓면'이에요. 달리는 \"말\"과 입으로 하는 \"말\"처럼, 소리가 같은 말로 말놀이도 해 보세요.",

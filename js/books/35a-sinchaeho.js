@@ -33,7 +33,7 @@ const P=[
   ${T(200,40,'역사는 우리를 비추는 거울',18,K.red)}`,'#EFE3C8'),
   text:`신채호는 생각했어요. "우리 조상들이 얼마나 넓은 땅을 누볐는지 알면, 사람들이 다시 힘을 낼 거야." 그래서 고개를 꼿꼿이 든 채 마지막까지 역사를 썼어요.`},
  {kind:'end', svg:endBase('ch',`${g(200,200,1.6,`<rect x="-30" y="-40" width="60" height="70" rx="6" fill="#E6F2F6" ${sw()}/><circle cx="0" cy="-6" r="20" fill="#FFFFFF" ${sw(1.4)}/>`)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),ch(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`세수할 때도 고개 숙이지 않던 사람,<br>붓으로 우리 역사를 지켰어요.<br><span class="big">끝</span>`},
+  text:`차가운 새벽, 신채호는 고개를 꼿꼿이 든 채 세수를 했어요. 옷이 또 다 젖었어요. 그리고 책상 앞에 앉았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'sinchaeho',era:'modern',title:'신채호와 우리 역사',who:'신채호',teaser:'세수할 때도 고개를 숙이지 않았다는, 우리 역사를 다시 쓴 사람이 있어요.',pages:P,now:"충북 청주에는 신채호를 기리는 사당이 있어요. 단군, 광개토대왕, 대조영 이야기도 신채호가 힘주어 적은 역사예요.",

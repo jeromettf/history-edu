@@ -37,7 +37,7 @@ const P=[
   ${T(250,60,'부석사',22,K.red)}`,'url(#us5)',sky('us5','#CFE7F2','#F6EAD0')),
   text:`그곳에 세운 절이 영주 부석사예요. '부석'은 '뜬 돌'이라는 뜻이에요. 의상은 그곳에서 많은 제자를 가르쳤어요.`},
  {kind:'end', svg:endBase('us',`${floatRock(200,190,1.0)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),us(338,276,.55,{arms:'pray',mood:'joy'})),
-  text:`바다를 지킨 용, 하늘에 뜬 바위,<br>그리고 부석사.<br><span class="big">끝</span>`},
+  text:`의상은 절 마당에서 바위를 올려다보았어요. "선묘, 고마워요." 바위 아래로 바람이 솔솔 지나갔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'uisang',era:'samguk',title:'의상과 뜬 바위 절',who:'의상',teaser:'원효와 함께 길을 떠났다가 혼자 바다를 건넌 친구가 있어요.',pages:P,now:"영주 부석사에는 지금도 '뜬 돌'이라 불리는 바위가 있어요. 바위 아래로 실을 넣으면 쏙 빠져나간다는 이야기가 있지만, 정말인지는 직접 살펴봐야 해요.",

@@ -58,7 +58,7 @@ const P=[
   ${T(200,70,'♪ 둥실둥실 ♪',20,K.red)}`,'url(#w8)',sky('w8','#CFE7F2','#F6EAD0')),
   text:`원효는 마을마다 다니며 노래하고 춤추었어요. 어려운 말 대신 쉬운 말로 이야기해 주니, 글을 모르는 사람들도 모두 귀 기울였대요.`},
  {kind:'end', svg:endBase('w',`${heart(200,124)}${g(200,214,1.4,gourd)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),monk(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`해골 물 한 바가지,<br>원효는 마음에서 길을 찾았어요.<br><span class="big">끝</span>`},
+  text:`노래가 끝나자 아이들이 졸랐어요. "스님, 한 번 더요!" 원효는 바가지를 통통 두드리며 다시 노래했어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'wonhyo',era:'samguk',title:'원효와 신기한 물 한 모금',who:'원효',teaser:'캄캄한 밤에 마신 달콤한 물이 알고 보니…? 원효 스님의 깜짝 이야기예요.',pages:P,now:"처음 먹어 보는 반찬을 \"어떤 맛일까?\" 하고 먹어 보세요. 원효가 마신 물처럼, 마음에 따라 맛이 다르게 느껴질지도 몰라요.",

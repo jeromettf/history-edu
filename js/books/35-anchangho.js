@@ -49,7 +49,7 @@ const P=[
   <rect x="200" y="50" width="180" height="56" rx="6" fill="#FFFDF6" ${sw()}/>${T(290,86,'거짓말하지 말자',18,K.red)}`,'#EADCC0'),
   text:`우리나라로 돌아온 안창호는 학교를 세웠어요. 그리고 학생들에게 늘 말했어요. "거짓말하지 말자. 작은 일도 정성껏 하자."`},
  {kind:'end', svg:endBase('ch',`${orangeTree(200,236,1.6)}`,chKid(64,276,.5,{pose:'up',mood:'joy'}),ch(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`약속을 꼭 지키던 아이,<br>귤 하나도 정성껏 따자던 어른.<br><span class="big">끝</span>`},
+  text:`수업이 끝나면 학생들은 빗자루를 들고 운동장을 쓸었어요. 안창호도 그 틈에서 함께 비질을 했어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'anchangho',era:'modern',title:'안창호와 정성 가득 귤',who:'안창호',teaser:'"귤 하나를 따도 정성껏!" 작은 일부터 바르게 하자고 한 사람이 있어요.',pages:P,now:"서울 강남에는 안창호를 기리는 도산공원이 있어요. '도산대로'라는 길 이름도 안창호의 호에서 왔어요.",

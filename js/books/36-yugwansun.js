@@ -56,7 +56,7 @@ const P=[
   ${star(60,60,10)}${star(340,60,10,'#F28C7C')}`,'url(#u8)',sky('u8','#FCE9C2','#E8F1E2')+glow('ug8','#FFF6D8',.95)),
   text:`관순이는 끝내 감옥에서 나오지 못했어요. 그 뒤로도 많은 사람이 용기를 냈어요. 그리고 마침내 나라를 되찾은 날, 사람들은 다시 태극기를 들고 거리로 나왔어요.`},
  {kind:'end', svg:endBase('u',`${taeguk(200,120,1.6)}`,gwansun(64,276,.5,{pose:'up',mood:'joy'}),kid(338,276,.5,{pose:'up',mood:'joy'})),
-  text:`밤마다 한 땀 한 땀,<br>관순이가 만든 태극기.<br><span class="big">끝</span>`},
+  text:`사람들이 흔드는 태극기 가운데에는 한 땀 한 땀 손으로 꿰맨 태극기도 있었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'yugwansun',era:'modern',title:'유관순과 용기의 태극기',who:'유관순',teaser:'나라를 되찾으려고 밤새 태극기를 만든 소녀가 있어요.',pages:P,now:"해마다 3월 1일 삼일절에는 집집마다 태극기를 달아요. 천안 아우내 장터 가까이에 유관순 열사 기념관이 있어요.",

@@ -34,7 +34,7 @@ const P=[
   ${T(200,40,'행주대첩!',24,K.red)}`,'url(#gy4)',sky('gy4','#CFE7F2','#F6EAD0')),
   text:`해가 질 무렵, 일본군은 많은 군사를 잃고 물러갔어요. 크게 이긴 이 싸움을 행주 대첩이라고 해요. 군사도 스님도 여인들도 산성 위에서 서로 얼싸안았어요.`},
  {kind:'end', svg:endBase('gy',`${g(200,220,.6,fence(0))}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),gy(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`치마폭에 담아 나른 돌,<br>모두 함께 지킨 행주산성.<br><span class="big">끝</span>`},
+  text:`다음 날 아침, 여인들은 치마를 털어 돌가루를 툭툭 떨어냈어요. 권율은 산성 아래 서울 쪽을 바라보았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'gwonyul',era:'joseon',title:'권율과 행주산성',who:'권율',teaser:'군사와 스님과 엄마들이 함께 지킨 산성이 있어요.',pages:P,now:"고양시에 가면 행주산성이 있어요. 꼭대기에 대첩비가 서 있고 한강이 내려다보여요. 행주 대첩은 한산도 대첩, 진주 대첩과 함께 임진왜란의 3대 대첩으로 꼽혀요.",

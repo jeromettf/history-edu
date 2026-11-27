@@ -41,7 +41,7 @@ const P=[
   ${hero(90,272,.62,{robe:'#EFE6D2',mood:'joy'})}`,'url(#ur6)',sky('ur6','#CFE7F2','#F6EAD0')),
   text:`우륵은 강가 바위 위에 앉아 가야금을 타곤 했어요. 띵~ 둥~ 그 소리가 강물을 따라 멀리멀리 퍼졌대요. 사람들은 그 바위를 탄금대라고 불렀어요.`,chips:['전해 오는 이야기']},
  {kind:'end', svg:endBase('ur',`${gayageum(200,180,1.6)}${notes(130,90)}${notes(270,80)}`,urKid(64,276,.5,{pose:'up',mood:'joy'}),ur(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`띵~ 둥~<br>가야는 사라져도 노래는 남았어요.<br><span class="big">끝</span>`},
+  text:`해가 지고 우륵이 가야금을 내려놓았어요. 띵~ 둥~ 이번에는 강물이 대신 노래하는 것 같았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'ureuk',era:'samguk',title:'우륵과 가야금 노래',who:'우륵',teaser:'사라질 뻔한 가야의 노래를 열두 줄 악기에 담아 지킨 사람이 있어요.',pages:P,now:"천오백 년쯤 지난 지금도 우리는 가야금을 연주해요. 가야금이라는 이름에는 '가야의 악기'라는 뜻이 남아 있어요. 충주에 가면 탄금대를 볼 수 있어요.",

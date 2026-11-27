@@ -41,7 +41,7 @@ const P=[
   ${T(200,40,'모두 함께 해냈어!',22,K.red)}`,'url(#ym6)',sky('ym6','#CFE7F2','#F6EAD0')),
   text:`당나라 군대가 떠나던 날, 성벽 위에는 군사와 농부, 엄마와 아이가 나란히 서 있었어요. 석 달 동안 함께 돌을 나르던 사람들이었어요.`},
  {kind:'end', svg:endBase('ym',`${g(200,230,.6,wall(0,90))}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),ym(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`석 달 동안 함께 돌을 나른 사람들,<br>끝내 지켜 낸 안시성.<br><span class="big">끝</span>`},
+  text:`성주는 맨 앞에 선 아이의 흙 묻은 손을 꼭 잡았어요. "고맙다. 네가 나른 돌이 성을 지켰구나."<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'yangmanchun',era:'samguk',title:'양만춘과 안시성',who:'양만춘',teaser:'커다란 군대 앞에서도 모두 힘을 모아 성을 지킨 사람들이 있어요.',pages:P,now:"안시성은 지금의 중국 땅 어딘가에 있었어요. 정확히 어디였는지는 아직도 학자들이 찾고 있어요.",

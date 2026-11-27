@@ -50,7 +50,7 @@ const P=[
   ${T(300,90,'한 장, 두 장, 세 장',16,K.red)}`,'#EADCC0'),
   text:`김정호는 나무판에 지도를 새겨서 여러 장 찍어 냈어요. 그래서 더 많은 사람이 지도를 가질 수 있었어요. 길을 잃는 사람도 줄었지요.`},
  {kind:'end', svg:endBase('jh',`${mapArt(100,60,200,140,{big:true})}`,jhKid(64,276,.5,{pose:'up',mood:'joy'}),jh(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`길 잃는 사람이 없기를 바란 사람,<br>스물두 권으로 접히는 지도.<br><span class="big">끝</span>`},
+  text:`갈림길에서 한 나그네가 지도를 펼쳤어요. "아, 이쪽이구나!" 나그네는 고개를 끄덕이며 산길로 들어섰어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimjeongho',era:'joseon',title:'김정호와 대동여지도',who:'김정호',teaser:'우리 땅을 한눈에 보는, 2층 집만 한 지도가 있어요.',pages:P,now:"대동여지도는 국립중앙박물관에서 볼 수 있어요. 지금 우리는 휴대폰 지도로 길을 찾지요.",

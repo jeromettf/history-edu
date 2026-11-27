@@ -45,7 +45,7 @@ const P=[
   ${hero(290,272,.66,{robe:'#D6CDB4',skin:'#EDBF95',hat:'band',bandColor:'#FFFDF6',arms:'sowR',mood:'joy',face:'left'})}`,'url(#hk5)',sky('hk5','#CFE7F2','#F6EAD0')),
   text:`임금님과 알영은 마을을 돌며 농사짓는 사람들을 살폈어요. 다투던 여섯 마을은 이제 한 나라가 되어 서로 도우며 살았어요.`},
  {kind:'end', svg:endBase('hk',`${redEgg(200,200,1.2)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),hkK(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`우물가 붉은 알에서 시작된 나라,<br>신라.<br><span class="big">끝</span>`},
+  text:`저녁이 되면 여섯 마을 아이들이 나정 우물가에 모여 함께 물을 길었어요. 우물물이 찰랑찰랑 맑았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'hyeokgeose',era:'samguk',title:'박혁거세와 신라의 시작',who:'박혁거세',teaser:'붉은 알에서 태어나 신라의 첫 임금이 된 혁거세를 만나요.',pages:P,now:"경주에는 혁거세가 태어났다고 전하는 우물 터 '나정'이 있어요. 신라는 그 뒤로 천 년 가까이 이어졌어요.",

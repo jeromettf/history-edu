@@ -89,7 +89,7 @@ const YEONGSIL_PAGES=[
   ${star(66,56,14)}${star(334,52,12,'#F28C7C')}${star(110,236,9,K.jade)}${star(290,236,10)}
   ${ysKid(62,276,.52,{pose:'up',mood:'joy'})}
   ${ysOfficial(338,276,.55,{pose:'up',mood:'joy'})}`,'url(#y10)',sky('y10','#FBEFD2','#F6DFAE')+glow('gy10','#FFF8DE',.95)),
-  text:`요술 손을 가진 아이,<br>온 나라의 시간을 만들었어요.<br><span class="big">끝</span>`},
+  text:`댕, 댕! 한밤중에 자격루가 시간을 알렸어요. 영실이는 그 소리를 들으며 빙그레 웃었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 

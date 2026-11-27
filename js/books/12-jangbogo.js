@@ -53,7 +53,7 @@ const P=[
   taps:[{label:'도자기',el:'tVase',say:'반질반질 예쁜 그릇이에요.'},{label:'비단',el:'tSilk',say:'부드럽고 반짝이는 옷감이에요.'},{label:'책',el:'tBooks',say:'먼 나라의 이야기가 담긴 책이에요.'}],tapHint:'배에 실은 물건을 눌러 보세요.',
   text:`장보고의 배들은 신라와 당나라와 일본을 오가며 물건을 실어 날랐어요. 사람들은 장보고를 '바다의 왕'이라고 불렀대요.`},
  {kind:'end', svg:endBase('b',`${g(200,196,1.1,tradeShip(0,0,1))}`,bogoKid(64,276,.5,{pose:'up',mood:'joy'}),bogo(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`헤엄치던 섬 아이,<br>바다의 왕이 되었어요.<br><span class="big">끝</span>`},
+  text:`일을 마친 장보고는 뱃전에서 풍덩 뛰어내려 헤엄을 쳤어요. 어릴 때 섬마을 바다처럼 물이 시원했어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'jangbogo',era:'samguk',title:'장보고와 바다의 길',who:'장보고',teaser:'헤엄치기를 좋아한 섬마을 아이가 바다의 왕이 되었어요.',pages:P,now:"완도에 가면 장보고 기념관과, 청해진이 있던 작은 섬 장도를 볼 수 있어요.",

@@ -57,7 +57,7 @@ const P=[
   ${sb(310,272,.88,{pose:'up',mood:'joy'})}`,'#E8D3B0'),
   text:`석봉이는 조선에서 글씨를 가장 잘 쓰는 사람이 되었어요. 임금님도 감탄했대요. 석봉이 쓴 천자문은 아이들이 글자를 배우는 책이 되었어요.`},
  {kind:'end', svg:endBase('sb',`${tteok(200,150,true)}${page(200,236,true)}`,sbKid(64,276,.5,{pose:'up',mood:'joy'}),mom(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`불을 끄고 썬 떡처럼,<br>반듯해진 석봉이의 글씨.<br><span class="big">끝</span>`},
+  text:`석봉은 쓴 글씨를 들고 어머니를 찾아갔어요. 어머니는 아무 말 없이 떡을 한 조각 썰어 주었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'seokbong',era:'joseon',title:'한석봉과 어머니의 떡',who:'한석봉',teaser:'불을 끄고 떡 써는 어머니와 글씨 쓰는 석봉이가 시합을 했어요.',pages:P,now:"한석봉이 쓴 천자문은 오랫동안 아이들이 글자를 배우는 책으로 쓰였어요. 박물관에서 그의 글씨를 볼 수 있어요.",

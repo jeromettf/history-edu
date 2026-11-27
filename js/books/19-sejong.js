@@ -82,7 +82,7 @@ const SEJONG_PAGES=[
 
  /* 9. 지금: 잠자리에서 이 그림책을 읽어 주는 장면 */
  {kind:'end', svg:endBase('sj',`${T(200,150,'한글',100,K.red,`stroke="#FFF8EC" stroke-width="7" paint-order="stroke"`)}`,prince(64,276,.52,{pose:'up',mood:'joy'}),king(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`책 한 권을 백 번 읽던 왕자님이<br>모두에게 준 글자, 한글.<br><span class="big">끝</span>`},
+  text:`농부 아저씨는 또박또박 쓴 종이를 들고 몇 번이고 읽어 보았어요. 그날 밤에도 임금님 방의 촛불은 늦게까지 켜져 있었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 

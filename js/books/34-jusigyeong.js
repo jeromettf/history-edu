@@ -44,7 +44,7 @@ const P=[
   ${sg(110,272,.8,{pose:'up',mood:'joy'})}${sgKid(260,272,.66,{mood:'joy',pose:'up'})}${oldKid(330,272,.6,{mood:'joy'})}`,'#EFE3C8'),
   text:`그리고 세종대왕이 만든 우리 글자에 새 이름을 붙였어요. '한글'이에요. '크고 하나뿐인 훌륭한 글'이라는 뜻을 담았어요.`},
  {kind:'end', svg:endBase('sg',`${T(200,170,'한글',90,K.red,`stroke="#FFF8EC" stroke-width="7" paint-order="stroke"`)}${g(200,240,1.3,bojagi)}`,sgKid(64,276,.5,{pose:'up',mood:'joy'}),sg(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`보따리를 들고 뛰어다닌 선생님,<br>우리 글에 '한글'이라는 이름을 붙였어요.<br><span class="big">끝</span>`},
+  text:`주시경 선생님은 칠판에 커다랗게 글자를 썼어요. 학생들이 소리 내어 따라 읽었어요. "한, 글!"<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'jusigyeong',era:'modern',title:'주시경과 한글이라는 이름',who:'주시경',teaser:'세종대왕이 만든 우리 글자에 "한글"이라는 이름을 붙여 준 보따리 선생님 이야기예요.',pages:P,now:"우리가 쓰는 띄어쓰기와 맞춤법에도 주시경의 노력이 들어 있어요. 이 그림책의 글도 띄어쓰기를 하고 있지요.",

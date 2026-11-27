@@ -39,7 +39,7 @@ const P=[
   ${T(240,90,'이 글자는 이렇게 읽어요',16,K.red)}`,'#EADCC0'),
   text:`백제 학자들은 바다 건너 왜에 가서 한자와 책을 가르쳐 주었어요. 근초고왕이 바라보던 바다 위로 백제 배들이 줄지어 오갔어요.`},
  {kind:'end', svg:endBase('gc',`${bigShip(200,200,1.0,'#8A5A3C')}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),gc(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`바다를 바라보던 임금님,<br>그 바다를 오가는 길로 만들었어요.<br><span class="big">끝</span>`},
+  text:`해 질 녘, 근초고왕은 바닷가에 서서 돌아오는 배를 세어 보았어요. 하나, 둘, 셋… 모두 무사히 돌아왔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'geunchogo',era:'samguk',title:'근초고왕과 바다의 길',who:'근초고왕',teaser:'배를 띄워 바다 건너 나라들과 사귄 백제의 왕이 있어요.',pages:P,now:"칠지도는 지금 일본의 한 신사에 남아 있어요. 우리나라 박물관에서는 칠지도를 본떠 만든 모형을 볼 수 있어요. 가지가 몇 개인지 세어 보세요.",

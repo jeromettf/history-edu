@@ -37,7 +37,7 @@ const P=[
   ${T(200,80,'아흔여덟 살!',22,K.red)}`,'url(#js3)',sky('js3','#F2D6A8','#FBEBD0')),
   text:`장수왕은 아흔여덟 살까지 살며 여든 해 가까이 나라를 다스렸어요. 그래서 '오래 산 임금', 장수왕이라고 불려요. 그 긴 세월 동안 아버지의 비석도 그 자리를 지켰어요.`},
  {kind:'end', svg:endBase('js',`${bigStele(200,220,.9)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),jsOld(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`아버지의 이야기를 돌에 새긴 아들,<br>오래오래 나라를 돌본 장수왕.<br><span class="big">끝</span>`},
+  text:`할아버지가 된 장수왕은 손자의 손을 잡고 비석 앞에 섰어요. "여기 네 증조할아버지 이야기가 있단다."<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'jangsu',era:'samguk',title:'장수왕과 커다란 비석',who:'장수왕',teaser:'아버지 광개토대왕의 일을 커다란 돌에 새긴 아들이 있어요.',pages:P,now:"광개토대왕릉비는 지금 중국 지안에 서 있어요. 우리나라 박물관에서는 비석 글자를 그대로 떠낸 탁본과 모형을 볼 수 있어요.",

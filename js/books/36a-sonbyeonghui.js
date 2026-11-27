@@ -40,7 +40,7 @@ const P=[
   ${T(200,80,'겁먹지 않고 당당하게',18,K.red)}`,'#EADCC0'),
   text:`손병희와 대표들은 일본 경찰에게 붙잡혔어요. 붙잡힐 걸 알고도 한 일이었어요. 손병희는 당당하게 독립을 말했고, 감옥에서 크게 앓다가 몇 해 뒤 세상을 떠났어요.`},
  {kind:'end', svg:endBase('sb',`${paper(200,220,2.2)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),sb(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`총도 칼도 없이,<br>목소리로 세상에 알린 3월 1일.<br><span class="big">끝</span>`},
+  text:`감옥 창살 사이로 봄바람이 불어왔어요. 손병희는 눈을 감고 그날의 만세 소리를 떠올렸어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'sonbyeonghui',era:'modern',title:'손병희와 삼일 운동',who:'손병희',teaser:'서로 다른 사람들을 하나로 모아 독립을 외친 사람이 있어요.',pages:P,now:"해마다 3월 1일은 삼일절이에요. 집집마다 대문에 태극기를 달아요.",

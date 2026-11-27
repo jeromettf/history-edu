@@ -39,7 +39,7 @@ const P=[
   ${tree(300,262,1.4,'pine')}`,'url(#jw5)',sky('jw5','#CFE7F2','#F6EAD0')),
   text:`전쟁이 끝난 뒤 곽재우는 높은 벼슬을 바라지 않았어요. 다시 조용히 고향으로 돌아가 지냈어요.`},
  {kind:'end', svg:endBase('jw',`${horse(200,230,1.0,{color:'#F4EFE0'})}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),jw(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`붉은 옷에 흰 말,<br>스스로 일어나 마을을 지킨 선비.<br><span class="big">끝</span>`},
+  text:`곽재우는 붉은 옷을 잘 개어 두었어요. 그리고 다시 강가에 나가 낚싯대를 드리웠어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'gwakjaeu',era:'joseon',title:'곽재우와 붉은 옷',who:'곽재우',teaser:'아무도 시키지 않았는데 스스로 마을 사람들을 모아 나선 선비가 있어요.',pages:P,now:"경남 의령에는 곽재우와 의병을 기리는 곳이 있어요. 해마다 6월 1일은 의병의 날이에요.",

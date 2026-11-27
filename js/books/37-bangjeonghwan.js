@@ -41,7 +41,7 @@ const P=[
   ${[50,100,300,350].map((x,k)=>oldKid(x,276,.56,{mood:'joy',pose:'up'})).join('')}`,'url(#pj6)',sky('pj6','#CFE7F2','#F6EAD0')),
   text:`그리고 방정환과 친구들은 어린이날을 만들었어요. "어린이를 내려다보지 말고 쳐다보아 주세요." 어른들에게 이렇게 부탁했어요.`},
  {kind:'end', svg:endBase('pj',`${balloon(150,110,'#E98FA0')}${balloon(200,90,'#F2C14E')}${balloon(250,110,'#7FB3C8')}${T(200,210,'어린이',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),pjMan(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`"애들은 몰라도 돼" 하던 때,<br>"어린이"라고 불러 준 사람.<br><span class="big">끝</span>`},
+  text:`어린이날 아침, 아이들이 거리로 나와 깡충깡충 뛰었어요. 방정환은 그 가운데서 누구보다 크게 웃었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'bangjeonghwan',era:'modern',title:'방정환과 어린이날',who:'방정환',teaser:'어린이날은 누가 처음 만들었을까요?',pages:P,now:"해마다 5월 5일은 어린이날이에요. 방정환과 친구들이 처음 어린이날을 만든 것은 백 년쯤 전이에요.",

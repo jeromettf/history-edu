@@ -50,7 +50,7 @@ const P=[
   ${T(330,120,'돌아가자!',18,K.ink)}`,'url(#s7)',sky('s7','#CFE7F2','#F6EAD0')),
   text:`거란 군사들은 싸우지 않고 돌아갔어요. 게다가 고려는 압록강 가까이까지 북쪽 땅을 넓혔어요.`},
  {kind:'end', svg:endBase('s',`<path d="M120 196 Q200 70 280 196Z" fill="#94BFA6" ${sw()}/>${T(200,176,'고려',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),seohui(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`칼을 뽑지 않고 말로,<br>서희는 땅을 지키고 넓혔어요.<br><span class="big">끝</span>`},
+  text:`서희가 돌아오자 신하들이 우르르 달려 나왔어요. 서희는 늘 하던 대로 차근차근, 또박또박 있었던 일을 말했어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'seohui',era:'goryeo',title:'서희와 지혜로운 말',who:'서희',teaser:'싸우지 않고 말로 거란 군사를 돌려보낸 사람이 있어요.',pages:P,now:"나라와 나라 사이의 다툼을 이야기로 푸는 일을 '외교'라고 해요. 서희는 우리 역사에서 손꼽히는 외교관이에요.",

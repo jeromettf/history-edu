@@ -46,7 +46,7 @@ const P=[
   ${[150,200,250,300,350].map((x,k)=>oldKid(x,270,.56,{mood:'joy',pose:k%2?'up':'down'})).join('')}`,'url(#js7)',sky('js7','#CFE7F2','#F6EAD0')),
   text:`그 뒤로 석영은 여러 곳을 다니며 우두를 놓고, 다른 의사들에게 우두법을 가르쳤어요. 무서운 마마에 걸리는 아이들이 점점 줄어들었어요.`},
  {kind:'end', svg:endBase('js',`${g(200,200,2.6,needle)}${heart(140,80)}${heart(260,80)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),jsDoc(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`따끔! 한 번 꾹 참으면,<br>마마도 무섭지 않았어요.<br><span class="big">끝</span>`},
+  text:`충주의 그 아이는 무럭무럭 자라 동네를 뛰어다녔어요. 지석영은 그 모습을 볼 때마다 마음이 놓였어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'jiseogyeong',era:'modern',title:'지석영과 따끔한 주사',who:'지석영',teaser:'무서운 병 천연두를 막으려고 우리나라에서 처음 우두를 놓은 사람이 있어요.',pages:P,now:"아기 수첩을 펴 보면 예방 주사를 맞은 날짜가 적혀 있어요. 그때 맞은 주사들이 무서운 병을 막아 줘요.",

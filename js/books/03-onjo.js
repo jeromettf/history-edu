@@ -46,7 +46,7 @@ const P=[
   ${hero(330,266,.56,{robe:'#D6CDB4',mood:'joy'})}${hero(370,266,.54,{body:'dress',hair:'bun',mood:'joy'})}`,'url(#oj7)',sky('oj7','#CFE7F2','#F6EAD0')),
   text:`미추홀에서 고생하던 사람들도 온조를 찾아왔어요. 온조는 반갑게 맞아 주었어요. 형제의 사람들이 한 나라에서 함께 살게 되었어요.`},
  {kind:'end', svg:endBase('oj',`${river(150)}${T(200,130,'백제',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,onjo(64,276,.5,{pose:'up',mood:'joy'}),onjoK(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`형과 아우의 사람들이 함께 산<br>한강 가의 나라, 백제.<br><span class="big">끝</span>`},
+  text:`그날 저녁, 위례성 마당에 두 마을 사람들이 둘러앉아 함께 밥을 먹었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'onjo',era:'samguk',title:'온조와 백제의 시작',who:'온조',teaser:'주몽의 두 아들이 갈림길에서 서로 다른 길을 골랐어요. 누가 좋은 땅을 찾았을까요?',pages:P,now:"서울 송파에는 백제 사람들이 흙을 쌓아 만든 풍납토성과 몽촌토성이 남아 있어요. 그 둘레를 걸으면 백제 사람들이 살던 땅을 밟는 거예요.",

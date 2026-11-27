@@ -55,7 +55,7 @@ const P=[
   ${star(130,70,10)}${star(280,60,9,'#F28C7C')}`,'url(#h7)',sky('h7','#FCE9C2','#F6D9A2')+glow('hg7','#FFF6D8',.9)),
   text:`마침내 열네 해 만에 책이 완성되었어요. 이름은 『동의보감』이에요. 우리 땅의 약초를 쓰고 약초 이름을 한글로도 적어서, 백성들도 알아볼 수 있었어요.`},
  {kind:'end', svg:endBase('h',`${g(200,170,2.2,herbBasket)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),heojunOld(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`아픈 사람을 지나치지 못한 의원,<br>열네 해 동안 쓴 『동의보감』.<br><span class="big">끝</span>`},
+  text:`어느 시골 마을에서 아이가 배가 아프다고 울었어요. 엄마는 『동의보감』을 펴서 한글로 적힌 약초 이름을 찾았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'heojun',era:'joseon',title:'허준과 동의보감',who:'허준',teaser:'아픈 사람을 그냥 지나치지 못한 허준이 약초 책을 만들었어요.',pages:P,now:"『동의보감』은 유네스코 세계기록유산이 되었어요. 지금도 한의원에서 이 책을 공부해요.",

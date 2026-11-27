@@ -60,7 +60,7 @@ const P=[
   ${star(200,100,8)}`,'url(#y8)',sky('y8','#E8F2F8','#F2EED8')),
   text:`적의 배는 백 척이 넘었어요. 그래도 장군은 말했어요. "아직 열두 척이 남아 있다!" 장군은 물살이 빙글빙글 거센 울돌목으로 적을 끌어들여 물리쳤어요.`},
  {kind:'end', svg:endBase('y',`${g(200,170,1.15,turtleShip(0,0,1))}`,ssKid(64,276,.5,{pose:'up',mood:'joy'}),general(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`나무 칼을 들고 앞장서던 아이가<br>지켜 낸 우리 바다.<br>그리고 남겨 준 한마디,<br>"아직 남아 있다!"<br><span class="big">끝</span>`},
+  text:`빙글빙글 돌던 울돌목 물살이 잔잔해졌어요. 장군은 뱃머리에 서서 바다를 오래오래 바라보았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'yisunsin',era:'joseon',title:'이순신과 거북선',who:'이순신',teaser:'나무 칼로 대장 놀이를 하던 아이가 거북선으로 바다를 지켰어요.',pages:P,now:"서울 광화문 광장에는 큰 칼을 든 이순신 장군 동상이 있어요. 백 원짜리 동전 속 얼굴도 이순신 장군이에요.",

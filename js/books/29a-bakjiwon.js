@@ -34,7 +34,7 @@ const P=[
   ${[0,1,2,3,4,5].map(k=>`<rect x="320" y="${262-k*9}" width="60" height="9" fill="${['#C9473B','#5E7FA8','#B8862F'][k%3]}" ${sw(1)}/>`).join('')}`,'#EADCC0'),
   text:`돌아온 박지원은 보고 들은 것을 모아 『열하일기』를 썼어요. 재미있는 이야기와 새로운 생각이 가득해서, 사람들이 앞다투어 베껴 읽었대요.`},
  {kind:'end', svg:endBase('bj',`${cart(200,220,1.1)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),bj(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`친구들을 배꼽 잡게 하던 이야기꾼,<br>열하까지 가서 배워 온 선비.<br><span class="big">끝</span>`},
+  text:`어느 밤, 박지원의 사랑방에 친구들이 모였어요. "열하 이야기 좀 더 해 주게!" 박지원은 신이 나서 수첩을 펼쳤어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'bakjiwon',era:'joseon',title:'박지원과 열하일기',who:'박지원',teaser:'먼 나라를 여행하며 수레와 벽돌을 꼼꼼히 적어 온 선비가 있어요.',pages:P,now:"『열하일기』는 지금도 읽히는 우리 옛 여행기예요. 나들이를 가면 신기한 것을 하나 찾아 그려 보세요.",

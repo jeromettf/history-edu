@@ -43,7 +43,7 @@ const P=[
   ${jhOld(280,268,.86,{mood:'smile'})}${sangjeok(350,268,.8,{mood:'joy'})}`,'url(#kj6)',sky('kj6','#C9D8E6','#F2F5F8')),
   text:`그림 옆에는 이런 글을 적었어요. "날이 추워진 뒤에야 소나무가 늘 푸르다는 걸 안다." 힘들 때도 변하지 않은 이상적을 두고 한 말이었어요.`},
  {kind:'end', svg:endBase('kj',`${sehando(200,170,1.4)}`,jhKid(64,276,.5,{pose:'up',mood:'joy'}),jhOld(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`바람 부는 제주의 외로운 겨울,<br>그래도 푸른 소나무 한 그루.<br><span class="big">끝</span>`},
+  text:`이상적은 그림을 받아 들고 한참 동안 말이 없었어요. 바다 건너 제주에도 눈이 소복소복 내리고 있었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimjeonghui',era:'joseon',title:'김정희와 세한도',who:'김정희',teaser:'외로운 섬에 책을 들고 찾아온 친구에게, 겨울 소나무 그림으로 고마움을 전한 사람이 있어요.',pages:P,now:"세한도는 지금 국립중앙박물관에 있어요. 오랫동안 이 그림을 아껴 온 사람이 모두가 볼 수 있도록 나라에 내놓았대요.",

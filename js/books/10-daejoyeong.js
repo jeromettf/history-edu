@@ -41,7 +41,7 @@ const P=[
   ${djK(110,262,.82,{pose:'up',mood:'joy'})}${T(290,80,'해동성국',22,K.red)}`,'url(#dj7)',sky('dj7','#CFE7F2','#F6EAD0')),
   text:`발해는 땅이 아주 넓어졌고, 배를 타고 일본과 당나라를 오가며 사이좋게 지냈어요. 사람들은 발해를 '바다 동쪽의 번성한 나라', 해동성국이라고 불렀어요.`},
  {kind:'end', svg:endBase('dj',`<path d="M110 196 Q200 70 290 196Z" fill="#94BFA6" ${sw()}/>${T(200,176,'발해',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,djKid(64,276,.5,{pose:'up',mood:'joy'}),djK(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`언 강을 건너 동쪽으로 간 사람들,<br>그 끝에 세운 나라 발해.<br><span class="big">끝</span>`},
+  text:`눈이 펑펑 오는 밤, 대조영은 뜨끈한 방에 앉아 아이들에게 고구려 이야기를 들려주었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'daejoyeong',era:'samguk',title:'대조영과 발해',who:'대조영',teaser:'고구려가 무너진 뒤, 흩어진 사람들을 모아 새 나라를 세운 장수가 있어요.',pages:P,now:"겨울에 따뜻한 방바닥에 엎드려 보세요. 온돌은 고구려와 발해 사람들 때부터 이어져 온 거예요.",

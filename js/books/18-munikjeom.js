@@ -52,7 +52,7 @@ const P=[
   ${T(320,150,'따뜻해!',20,K.red)}`,'url(#n7)',sky('n7','#B9C8D6','#E3E8EE')),
   text:`이제 사람들은 솜을 넣은 두툼한 옷을 입었어요. 매서운 겨울바람이 불어도 몸이 포근했어요.`},
  {kind:'end', svg:endBase('n',`${cotton(200,210,3)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),mun(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`붓 뚜껑 속 목화씨 몇 알,<br>온 나라의 겨울이 따뜻해졌어요.<br><span class="big">끝</span>`},
+  text:`눈 내리는 날, 문익점은 솜옷을 입고 눈싸움하는 아이들을 보며 빙그레 웃었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'munikjeom',era:'goryeo',title:'문익점과 따뜻한 목화',who:'문익점',teaser:'작은 목화씨 하나가 온 나라 사람들을 따뜻하게 해 주었어요.',pages:P,now:"오늘 밤 덮는 폭신한 이불에도, 입고 있는 부드러운 면 옷에도 목화솜이 들어 있어요.",

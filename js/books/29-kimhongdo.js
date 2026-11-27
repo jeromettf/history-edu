@@ -52,7 +52,7 @@ const P=[
   ${T(320,150,'키득키득',16,K.red)}`,'#EADCC0'),
   text:`글방에서 훈장님께 혼나서 훌쩍이는 아이와, 그 모습을 보고 키득키득 웃는 친구들도 그렸어요. 보는 사람마다 웃음이 터졌대요.`},
  {kind:'end', svg:endBase('m',`${g(200,186,2.2,scrollPic)}`,hdKid(64,276,.5,{pose:'up',mood:'joy'}),hongdo(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`땅바닥에 쓱쓱 그리던 아이,<br>장터 사람들의 웃음을 그렸어요.<br><span class="big">끝</span>`},
+  text:`그날 밤 붓을 씻던 김홍도는 혼자 키득키득 웃었어요. 낮에 본 씨름판이 자꾸 떠올랐거든요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimhongdo',era:'joseon',title:'김홍도와 웃음 가득 그림',who:'김홍도',teaser:'그림 그리기를 좋아한 아이가 사람들의 웃는 모습을 그렸어요.',pages:P,now:"김홍도의 그림 『씨름』과 『서당』은 국립중앙박물관에 있어요. 그림 속에서 웃고 있는 사람을 찾아보세요.",

@@ -45,7 +45,7 @@ const P=[
   ${hero(90,262,.8,{robe:'#7A6AA8',hat:'band',bandColor:K.gold,beard:HAIR,pose:'up',mood:'joy'})}${T(260,80,'명나라에서도 인기!',18,K.red)}`,'url(#nh7)',sky('nh7','#CFE7F2','#F6EAD0')),
   text:`조선에 온 명나라 사신이 이 책을 읽고 감탄해서 중국으로 가져갔어요. 난설헌의 시는 바다 건너 중국과 일본에서도 많은 사람이 읽었대요.`},
  {kind:'end', svg:endBase('nh',`${lotus(200,190,3)}`,chKid(64,276,.5,{pose:'up',mood:'joy'}),nan(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`태워 달라던 시,<br>동생이 지켜 바다 건너까지 갔어요.<br><span class="big">끝</span>`},
+  text:`먼 나라에서 누군가 난설헌의 시를 소리 내어 읽었어요. 그 사람 마음에도 연꽃과 달이 피어났어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'heonanseolheon',era:'joseon',title:'허난설헌과 연꽃 시',who:'허난설헌',teaser:'오빠들 공부하는 소리에 귀를 쫑긋 세우던 여자아이가 바다 건너까지 알려진 시인이 되었어요.',pages:P,now:"강릉 초당동에는 난설헌이 태어난 집터와 기념관이 있어요.",

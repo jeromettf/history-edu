@@ -54,7 +54,7 @@ const P=[
   taps:[{label:'금꽃',el:'tFlower',say:'임금님이 강감찬의 머리에 금으로 만든 꽃을 꽂아 주었어요.'}],
   text:`임금님은 직접 마중 나와, 키 작은 할아버지 장군의 머리에 금으로 만든 꽃을 꽂아 주었어요. "고맙소, 나라를 지켜 주었구려!"`},
  {kind:'end', svg:endBase('gc',`${star(200,120,60,'#FFE38A')}<path d="M240 80 L330 10" stroke="#FFE38A" stroke-width="8" stroke-linecap="round"/>`,gcKid(64,276,.5,{pose:'up',mood:'joy'}),gc(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`키는 작아도 생각은 깊었던 아이,<br>머리에 금꽃을 꽂은 할아버지 장군.<br><span class="big">끝</span>`},
+  text:`그날 밤 집에 돌아온 강감찬은 금꽃을 내려놓고 마당에 나갔어요. 하늘에서 별 하나가 반짝였어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'gangamchan',era:'goryeo',title:'강감찬과 별이 떨어진 날',who:'강감찬',teaser:'큰 별이 떨어진 날 태어난 아이가 일흔 살 할아버지 장군이 되어 나라를 지켰어요.',pages:P,now:"서울 관악구에는 '낙성대'라는 곳이 있어요. '별이 떨어진 곳'이라는 뜻이에요. 강감찬이 태어난 곳이라고 전해요.",

@@ -52,7 +52,7 @@ const P=[
   ${md(200,272,.86,{pose:'up',mood:'joy'})}`,'url(#md8)',sky('md8','#CFE7F2','#F6EAD0')),
   text:`그때 제주 사람은 함부로 섬 밖에 나갈 수 없었어요. 하지만 임금님은 소원을 들어주었어요. 만덕은 금강산 봉우리를 올려다보며 활짝 웃었어요.`},
  {kind:'end', svg:endBase('md',`${riceSack(160,200,1.6)}${riceSack(240,200,1.6)}${heart(200,90)}`,mdKid(64,276,.5,{pose:'up',mood:'joy'}),md(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`모은 돈을 모두 내놓은 제주 사람,<br>금강산 봉우리 앞에서 활짝 웃었어요.<br><span class="big">끝</span>`},
+  text:`제주로 돌아오는 배에서 만덕은 금강산 봉우리를 하나하나 떠올렸어요. "섬 사람들에게 다 들려줘야지."<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimmandeok',era:'joseon',title:'김만덕과 나눔의 쌀',who:'김만덕',teaser:'배고픈 이웃을 위해 모은 돈을 모두 내놓은 제주 사람이 있어요.',pages:P,now:"제주에는 김만덕 기념관이 있어요. 귤을 먹을 때 하나를 친구와 나눠 보세요.",

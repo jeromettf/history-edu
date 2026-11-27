@@ -53,7 +53,7 @@ const P=[
   ${hhOld(270,268,.9,{mood:'smile',robe:'#7A8C9E'})}`,'url(#hh7)',sky('hh7','#C9D2D8','#E6E2D4')),
   text:`황희는 나라에서 가장 높은 벼슬에 있었지만, 비가 새는 작은 집에서 소박하게 살았어요.`},
  {kind:'end', svg:endBase('hh',`${cow(200,210,1.0,'#D9A55A')}${heart(200,70)}`,kid(64,276,.5,{pose:'up',mood:'joy'}),hhOld(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`누렁소와 검은 소의 마음까지 살핀 사람,<br>황희 정승.<br><span class="big">끝</span>`},
+  text:`비가 오는 날이면 황희는 새는 자리에 그릇을 받쳐 두었어요. 똑, 똑. "허허, 빗방울 말도 옳구나."<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'hwanghui',era:'joseon',title:'황희 정승과 누렁소',who:'황희',teaser:'말 못 하는 소의 마음까지 살핀 정승, 황희를 만나요.',pages:P,now:"경기도 파주 임진강 가에는 황희가 벼슬을 내려놓고 지낸 정자 '반구정'이 남아 있어요.",

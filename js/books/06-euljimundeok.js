@@ -40,7 +40,7 @@ const P=[
   ${king(120,272,.86,{robe:'#B5473A',mood:'joy',pose:'up'})}${ul(280,272,.9,{pose:'up',mood:'joy'})}`,'#E6CFAA'),
   text:`고구려 군사들은 살수라는 강에서 기다렸다가 크게 이겼어요. 크게 이긴 이 싸움을 살수 대첩이라고 해요. 백만 군사를 이끌고 온 수나라는 크게 지고 돌아갔어요.`},
  {kind:'end', svg:endBase('ul',`${g(200,200,3,letter)}`,ul(64,276,.5,{pose:'up',mood:'joy'}),kid(338,276,.5,{pose:'up',mood:'joy'})),
-  text:`하루에 일곱 번 져 주고,<br>한 번에 크게 이긴 장군.<br><span class="big">끝</span>`},
+  text:`살수 강가에 다시 고요한 저녁이 왔어요. 을지문덕은 투구를 벗고 오랜만에 깊이 잠들었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'euljimundeok',era:'samguk',title:'을지문덕과 살수의 편지',who:'을지문덕',teaser:'백만 대군에게 "이제 그만 돌아가시오" 하는 편지를 보낸 장군이 있었대요.',pages:P,now:"을지문덕이 보낸 시는 지금까지 전하는 우리나라에서 가장 오래된 한시 가운데 하나예요.",

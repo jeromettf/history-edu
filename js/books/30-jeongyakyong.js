@@ -53,7 +53,7 @@ const P=[
   ${[0,1,2,3].map(k=>`<rect x="${110+k*4}" y="${270-k*10}" width="60" height="10" rx="2" fill="${['#3F6FA8','#5E9C8A','#C9A15A','#7A6AA8'][k]}" ${sw(1.2)}/>`).join('')}`,'url(#jy7)',sky('jy7','#28305A','#4D4270')),
   text:`정조 임금님이 세상을 떠나자, 정약용을 미워하던 사람들이 그를 먼 바닷가 마을 강진으로 보냈어요. 정약용은 그곳에서 열여덟 해 동안 오백 권이 넘는 책을 썼어요.`},
  {kind:'end', svg:endBase('jy',`${crane(200,226,1.0,true)}`,jyKid(64,276,.5,{pose:'up',mood:'joy'}),jy(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`작은 산 뒤의 큰 산을 알아본 아이,<br>도르래로 무거운 돌을 들어 올렸어요.<br><span class="big">끝</span>`},
+  text:`강진의 작은 방 창밖으로 산이 보였어요. 정약용은 그 산을 한참 바라보다가 다시 붓을 들었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'jeongyakyong',era:'joseon',title:'정약용과 신기한 거중기',who:'정약용',teaser:'무거운 돌을 번쩍 들어 올리는 기계가 있었대요. 누가 만들었을까요?',pages:P,now:"수원 화성은 지금도 그 모습 그대로 남아 세계유산이 되었어요. 공사장의 커다란 크레인에도 거중기처럼 도르래가 들어 있어요.",

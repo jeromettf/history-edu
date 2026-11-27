@@ -35,7 +35,7 @@ const P=[
   ${yhOld(140,272,.86,{mood:'joy',arms:{L:[-30,-30],R:[56,-50]},prop:H=>`<path d="M${H.R[0]} ${H.R[1]} q20 4 30 18" fill="none" stroke="#6FA8C8" stroke-width="3" stroke-dasharray="3 4"/>`,face:'right'})}`,'#D9CCAE'),
   text:`이황은 매화를 무척 아꼈어요. 매화를 벗이라 부르며 시를 아주 많이 지었고, 마지막 날까지 "매화에 물을 주어라" 하고 챙겼대요.`},
  {kind:'end', svg:endBase('yh',`${plum(200,230,1.6)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),yhOld(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`스물여섯 살 어린 학자와 주고받은 편지,<br>"자네 말이 맞네."<br><span class="big">끝</span>`},
+  text:`이른 봄, 이황의 마당에 매화가 피었어요. 이황은 기대승에게 보낼 편지 끝에 꽃 소식을 한 줄 적었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'yihwang',era:'joseon',title:'퇴계 이황과 편지 친구',who:'이황',teaser:'나이 어린 학자와 8년 동안 편지로 생각을 나눈 선생님이 있어요.',pages:P,now:"천 원짜리 지폐에 퇴계 이황이 있어요. 경북 안동에는 이황을 기리는 도산서원이 있어요.",

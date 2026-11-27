@@ -36,7 +36,7 @@ const P=[
   ${syOld(290,272,.62,{mood:'joy',arms:'armsOpen',face:'left'})}`,'url(#sy5)',sky('sy5','#CFE7F2','#F6EAD0')),
   text:`이듬해 봄, 사명 스님은 일본에 끌려갔던 사람 3천여 명과 함께 돌아왔어요. 바닷가에서 기다리던 가족들이 달려와 꼭 껴안았어요.`},
  {kind:'end', svg:endBase('sy',`${bigShip(200,210,1.0,'#8A5A3C')}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),syOld(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`칼 대신 차분한 말로,<br>삼천 명과 함께 돌아온 스님.<br><span class="big">끝</span>`},
+  text:`사명 스님은 끌어안고 우는 가족들을 조용히 바라보다가, 산속 절로 천천히 걸어 돌아갔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'samyeong',era:'joseon',title:'사명대사와 돌아온 사람들',who:'사명대사',teaser:'바다 건너 끌려간 사람들을 말 한마디로 데려온 스님이 있어요.',pages:P,now:"경남 밀양에는 사명대사를 기리는 표충비가 있어요. 나라에 큰일이 생길 때면 비석에 땀이 맺힌다는 이야기가 전해요.",

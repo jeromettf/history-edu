@@ -37,7 +37,7 @@ const P=[
   ${msOld(120,272,.86,{mood:'smile',arms:'handsDown',face:'right'})}${official(330,272,.62,{mood:'o',face:'left'})}`,'url(#ms2)',sky('ms2','#9FB3C8','#D7E0E6')),
   text:`맹사성의 집은 비가 새는 작은 집이었대요. 찾아온 사람이 깜짝 놀라자 맹사성은 웃기만 했어요.`},
  {kind:'end', svg:endBase('ms',`${ox(200,220,.9,'#3A322B')}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),msOld(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`찻잔과 문틀에서 배운 사람,<br>검은 소를 타고 피리를 불던 정승.<br><span class="big">끝</span>`},
+  text:`맹사성은 검은 소 등에서 피리를 불며 집으로 돌아갔어요. 낮은 대문을 지날 때는 고개를 살짝 숙였어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'maengsaseong',era:'joseon',title:'맹사성과 검은 소',who:'맹사성',teaser:'높은 정승이 되어서도 소를 타고 피리를 분 사람이 있어요.',pages:P,now:"충남 아산에는 맹사성이 살던 옛집 '맹씨행단'이 남아 있어요. 우리나라에서 가장 오래된 살림집 가운데 하나예요.",

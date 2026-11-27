@@ -38,7 +38,7 @@ const P=[
   ${T(200,40,'지금 남은 가장 오래된 역사책',16,K.red)}`,'#F2EEE4'),
   text:`책을 다 쓴 김부식은 임금님께 쉰 권을 올렸어요. "이제 우리 이야기가 흩어지지 않을 것입니다."`},
  {kind:'end', svg:endBase('bs',`${stack(200,220,9)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),bs(338,276,.55,{arms:'waveR',mood:'joy'})),
-  text:`흩어진 종이를 한 장 한 장 모아,<br>쉰 권의 『삼국사기』.<br><span class="big">끝</span>`},
+  text:`궁궐 서고에 책들이 나란히 꽂혔어요. 김부식은 맨 첫 권을 한 번 더 쓰다듬고 집으로 돌아갔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'kimbusik',era:'goryeo',title:'김부식과 삼국사기',who:'김부식',teaser:'흩어져 사라지던 세 나라 이야기를 쉰 권의 책으로 모은 학자가 있어요.',pages:P,now:"『삼국사기』는 지금 남아 있는 우리 역사책 가운데 가장 오래되었어요. 백몇십 년 뒤에는 일연 스님이 『삼국유사』를 써서 또 다른 옛이야기를 모았어요.",

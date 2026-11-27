@@ -47,7 +47,7 @@ const P=[
   taps:[{label:'첨성대',el:'tTower',say:'돌을 한 층 한 층 쌓아 올린 탑이에요. 가운데 네모난 창문이 있어요.'},{label:'별',el:'tStar',say:'반짝반짝! 별을 보면 계절이 바뀌는 걸 알 수 있어요.'}],tapHint:'탑과 별을 눌러 보세요.',
   text:`그래서 선덕여왕 때 첨성대를 쌓았어요. '별을 바라보는 대'라는 뜻이에요. 어릴 때 별을 세던 공주는 이제 온 나라와 함께 하늘을 살폈어요.`},
  {kind:'end', svg:endBase('sd',`${tower(200,220,1.5)}${peony(110,120,1.4)}${peony(290,120,1.4,'#F2A9C0')}`,princess(64,276,.5,{pose:'up',mood:'joy'}),queen(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`나비 없는 꽃 그림을 알아본 눈으로,<br>하늘을 살핀 여왕.<br><span class="big">끝</span>`},
+  text:`밤이 되자 여왕은 첨성대 곁에 서서 별을 하나, 둘 세었어요. 어릴 때 마당에서 세던 바로 그 별들이었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'seondeok',era:'samguk',title:'선덕여왕과 별 보는 탑',who:'선덕여왕',teaser:'나비가 한 마리도 없는 꽃 그림. 덕만 공주는 거기서 무엇을 알아챘을까요?',pages:P,now:"첨성대는 천사백 년 가까이 지난 지금도 경주에 서 있어요. 오늘 밤 달을 보고, 내일 밤 달과 견주어 보세요. 모양이 조금 달라져 있을 거예요.",

@@ -50,7 +50,7 @@ const P=[
   ${saim(140,268,.9,{mood:'joy'})}${hero(250,272,.7,{robe:'#D9E6C8',hair:'braid',pose:'hold',mood:'smile',item:bigBook('책','#5E9C8A')})}${kid(330,274,.6,{mood:'joy'})}`,'#EADCC0'),
   text:`신사임당은 아이들에게 그림과 글을 가르쳤어요. 마당의 풀벌레를 함께 들여다보면서요. 그중 한 아들이 나중에 큰 학자가 된 율곡 이이예요.`},
  {kind:'end', svg:endBase('sa',`${bfly(160,110,2.4)}${hopper(250,190,2)}`,girl(64,276,.5,{pose:'up',mood:'joy'}),saim(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`닭도 속은 풀벌레 그림,<br>얼룩도 포도가 된 치마.<br><span class="big">끝</span>`},
+  text:`해 질 녘, 신사임당과 아이들은 마당에 쪼그려 앉아 방아깨비 한 마리를 한참 들여다보았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'saimdang',era:'joseon',title:'신사임당과 살아 있는 그림',who:'신사임당',teaser:'풀벌레를 진짜처럼 그려서 닭이 쪼았다는 신사임당 이야기예요.',pages:P,now:"오만 원짜리 지폐에서 신사임당의 얼굴과 그림을 찾아볼 수 있어요. 강릉 오죽헌에 가면 신사임당이 살던 집도 볼 수 있어요.",

@@ -86,7 +86,7 @@ const P=[
   ${hero(80,272,.62,{mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#E9DFC8',mood:'joy',pose:'up'})}${hero(332,272,.62,{body:'dress',hair:'braid',mood:'joy'})}`,'url(#d9)',sky('d9','#CFE7F2','#F6EAD0')),
   text:`어른이 된 단군왕검은 우리 땅에 처음으로 나라를 세웠어요. 그 나라의 이름은 고조선이에요. 우리나라 역사의 맨 처음이에요.`},
  {kind:'end', svg:endBase('d',`<path d="M60 220 Q130 110 200 70 Q270 110 340 220Z" fill="#A9CDB4" ${sw()}/>${T(200,176,'고조선',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,bear(64,276,.5,{mood:'joy'}),dangun(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`쑥과 마늘을 먹으며 꾹 참은 곰,<br>그 아들이 세운 첫 나라 고조선.<br><span class="big">끝</span>`},
+  text:`단군왕검은 어머니 웅녀의 손을 잡고 새 나라의 들판을 걸었어요. 바람에 쑥 냄새가 실려 왔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'dangun',era:'gojoseon',title:'단군과 우리나라의 시작',who:'단군',teaser:'우리나라가 처음 시작된 이야기예요. 꾹 참고 기다린 곰이 나와요.',pages:P,now:"해마다 10월 3일 개천절에 우리나라의 시작을 기념해요. 개천절은 '하늘이 열린 날'이라는 뜻이에요.",

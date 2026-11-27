@@ -59,7 +59,7 @@ const P=[
   taps:[{label:'큰 돌',el:'tStele',say:'광개토대왕릉비예요. 고구려 사람들이 새긴 글자가 빼곡해요.'},{label:'키 재기',el:'tKid',say:'돌이 어른 네 명 키만큼 높아요. 우리는 몇 명이 올라서야 닿을까?'}],
   text:`광개토대왕이 세상을 떠나자, 아들 장수왕은 아버지가 한 일을 커다란 돌에 새겼어요. 어른 네 명을 쌓은 것만큼 높은 돌이에요.`},
  {kind:'end', svg:endBase('g',`${horse(208,200,1.0,{color:'#F4EFE0'})}${flag(110,200,'#C9473B',110)}`,damdeok(64,276,.5,{pose:'up',mood:'joy'}),gking(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`들판을 달리던 왕자,<br>말을 달려 나라를 지킨 임금님.<br><span class="big">끝</span>`},
+  text:`장수왕은 커다란 돌 앞에 서서 새긴 글자를 손으로 하나하나 쓸어 보았어요. 바람이 말발굽 소리처럼 들판을 달려갔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'gwanggaeto',era:'samguk',title:'광개토대왕과 씩씩한 고구려',who:'광개토대왕',teaser:'말 달리기를 좋아한 왕자가 고구려를 아주 넓은 나라로 만들었어요.',pages:P,now:"광개토대왕릉비는 천육백 년이 지난 지금도 중국 지안에 서 있어요. 고구려 사람들이 직접 새긴 글자로 그때 일을 알려 줘요.",

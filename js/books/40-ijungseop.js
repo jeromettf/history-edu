@@ -54,7 +54,7 @@ const P=[
   <path d="M60 90 l20 -20 M330 100 l24 -10 M70 200 l-20 10" stroke="#F6E2A6" stroke-width="5" stroke-linecap="round"/>`,'url(#ij8)',sky('ij8','#F6D9A2','#E9A86A')+glow('ijg8','#FFF2C4',.8)),
   text:`중섭은 황소를 그렸어요. 힘차게 고개를 든 황소였어요. 어릴 때 해가 지도록 바라보던 바로 그 소였지요.`},
  {kind:'end', svg:endBase('ij',`${ox(200,210,1.2,'#C0612F')}${heart(200,70)}`,jsKid(64,276,.5,{pose:'up',mood:'joy'}),painter(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`은종이에 그린 가족,<br>힘차게 고개를 든 황소.<br><span class="big">끝</span>`},
+  text:`그림을 다 그린 중섭은 편지를 썼어요. "아빠 소가 이렇게 힘이 세단다. 우리 곧 만나자."<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'ijungseop',era:'hyeondae',title:'이중섭과 가족 그림',who:'이중섭',teaser:'소를 좋아한 아이가 화가가 되어 사랑하는 가족을 그렸어요.',pages:P,now:"제주 서귀포에는 중섭이 살던 작은 방과 이중섭 미술관이 있어요.",

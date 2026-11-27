@@ -47,7 +47,7 @@ const P=[
   ${T(220,70,'펑! 펑!',30,K.red,`stroke="#FFF8EC" stroke-width="5" paint-order="stroke"`)}`,'url(#cm7)',sky('cm7','#CFE7F2','#F6EAD0')),
   text:`왜구의 배 수백 척이 진포 앞바다에 몰려왔어요. 최무선은 배에 화포를 싣고 나가 펑! 펑! 쏘았어요. 왜구는 크게 져서 물러갔어요.`},
  {kind:'end', svg:endBase('cm',`${firework(200,120,70,'#F29A2E')}${firework(200,120,40,'#E98FA0')}`,kid(64,276,.5,{pose:'up',mood:'joy'}),cm(338,276,.55,{pose:'up',mood:'joy'})),
-  text:`묻고 또 물어 알아낸 화약,<br>펑! 진포 앞바다에 울렸어요.<br><span class="big">끝</span>`},
+  text:`싸움이 끝난 바다가 잔잔해졌어요. 바닷가 사람들이 하나둘 집으로 돌아와 다시 그물을 펼쳤어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
 ];
 BOOKS.push({id:'choemuseon',era:'goryeo',title:'최무선과 불꽃의 비밀',who:'최무선',teaser:'꽁꽁 숨겨진 화약의 비밀을 알아내려고 묻고 또 물은 사람이 있어요.',pages:P,now:"밤하늘을 수놓는 불꽃놀이에도 화약이 들어 있어요. 펑! 팡!",
