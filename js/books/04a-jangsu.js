@@ -16,26 +16,25 @@ const P=[
  {svg:SV(`${palace()}
   ${js(200,270,.96,{mood:'sad',face:'front',arms:'pray'})}
   ${[0,1,2,3].map(k=>backView(50+k*100,300,.7,{robe:['#D6CDB4','#C9473B'][k%2],hat:['bun','gat'][k%2]})).join('')}`,'#E6CFAA'),
-  text:`아버지가 세상을 떠나자 거련이 임금이 되었어요. 새 임금은 생각했어요. "아버지가 하신 일을 오래오래 기억하게 하고 싶어."`},
+  text:`아버지가 세상을 떠나자 거련이 임금이 되었어요. 거련은 밤마다 아버지의 붉은 망토를 쓰다듬었어요. "아버지가 하신 일을 오래오래 남기고 싶어."`},
+ {svg:SV(`${palace()}
+  ${gk(130,270,.92,{mood:'smile',arms:'pointR',face:'right'})}${prince(270,276,.7,{mood:'joy',face:'left'})}`,'#E6CFAA'),
+  text:`거련은 산에서 아주 커다란 돌을 찾아냈어요. 백 사람이 밧줄을 당겨도 꿈쩍하지 않았지요. 거련도 소매를 걷고 밧줄을 잡았어요. "영차, 영차!" 돌이 조금씩 움직였어요.`},
  {svg:SV(`${hills('#C9C08E','#D8C77A',190,214)}
   <g id="tStele">${bigStele(200,262,1.0)}</g>
   ${worker(90,272,.72,{arms:'carryUp',prop:H=>PROP.stoneUp(H),mood:'sad',face:'right'})}${worker(320,272,.72,{arms:'writeR',prop:H=>`<path d="M${H.R[0]} ${H.R[1]} l-10 -14" stroke="#5A5560" stroke-width="5" stroke-linecap="round"/>`,mood:'o',face:'left'})}`,'url(#js1)',sky('js1','#F2D6A8','#FBEBD0')),
   taps:[{label:'비석',el:'tStele',say:'쿵! 사람 키보다 몇 배나 큰 돌이에요.'},{label:'글자',el:'tStele',say:'돌 네 면에 빼곡하게 아버지가 한 일을 새겼어요.'}],tapHint:'커다란 돌을 눌러 볼까요?',
-  text:`장수왕은 사람 키보다 몇 배나 큰 돌을 세우고, 네 면에 아버지가 한 일을 새기게 했어요. 이 비석이 광개토대왕릉비예요.`},
+  text:`돌을 세우자 석공들이 사다리를 타고 올라갔어요. 똑, 딱, 똑, 딱. 돌 네 면에 아버지가 한 일을 한 글자 한 글자 새겼어요.`},
  {chips:['427년'], svg:SVn(`${ridge(150,'#B7CBD3',30,3)}<path d="M-6 180 Q200 170 406 182 L406 290 L-6 290Z" fill="#BCD38F"/>
   <path d="M-6 230 Q200 210 406 236" fill="none" stroke="#6FA8C8" stroke-width="18"/>${townscape(180,6)}
   ${[0,1,2,3,4].map(k=>worker(40+k*34,276-k*4,.4+k*.03,{stance:'walk',arms:'walk',mood:'joy',face:'right'})).join('')}
   ${horse(300,258,.5,{color:'#F4EFE0',rider:rider(js(0,0,1,{mood:'joy',arms:'pointR',face:'right'}))})}`,'url(#js2)',sky('js2','#CFE7F2','#F6EAD0')),
-  text:`장수왕은 임금님이 사는 도읍을 남쪽의 평양으로 옮겼어요. 넓은 들과 큰 강이 있는 평양에서 고구려는 더 크고 튼튼해졌어요.`},
- {svg:SV(`${palace()}
-  ${jsOld(200,270,.92,{mood:'smile',arms:'armsOpen'})}
-  ${hero(70,276,.6,{robe:'#5A5560',hat:'band',bandColor:K.gold,mood:'joy',face:'right',arms:'pray'})}${hero(330,276,.6,{robe:'#8E5A7A',hat:'band',bandColor:'#FFFDF6',mood:'joy',face:'left',arms:'pray'})}`,'#E6CFAA'),
-  text:`장수왕은 중국의 여러 나라와 사신을 주고받았어요. 멀리서 온 손님을 맞고, 고구려 사신도 먼 길을 떠났어요.`},
+  text:`몇 해 뒤, 임금님은 도읍을 남쪽 평양으로 옮기기로 했어요. 떠나는 날, 임금님은 비석 앞에 서서 고개를 숙였어요. "아버지, 다녀오겠습니다."`},
  {svg:SV(`${hills('#C9C08E','#D8C77A',190,214)}
   ${jsOld(200,272,.92,{mood:'joy',arms:'waveR'})}
   ${[0,1,2,3].map(k=>oldKid(60+k*50+(k>1?160:0),276,.56,{mood:'joy',face:k>1?'left':'right'})).join('')}
   ${T(200,80,'아흔여덟 살!',22,K.red)}`,'url(#js3)',sky('js3','#F2D6A8','#FBEBD0')),
-  text:`장수왕은 아흔여덟 살까지 살며 여든 해 가까이 나라를 다스렸어요. 그래서 '오래 산 임금', 장수왕이라고 불려요. 그 긴 세월 동안 아버지의 비석도 그 자리를 지켰어요.`},
+  text:`임금님은 아흔 살이 넘도록 오래오래 나라를 돌보았어요. 그래서 사람들은 '오래 산 임금', 장수왕이라고 불렀어요.`},
  {kind:'end', svg:endBase('js',`${bigStele(200,220,.9)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),jsOld(338,276,.55,{arms:'waveR',mood:'joy'})),
   text:`할아버지가 된 장수왕은 손자의 손을 잡고 비석 앞에 섰어요. "여기 네 증조할아버지 이야기가 있단다."<br><span class="big">끝</span>`},
  {kind:'talk'}

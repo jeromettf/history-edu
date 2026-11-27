@@ -46,7 +46,7 @@ const P=[
   ${gc(200,268,.92,{pose:'up',mood:'joy'})}
   ${hero(80,272,.62,{body:'armor',robe:'#5E7FA8',hat:'helmet',mood:'joy',pose:'up'})}${hero(320,272,.62,{body:'armor',robe:'#5E7FA8',hat:'helmet',mood:'joy',pose:'up'})}
   ${T(200,80,'이겼다!',26,K.red)}`,'url(#gc7)',sky('gc7','#CFE7F2','#F6EAD0')),
-  text:`마침내 귀주라는 곳에서 고려 군사들이 크게 이겼어요. 크게 이긴 이 싸움을 귀주 대첩이라고 해요. 거란은 다시는 함부로 쳐들어오지 못했어요.`},
+  text:`마침내 귀주라는 곳에서 고려 군사들이 크게 이겼어요. 거란은 다시는 함부로 쳐들어오지 못했어요.`},
  {svg:SV(`${palace()}
   ${king(120,272,.84,{robe:'#B8862F',mood:'joy'})}
   <g id="tFlower">${gcScholar(280,272,.9,{mood:'joy',front:''})}</g>

@@ -74,7 +74,7 @@ const P=[
   <rect x="166" y="22" width="68" height="42" rx="3" fill="#C9473B" ${sw()}/>${T(200,52,'고구려',20,'#FBF4E2')}<path d="M234 22 V114" ${sw(3)}/>
   ${jumong(200,208,.86,{pose:'up',mood:'joy'})}
   ${hero(80,272,.62,{robe:'#E7C76A',pattern:'dots',dotColor:'#7A3B2C',mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#C9473B',pattern:'dots',mood:'joy'})}${hero(332,272,.62,{body:'dress',hair:'braid',top:'#E7C76A',mood:'joy',pose:'up'})}`,'url(#j8)',sky('j8','#CFE7F2','#F6EAD0')),
-  text:`주몽은 졸본이라는 곳에 새 나라를 세웠어요. 그 나라가 고구려예요. 고구려 사람들은 주몽처럼 말 타기와 활쏘기를 아주 잘했대요.`},
+  text:`주몽은 졸본이라는 곳에 새 나라를 세웠어요. 나라 이름은 고구려라고 지었어요. 사람들은 주몽에게 말 타기와 활쏘기를 배웠어요.`},
  {kind:'end', svg:endBase('j',`${target(200,124,70)}${arrowIn(200,124)}`,egg(64,276,.5),jumong(338,276,.55,{pose:'up',mood:'joy'})),
   text:`주몽은 졸본의 언덕에 올라 부여 쪽 하늘을 한참 바라보았어요. "어머니, 저 잘 해냈어요."<br><span class="big">끝</span>`},
  {kind:'talk'}

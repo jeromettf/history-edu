@@ -84,7 +84,7 @@ const P=[
   <rect x="166" y="22" width="68" height="42" rx="3" fill="#C9473B" ${sw()}/>${T(200,52,'고조선',20,'#FBF4E2')}<path d="M234 22 V110" ${sw(3)}/>
   ${dangun(200,206,.86,{pose:'up',mood:'joy'})}
   ${hero(80,272,.62,{mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#E9DFC8',mood:'joy',pose:'up'})}${hero(332,272,.62,{body:'dress',hair:'braid',mood:'joy'})}`,'url(#d9)',sky('d9','#CFE7F2','#F6EAD0')),
-  text:`어른이 된 단군왕검은 우리 땅에 처음으로 나라를 세웠어요. 그 나라의 이름은 고조선이에요. 우리나라 역사의 맨 처음이에요.`},
+  text:`어른이 된 단군왕검은 우리 땅에 처음으로 나라를 세우고, 이름을 고조선이라고 지었어요.`},
  {kind:'end', svg:endBase('d',`<path d="M60 220 Q130 110 200 70 Q270 110 340 220Z" fill="#A9CDB4" ${sw()}/>${T(200,176,'고조선',56,K.red,`stroke="#FFF8EC" stroke-width="6" paint-order="stroke"`)}`,bear(64,276,.5,{mood:'joy'}),dangun(338,276,.55,{pose:'up',mood:'joy'})),
   text:`단군왕검은 어머니 웅녀의 손을 잡고 새 나라의 들판을 걸었어요. 바람에 쑥 냄새가 실려 왔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

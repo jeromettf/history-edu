@@ -10,11 +10,15 @@ const P=[
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   <rect x="230" y="110" width="150" height="100" fill="#E8DCC4" ${sw()}/><path d="M220 116 L305 76 L390 116Z" fill="#8E5A48" ${sw()}/>${[250,290,330].map(x=>`<rect x="${x}" y="130" width="26" height="30" fill="#BFE0F0" ${sw(1.4)}/>`).join('')}
   ${gwansun(140,268,.95,{pose:'hold',mood:'joy',item:bigBook('공부','#5E9C8A')})}`,'url(#u1)',sky('u1','#CFE7F2','#F6EAD0')),
-  text:`백 년쯤 전, 천안의 작은 마을에 관순이라는 소녀가 살았어요. 웃음이 많고 공부를 좋아했지요. 관순이는 서울에 있는 학교에 다니게 되었어요.`},
+  text:`백 년쯤 전, 천안의 작은 마을에 관순이라는 소녀가 살았어요. 웃음이 많고 궁금한 것도 많았지요. 열네 살이 되던 해, 관순이는 서울에 있는 학교로 공부하러 떠났어요.`},
  {svg:SV(`${hills('#9DAEA8','#A9B48F',196,220)}
   ${hut(30,176)}
   ${hero(160,268,.86,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(240,268,.8,{body:'dress',hair:'bun',mood:'sad',tear:true})}${oldKid(316,270,.66,{mood:'sad'})}`,'url(#u2)',sky('u2','#A9B2BC','#CFCFC6')),
-  text:`그 무렵 우리나라는 일본에게 나라를 빼앗겼어요. 칼을 찬 일본 경찰이 사람들을 마음대로 붙잡아 갔어요. 우리 태극기는 몰래 숨겨 두어야 했지요.`},
+  text:`어느 날, 선생님이 교실 문을 꼭 닫고 나무 상자를 열었어요. "우리나라 깃발, 태극기란다. 일본이 나라를 빼앗은 뒤로는 꺼내 놓기만 해도 붙잡혀 가." 관순이는 태극기를 손끝으로 살며시 만져 보았어요.`},
+ {svg:SV(`${hills('#9DAEA8','#A9B48F',196,220)}
+  ${hut(30,176)}
+  ${hero(160,268,.86,{robe:'#EFE6D2',skin:'#EDBF95',mood:'sad'})}${hero(240,268,.8,{body:'dress',hair:'bun',mood:'sad',tear:true})}${oldKid(316,270,.66,{mood:'sad'})}`,'url(#u2)',sky('u2','#A9B2BC','#CFCFC6')),
+  text:`추운 겨울밤, 친구들이 관순이 귀에 소곤소곤 말했어요. "삼월 첫날, 다 같이 태극기를 들고 거리로 나간대." 관순이는 손이 덜덜 떨렸어요. 그래도 선생님의 태극기가 떠올랐어요. "나도 갈래."`},
  {chips:['1919년 3월 1일'], svg:SV(`${cloud(300,40,.7)}
   <rect x="-6" y="190" width="412" height="96" fill="#D9CCAE"/>
   <g id="tFlags">${[64,124,304,364].map(x=>`<path d="M${x} 236 V160" stroke="${K.wood}" stroke-width="3"/>${taeguk(x+20,150,.45)}`).join('')}</g>
@@ -22,7 +26,7 @@ const P=[
   <g id="tGs">${gwansun(200,272,.86,{arms:'flagR',prop:H=>PROP.taeguk(H),mood:'joy'})}</g>
   ${T(200,40,'대한 독립 만세!',24,K.red,`stroke="#FFF8EC" stroke-width="5" paint-order="stroke"`)}`,'url(#u3)',sky('u3','#CFE7F2','#F6EAD0')),
   taps:[{label:'태극기',el:'tFlags',say:'태극기가 바람에 펄럭펄럭!'},{label:'만세',el:'tGs',say:'대한 독립 만세!'}],
-  text:`3월 1일, 사람들이 태극기를 들고 서울 거리로 나왔어요. "대한 독립 만세!" 우리나라를 돌려 달라는 외침이에요. 붙잡힐 수도 있었지만, 관순이도 친구들과 두 팔을 번쩍 들었어요.`},
+  text:`3월 1일, 관순이는 친구들과 손을 꼭 잡고 거리로 나갔어요. 사람들이 태극기를 흔들며 외쳤어요. "대한 독립 만세!" 관순이도 두 팔을 번쩍 들었어요. 떨리던 손에 힘이 났어요.`},
  {svg:SV(`${cloud(80,40,.7)}${hills('#A9CDB4','#C7D88F',196,220)}
   ${hut(300,176)}
   ${gwansun(130,268,.92,{pose:'up',mood:'smile'})}
@@ -34,7 +38,7 @@ const P=[
   <rect x="318" y="190" width="12" height="28" rx="3" fill="#FFF8E8" ${sw(1.6)}/><path d="M324 172 Q334 182 324 190 Q314 182 324 172Z" fill="#FFC24A" ${sw(1.2)}/>
   ${[0,1,2].map(k=>`<g transform="translate(${40+k*6} ${236-k*8}) scale(.45)"><rect x="0" y="0" width="78" height="52" fill="#FFFFFF" ${sw(2)}/></g>`).join('')}
   ${gwansun(210,270,.92,{pose:'hold',mood:'smile',item:`<rect x="-30" y="-52" width="60" height="40" fill="#FFFFFF" ${sw()}/><g transform="translate(0 -32) rotate(34)"><path d="M-8 0 A8 8 0 0 1 8 0 A4 4 0 0 0 0 0 A4 4 0 0 1 -8 0Z" fill="#CD2E3A"/><path d="M-8 0 A4 4 0 0 0 0 0 A4 4 0 0 1 8 0 A8 8 0 0 1 -8 0Z" fill="#0047A0"/></g><path d="M30 -20 L46 -38" stroke="#9A9A9A" stroke-width="1.6"/>`})}`,'url(#u5)',sky('u5','#28305A','#4D4270')+glow('ug5','#FFD27A',.6)),
-  text:`관순이는 밤마다 몰래 태극기를 만들었어요. 들키면 붙잡혀 갈 수도 있었거든요. 한 땀, 또 한 땀. 장터에 온 사람들이 하나씩 들 수 있도록요.`},
+  text:`관순이는 밤마다 몰래 태극기를 만들었어요. 선생님의 태극기를 떠올리며 한 땀, 또 한 땀. 장터에 온 사람들이 하나씩 들 수 있도록요.`},
  {chips:['4월 1일 아우내 장터'], svg:SV(`${cloud(320,40,.7)}
   <rect x="-6" y="180" width="412" height="106" fill="#D9CCAE"/>
   <rect x="20" y="130" width="90" height="10" fill="#C9473B" ${sw()}/><path d="M26 140 V184 M104 140 V184" ${sw(3)}/><rect x="290" y="130" width="90" height="10" fill="#5E9C8A" ${sw()}/><path d="M296 140 V184 M374 140 V184" ${sw(3)}/>
@@ -48,13 +52,13 @@ const P=[
   <rect x="160" y="40" width="80" height="70" fill="#CFE0EE" ${sw()}/><circle cx="210" cy="70" r="12" fill="#F6F0D6"/>${[176,192,208,224].map(x=>`<path d="M${x} 40 V110" stroke="#3A3A44" stroke-width="4"/>`).join('')}
   <path d="M170 110 L120 280 L300 280 L230 110Z" fill="#F6F0D6" opacity=".22"/>
   ${gwansun(200,266,.92,{pose:'up',mood:'smile'})}`,'#8A8478'),
-  text:`그때 일본 군인들이 달려와 총을 쏘았어요. 많은 사람이 다치고, 관순이는 붙잡혀 감옥에 갇혔어요. 감옥 안에서도 관순이는 친구들과 손을 잡고 만세를 불렀대요.`},
+  text:`그때 일본 군인들이 달려와 총을 쏘았어요. 관순이는 붙잡혀 감옥에 갇혔어요. 감옥에서도 관순이는 친구들과 손을 잡고 만세를 불렀어요. 그리고 끝내 감옥에서 나오지 못했어요.`},
  {chips:['1945년'], svg:SV(`<circle cx="200" cy="150" r="150" fill="url(#ug8)"/>
   <rect x="-6" y="200" width="412" height="86" fill="#D9CCAE"/>
   ${taeguk(200,110,1.6)}
   ${crowd(268,.6,[[50,{robe:'#EFE6D2'}],[110,{body:'dress',hair:'bun'}],[170,{robe:'#E9DFC8',hat:'gat'}],[230,{body:'dress',hair:'braid',top:'#FFFFFF',skirt:'#2E3440'}],[290,{robe:'#EFE6D2'}],[350,{body:'dress',hair:'bun'}]])}
   ${star(60,60,10)}${star(340,60,10,'#F28C7C')}`,'url(#u8)',sky('u8','#FCE9C2','#E8F1E2')+glow('ug8','#FFF6D8',.95)),
-  text:`관순이는 끝내 감옥에서 나오지 못했어요. 그 뒤로도 많은 사람이 용기를 냈어요. 그리고 마침내 나라를 되찾은 날, 사람들은 다시 태극기를 들고 거리로 나왔어요.`},
+  text:`그로부터 스물여섯 해 뒤, 마침내 우리나라는 나라를 되찾았어요. 사람들은 장롱 속에 꼭꼭 숨겨 두었던 태극기를 꺼내 들고 거리로 뛰어나왔어요.`},
  {kind:'end', svg:endBase('u',`${taeguk(200,120,1.6)}`,gwansun(64,276,.5,{pose:'up',mood:'joy'}),kid(338,276,.5,{pose:'up',mood:'joy'})),
   text:`사람들이 흔드는 태극기 가운데에는 한 땀 한 땀 손으로 꿰맨 태극기도 있었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

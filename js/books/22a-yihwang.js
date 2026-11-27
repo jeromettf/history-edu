@@ -19,21 +19,21 @@ const P=[
  {svg:SV(`${room()}
   ${yh(120,262,.9,{stance:'sit',arms:'pointR',mood:'smile',face:'right'})}
   ${[0,1,2].map(k=>student(230+k*60,262,.7,['#C9D8E8','#D6CDB4','#E9CFC0'][k],{stance:'sit',arms:'lap',mood:k===1?'o':'smile',face:'left'})).join('')}`,'#EADCC0'),
-  text:`어른이 된 이황은 나라의 높은 벼슬을 여러 번 사양하고 고향으로 돌아왔어요. 그리고 '도산서당'을 짓고 제자들을 가르쳤어요. 사람들은 그를 '퇴계 선생님'이라고 불렀어요.`},
+  text:`어른이 된 이황은 높은 벼슬을 마다하고 고향으로 돌아와 서당을 지었어요. 마당에는 아끼는 매화나무를 심었지요. 제자들은 이황을 '퇴계 선생님'이라고 불렀어요.`},
  {svg:SV(`${ridge(160,'#A9CDB4',30,2)}<path d="M-6 200 Q200 190 406 202 L406 290 L-6 290Z" fill="#BCD38F"/>
   <g id="tLetters">${yhOld(80,272,.78,{arms:'holdFront',prop:H=>letter((H.L[0]+H.R[0])/2,H.L[1]+18,.6),mood:'smile',face:'right'})}${gi(320,272,.78,{arms:'holdFront',prop:H=>letter((H.L[0]+H.R[0])/2,H.L[1]+18,.6),mood:'o',face:'left'})}</g>
   <path d="M130 170 Q200 120 270 170" fill="none" stroke="#5A3B2C" stroke-width="2" stroke-dasharray="6 6"/>${letter(200,150,.6)}
   ${T(80,100,'퇴계',18,K.red)}${T(320,100,'기대승',18,'#3F6FA8')}`,'url(#yh1)',sky('yh1','#CFE7F2','#F6EAD0')),
   taps:[{label:'편지 보내기',el:'tLetters',say:'"나는 이렇게 생각하오." 이황이 편지를 보내요.'},{label:'답장',el:'tLetters',say:'"선생님, 저는 조금 다르게 생각합니다." 기대승의 답장이 와요.'}],tapHint:'두 사람을 눌러 볼까요?',
-  text:`어느 날 스물여섯 살이나 어린 기대승이 편지를 보냈어요. 사람의 착한 마음이 어디서 오는지, 이황과 생각이 다르다는 거였어요. 두 사람은 8년 동안 편지를 주고받았어요.`},
+  text:`어느 날 서울에서 편지 한 통이 왔어요. 스물여섯 살이나 어린 학자 기대승이 보냈어요. "선생님, 착한 마음과 화내는 마음이 어디서 오는지, 저는 조금 다르게 생각합니다."`},
  {svg:SV(`${room()}
   ${yhOld(200,272,.9,{mood:'smile',arms:'pray'})}
   ${T(200,80,'자네 말도 일리가 있네',18,K.red)}${letter(80,250,.9)}${letter(330,246,.9)}`,'#EADCC0'),
-  text:`이황은 높은 선생님이었지만, 어린 학자의 말이 옳으면 "자네 말이 맞네" 하고 자기 생각을 고쳤어요. 기대승도 이황을 스승처럼 모셨어요.`},
+  text:`제자들이 웅성거렸어요. "어린 사람이 감히 선생님 말씀에!" 이황은 손을 들어 제자들을 조용히 시켰어요. 그리고 며칠 밤을 곰곰이 생각한 뒤 답장을 썼어요.`},
  {svg:SV(`${yard(200)}
   ${plum(300,262,1.4)}
   ${yhOld(140,272,.86,{mood:'joy',arms:{L:[-30,-30],R:[56,-50]},prop:H=>`<path d="M${H.R[0]} ${H.R[1]} q20 4 30 18" fill="none" stroke="#6FA8C8" stroke-width="3" stroke-dasharray="3 4"/>`,face:'right'})}`,'#D9CCAE'),
-  text:`이황은 매화를 무척 아꼈어요. 매화를 벗이라 부르며 시를 아주 많이 지었고, 마지막 날까지 "매화에 물을 주어라" 하고 챙겼대요.`},
+  text:`편지는 여덟 해 동안 오갔어요. 어느 날 이황은 이렇게 적었어요. "자네 말이 맞네. 내 생각을 고치겠네." 기대승은 그 편지를 읽고 또 읽었어요.`},
  {kind:'end', svg:endBase('yh',`${plum(200,230,1.6)}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),yhOld(338,276,.55,{arms:'waveR',mood:'joy'})),
   text:`이른 봄, 이황의 마당에 매화가 피었어요. 이황은 기대승에게 보낼 편지 끝에 꽃 소식을 한 줄 적었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

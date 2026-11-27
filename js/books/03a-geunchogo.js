@@ -11,33 +11,32 @@ const P=[
  {svg:SV(`${palace()}
   ${gc(200,270,.96,{mood:'smile',arms:'armsOpen'})}
   ${hero(80,276,.6,{robe:'#5E9C8A',hair:'braid',mood:'joy',face:'right'})}${hero(320,276,.6,{robe:'#B5874F',hair:'braid',mood:'joy',face:'left'})}`,'#E6CFAA'),
-  text:`아주 먼 옛날, 백제라는 나라에 근초고왕이라는 임금님이 있었어요. 근초고왕은 바다를 바라보며 생각했어요. "바다 건너에는 어떤 나라들이 있을까?"`},
+  text:`아주 먼 옛날, 백제의 근초고왕은 바닷가 언덕에 올라 먼 바다를 바라보곤 했어요. "저 바다 건너에는 어떤 사람들이 살까?"`},
  {svg:SV(`${hills('#A9CDB4','#BCD38F',190,214)}
   <path d="M-6 230 Q200 214 406 232 L406 290 L-6 290Z" fill="#E6D3A6"/>
   ${gc(150,276,.86,{mood:'joy',arms:'pointR',face:'right'})}
   ${[0,1,2].map(k=>hero(250+k*50,262+(k%2)*8,.56,{robe:['#D6CDB4','#C9D8B4','#E9CFC0'][k],hat:'band',bandColor:'#FFFDF6',mood:'joy',face:'left',arms:k===1?'waveR':'handsDown'})).join('')}`,'url(#gc1)',sky('gc1','#CFE7F2','#F6EAD0')),
-  text:`근초고왕은 남쪽으로 땅을 넓히고, 바닷가에서 튼튼한 배를 많이 만들었어요. 들판에는 곡식이 늘고, 바닷가에는 배가 늘었어요.`},
- {svg:SV(`${room()}
-  ${gc(110,264,.9,{stance:'sit',arms:'pointR',mood:'smile',face:'right'})}
-  ${gohung(280,262,.9,{stance:'sit',arms:'writeR',prop:H=>PROP.brush(H),mood:'smile',face:'left'})}
-  <rect x="190" y="240" width="70" height="12" fill="#8A5A3C" ${sw()}/><rect x="196" y="230" width="56" height="10" fill="#FFFDF6" ${sw(1)}/>
-  ${T(200,80,'우리 역사를 적어 두시오',18,K.red)}`,'#EADCC0'),
-  text:`왕은 학자 고흥에게 백제의 이야기를 책으로 적게 했어요. 책 이름은 『서기』였어요. 아쉽게도 그 책은 지금 남아 있지 않아요.`},
+  text:`왕은 바닷가 마을마다 튼튼한 배를 만들게 했어요. 그런데 사공들은 고개를 저었어요. "저렇게 먼 바다는 아무도 건너 본 적이 없어요. 파도가 집채만 하다고요."`},
  {svg:SV(`<path d="M-6 150 Q200 140 406 150 L406 290 L-6 290Z" fill="#4F92BA"/>${[...Array(9)].map((_,k)=>`<path d="M${(k*97)%420-20} ${170+(k%4)*24} q10 -8 20 0 q10 8 20 0" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>`).join('')}
   ${bigShip(220,226,1.0,'#8A5A3C')}${envoy(264,220,.36,{mood:'joy',arms:'waveR'})}
   ${gull(80,70)}${gull(120,50)}<path d="M330 150 Q360 120 406 130 L406 160Z" fill="#8FB88A" ${sw()}/>
   ${T(110,110,'바다 건너 왜로!',18,K.red)}`,'url(#gc2)',sky('gc2','#CFE7F2','#F6EAD0')),
-  text:`백제의 배는 바다를 건너 중국의 나라들, 그리고 지금의 일본 땅에 있던 왜를 오갔어요. 물건과 글과 기술을 서로 주고받았어요.`},
+  text:`왕은 별을 잘 읽는 사공들을 골라 배를 띄웠어요. 사흘째 밤, 거센 바람이 불고 파도가 배를 덮쳤어요. 사공들은 밧줄을 꽉 붙잡고, 구름 사이 별 하나만 보며 노를 저었어요.`},
+ {svg:SV(`<path d="M-6 150 Q200 140 406 150 L406 290 L-6 290Z" fill="#4F92BA"/>${[...Array(9)].map((_,k)=>`<path d="M${(k*97)%420-20} ${170+(k%4)*24} q10 -8 20 0 q10 8 20 0" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>`).join('')}
+  ${bigShip(220,226,1.0,'#8A5A3C')}${envoy(264,220,.36,{mood:'joy',arms:'waveR'})}
+  ${gull(80,70)}${gull(120,50)}<path d="M330 150 Q360 120 406 130 L406 160Z" fill="#8FB88A" ${sw()}/>
+  ${T(110,110,'바다 건너 왜로!',18,K.red)}`,'url(#gc2)',sky('gc2','#CFE7F2','#F6EAD0')),
+  text:`아침 해가 뜨자 바다가 잔잔해졌어요. 저 멀리 낯선 땅이 보였어요. 바다 건너 왜라는 나라였어요. "다 왔다!" 사공들이 노를 번쩍 들었어요.`},
  {svg:SV(`${room()}
   <g id="tSword"><rect x="150" y="80" width="100" height="180" rx="6" fill="#F4E9CC" ${sw()}/>${sword7(200,250,1.2)}</g>
   ${envoy(90,272,.8,{mood:'joy',arms:'pointR',face:'right'})}${hero(320,272,.8,{robe:'#5A5560',hair:'topknot',mood:'o',face:'left'})}`,'#EADCC0'),
   taps:[{label:'칠지도',el:'tSword',say:'가지가 일곱 개! 그래서 칠지도라고 불러요.'},{label:'가지 세기',el:'tSword',say:'하나, 둘, 셋, 넷, 다섯, 여섯, 그리고 가운데 하나. 모두 일곱!'}],tapHint:'신기한 칼을 눌러 볼까요?',
-  text:`백제는 왜와 사이좋게 지내자는 뜻으로, 가지가 일곱 개 달린 신기한 칼을 보냈어요. 이름은 '칠지도'예요.`},
+  text:`백제 사람들은 사이좋게 지내자는 뜻으로 신기한 칼을 선물했어요. 가지가 일곱 개나 달린 칼이었어요. 왜 사람들은 눈을 동그랗게 뜨고 칼을 받았어요.`},
  {svg:SV(`${room()}
   ${hero(120,262,.86,{robe:'#EDE3CC',hat:'band',bandColor:'#5E9C8A',stance:'sit',arms:'holdFront',prop:H=>`<g transform="translate(${(H.L[0]+H.R[0])/2} ${H.L[1]+30})">${openBook}</g>`,mood:'smile',face:'right'})}
   ${[0,1].map(k=>hero(250+k*70,262,.72,{robe:'#5A5560',hair:'topknot',stance:'sit',arms:'lap',mood:'o',face:'left'})).join('')}
   ${T(240,90,'이 글자는 이렇게 읽어요',16,K.red)}`,'#EADCC0'),
-  text:`백제 학자들은 바다 건너 왜에 가서 한자와 책을 가르쳐 주었어요. 근초고왕이 바라보던 바다 위로 백제 배들이 줄지어 오갔어요.`},
+  text:`그 뒤로 백제 배들은 바다를 오갔어요. 백제 학자들은 바다 건너 왜에 가서 글과 책을 가르쳐 주었어요.`},
  {kind:'end', svg:endBase('gc',`${bigShip(200,200,1.0,'#8A5A3C')}`,kid(64,276,.5,{arms:'cheer',mood:'joy'}),gc(338,276,.55,{arms:'waveR',mood:'joy'})),
   text:`해 질 녘, 근초고왕은 바닷가에 서서 돌아오는 배를 세어 보았어요. 하나, 둘, 셋… 모두 무사히 돌아왔어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

@@ -55,7 +55,7 @@ const P=[
   ${king(110,272,.84,{mood:'joy',beard:HAIR})}
   ${page(240,180,true)}
   ${sb(310,272,.88,{pose:'up',mood:'joy'})}`,'#E8D3B0'),
-  text:`석봉이는 조선에서 글씨를 가장 잘 쓰는 사람이 되었어요. 임금님도 감탄했대요. 석봉이 쓴 천자문은 아이들이 글자를 배우는 책이 되었어요.`},
+  text:`석봉이는 조선에서 글씨를 가장 잘 쓰는 사람이 되었어요. 임금님도 감탄했대요. 석봉이 쓴 천자문을 보고 많은 아이들이 글자를 따라 썼어요.`},
  {kind:'end', svg:endBase('sb',`${tteok(200,150,true)}${page(200,236,true)}`,sbKid(64,276,.5,{pose:'up',mood:'joy'}),mom(338,276,.55,{pose:'up',mood:'joy'})),
   text:`석봉은 쓴 글씨를 들고 어머니를 찾아갔어요. 어머니는 아무 말 없이 떡을 한 조각 썰어 주었어요.<br><span class="big">끝</span>`},
  {kind:'talk'}

@@ -88,7 +88,7 @@ redraw('anchangho',7,()=>SVn(`${room()}<rect x="100" y="40" width="200" height="
   ${[...Array(5)].map((_,k)=>backView(40+k*80,320,1.0,{robe:['#C9D8E8','#E7D7B4','#9FC2D8','#D9E6C8','#E7C76A'][k],hat:k%2?'bun':''})).join('')}`,'#EADCC0'));
 
 /* 유관순 5: 밤새 태극기를 바느질하는 관순이 */
-redraw('yugwansun',5,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill="#2A2438"/><rect x="290" y="30" width="90" height="80" fill="#1E2236" ${sw()}/>${stars(8,60).replace(/cx="(\d+)"/g,(m,a)=>`cx="${300+(+a%70)}"`)}
+redraw('yugwansun',6,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill="#2A2438"/><rect x="290" y="30" width="90" height="80" fill="#1E2236" ${sw()}/>${stars(8,60).replace(/cx="(\d+)"/g,(m,a)=>`cx="${300+(+a%70)}"`)}
   <path d="M-6 230 H406 V290 H-6Z" fill="#4A3A2E"/>
   ${candle(70,236,1.3)}<circle cx="70" cy="190" r="200" fill="url(#candleG)" opacity=".55"/>
   ${gwansun(220,340,1.7,{mood:'smile',face:'left',pose:'hold',still:true})}
@@ -97,7 +97,7 @@ redraw('yugwansun',5,()=>SVn(`<rect x="-6" y="-6" width="412" height="292" fill=
   ${T(220,50,'한 땀, 한 땀',20,'#F6F0D6')}`,'#2A2438',candleDef));
 
 /* 유관순 6: 아우내 장터, 맨 앞의 관순이 */
-redraw('yugwansun',6,()=>SVn(`${townscape(150,7)}<path d="M-6 170 H406 V290 H-6Z" fill="#D9C49A"/>
+redraw('yugwansun',7,()=>SVn(`${townscape(150,7)}<path d="M-6 170 H406 V290 H-6Z" fill="#D9C49A"/>
   ${[...Array(14)].map((_,k)=>{const x=(k*31)%400+10,y=190+Math.floor(k/5)*14;return `${hero(x,y,.36,{robe:['#FFFFFF','#EFE6D2','#D6CDB4'][k%3],hat:['gat','','band'][k%3],bandColor:'#FFFFFF',pose:'up',mood:'joy'})}${smallFlag(x+14,y-40,.5)}`}).join('')}
   ${gwansun(200,320,1.5,{mood:'joy',pose:'up',face:'front',still:true})}${smallFlag(250,180,1.4)}
   ${T(200,40,'대한 독립 만세!',26,K.red)}`,'url(#r4d)',sky('r4d','#CFE7F2','#F6EAD0')));

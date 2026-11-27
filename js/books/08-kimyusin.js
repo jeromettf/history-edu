@@ -56,7 +56,7 @@ const P=[
   <path d="M-6 236 Q200 226 406 236 L406 286 L-6 286Z" fill="#C7D88F" ${sw()}/>
   <path d="M200 200 V70" ${sw(3)}/><rect x="200" y="70" width="90" height="56" fill="#5E9C8A" ${sw()}/>${T(245,106,'하나',24,'#FBF4E2')}
   ${hero(80,272,.62,{robe:'#4F7DBA',mood:'joy',pose:'up'})}${hero(150,276,.58,{body:'dress',hair:'bun',mood:'joy'})}${hero(262,276,.58,{robe:'#C9A15A',mood:'joy',pose:'up'})}${hero(332,272,.62,{robe:'#5E9C8A',mood:'joy',pose:'up'})}`,'url(#k6)',sky('k6','#CFE7F2','#F6EAD0')),
-  text:`마침내 신라는 백제와 고구려를 이겼어요. 그 뒤 땅을 차지하려던 당나라 군대까지 몰아내고, 세 나라를 하나로 모았어요. 이것을 삼국 통일이라고 해요.`},
+  text:`마침내 신라는 백제와 고구려를 이겼어요. 그 뒤 땅을 차지하려던 당나라 군대까지 몰아내고, 세 나라를 하나로 모았어요. 세 나라 사람들이 마침내 한 나라에서 살게 되었어요.`},
  {kind:'end', svg:endBase('k',`${ball(200,120,58)}`,hwarang(64,276,.5,{pose:'up',mood:'joy'}),chunchu(338,276,.5,{pose:'up',mood:'joy'})),
   text:`전쟁이 끝난 밤, 늙은 유신은 어릴 때 춘추와 공을 차던 마당에 혼자 서 보았어요. 달빛이 마당 가득 내려앉았어요.<br><span class="big">끝</span>`},
  {kind:'talk'}
